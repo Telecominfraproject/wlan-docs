@@ -14,4 +14,5 @@
   * [Profiles](user-interface/profiles.md)
   * [System](user-interface/system.md)
   * [Accounts](user-interface/accounts.md)
+* [API](api.md)
 
