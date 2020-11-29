@@ -16,3 +16,11 @@
   * [Accounts](user-interface/accounts.md)
 * [API](api.md)
 
+## Solution Use Cases
+
+* [Bridge Mode SSID](solution-use-cases/bridge-mode-ssid.md)
+* [Multi-VLAN SSID](solution-use-cases/multi-vlan-ssid.md)
+* [NAT Gateway Mode SSID](solution-use-cases/nat-gateway-mode-ssid.md)
+* [RADIUS Authenticated SSID](solution-use-cases/radius-authenticated-ssid.md)
+* [Passpoint R1](solution-use-cases/passpoint-r1.md)
+
