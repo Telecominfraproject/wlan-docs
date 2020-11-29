@@ -14,7 +14,8 @@
   * [Profiles](user-interface/profiles.md)
   * [System](user-interface/system.md)
   * [Accounts](user-interface/accounts.md)
-* [API](api.md)
+* [API](api/README.md)
+  * [Swagger](api/swagger.md)
 
 ## Solution Use Cases
 
