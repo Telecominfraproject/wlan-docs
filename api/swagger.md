@@ -2,7 +2,7 @@
 
 TIP Open Wi-Fi controller implements an Open API compliant NorthBound Interface \(NBI\) to assist with integration and related back office features.  
 
-Swagger is a useful tool to explore and learn any system API. 
+Swagger is a useful tool to explore and learn any system API. Running a local Swagger instance requires a current version of NodeJS installed.
 
 ### Obtain latest TIP Controller Open API data model
 
