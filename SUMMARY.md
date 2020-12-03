@@ -17,11 +17,11 @@
 * [API](api/README.md)
   * [Swagger](api/swagger.md)
 
-## Solution Use Cases
+## Configuration Examples
 
-* [Bridge Mode SSID](solution-use-cases/bridge-mode-ssid.md)
-* [Multi-VLAN SSID](solution-use-cases/multi-vlan-ssid.md)
-* [NAT Gateway Mode SSID](solution-use-cases/nat-gateway-mode-ssid.md)
-* [RADIUS Authenticated SSID](solution-use-cases/radius-authenticated-ssid.md)
-* [Passpoint R1](solution-use-cases/passpoint-r1.md)
+* [Bridge Mode SSID](configuration-examples/bridge-mode-ssid.md)
+* [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
+* [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
+* [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
+* [Passpoint R1](configuration-examples/passpoint-r1.md)
 
