@@ -17,6 +17,11 @@
 * [API](api/README.md)
   * [Swagger](api/swagger.md)
 
+## MDU Quick Start
+
+* [Solution Overview](mdu-quick-start/solution-overview/README.md)
+  * [Supported Configuration](mdu-quick-start/solution-overview/supported-configuration.md)
+
 ## Configuration Examples
 
 * [Bridge Mode SSID](configuration-examples/bridge-mode-ssid.md)
@@ -24,9 +29,4 @@
 * [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
 * [Passpoint R1](configuration-examples/passpoint-r1.md)
-
-## MDU Quick Start
-
-* [Solution Overview](mdu-quick-start/solution-overview.md)
-* [Supported Configuration](mdu-quick-start/supported-configuration.md)
 
