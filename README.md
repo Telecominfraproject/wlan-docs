@@ -6,7 +6,7 @@ description: Telecom Infra Project Open Wi-Fi
 
 ## What is Open Wi-Fi?
 
-TIP Open Wi-Fi is an open source disaggregated technology stack. Open Wi-Fi delivers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly. 
+TIP Open Wi-Fi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to Open Wi-Fi creates an open source disaggregated technology stack without any vendor lock in. Open Wi-Fi offers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly. 
 
 ![](.gitbook/assets/whatisopenwifi.jpg)
 
