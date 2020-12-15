@@ -25,6 +25,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 #### Cloud SDK in Open Wi-Fi offers:
 
 * Zero Touch Provisioning 
+* Firmware Management
 * Integration Northbound Interface \(NBI\) RESTful
 * Data model driven API 
 * Template based device provisioning with RADIUS profile management 
