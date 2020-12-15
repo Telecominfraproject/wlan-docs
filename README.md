@@ -45,14 +45,14 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 * Network Address Translation Gateway Mode Operation
 * Network Time Protocol Client
 * Management VLAN 
-* IEEE 802.11 Features
+* IEEE 802.11ax Wi-Fi 6 Specific
+  * WMM Admission Control per WFA Standard
+  * BSS Coloring
+  * UL/DL OFDMA sub-carrier allocation
+  * Channel Switch Announcement
+  * WMM Power Save
+* IEEE 802.11 General Features
 
-  * **IEEE 802.11ax Wi-Fi 6 Specific**
-    * WMM Admission Control per WFA Standard
-    * BSS Coloring
-    * UL/DL OFDMA sub-carrier allocation
-    * Channel Switch Announcement
-    * WMM Power Save
   * Beacon Rate 
   * IEEE 802.11h DFS & TPC 
   * Min Client Noise Immunity
