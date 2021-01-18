@@ -190,6 +190,8 @@ The above assumes the microk8s system has IP connectivity to the Access Point
 
 In the current release of a TIP Controller using self-signed certificates, Access Points communicate to the TIP Controller using OpenSync. Access Points are directed to the controller at this time using local configuration. 
 
+> **The default TIP Open AP username and login are 'root' and 'openwifi'**
+
 ```text
 /bin/wlan_ap_redirector.sh ssl:<IP or FQDN of controller>:6643
 ```
