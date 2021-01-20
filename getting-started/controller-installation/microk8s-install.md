@@ -148,10 +148,11 @@ data-tip-wlan-postgresql-slave-0                 Bound    pvc-f000dbd6-dcd7-4fd1
 db-tip-wlan-opensync-mqtt-broker-0               Bound    pvc-9d6c25ce-0712-4660-ad3e-cdc4ce41bdf7   1Gi        RWO            microk8s-hostpath   4d2h
 data-tip-wlan-cassandra-0                        Bound    pvc-645ae94f-36e7-4fe3-a093-c66c56e82092   1Gi        RWO            microk8s-hostpath   4d2h
 file-store-data-tip-wlan-wlan-portal-service-0   Bound    pvc-530ed2bf-b120-4eee-b6d5-0d7cdd468d2b   4Gi        RWX            microk8s-hostpath   4d2h
-tip@microk8slocal:~$ tip@microk8slocal:~$ microk8s kubectl get pods -n tip
+tip@microk8slocal:~$ tip@microk8slocal:~
 ```
 
 ```text
+$ microk8s kubectl get pods -n tip
 NAME                                                 READY   STATUS    RESTARTS   AGE
 tip-wlan-kafka-0                                     0/1     Pending   0          4d1h
 tip-wlan-wlan-cloud-static-portal-bdfcb4559-9wt9r    0/1     Pending   0          4d1h
