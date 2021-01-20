@@ -6,7 +6,8 @@ description: TIP Controller Local Deployment
 
 ## Base System
 
-A snap capable operating system is required for microk8s installation. TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.   
+A snap capable operating system is required for microk8s installation.   
+TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.   
 The system should have a fully qualified domain name and the deployment of TIP controller will require additional DNS records to be created. 
 
 ```
