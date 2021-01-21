@@ -19,7 +19,7 @@ In a future release of TIP Controller instructions will be provided to modify th
 DNS default entries for /etc/hosts
 
 ```text
-## Append your IP address 
+## Replace with your system IP address 
 <IP Address> wlan-ui.wlan.local wlan-ui-grqphql.wlan.local opensync-redirector.wlan.local opensync-controller.wlan.local opensync-mqtt-broker.wlan.local wlan-filestore.wlan.local
 ```
 
