@@ -37,7 +37,7 @@ microk8s enable helm3 dns storage metallb
 
 {% hint style="info" %}
 metlalb will request an IP address range. Specify the IP of Gigabit Ethernet interface.  
-If you interface address is 10.1.1.1 then provide metallb with: 10.1.1.1-10.1.1.1 
+If your interface address is 10.1.1.1 then provide metallb with: 10.1.1.1-10.1.1.1 
 {% endhint %}
 
 ### Begin Controller Setup
