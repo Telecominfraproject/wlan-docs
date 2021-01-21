@@ -11,8 +11,7 @@ TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb
   
 The system should have a fully qualified domain name and the deployment of TIP controller will require additional DNS records to be created. 
 
-Local /etc/hosts should contain the following DNS entires for your controller assigned to the IP address your machine is using to connect to the network. This same IP will be used when configuring metallb address in a subsequent step.
-
+Local /etc/hosts should contain the following DNS entires for your controller assigned to the IP address your machine is using to connect to the network. This same IP will be used when configuring metallb address in a subsequent step.  
   
 When accessing the UI from a workstation or when AP is connecting to the local controller the local DNS server will need to provide authoritative response for these A records in the wlan.local domain.   
 In a future release of TIP Controller instructions will be provided to modify the FQDN of all Controller services. 
