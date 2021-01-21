@@ -8,14 +8,30 @@ description: TIP Controller Local Deployment
 
 A snap capable operating system is required for microk8s installation.   
 TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.   
+  
 The system should have a fully qualified domain name and the deployment of TIP controller will require additional DNS records to be created. 
 
+Local /etc/hosts should contain the following DNS entires for your controller assigned to the IP address your machine is using to connect to the network. This same IP will be used when configuring metallb address in a subsequent step.
+
+  
+When accessing the UI from a workstation or when AP is connecting to the local controller the local DNS server will need to provide authoritative response for these A records in the wlan.local domain.   
+In a future release of TIP Controller instructions will be provided to modify the FQDN of all Controller services. 
+
+DNS default entries for /etc/hosts
+
+```text
+## Append your IP address 
+<IP Address> wlan-ui.wlan.local wlan-ui-grqphql.wlan.local opensync-redirector.wlan.local opensync-controller.wlan.local opensync-mqtt-broker.wlan.local wlan-filestore.wlan.local
 ```
+
+Install microk8s
+
+```text
 $ sudo snap install microk8s --classic --channel=1.19
 ```
 
 {% hint style="info" %}
- The above specifies microk8s 1.19 release will be installed
+The above specifies microk8s 1.19 release will be installed
 {% endhint %}
 
 Set user permissions
