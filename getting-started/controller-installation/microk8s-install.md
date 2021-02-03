@@ -26,11 +26,11 @@ DNS default entries for /etc/hosts
 Install microk8s
 
 ```text
-$ sudo snap install microk8s --classic --channel=1.19
+$ sudo snap install microk8s --classic --channel=latest/stable
 ```
 
 {% hint style="info" %}
-The above specifies microk8s 1.19 release will be installed
+The above specifies latest stable release will be installed
 {% endhint %}
 
 Set user permissions
@@ -106,12 +106,24 @@ TIP controller defaults to a domain of wlan.local. It is possible to operate a l
 
 ```text
 cd ~/wlan-cloud-helm
-microk8s helm3 install tip-wlan tip-wlan -f tip-wlan/resources/environments/dev-microk8s.yaml -n default
+microk8s helm3 dependency update tip-wlan
+microk8s kubectl create namespace tip
+microk8s helm3 upgrade --install tip-wlan tip-wlan/ --namespace tip -f tip-wlan/resources/environments/dev-microk8s.yaml
 ```
 
 Helm will deploy the Controller containers within a TIP namespace to microk8s on the machine. 
 
-#### Check Controller Status
+```text
+Release "tip-wlan" does not exist. Installing it now.
+NAME: tip-wlan
+LAST DEPLOYED: Wed Feb  3 20:45:13 2021
+NAMESPACE: tip
+STATUS: deployed
+REVISION: 1
+TEST SUITE: NoneCheck Controller Status
+```
+
+To check status of the PODs, Services, and Persistent Volume Claims \(storage\) use the following commands. Please note, depending on your server, all PODs may take several minutes to fully initialize.
 
 ```text
 microk8s kubectl get services -n tip
