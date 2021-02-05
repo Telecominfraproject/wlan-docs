@@ -6,7 +6,7 @@ description: TIP Wi-Fi Member Access Point Ordering Information
 
 TIP Wi-Fi members may contact the ODM manufacturers in the TIP WI-Fi eco-system using the information posted within Community Confluence page. 
 
-{% page-ref page="ordering-open-wi-fi-aps.md" %}
+{% embed url="https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/112689187/AP+Hardware" %}
 
 
 
