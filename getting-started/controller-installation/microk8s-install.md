@@ -6,6 +6,9 @@ description: TIP Controller Local Deployment
 
 ## Base System
 
+Microk8s deployment is considered experimental as there remain certain UI to Ingress SSL related issues as of Release 1.0 candidate.   
+API services, database, message bus and ability to adjust Kubernetes POD  performance parameters are all possible with this system which may be useful to the Community. 
+
 A snap capable operating system is required for microk8s installation.   
 TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.   
   
@@ -205,7 +208,7 @@ In the earlier stage when self-signed keys were created for the controller, keys
 To obtain these keys, return to the wlan-pki-cert-scripts folder and copy these Access Point keys using secure copy \(SCP\) to each. Note the filenames change when copied to the device. 
 
 ```text
-cd ~/wlan-pki-cert-scripts 
+cd ~/wlan-pki-cert-scripts/generated/ 
 scp cacert.pem root@:/usr/opensync/certs/ca.pem 
 scp clientkey_dec.pem root@:/usr/opensync/certs/client_dec.key 
 scp clientcert.pem root@:/usr/opensync/certs/client.pem
