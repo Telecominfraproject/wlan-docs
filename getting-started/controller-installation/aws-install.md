@@ -58,7 +58,9 @@ provider "aws" {
 
 If a specific authentication method previously exists depending on your local machine environment when connecting to AWS, adjustments may be required. Please consult Terraform instructions accordingly: [https://registry.terraform.io/providers/hashicorp/aws/latest/docs\#authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication)
 
-Initialize Terraform with the init command:
+### Initialize Terraform 
+
+Terraform will use the initial configuration of your environment variables from the previous step when communicating with AWS. Prior to initializing Terraform, ensure authentication is successful. 
 
 ```text
 terraform init
@@ -71,5 +73,28 @@ Terraform has been successfully initialized!
 
 ### Adjusting to AWS Environment
 
+Within the `/wlan-cloud-helm/terraform/aws-cloudsdk` directory, copy the `terraform.tfvars.sample` file to `terraform.tfvars` and edit the content of the new `terraform.tfvars`     replacing parameter values for cidr and route53\_zone\_name accordingly: 
 
+```text
+name = "cloudsdk"
+cidr = "Enter a valid CIDR Range of your AWS VPC"
+route53_zone_name = "Enter a valid Route53 Hosted-Zone"
+subdomain = "cloudsdk"
+```
+
+Once these steps have been completed, it is now possible to deploy the TIP Controller to AWS. 
+
+```text
+terraform apply
+```
+
+If Terraform is able to connect and authenticate to AWS, a prompt to accept the creation of the deployment is presented. Answer `yes` to proceed. Terraform will execute for 10-15 minutes during which time the following are being configured:
+
+* EKS cluster with three nodes where CloudSDK will run on
+* VPC for the EKS cluster
+* ACM that will sign the certificate for the public HTTPS services exposed by CloudSDK
+* Route53 record to let ACM know that you own the domain
+* [external-dns](https://github.com/kubernetes-sigs/external-dns) that will take care of creating DNS entries for all CloudSDK components
+* [aws-load-balancer-controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/) which will take care of exposing CloudSDK components to the public
+* Required IAM roles for all components
 
