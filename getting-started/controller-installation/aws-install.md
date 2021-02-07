@@ -161,7 +161,7 @@ helm upgrade --install cloudsdk tip-wlan -f tip-wlan/example-values/aws-basic/va
 
 If a connection error occurs, AWS CLI may need to re-authenticate. This can be done with `aws configure`.
 
-If Helm has a succesful connection to AWS the following returns:
+If Helm has a successful connection to AWS the following returns:
 
 > Release "cloudsdk" does not exist. Installing it now.
 
