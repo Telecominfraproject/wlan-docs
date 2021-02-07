@@ -151,7 +151,20 @@ helm dependency update tip-wlan
 
 Various Bitnami charts will be brought into the deployment such as Kafka, PostGres, Cassandra.
 
-###  Deploy Controller to AWS
+Localizing the Helm charts for AWS is a critical step. Editing the following file  
+
+                 `tip-wlan/example-values/aws-basic/values.yml` 
+
+**Key variables to replace in this file are:**
+
+* alb.ingress.kubernetes.io/certificate-arn: "Enter the ARN supplied during terraform output"
+* All locations with a URL or FQDN align to your AWS environment such as:
+  * `external-dns.alpha.kubernetes.io/hostname: wlan-filestore.cloudsdk.`_`route53hosted-zone`_
+  * `ovsdb: opensync-controller.cloudsdk.`_`route53hosted-zone`_
+  * `mqtt: opensync-mqtt-broker.cloudsdk.`_`route53hostedzone`_
+  * All occurrences of a URL or FQDN within this file replacing _route53hostedzone_ with your deployed Route53 hosted zone name
+
+### Deploy Controller to AWS
 
 With all dependencies met, certificates created and in place, using Helm and the authenticated session to AWS, execute the following:
 
@@ -220,5 +233,11 @@ cloudsdk-wlan-ssc-service-6db4c8c8b8-jrmrc                       1/1     Running
 cloudsdk-zookeeper-0                                             1/1     Running     0          11m
 ```
 
+### Check in on the UI
 
+Navigate to https://wlan-ui.cloudsdk.yourdomainname
+
+![TIP Controller Login Page](../../.gitbook/assets/image.png)
+
+Default username `support@example.com` and password `support`
 
