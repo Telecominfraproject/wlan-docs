@@ -160,7 +160,7 @@ Localizing the Helm charts for AWS is a critical step. Editing the following fil
 * alb.ingress.kubernetes.io/certificate-arn: "Enter the ARN supplied during terraform output"
 * All locations with a URL or FQDN align to your AWS environment such as:
   * `external-dns.alpha.kubernetes.io/hostname: wlan-filestore.cloudsdk.`_`route53hosted-zone`_
-  * `ovsdb: opensync-controller.cloudsdk.`_`route53hosted-zone`_
+  * `ovsdb: opensync-controller.cloudsdk.`_`route53hostedzone`_
   * `mqtt: opensync-mqtt-broker.cloudsdk.`_`route53hostedzone`_
   * All occurrences of a URL or FQDN within this file replacing _route53hostedzone_ with your deployed Route53 hosted zone name
 
