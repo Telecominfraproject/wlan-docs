@@ -31,10 +31,45 @@ If the instructions for Helm were followed, Helm has now been locally installed.
 If the instructions for Kubectl were followed, Kubectl has not been locally installed. This may be verified using the command which `kubectl` and `kubectl version --client`. If these succeed installation of Kubectl has completed.
 
 {% hint style="info" %}
- If any of the above have not completed, please refer back to the specific install instructions from the package provider listed in the Prerequisite links accordingly before continuing. Once you're strong enough, save the world:
+ If any of the above have not completed, please refer back to the specific install instructions from the package provider listed in the Prerequisite links accordingly before continuing. 
 {% endhint %}
 
+Access to AWS should have been satisfied with an AWS account as noted in Prerequisites. This account is entitled with Administrator level permissions. For information on this process please refer to: [https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+
 ### Controller Installation
+
+Create a workspace on your local system and clone in the TIP Controller project.
+
+```text
+git clone https://github.com/Telecominfraproject/wlan-cloud-helm/
+### A merge of final AWS deployments is pending. 
+### At this time, switch to the following branch
+git checkout cloudsdk-aws-deployment
+cd /terraform/aws-cloudsdk
+```
+
+  Create a Terraform file in the `aws-cloudsdk` directory named `aws.tf`adding the following to that new file:
+
+```text
+provider "aws" {
+        region = "Replace with your preferred AWS region here"
+}
+```
+
+If a specific authentication method previously exists depending on your local machine environment when connecting to AWS, adjustments may be required. Please consult Terraform instructions accordingly: [https://registry.terraform.io/providers/hashicorp/aws/latest/docs\#authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication)
+
+Initialize Terraform with the init command:
+
+```text
+terraform init
+
+### Several emitted lines will occur.
+### When succesful the following will display:
+
+Terraform has been successfully initialized!
+```
+
+### Adjusting to AWS Environment
 
 
 
