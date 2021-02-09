@@ -109,7 +109,7 @@ Within the following files, ensure the FQDN \(Fully Qualified Domain Name\) base
 
   `DNS.1  = opensync-redirector.FQDN`
 
-  `DNS.2  = opensync-controller.cloudsdk.FQDN`
+  `DNS.2  = opensync-controller.FQDN`
 
 Once complete generate the service certificates and copy these to the controller.
 
