@@ -227,17 +227,12 @@ tip@microk8slocal:~$
 ### Access Point Self-Signed Keys
 
 In the earlier stage when self-signed keys were created for the controller, keys were also created to support Access Point connections over SSL to the newly deployed controller.   
-To obtain these keys, return to the wlan-pki-cert-scripts folder and copy these Access Point keys using secure copy \(SCP\) to each. Note the filenames change when copied to the device. 
-
-```text
-cd ~/wlan-pki-cert-scripts/generated/ 
-scp cacert.pem root@:/usr/opensync/certs/ca.pem 
-scp clientkey_dec.pem root@:/usr/opensync/certs/client_dec.key 
-scp clientcert.pem root@:/usr/opensync/certs/client.pem
-```
+To obtain these keys, return to the `/wlan-pki-cert-scripts/generated` folder and copy `AP.zip` containing the Access Point keys.   
+Extract this archive and using sing secure copy \(SCP\) transfer keys to the `/usr/opensync/certs` folder on the AP.  
 
 {% hint style="info" %}
-The above assumes the microk8s system has IP connectivity to the Access Point
+The above assumes the microk8s system has IP connectivity to the Access Point  
+If this is not possible, copy the AP.zip file to a machine that will have SCP access to the AP, extract the files and copy to the AP folder per above.
 {% endhint %}
 
 ### Directing Access Point To Controller
