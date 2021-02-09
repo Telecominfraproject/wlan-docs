@@ -113,7 +113,7 @@ When Terraform completes the following should have emitted:
 TIP Controller services use SSL certificates to ensure inter-service security. These certificates must be generated. To generate TIP Controller certificates, navigate out of the tip-wlan-cloud directory to a directory where cloning the TIP PKI repository may occur:
 
 ```text
-git clone https://github.com/Telecominfraproject/wlan-pki-cert-scripts.githelm dependency update tip-wlan
+git clone https://github.com/Telecominfraproject/wlan-pki-cert-scripts.git
 ```
 
 Enter the PKI directory and the configs sub-directory `cd /wlan-pki-cert-scripts/configs`
@@ -140,6 +140,12 @@ To generate keys, ensure necessary Java resources are installed for your operati
 From within the `wlan-pki-cert-scripts` folder execute `./generate_all.sh` script.
 
 Copy the generated keys assuming the wlan-cloud-helm folder is at the same level as the wlan-pki-certs folder per: `./copy-certs-to-helm.sh ~/wlan-cloud-helm/`
+
+{% hint style="info" %}
+`Note within the wlan-pki-cert-scripts folder, a subfolder /generated is present after key creation.` 
+
+`The AP.zip archive in the generated folder contains the Access Point certificates for loading onto APs in the AP /usr/opensync/certs device folder`
+{% endhint %}
 
 ### Satisfy Cloud Deployment Charts
 
