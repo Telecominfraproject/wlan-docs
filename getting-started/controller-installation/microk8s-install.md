@@ -23,7 +23,7 @@ DNS default entries for /etc/hosts
 
 ```text
 ## Replace with your system IP address 
-<IP Address> wlan-ui.wlan.local wlan-ui-grqphql.wlan.local opensync-redirector.wlan.local opensync-controller.wlan.local opensync-mqtt-broker.wlan.local wlan-filestore.wlan.local
+<IP Address> wlan-ui.wlan.local wlan-ui-graphql.wlan.local opensync-redirector.wlan.local opensync-controller.wlan.local opensync-mqtt-broker.wlan.local wlan-filestore.wlan.local
 ```
 
 Install microk8s
