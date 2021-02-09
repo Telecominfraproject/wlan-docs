@@ -95,13 +95,35 @@ git clone https://github.com/Telecominfraproject/wlan-cloud-helm.git
 ```
 
 From the current directory, two sub-directories now exist for wlan-pki-certs and wlan-cloud-helm.   
-Create necessary self-signed certificates. No changes are necessary to deploy the controller. However if changing the organization name is desired this may be done by editing the .cnf files for all certificates of the system. Once complete generate the service certificates and copy these to the controller.
+Enter the PKI directory and the configs sub-directory `cd /wlan-pki-cert-scripts/configs`
+
+Modify all certificate configuration files for the value of your organizationalUnitName\_default value set to your organizational name or other string value used in each of the PKI certificate files. Optionally this may be left unchanged.
+
+Within the following files, ensure the FQDN \(Fully Qualified Domain Name\) based on local setup for DNS aligns accordingly. The following files are updated per:
+
+* mqtt-server.cnf 
+
+  `commonName_default          = opensync-mqtt-broker.FQDN`
+
+*  openssl-server.cnf
+
+  `DNS.1  = opensync-redirector.FQDN`
+
+  `DNS.2  = opensync-controller.cloudsdk.FQDN`
+
+Once complete generate the service certificates and copy these to the controller.
 
 ```text
 cd wlan-pki-cert-scripts 
 ./generate_all.sh 
 ./copy-certs-to-helm.sh ~/wlan-cloud-helm/
 ```
+
+{% hint style="info" %}
+`Note within the wlan-pki-cert-scripts folder, a subfolder /generated is present after key creation.` 
+
+`The AP.zip archive in the generated folder contains the Access Point certificates for loading onto APs in the AP /usr/opensync/certs device folder`
+{% endhint %}
 
 ### Deploy Controller
 
