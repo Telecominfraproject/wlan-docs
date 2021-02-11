@@ -6,18 +6,18 @@ description: TIP Controller Local Deployment
 
 ## Base System
 
-Microk8s deployment is considered experimental as there remain certain UI to Ingress SSL related issues as of Release 1.0 candidate.   
-API services, database, message bus and ability to adjust Kubernetes POD  performance parameters are all possible with this system which may be useful to the Community. 
+Microk8s deployment is considered experimental as there remain certain UI to Ingress SSL related issues as of Release 1.0 candidate.  
+API services, database, message bus and ability to adjust Kubernetes POD performance parameters are all possible with this system which may be useful to the Community.
 
-A snap capable operating system is required for microk8s installation.   
-TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.   
-  
-The system should have a fully qualified domain name and the deployment of TIP controller will require additional DNS records to be created. 
+A snap capable operating system is required for microk8s installation.  
+TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.
 
-Local /etc/hosts should contain the following DNS entires for your controller assigned to the IP address your machine is using to connect to the network. This same IP will be used when configuring metallb address in a subsequent step.  
-  
-When accessing the UI from a workstation or when AP is connecting to the local controller the local DNS server will need to provide authoritative response for these A records in the wlan.local domain.   
-In a future release of TIP Controller instructions will be provided to modify the FQDN of all Controller services. 
+The system should have a fully qualified domain name and the deployment of TIP controller will require additional DNS records to be created.
+
+Local /etc/hosts should contain the following DNS entires for your controller assigned to the IP address your machine is using to connect to the network. This same IP will be used when configuring metallb address in a subsequent step.
+
+When accessing the UI from a workstation or when AP is connecting to the local controller the local DNS server will need to provide authoritative response for these A records in the wlan.local domain.  
+In a future release of TIP Controller instructions will be provided to modify the FQDN of all Controller services.
 
 DNS default entries for /etc/hosts
 
@@ -47,7 +47,7 @@ sudo chown -f -R tip ~/.kube
 source or re-login to shell for environment to be applied
 {% endhint %}
 
-Setup microk8s 
+Setup microk8s
 
 ```text
 microk8s enable helm3 dns storage metallb
@@ -55,14 +55,14 @@ microk8s enable helm3 dns storage metallb
 
 {% hint style="info" %}
 metlalb will request an IP address range. Specify the IP of Gigabit Ethernet interface.  
-If your interface address is 10.1.1.1 then provide metallb with: 10.1.1.1-10.1.1.1 
+If your interface address is 10.1.1.1 then provide metallb with: 10.1.1.1-10.1.1.1
 {% endhint %}
 
 ### Begin Controller Setup
 
 TIP Controller may be deployed with self-signed certificates for a local lab environment. The following steps will guide the reader through that process.
 
-Install Keytool 
+Install Keytool
 
 ```text
 sudo apt install -y openjdk-11-jre-headless 
@@ -79,7 +79,7 @@ sudo ufw default allow routed
 #### Downloading TIP Controller Software
 
 {% hint style="info" %}
-Change to a directory for configuring certificates and running controller. This can be within the tip home directory. 
+Change to a directory for configuring certificates and running controller. This can be within the tip home directory.
 {% endhint %}
 
 #### Obtain Controller PKI Certs Locally
@@ -94,22 +94,22 @@ git clone https://github.com/Telecominfraproject/wlan-pki-cert-scripts.git
 git clone https://github.com/Telecominfraproject/wlan-cloud-helm.git
 ```
 
-From the current directory, two sub-directories now exist for wlan-pki-certs and wlan-cloud-helm.   
+From the current directory, two sub-directories now exist for wlan-pki-certs and wlan-cloud-helm.  
 Enter the PKI directory and the configs sub-directory `cd /wlan-pki-cert-scripts/configs`
 
 Modify all certificate configuration files for the value of your organizationalUnitName\_default value set to your organizational name or other string value used in each of the PKI certificate files. Optionally this may be left unchanged.
 
 Within the following files, ensure the FQDN \(Fully Qualified Domain Name\) based on local setup for DNS aligns accordingly. The following files are updated per:
 
-* mqtt-server.cnf 
+* mqtt-server.cnf
 
-  `commonName_default          = opensync-mqtt-broker.FQDN`
+  `commonName_default = opensync-mqtt-broker.FQDN`
 
-*  openssl-server.cnf
+* openssl-server.cnf
 
-  `DNS.1  = opensync-redirector.FQDN`
+  `DNS.1 = opensync-redirector.FQDN`
 
-  `DNS.2  = opensync-controller.FQDN`
+  `DNS.2 = opensync-controller.FQDN`
 
 Once complete generate the service certificates and copy these to the controller.
 
@@ -120,14 +120,14 @@ cd wlan-pki-cert-scripts
 ```
 
 {% hint style="info" %}
-`Note within the wlan-pki-cert-scripts folder, a subfolder /generated is present after key creation.` 
+`Note within the wlan-pki-cert-scripts folder, a subfolder /generated is present after key creation.`
 
 `The AP.zip archive in the generated folder contains the Access Point certificates for loading onto APs in the AP /usr/opensync/certs device folder`
 {% endhint %}
 
 ### Deploy Controller
 
-TIP controller defaults to a domain of wlan.local. It is possible to operate a lab DNS service permitting local resolution of this domain for the TIP controller services. Certificate instructions for a self-signed private domain will follow in a subsequent release of service and documentation. 
+TIP controller defaults to a domain of wlan.local. It is possible to operate a lab DNS service permitting local resolution of this domain for the TIP controller services. Certificate instructions for a self-signed private domain will follow in a subsequent release of service and documentation.
 
 ```text
 cd ~/wlan-cloud-helm
@@ -136,7 +136,7 @@ microk8s kubectl create namespace tip
 microk8s helm3 upgrade --install tip-wlan tip-wlan/ --namespace tip -f tip-wlan/resources/environments/dev-microk8s.yaml
 ```
 
-Helm will deploy the Controller containers within a TIP namespace to microk8s on the machine. 
+Helm will deploy the Controller containers within a TIP namespace to microk8s on the machine.
 
 ```text
 Release "tip-wlan" does not exist. Installing it now.
@@ -153,7 +153,7 @@ To check status of the PODs, Services, and Persistent Volume Claims \(storage\) 
 ```text
 microk8s kubectl get services -n tip
 microk8s kubectl get pvc -n tip
-microk8s kubectl get pods -n tip 
+microk8s kubectl get pods -n tip
 ```
 
 {% hint style="info" %}
@@ -161,7 +161,7 @@ Get svc will return the network Services of each container port maps as well as 
 
 Get pvc will return the Persistent Volume Claims of the containers to the microk8s storage service
 
-Get pods will return the current state of all containers. The controller will require two to four minutes for all pods to reach 'Running' state. 
+Get pods will return the current state of all containers. The controller will require two to four minutes for all pods to reach 'Running' state.
 {% endhint %}
 
 Examples of all three commands:
@@ -187,7 +187,7 @@ tip-wlan-wlan-prov-service          ClusterIP      10.152.183.160   <none>      
 tip-wlan-opensync-mqtt-broker       LoadBalancer   10.152.183.32    10.75.0.9     1883:31511/TCP,9001:32046/TCP                                 47h
 tip-wlan-wlan-portal-service        LoadBalancer   10.152.183.246   10.75.0.9     9051:30504/TCP,9052:31817/TCP                                 47h
 tip-wlan-opensync-gw-cloud          LoadBalancer   10.152.183.97    10.75.0.9     6640:31000/TCP,6643:31932/TCP,9096:30749/TCP,9097:31793/TCP   47h
-tip@microk8slocal:~$ 
+tip@microk8slocal:~$
 ```
 
 ```text
@@ -221,14 +221,14 @@ tip-wlan-zookeeper-0                                 1/1     Running   0        
 tip-wlan-postgresql-master-0                         1/1     Running   0          4d1h
 tip-wlan-wlan-portal-service-0                       1/1     Running   0          4d1h
 tip-wlan-wlan-prov-service-84fc7bfc5f-xqjgx          1/1     Running   0          4d1h
-tip@microk8slocal:~$ 
+tip@microk8slocal:~$
 ```
 
 ### Access Point Self-Signed Keys
 
-In the earlier stage when self-signed keys were created for the controller, keys were also created to support Access Point connections over SSL to the newly deployed controller.   
-To obtain these keys, return to the `/wlan-pki-cert-scripts/generated` folder and copy `AP.zip` containing the Access Point keys.   
-Extract this archive and using sing secure copy \(SCP\) transfer keys to the `/usr/opensync/certs` folder on the AP.  
+In the earlier stage when self-signed keys were created for the controller, keys were also created to support Access Point connections over SSL to the newly deployed controller.  
+To obtain these keys, return to the `/wlan-pki-cert-scripts/generated` folder and copy `AP.zip` containing the Access Point keys.  
+Extract this archive and using sing secure copy \(SCP\) transfer keys to the `/usr/opensync/certs` folder on the AP.
 
 {% hint style="info" %}
 The above assumes the microk8s system has IP connectivity to the Access Point  
@@ -237,7 +237,7 @@ If this is not possible, copy the AP.zip file to a machine that will have SCP ac
 
 ### Directing Access Point To Controller
 
-In the current release of a TIP Controller using self-signed certificates, Access Points communicate to the TIP Controller using OpenSync. Access Points are directed to the controller at this time using local configuration. 
+In the current release of a TIP Controller using self-signed certificates, Access Points communicate to the TIP Controller using OpenSync. Access Points are directed to the controller at this time using local configuration.
 
 > **The default TIP Open AP username and login are 'root' and 'openwifi'**
 

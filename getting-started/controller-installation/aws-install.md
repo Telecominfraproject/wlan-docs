@@ -172,6 +172,12 @@ Localizing the Helm charts for AWS is a critical step. Editing the following fil
 
 ### Deploy Controller to AWS
 
+Local Kubeconfig is associated to the AWS service to enable Helm control of EKS resources by entering the following:
+
+```text
+aws eks update-kubeconfig --region $your_aws_region --name cloudsdk 
+```
+
 With all dependencies met, certificates created and in place, using Helm and the authenticated session to AWS, execute the following:
 
 ```text
