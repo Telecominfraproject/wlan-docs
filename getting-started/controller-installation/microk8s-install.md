@@ -133,7 +133,7 @@ TIP controller defaults to a domain of wlan.local. It is possible to operate a l
 cd ~/wlan-cloud-helm
 microk8s helm3 dependency update tip-wlan
 microk8s kubectl create namespace tip
-microk8s helm3 upgrade --install tip-wlan tip-wlan/ --namespace tip -f tip-wlan/resources/environments/dev-microk8s.yaml
+microk8s helm3 upgrade --install tip-wlan tip-wlan/ --namespace tip -f tip-wlan/example-values/microk8s-basic/values.yaml
 ```
 
 Helm will deploy the Controller containers within a TIP namespace to microk8s on the machine.
