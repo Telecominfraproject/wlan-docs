@@ -2,14 +2,14 @@
 description: TIP Controller Local Deployment
 ---
 
-# microk8s Install
+# MicroK8s Install
 
 ## Base System
 
-Microk8s deployment is considered experimental as there remain certain UI to Ingress SSL related issues as of Release 1.0 candidate.  
-API services, database, message bus and ability to adjust Kubernetes POD performance parameters are all possible with this system which may be useful to the Community.
+MicroK8s deployment is available as part of Release 1.0 candidate.  
+API services, database, message bus and ability to adjust Kubernetes POD performance parameters are all possible with this system which may be useful to the Community for local on premises installations.
 
-A snap capable operating system is required for microk8s installation.  
+A snap capable operating system is required for MicroK8s installation.  
 TIP Controller has been installed on an Ubuntu 20 system with 32Gb memory, 500Gb disk and Gigabit Ethernet network interface with a user account tip created.
 
 The system should have a fully qualified domain name and the deployment of TIP controller will require additional DNS records to be created.
@@ -39,15 +39,15 @@ The above specifies latest stable release will be installed
 Set user permissions
 
 ```text
-sudo usermod -a -G microk8s tip
+sudo usermod -a -G microk8s $USER
 sudo chown -f -R tip ~/.kube
 ```
 
 {% hint style="info" %}
-source or re-login to shell for environment to be applied
+source or re-login to shell for environment to be applied to current user \($USER\)
 {% endhint %}
 
-Setup microk8s
+Setup MicroK8s
 
 ```text
 microk8s enable helm3 dns storage metallb
@@ -55,7 +55,7 @@ microk8s enable helm3 dns storage metallb
 
 {% hint style="info" %}
 metlalb will request an IP address range. Specify the IP of Gigabit Ethernet interface.  
-If your interface address is 10.1.1.1 then provide metallb with: 10.1.1.1-10.1.1.1
+If your interface address is 10.1.1.10 then provide metallb with: 10.1.1.1-10.1.1.10
 {% endhint %}
 
 ### Begin Controller Setup

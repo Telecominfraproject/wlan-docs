@@ -5,7 +5,7 @@
 * [Getting Started](getting-started/README.md)
   * [Controller Installation](getting-started/controller-installation/README.md)
     * [AWS Install](getting-started/controller-installation/aws-install.md)
-    * [microk8s Install](getting-started/controller-installation/microk8s-install.md)
+    * [MicroK8s Install](getting-started/controller-installation/microk8s-install.md)
   * [Controller](getting-started/controller.md)
   * [Access Points](getting-started/access-points.md)
 * [User Interface](user-interface/README.md)
