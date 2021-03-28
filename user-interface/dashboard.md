@@ -4,7 +4,7 @@ description: Cloud SDK Default Landing Page
 
 # Dashboard
 
-The TIP Cloud SDK is organized into main components organized along the top of the screen.
+TIP Cloud SDK is organized into main components organized along the top of the screen.
 
 ![Cloud SDK User Interface Top Navigation](../.gitbook/assets/screen-shot-2021-03-28-at-1.25.04-pm.png)
 
