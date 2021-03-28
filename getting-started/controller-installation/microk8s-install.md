@@ -22,14 +22,14 @@ In a future release of TIP Controller instructions will be provided to modify th
 DNS default entries for /etc/hosts
 
 ```text
-## Replace with your system IP address 
+## Replace with your IP address to be used with Load Balancer Incoming Connections (It may be same as your system IP or may be another address on your network determiend for use between TIP AP Clients and the TIP SDK) 
 <IP Address> wlan-ui.wlan.local wlan-ui-graphql.wlan.local opensync-redirector.wlan.local opensync-controller.wlan.local opensync-mqtt-broker.wlan.local wlan-filestore.wlan.local
 ```
 
 Install microk8s
 
 ```text
-$ sudo snap install microk8s --classic --channel=latest/stable
+sudo snap install microk8s --classic --channel=latest/stable
 ```
 
 {% hint style="info" %}
@@ -40,7 +40,7 @@ Set user permissions
 
 ```text
 sudo usermod -a -G microk8s $USER
-sudo chown -f -R tip ~/.kube
+sudo chown -f -R $USER ~/.kube
 ```
 
 {% hint style="info" %}
