@@ -17,6 +17,8 @@ If using the self-signed certificates provided in the open source distribution, 
 * [https://wlan-ui.wlan.local/login](https://wlan-ui.wlan.local/login) 
 * [https://wlan-ui-graphql.wlan.local/](https://wlan-ui.wlan.local/login)
 
+Further instructions available [here](../getting-started/controller.md).
+
 
 
 ![TIP SDK Login Screen](../.gitbook/assets/screen-shot-2021-03-28-at-12.50.28-pm.png)
