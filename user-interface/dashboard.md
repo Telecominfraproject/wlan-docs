@@ -14,7 +14,7 @@ Profiles enables template based management of all provisioning parameters.
 System enables Manufacturer OUI Updates, Firmware Updates, Auto-Provisioning and Client Block List.   
 Users enables configuration of local user accounts of the Cloud SDK.
 
-Alarm indicates an error condition has occurred with one or multiple Access Points. Consult the Network tab.  
+Alarm indicates an error condition has occurred with one or multiple Access Points.   
 Gear icon to LogOut.   
 
 ### Dashboard Components
