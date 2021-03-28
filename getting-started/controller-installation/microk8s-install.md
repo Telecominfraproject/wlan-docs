@@ -67,11 +67,12 @@ If your interface address is 10.1.1.10 then provide metallb with: 10.1.1.1-10.1.
 
 TIP Controller may be deployed with self-signed certificates for a local lab environment. The following steps will guide the reader through that process.
 
-Install Keytool
+Install Keytool and Zip Packages
 
 ```text
 sudo apt install -y openjdk-11-jre-headless 
 sudo apt install -y default-jdk
+sudo apt install -y zip
 ```
 
 Enable Firewall to permit Controller traffic from Container Network Interface
