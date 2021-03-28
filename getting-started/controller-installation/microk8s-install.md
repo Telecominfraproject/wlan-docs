@@ -22,7 +22,12 @@ In a future release of TIP Controller instructions will be provided to modify th
 DNS default entries for /etc/hosts
 
 ```text
-## Replace with your IP address to be used with Load Balancer Incoming Connections (It may be same as your system IP or may be another address on your network determiend for use between TIP AP Clients and the TIP SDK) 
+## 
+# Replace with your IP address to be used with Load Balancer 
+# Incoming Connections (It may be same as your system IP or may
+# be another address on your network determiend for use between 
+# TIP AP Clients and the TIP SDK) 
+##
 <IP Address> wlan-ui.wlan.local wlan-ui-graphql.wlan.local opensync-redirector.wlan.local opensync-controller.wlan.local opensync-mqtt-broker.wlan.local wlan-filestore.wlan.local
 ```
 
