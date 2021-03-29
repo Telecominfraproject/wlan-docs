@@ -24,6 +24,7 @@
 
 ## Configuration Examples
 
+* [Basic Device Provisioning](configuration-examples/basic-device-provisioning.md)
 * [Bridge Mode SSID](configuration-examples/bridge-mode-ssid.md)
 * [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
 * [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
