@@ -6,7 +6,11 @@ description: Online and Local Open API Access
 
 TIP Open Wi-Fi controller implements an Open API compliant NorthBound Interface \(NBI\) to assist with integration and related back office features.  
 
-Swagger is a useful tool to explore and learn any system API. Running a local Swagger instance requires a current version of NodeJS installed.
+Cloud SDK north bound API is a key function for most open source community members or vendors seeking to consume the SDK for integration or for value added software development above the SDK layer.   
+
+Swagger is a useful tool to explore and learn any system API. Both online and local options are available to help development teams consume the Cloud SDK.   
+  
+Running a local Swagger instance requires a current version of NodeJS installed.
 
 ### Online Cloud SDK Open API 
 
