@@ -2,7 +2,7 @@
 description: Online and Local Open API Access
 ---
 
-# Cloud SDK Open API and Swagger
+# Open API
 
 TIP Open Wi-Fi controller implements an Open API compliant NorthBound Interface \(NBI\) to assist with integration and related back office features.  
 

@@ -15,7 +15,7 @@
   * [System](user-interface/system.md)
   * [Accounts](user-interface/accounts.md)
 * [API](api/README.md)
-  * [Cloud SDK Open API and Swagger](api/swagger.md)
+  * [Open API](api/swagger.md)
 
 ## MDU Quick Start
 
