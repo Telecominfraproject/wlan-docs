@@ -12,11 +12,11 @@ Swagger is a useful tool to explore and learn any system API. Both online and lo
   
 Running a local Swagger instance requires a current version of NodeJS installed.
 
-### Online Cloud SDK Open API 
+### Online Swagger - Cloud SDK Open API 
 
 Current SDK open API is available at the following URL:  [CloudSDK Open API](https://l.workplace.com/l.php?u=https%3A%2F%2Fapi.lab.wlan.tip.build%2F&h=AT2qj4RJnFaxruxpxP2s8O-XjRQMEbCC7aoVbHaHxmOxgfOgi5LHv6lWdCU4aV8x2vJcsxGmY-UKxb8W86xaDH-VtVLomBcBkdEHVxlpssluOoSPiIMC-vXU0NtGW44qktgKDJc934Dl2kr0QnRyZw)
 
-### Obtain latest TIP Controller Open API data model
+### Local Swagger - Obtain latest Cloud SDK Open API Model
 
 When running a local instance of Swagger, first obtain the most current Cloud SDK open API from source control:
 
