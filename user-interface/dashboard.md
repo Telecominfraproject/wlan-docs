@@ -4,7 +4,7 @@ description: Cloud SDK Default Landing Page
 
 # Dashboard
 
-TIP Cloud SDK is organized into main components organized along the top of the screen.
+TIP Cloud SDK is organized into main components presented along the top of the screen.
 
 ![Cloud SDK User Interface Top Navigation](../.gitbook/assets/screen-shot-2021-03-28-at-1.25.04-pm.png)
 
@@ -12,10 +12,9 @@ Dashboard is the default landing page for the user interface.
 Network enables management of Access Points and display of Client Devices status.   
 Profiles enables template based management of all provisioning parameters.   
 System enables Manufacturer OUI Updates, Firmware Updates, Auto-Provisioning and Client Block List.   
-Users enables configuration of local user accounts of the Cloud SDK.
-
+Users enables configuration of local user accounts of the Cloud SDK.  
 Alarm indicates an error condition has occurred with one or multiple Access Points.   
-Gear icon to LogOut.   
+Gear icon to Log Out.   
 
 ### Dashboard Components
 

@@ -1,12 +1,14 @@
 ---
-description: TIP SDK
+description: TIP Cloud SDK
 ---
 
 # User Interface
 
 ## Navigating the UI
 
-TIP open source SDK offers a web based user interface supporting many common configurations. The web based interface uses the SDK API. It is possible to further extend functionality of the SDK user interface or to create other interfaces using the SDK API.  
+TIP open source SDK offers a web based user interface supporting many common configurations. The web based interface uses the SDK north bound API.   
+  
+It is possible to further extend functionality of the SDK user interface or to create other interfaces using the SDK API.   
 
 ### Log In 
 

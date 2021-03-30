@@ -19,6 +19,6 @@ Sample default templates are provided on initial startup of Cloud SDK.
 | RADIUS | Authentication Authorization Accounting Configuration per SSID |
 | Equipment AP | 1:1 or 1:Many Device Association to RF Profile and SSID |
 | Captive Portal | Access Point Captive Portal configuration parameters  |
-| Passpoint | R1 & R2 Compliant IEEE802.11u configuration parameters |
+| Passpoint | R1 & R2 Compliant IEEE 802.11u configuration parameters |
 | Passpoint ID Provider | R2 Compliant Offload, Venue, NAI and OpenRoaming configuration parameters |
 

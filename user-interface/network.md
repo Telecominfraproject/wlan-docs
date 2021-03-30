@@ -10,22 +10,22 @@ From the Network page it is possible to create organizational regions to group d
 
 ### Location Tree
 
-In a future release it will be possible to assign devices to new locations to help in building an administrative hierarchy supporting convenient organization of device to service location. This functionality is exposed in the API and may be further refined in subsequent UI releases. 
+In a future release it will be possible to assign devices to new locations to help in building an administrative hierarchy supporting convenient organization of device to service location. This functionality is exposed in the API and may be further refined in subsequent open source UI releases. 
 
 ### Access Points
 
-For each Access Point that has contacted Cloud SDK, a row will populate within Access Points.   
-Specific information for each Access Point including Device name, alarm  state, model and IP address are shown. 
+For each access point that has contacted Cloud SDK, a row will populate within Access Points.   
+Specific information for each device including Device name, alarm  state, model and IP address are shown. 
 
 Along the right side of each Access Point row are Profile, Channel, Occupancy, Noise Floor and Devices.   
-Channel indicates the current provisioned RF Channel for each radio in the Access Point.    
+Channel indicates the current provisioned RF Channel for each radio in the device.    
 Occupancy indicates available RF bandwidth for Wi-Fi clients as a value over 100.   
-Noise Floor represents the reported RF noise condition being measured by the Access Point within the operating channel and reported to the Cloud SDK.   
-Devices indicated the total associated clients for each radio in the Access Point. 
+Noise Floor represents the reported RF noise condition being measured by the device within the operating channel and reported to the Cloud SDK.   
+Devices indicated the total associated clients for each radio in the access point. 
 
 #### Access Point Device Record
 
-Each Access Point managed by Cloud SDK inherits provisioning information from Profiles in addition to supporting device specific configurations and reporting device specific operating conditions.
+Each access point managed by Cloud SDK inherits provisioning information from Profiles in addition to supporting device specific configurations and reporting device specific operating conditions.
 
 ![Selecting an Access Point Record](../.gitbook/assets/screen-shot-2021-03-28-at-4.40.46-pm.png)
 
@@ -37,7 +37,7 @@ Location permits the assignment of the device to a location in Cloud SDK hierarc
 
 ![Device Operating System Statistics](../.gitbook/assets/screen-shot-2021-03-28-at-4.48.02-pm.png)
 
-Operating System Stats are sent to Cloud SDK from each Access Point using the MQTT interface. These statistics are regularly received as part of the overall telemetry stream. 
+Operating System Stats are sent to Cloud SDK from each device using the MQTT interface. These statistics are regularly received as part of the overall telemetry stream. 
 
 #### Firmware
 
