@@ -1,2 +1,2 @@
-# Passpoint R1
+# Passpoint
 
