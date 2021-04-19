@@ -8,15 +8,15 @@ TIP Cloud SDK is organized into main components presented along the top of the s
 
 ![Cloud SDK User Interface Top Navigation](../.gitbook/assets/screen-shot-2021-03-28-at-1.25.04-pm.png)
 
-Dashboard is the default landing page for the user interface.   
-Network enables management of Access Points and display of Client Devices status.   
-Profiles enables template based management of all provisioning parameters.   
-System enables Manufacturer OUI Updates, Firmware Updates, Auto-Provisioning and Client Block List.   
+Dashboard is the default landing page for the user interface.  
+Network enables management of Access Points and display of Client Devices status.  
+Profiles enables template based management of all provisioning parameters.  
+System enables Manufacturer OUI Updates, Firmware Updates, Auto-Provisioning and Client Block List.  
 Users enables configuration of local user accounts of the Cloud SDK.  
-Alarm indicates an error condition has occurred with one or multiple Access Points.   
-Gear icon to Log Out.   
+Alarm indicates an error condition has occurred with one or multiple Access Points.  
+Gear icon to Log Out.
 
-### Dashboard Components
+## Dashboard Components
 
 <table>
   <thead>
@@ -71,6 +71,4 @@ Gear icon to Log Out.
 </table>
 
 ![Cloud SDK Dashboard](../.gitbook/assets/screen-shot-2021-03-28-at-1.32.36-pm.png)
-
-
 

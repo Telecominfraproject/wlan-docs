@@ -22,16 +22,16 @@ Each of these applications provide detailed instructions for installation on mul
 
 ### Example Local Prerequisites Installation on MAC OS
 
- If the instructions for Terraform were followed, a Docker container was locally created, nginx was run with a default localhost:80 nginx returned web page displayed. After which 'terraform destroy' was run to remove the local test of Terraform.
+If the instructions for Terraform were followed, a Docker container was locally created, nginx was run with a default localhost:80 nginx returned web page displayed. After which 'terraform destroy' was run to remove the local test of Terraform.
 
-If the instructions for AWS CLI were followed, AWS CLI version 2 has been installed. This may be verified using the command `which aws` and `aws --version`. If these succeed installation of AWS CLI has completed. 
+If the instructions for AWS CLI were followed, AWS CLI version 2 has been installed. This may be verified using the command `which aws` and `aws --version`. If these succeed installation of AWS CLI has completed.
 
 If the instructions for Helm were followed, Helm has now been locally installed. This may be verified using the command `which helm` and `helm version`. If these succeed installation of Helm has completed.
 
 If the instructions for Kubectl were followed, Kubectl has not been locally installed. This may be verified using the command which `kubectl` and `kubectl version --client`. If these succeed installation of Kubectl has completed.
 
 {% hint style="info" %}
- If any of the above have not completed, please refer back to the specific install instructions from the package provider listed in the Prerequisite links accordingly before continuing. 
+If any of the above have not completed, please refer back to the specific install instructions from the package provider listed in the Prerequisite links accordingly before continuing.
 {% endhint %}
 
 Access to AWS should have been satisfied with an AWS account as noted in Prerequisites. This account is entitled with Administrator level permissions. For information on this process please refer to: [https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
@@ -48,7 +48,7 @@ git checkout cloudsdk-aws-deployment
 cd /terraform/aws-cloudsdk
 ```
 
-  Create a Terraform file in the `aws-cloudsdk` directory named `aws.tf`adding the following to that new file:
+Create a Terraform file in the `aws-cloudsdk` directory named `aws.tf`adding the following to that new file:
 
 ```text
 provider "aws" {
@@ -58,9 +58,9 @@ provider "aws" {
 
 If a specific authentication method previously exists depending on your local machine environment when connecting to AWS, adjustments may be required. Please consult Terraform instructions accordingly: [https://registry.terraform.io/providers/hashicorp/aws/latest/docs\#authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication)
 
-### Initialize Terraform 
+### Initialize Terraform
 
-Terraform will use the initial configuration of your environment variables from the previous step when communicating with AWS. Prior to initializing Terraform, ensure authentication is successful. 
+Terraform will use the initial configuration of your environment variables from the previous step when communicating with AWS. Prior to initializing Terraform, ensure authentication is successful.
 
 ```text
 terraform init
@@ -73,7 +73,7 @@ Terraform has been successfully initialized!
 
 ### Adjusting to AWS Environment
 
-Within the `/wlan-cloud-helm/terraform/aws-cloudsdk` directory, copy the `terraform.tfvars.sample` file to `terraform.tfvars` and edit the content of the new `terraform.tfvars`     replacing parameter values for cidr and route53\_zone\_name accordingly: 
+Within the `/wlan-cloud-helm/terraform/aws-cloudsdk` directory, copy the `terraform.tfvars.sample` file to `terraform.tfvars` and edit the content of the new `terraform.tfvars` replacing parameter values for cidr and route53\_zone\_name accordingly:
 
 ```text
 name = "cloudsdk"
@@ -82,7 +82,7 @@ route53_zone_name = "Enter a valid Route53 Hosted-Zone"
 subdomain = "cloudsdk"
 ```
 
-Once these steps have been completed, it is now possible to deploy the TIP Controller to AWS. 
+Once these steps have been completed, it is now possible to deploy the TIP Controller to AWS.
 
 ```text
 terraform apply
@@ -103,7 +103,7 @@ If Terraform is able to connect and authenticate to AWS, a prompt to accept the 
 When Terraform completes the following should have emitted:
 
 > **Apply complete! Resources: 57 added, 0 changed, 0 destroyed.**
-
+>
 > **Outputs:**
 >
 > **acm\_arn = "arn:aws:acm:ca-central-1:1**_**xxxxxxx**_**68:certificate/7e3**_**xxxx**_**7-74**_**xx**_**-4**_**xxx**_**-8bef-d6**_**xxxxxx**_**5a3"**
@@ -122,15 +122,15 @@ Modify all certificate configuration files for the value of your organizationalU
 
 Within the following files, ensure the FQDN \(Fully Qualified Domain Name\) based on the Terraform setup for Route53 hosted-zone aligns accordingly. If the defaults were not changed Terraform will have created a sub-domain `cloudsdk` within the supplied Route53 hosted-zone. The following files are updated per:
 
-* mqtt-server.cnf 
+* mqtt-server.cnf
 
-  `commonName_default          = opensync-mqtt-broker.cloudsdk.route53hosted-zone_name`
+  `commonName_default = opensync-mqtt-broker.cloudsdk.route53hosted-zone_name`
 
-*  openssl-server.cnf
+* openssl-server.cnf
 
-  `DNS.1  = opensync-redirector.cloudsdk.route53hosted-zone_name`
+  `DNS.1 = opensync-redirector.cloudsdk.route53hosted-zone_name`
 
-  `DNS.2  = opensync-controller.cloudsdk.route53hosted-zone_name`
+  `DNS.2 = opensync-controller.cloudsdk.route53hosted-zone_name`
 
 To generate keys, ensure necessary Java resources are installed for your operating system:
 
@@ -142,7 +142,7 @@ From within the `wlan-pki-cert-scripts` folder execute `./generate_all.sh` scrip
 Copy the generated keys assuming the wlan-cloud-helm folder is at the same level as the wlan-pki-certs folder per: `./copy-certs-to-helm.sh ~/wlan-cloud-helm/`
 
 {% hint style="info" %}
-`Note within the wlan-pki-cert-scripts folder, a subfolder /generated is present after key creation.` 
+`Note within the wlan-pki-cert-scripts folder, a subfolder /generated is present after key creation.`
 
 `The AP.zip archive in the generated folder contains the Access Point certificates for loading onto APs in the AP /usr/opensync/certs device folder`
 {% endhint %}
@@ -157,9 +157,11 @@ helm dependency update tip-wlan
 
 Various Bitnami charts will be brought into the deployment such as Kafka, PostGres, Cassandra.
 
-Localizing the Helm charts for AWS is a critical step. Editing the following file  
+Localizing the Helm charts for AWS is a critical step. Editing the following file
 
-                 `tip-wlan/example-values/aws-basic/values.yml` 
+```text
+             `tip-wlan/example-values/aws-basic/values.yml` 
+```
 
 **Key variables to replace in this file are:**
 
@@ -175,7 +177,7 @@ Localizing the Helm charts for AWS is a critical step. Editing the following fil
 Local Kubeconfig is associated to the AWS service to enable Helm control of EKS resources by entering the following:
 
 ```text
-aws eks update-kubeconfig --region $your_aws_region --name cloudsdk 
+aws eks update-kubeconfig --region $your_aws_region --name cloudsdk
 ```
 
 With all dependencies met, certificates created and in place, using Helm and the authenticated session to AWS, execute the following:
@@ -189,10 +191,10 @@ If a connection error occurs, AWS CLI may need to re-authenticate. This can be d
 If Helm has a successful connection to AWS the following returns:
 
 > Release "cloudsdk" does not exist. Installing it now.
-
+>
 > NAME: cloudsdk
 >
-> LAST DEPLOYED: Sun Feb  7 14:00:28 2021
+> LAST DEPLOYED: Sun Feb 7 14:00:28 2021
 >
 > NAMESPACE: tip
 >
@@ -221,7 +223,6 @@ cloudsdk-wlan-prov-service-944f44d67-4p5z5                       0/1     PodInit
 cloudsdk-wlan-spc-service-596ff5c546-bmgw5                       0/1     Init:0/1          0          100s
 cloudsdk-wlan-ssc-service-6db4c8c8b8-jrmrc                       0/1     Init:0/2          0          100s
 cloudsdk-zookeeper-0                                             1/1     Running           0          99s
-
 ```
 
 After 5 to 8 minutes elapse, all POD services should be operational for example:
@@ -247,7 +248,7 @@ cloudsdk-zookeeper-0                                             1/1     Running
 
 ### Check in on the UI
 
-Navigate to https://wlan-ui.cloudsdk.yourdomainname
+Navigate to [https://wlan-ui.cloudsdk.yourdomainname](https://wlan-ui.cloudsdk.yourdomainname)
 
 ![TIP Controller Login Page](../../.gitbook/assets/image.png)
 
