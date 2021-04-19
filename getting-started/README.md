@@ -1,7 +1,7 @@
 # Getting Started
 
-Deploying the TIP Open Wi-Fi solution into a lab or into production is simple to do.  
-Some basic pre-requisites should be satisfied before beginning.
+Deploying the TIP Open Wi-Fi solution into a lab or into production is simple to do.    
+Some basic pre-requisites should be satisfied before beginning. 
 
 Ensure the following are known before beginning installation:
 
