@@ -3,19 +3,10 @@
 * [Open Wi-Fi](README.md)
 * [Ordering Open Wi-Fi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
-  * [Cloud SDK Installation](getting-started/controller-installation/README.md)
-    * [AWS Install](getting-started/controller-installation/aws-install.md)
-    * [MicroK8s Install](getting-started/controller-installation/microk8s-install.md)
-  * [Cloud SDK](getting-started/controller.md)
+  * [Release 2.0 SDK](getting-started/controller.md)
   * [Access Points](getting-started/access-points.md)
-* [User Interface](user-interface/README.md)
-  * [Dashboard](user-interface/dashboard.md)
-  * [Network](user-interface/network.md)
-  * [Profiles](user-interface/profiles.md)
-  * [System](user-interface/system.md)
-  * [Accounts](user-interface/accounts.md)
-* [API](api/README.md)
-  * [Open API](api/swagger.md)
+* [User Interface](user-interface.md)
+* [API](api.md)
 
 ## MDU Quick Start
 
