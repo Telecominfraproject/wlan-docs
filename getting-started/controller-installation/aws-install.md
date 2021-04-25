@@ -160,7 +160,7 @@ Various Bitnami charts will be brought into the deployment such as Kafka, PostGr
 Localizing the Helm charts for AWS is a critical step. Editing the following file
 
 ```text
-             `tip-wlan/example-values/aws-basic/values.yml` 
+             `tip-wlan/example-values/aws-basic/values.yml`
 ```
 
 **Key variables to replace in this file are:**
