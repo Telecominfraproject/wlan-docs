@@ -24,3 +24,7 @@ NAT SSID is configured within Profiles, SSID Profile:
 
 ![SSID NAT Configuration](../.gitbook/assets/screen-shot-2021-04-25-at-2.45.19-pm.png)
 
+Once the SSID Profile is associated to an Access Point, clients will receive DHCP, Routing, DNS from the Access Point 'LAN' side
+
+![Client Served via NAT SSID](../.gitbook/assets/screen-shot-2021-04-25-at-3.04.50-pm.png)
+

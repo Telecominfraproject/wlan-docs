@@ -27,3 +27,7 @@ The 'WAN' side of the Access Point will present an Ethernet sub-interface with t
 
 ![Enter VLAN for SSID](../.gitbook/assets/screen-shot-2021-04-25-at-2.39.11-pm.png)
 
+Once the SSID Profile configured for a unique VLAN is associated to an Access Point, clients will receive DHCP, Routing, DNS from the Virtual LAN of the upstream network provider
+
+![Client Service via VLAN SSID](../.gitbook/assets/screen-shot-2021-04-25-at-3.07.54-pm.png)
+
