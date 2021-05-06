@@ -90,6 +90,10 @@ Change to a directory for configuring certificates and running controller. This 
 
 #### Obtain Controller PKI Certs Locally
 
+{% hint style="info" %}
+This step only applies when using locally built AP images. All devices purchased via ODM partners from factory will ship with TIP Signed keys. Updating Redirector value for the device is the recommended way to connect to a local Cloud SDK
+{% endhint %}
+
 ```text
 git clone https://github.com/Telecominfraproject/wlan-pki-cert-scripts.git
 ```
