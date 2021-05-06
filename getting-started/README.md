@@ -16,3 +16,15 @@ Ensure the following are known before beginning installation:
   * 6640
   * 6643
 
+### Cloud Discovery 
+
+All TIP Open Wi-Fi devices implement discovery of the cloud SDK through a Zero Touch Provisioning design based on the unique signed certificate present on each device. 
+
+Each device contacts the Certificate Authority \(CA\) using its certificate credentials to lookup the current value of the cloud SDK. 
+
+Once the configured cloud is returned from CA to the device, a connection is created to the cloud SDK where provisioning of the device will occur.
+
+For more information on cloud discovery, devices and obtaining keys please proceed to the next section. 
+
+For questions on how to obtain keys or support related to certificates please contact: licensekeys@telecominfraproject.com
+
