@@ -8,7 +8,7 @@ description: Root Certificate Trust
 
 TIP Open Wi-Fi program ensures unique identity of all devices, encryption of traffic to and from the management cloud, discovery of management cloud, and ability to change device to cloud service discovery. TIP model ensures worldwide Zero Touch Provisioning, unique identity of all device and cloud conversation with no vendor lock in.
 
-![TIP CA Cloud &amp; ODM Partners](../.gitbook/assets/image%20%284%29.png)
+![TIP CA Cloud &amp; ODM Partners](../.gitbook/assets/image%20%286%29.png)
 
 TIP device and cloud partners in Open Wi-Fi are uniquely managed members within a division of the Telecom Infra Project CA within DigiCert. 
 
@@ -42,7 +42,7 @@ In certain situations, a connection to the cloud or the root authority may not b
 
 When the device is a PoE Ethernet switch, a local management interface exists where the same configuration of cloud and WAN are possible. 
 
-![Local Configuration either via Wi-Fi Web GUI or LAN CLI ](../.gitbook/assets/image%20%285%29.png)
+![Local Configuration either via Wi-Fi Web GUI or LAN CLI ](../.gitbook/assets/image%20%287%29.png)
 
  
 
