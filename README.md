@@ -62,8 +62,8 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
     * UAPSD Procedures \(Unscheduled Power Save\) 
     * Upstream/Downstream Queues & L3 DSCP
     * Over The Air QoS EDCH Procedures
-  * WMM Admission Control \(AC\) 
-  * WMM Power Save \(PS\)
+  * WMM-Admission Control \(AC\) 
+  * WMM-Power Save \(PS\)
   * Wi-Fi Optimized Connectivity
 
     * \(ai\) Fast Initial Link Support
