@@ -14,14 +14,6 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 
 ### High Level Features
 
-#### Each Open Wi-Fi AP offers:
-
-* Multiple topologies including Bridging, Virtual LAN, NAT Gateway, Local Breakout, Overlay 
-* Multiple authentications including WPA, WPA2, WPA3, Enterprise Radius models
-* Passpoint R1 and R2 Mobile Offload
-* Zero Touch Provisioning 
-* Captive Portal
-
 #### Cloud SDK in Open Wi-Fi offers:
 
 * Zero Touch Provisioning 
@@ -31,10 +23,17 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 * Template based device provisioning with RADIUS profile management 
 * Advanced RF control with RRM  
 
+#### Each Open Wi-Fi AP offers:
+
+* Multiple topologies including Bridging, Virtual LAN, NAT Gateway, Local Breakout, Overlay 
+* Multiple authentications including WPA, WPA2, WPA3, Enterprise Radius models
+* Passpoint R1 and R2 Mobile Offload
+* Zero Touch Provisioning 
+* Captive Portal
+
 **Open Wi-Fi AP Detail List:**
 
-* IEEE 802.11b/g/n/ac/ax
-* Wi-Fi 5 and Wi-Fi 6 Drivers
+* Wi-Fi 4 \(n\) Wi-Fi 5 \(ac\) Wi-Fi 6 \(ax\) 
 * Dual Bank Bootloader
 * Multi-SSID per Radio
 * SSID Authentications: WPA/WPA2/WPA3 - Mixed, Personal, Enterprise
@@ -45,8 +44,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 * Network Address Translation Gateway Mode Operation
 * Network Time Protocol Client
 * Management VLAN 
-* IEEE 802.11ax Wi-Fi 6 Specific
-  * WMM Admission Control per WFA Standard
+* Wi-Fi 6 \(ax\) Specific
   * BSS Coloring
   * UL/DL OFDMA sub-carrier allocation
   * Channel Switch Announcement
@@ -62,6 +60,8 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * Burst Beacon Support
   * Per SSID Client Rate Limiting
   * Promiscuous Mode Support
+  * Wireless Multi Media
+  * Wireless Multi Media AC \(Admission Control\)
   * IEEE 802.11e WMM Upstream/Downstream Queues & L3 DSCP
   * IEEE 802.11e Over The Air QoS EDCH Procedures
   * IEEE 802.11e WMM-PS \(Power Save\)
