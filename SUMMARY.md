@@ -26,5 +26,5 @@
 * [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
 * [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
-* [Passpoint](configuration-examples/passpoint-r1.md)
+* [Passpoint®](configuration-examples/passpoint-r1.md)
 
