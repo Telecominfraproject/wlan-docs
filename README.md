@@ -59,12 +59,12 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * Burst Beacon Support
   * Per SSID Client Rate Limiting
   * Promiscuous Mode Support
-  * WMM - WiFi Multi Media
-    * Admission Control \(AC\) 
-    * Wireless Multi Media Power Save \(PS\)
+  * WMM - Wi-Fi Multi Media
     * UAPSD Procedures \(Unscheduled Power Save\) 
     * Upstream/Downstream Queues & L3 DSCP
     * Over The Air QoS EDCH Procedures
+  * WMM Admission Control \(AC\) 
+  * WMM Power Save \(PS\)
   * IEEE 802.11r Fast BSS Transition
   * IEEE 802.11v Network Assisted Roaming
   * IEEEE 802.11k Client Radio Resource Management - Directed Steering
