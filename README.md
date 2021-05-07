@@ -104,9 +104,10 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * NTP Enable/Disable
   * RTLS \(Location Services\) Enable/Disable 
 * **RF Control**
-  * IEEE802.11r Fast BSS Transition per Radio Control
-  * IEEE802.11k RRM Radio Information per Radio Control
-  * IEEE802.11v Network Assisted Roaming per Radio Control
+  * Wi-Fi Agile Multiband
+    * \(k\) Client Radio Resource Management - Directed Steering
+    * \(v\) Network Assisted Roaming
+    * \(r\) Fast BSS Transition
   * RRM Location AP Channel Table Provisioning
   * RRM Location AP Cell Size Table Provisioning
   * RRM Location Client Steering Threshold Table Provisioning 
