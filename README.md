@@ -99,7 +99,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * Multi-Radio 2.4/5GHz control
   * AP Network Mode Control \(Bridge/NAT mode\)
   * Basic Captive Portal \(Local Splash Page admin from Controller\)
-  * Security \(WPA-Personal/WPA & WPA2/3 Personal Mixed/WPA & WPA2/3 Enterprise Mixed/WPA2/3 Personal/WPA2/3 Enterprise/WEP\)
+  * Security \(WPA2/3 Personal/Enterprise Mixed\)
   * VLAN per SSID
   * NTP Enable/Disable
   * RTLS \(Location Services\) Enable/Disable 
