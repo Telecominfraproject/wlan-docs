@@ -65,14 +65,13 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
     * Over The Air QoS EDCH Procedures
   * WMM Admission Control \(AC\) 
   * WMM Power Save \(PS\)
-  * IEEE 802.11r Fast BSS Transition
-  * IEEE 802.11v Network Assisted Roaming
-  * IEEEE 802.11k Client Radio Resource Management - Directed Steering
+  * Wi-Fi Agile Multiband
+    * \(k\) Client Radio Resource Management - Directed Steering
+    * \(v\) Network Assisted Roaming
+    * \(r\) Fast BSS Transition
   * IEEE 802.11w Management Frame Encryption
   * IEEE 802.11h Channel Switch Announcement \(CSA\)
   * IEEE 802.11h Dynamic Frequency Selection & Transmit Power Control \(DFS/TPC\)
-
-  \*\*\*\*
 
 * **Additional TIP AP NOS Features**
   * Embedded Captive Portal \(Local Splash non-auth\)
