@@ -72,8 +72,8 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
     * \(r\) Fast BSS Transition
   * Protected Management Frames \(PMF\) 
     * \(w\) Management Frame Encryption
-  * IEEE 802.11h Channel Switch Announcement \(CSA\)
-  * IEEE 802.11h Dynamic Frequency Selection & Transmit Power Control \(DFS/TPC\)
+  * Channel Switch Announcement \(CSA\)
+  * Dynamic Frequency Selection & Transmit Power Control \(DFS/TPC\)
 
 * **Additional TIP AP NOS Features**
   * Embedded Captive Portal \(Local Splash non-auth\)
