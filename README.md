@@ -48,7 +48,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * BSS Coloring
   * UL/DL OFDMA sub-carrier allocation
   * Channel Switch Announcement
-* IEEE 802.11 General Features
+* Wi-Fi General Features
 
   * WMM® - Wi-Fi Multi Media
     * UAPSD Procedures \(Unscheduled Power Save\) 
