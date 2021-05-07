@@ -48,7 +48,6 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * BSS Coloring
   * UL/DL OFDMA sub-carrier allocation
   * Channel Switch Announcement
-  * WMM Power Save
 * IEEE 802.11 General Features
 
   * Beacon Rate 
@@ -60,12 +59,12 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * Burst Beacon Support
   * Per SSID Client Rate Limiting
   * Promiscuous Mode Support
-  * Wireless Multi Media
-  * Wireless Multi Media AC \(Admission Control\)
-  * IEEE 802.11e WMM Upstream/Downstream Queues & L3 DSCP
-  * IEEE 802.11e Over The Air QoS EDCH Procedures
-  * IEEE 802.11e WMM-PS \(Power Save\)
-  * IEEE 802.11e UAPSD \(Unscheduled Power Save\) Procedures
+  * WMM - WiFi Multi Media
+    * Admission Control \(AC\) 
+    * Wireless Multi Media Power Save \(PS\)
+    * UAPSD Procedures \(Unscheduled Power Save\) 
+    * Upstream/Downstream Queues & L3 DSCP
+    * Over The Air QoS EDCH Procedures
   * IEEE 802.11r Fast BSS Transition
   * IEEE 802.11v Network Assisted Roaming
   * IEEEE 802.11k Client Radio Resource Management - Directed Steering
