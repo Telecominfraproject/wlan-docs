@@ -50,14 +50,6 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * Channel Switch Announcement
 * IEEE 802.11 General Features
 
-  * Beacon Rate 
-  * IEEE 802.11h DFS & TPC 
-  * Min Client Noise Immunity
-  * Basic Rate Control
-  * De-Auth RSSI Control
-  * Burst Beacon Support
-  * Per SSID Client Rate Limiting
-  * Promiscuous Mode Support
   * WMM® - Wi-Fi Multi Media
     * UAPSD Procedures \(Unscheduled Power Save\) 
     * Upstream/Downstream Queues & L3 DSCP
@@ -74,6 +66,13 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
     * \(w\) Management Frame Encryption
   * Channel Switch Announcement \(CSA\)
   * Dynamic Frequency Selection & Transmit Power Control \(DFS/TPC\)
+  * Beacon Rate 
+  * Min Client Noise Immunity
+  * Basic Rate Control
+  * De-Auth RSSI Control
+  * Burst Beacon Support
+  * Per SSID Client Rate Limiting
+  * Promiscuous Mode Support
 
 * **Additional TIP AP NOS Features**
   * Embedded Captive Portal \(Local Splash non-auth\)
