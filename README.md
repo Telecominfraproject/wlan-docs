@@ -26,7 +26,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 #### Each Open Wi-Fi AP offers:
 
 * Multiple topologies including Bridging, Virtual LAN, NAT Gateway, Local Breakout, Overlay 
-* Multiple authentications including WPA, WPA2, WPA3, Enterprise Radius models
+* Multiple authentications WPA2, WPA3, Enterprise Radius models
 * Passpoint® Release 2 and above
 * Zero Touch Provisioning 
 * Captive Portal
