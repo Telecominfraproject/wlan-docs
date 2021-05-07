@@ -1,2 +1,2 @@
-# Passpoint&\#174
+# Passpoint
 
