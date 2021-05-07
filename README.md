@@ -65,12 +65,9 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * WMM-Admission Control \(AC\) 
   * WMM-Power Save \(PS\)
   * Wi-Fi Optimized Connectivity
-
     * \(ai\) Fast Initial Link Support
-
-    Wi-Fi Agile Multiband
-
-  * * \(k\) Client Radio Resource Management - Directed Steering
+  * Wi-Fi Agile Multiband
+    * \(k\) Client Radio Resource Management - Directed Steering
     * \(v\) Network Assisted Roaming
     * \(r\) Fast BSS Transition
   * Protected Management Frames \(PMF\) 
