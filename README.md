@@ -55,8 +55,6 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
   * Min Client Noise Immunity
   * Basic Rate Control
   * De-Auth RSSI Control
-  * Wi-Fi Optimized Connectivity
-    * \(ai\) Fast Initial Link Support
   * Burst Beacon Support
   * Per SSID Client Rate Limiting
   * Promiscuous Mode Support
@@ -66,8 +64,13 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
     * Over The Air QoS EDCH Procedures
   * WMM Admission Control \(AC\) 
   * WMM Power Save \(PS\)
-  * Wi-Fi Agile Multiband
-    * \(k\) Client Radio Resource Management - Directed Steering
+  * Wi-Fi Optimized Connectivity
+
+    * \(ai\) Fast Initial Link Support
+
+    Wi-Fi Agile Multiband
+
+  * * \(k\) Client Radio Resource Management - Directed Steering
     * \(v\) Network Assisted Roaming
     * \(r\) Fast BSS Transition
   * Protected Management Frames \(PMF\) 
