@@ -4,6 +4,12 @@ There are two ways to get started with TIP Open Wi-Fi. For those interested in '
 
 Interested in getting started with a partner? Obtaining a TIP AP directly or via a partner is simple and these partners will help setup cloud trial environment with you.
 
+![EdgeCore ecCloud for TIP Open Wi-Fi ](../.gitbook/assets/image%20%289%29.png)
+
+
+
+![NetExperience CMAP for TIP Open Wi-Fi ](../.gitbook/assets/image%20%288%29.png)
+
 ### ToDo://
 
 Deploying the TIP Open Wi-Fi solution into a lab or into production is simple to do.  
