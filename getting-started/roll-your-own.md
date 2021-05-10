@@ -4,7 +4,11 @@ description: Consuming Open Source Stack
 
 # Creating Your Own Cloud Solution
 
-Consuming the stack is exciting, and up to you how to integrate into a complete solution. 
+Consuming the stack is exciting, and up to you how to integrate into a complete solution. Accessing the source code is free:  [Github](https://github.com/telecominfraproject?q=wlan-&type=&language=&sort=)
+
+Understanding how to consume the project needs membership with the Telecom Infra Project Open Converged Wireless group: [Join OCW Group ](%20https://telecominfraproject.com/open-converged-wireless/%20)
+
+There is no fee to join, once you are approved, access to Confluence, JIRA, Slack will all be included in addition to the ability to check in and contribute code to the project.
 
 ### Initial Lab Setup
 
