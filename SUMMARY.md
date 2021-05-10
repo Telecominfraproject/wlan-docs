@@ -1,9 +1,9 @@
 # Table of contents
 
 * [Open Wi-Fi](README.md)
-* [Ordering Open Wi-Fi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
-  * [Device and Cloud Keys](getting-started/device-and-cloud-keys.md)
+  * [Device and Cloud Keys](getting-started/device-and-cloud-keys/README.md)
+    * [Ordering Open Wi-Fi APs](getting-started/device-and-cloud-keys/ordering-open-wi-fi-aps.md)
   * [Cloud SDK Installation](getting-started/controller-installation/README.md)
     * [AWS Install](getting-started/controller-installation/aws-install.md)
     * [MicroK8s Install](getting-started/controller-installation/microk8s-install.md)
