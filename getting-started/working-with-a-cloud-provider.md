@@ -8,7 +8,7 @@ description: Out of the box Open Wi-Fi
 
 Current Release 1.x Open Wi-Fi cloud partners can accelerate your deployment of TIP Open Wi-Fi.
 
-![EdgeCore ecCloud](../.gitbook/assets/image%20%2812%29.png)
+![EdgeCore ecCloud](../.gitbook/assets/image%20%2818%29.png)
 
 
 
