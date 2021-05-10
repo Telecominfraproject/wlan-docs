@@ -2,7 +2,7 @@
 
 * [Open Wi-Fi](README.md)
 * [Getting Started](getting-started/README.md)
-  * [Roll Your Own](getting-started/roll-your-own.md)
+  * [Creating Your Own Cloud Solution](getting-started/roll-your-own.md)
   * [Obtaining TIP Open Wi-Fi APs](getting-started/ordering-open-wi-fi-aps.md)
   * [Device and Cloud Keys](getting-started/device-and-cloud-keys.md)
   * [Cloud SDK Installation](getting-started/controller-installation/README.md)
