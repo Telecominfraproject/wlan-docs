@@ -1,8 +1,8 @@
 ---
-description: Passpoint via API
+description: Passpoint® via API
 ---
 
-# Passpoint Postman Collection
+# Passpoint® Postman Collection
 
 Cloud SDK accepts all Passpoint® configuration via API if desired. Please refer to  [API](../../../api/)  for additional instructions on use of Cloud SDK OpenAPI. 
 
