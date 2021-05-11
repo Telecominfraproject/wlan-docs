@@ -4,7 +4,7 @@ description: Passpoint®
 
 # Advertising Services
 
-Passpoint requires ANQP to supply three information elements from the Access Point. 
+Passpoint® requires ANQP to supply three information elements from the Access Point. 
 
 #### PLMN-Id
 
