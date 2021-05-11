@@ -4,7 +4,7 @@ description: Passpoint via API
 
 # Passpoint Postman Collection
 
-Cloud SDK accepts all Passpoint configuration via API if desired. Please refer to  [API](../../../api/)  for additional instructions on use of Cloud SDK OpenAPI. 
+Cloud SDK accepts all Passpoint® configuration via API if desired. Please refer to  [API](../../../api/)  for additional instructions on use of Cloud SDK OpenAPI. 
 
 For reference:  [Postman collection for Passpoint](https://github.com/Telecominfraproject/wlan-cloud-workspace/blob/master/wlan-cloud-devtools/postman-collections/passpoint/RadSec.postman_collection.json) to assist the reader is available. 
 

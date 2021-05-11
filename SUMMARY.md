@@ -33,5 +33,5 @@
   * [Advertising Services](configuration-examples/passpoint-r1/advertising-services.md)
   * [Passpoint® Cloud SDK Configuration](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/README.md)
     * [Passpoint Postman Collection](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/passpoint-postman-collection.md)
-    * [Passpoint via UI](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/passpoint-via-ui.md)
+    * [Passpoint® via UI](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/passpoint-via-ui.md)
 
