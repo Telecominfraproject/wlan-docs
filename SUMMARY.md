@@ -28,5 +28,10 @@
 * [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
 * [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
-* [Passpoint®](configuration-examples/passpoint-r1.md)
+* [Passpoint®](configuration-examples/passpoint-r1/README.md)
+  * [Configuration Introduction](configuration-examples/passpoint-r1/configuration-introduction.md)
+  * [Advertising Services](configuration-examples/passpoint-r1/advertising-services.md)
+  * [Passpoint® Cloud SDK Configuration](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/README.md)
+    * [Passpoint Postman Collection](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/passpoint-postman-collection.md)
+    * [Passpoint via UI](configuration-examples/passpoint-r1/passpoint-r-cloud-sdk-configuration/passpoint-via-ui.md)
 
