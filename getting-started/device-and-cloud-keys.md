@@ -6,11 +6,11 @@ description: Root Certificate Trust
 
 ## Device and Cloud Certificates 
 
-TIP Open Wi-Fi program ensures unique identity of all devices, encryption of traffic to and from the management cloud, discovery of management cloud, and ability to change device to cloud service discovery. TIP model ensures worldwide Zero Touch Provisioning, unique identity of all device and cloud conversation with no vendor lock in.
+TIP OpenWiFi program ensures unique identity of all devices, encryption of traffic to and from the management cloud, discovery of management cloud, and ability to change device to cloud service discovery. TIP model ensures worldwide Zero Touch Provisioning, unique identity of all device and cloud conversation with no vendor lock in.
 
 ![TIP CA Cloud &amp; ODM Partners](../.gitbook/assets/image%20%286%29.png)
 
-TIP device and cloud partners in Open Wi-Fi are uniquely managed members within a division of the Telecom Infra Project CA within DigiCert. 
+TIP device and cloud partners in OpenWiFi are uniquely managed members within a division of the Telecom Infra Project CA within DigiCert. 
 
 ### Device Onboarding
 
@@ -36,7 +36,7 @@ Each device on initial startup or when factory reset will connect to the Certifi
 
 ### Configuration without Internet Connection
 
-In certain situations, a connection to the cloud or the root authority may not be possible. When this occurs, each TIP Open Wi-Fi Access Point device on factory boot presents an initial configuration Wi-Fi Management SSID called 'Maverick'. Connecting to Maverick presents a web page where updating WAN interface settings and the fully qualified domain name of the cloud may be entered.  
+In certain situations, a connection to the cloud or the root authority may not be possible. When this occurs, each TIP OpenWiFi Access Point device on factory boot presents an initial configuration Wi-Fi Management SSID called 'Maverick'. Connecting to Maverick presents a web page where updating WAN interface settings and the fully qualified domain name of the cloud may be entered.  
 
 ![Cloud and WAN Setup without Internet Access](../.gitbook/assets/image%20%281%29.png)
 

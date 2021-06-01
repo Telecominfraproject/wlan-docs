@@ -1,10 +1,10 @@
 # API
 
-TIP Open Wi-Fi project is a data-model driven design, meaning the features in the solution are designed as interfaces to be consumed either by micro-services, network devices, or other applications integrating with the solution.
+TIP OpenWiFi project is a data-model driven design, meaning the features in the solution are designed as interfaces to be consumed either by micro-services, network devices, or other applications integrating with the solution.
 
-The most useful way to learn the TIP Open Wi-Fi API is to consume the Swagger interface that fully describes all implemented REST methods.
+The most useful way to learn the TIP OpenWiFi API is to consume the Swagger interface that fully describes all implemented REST methods.
 
-TIP Open Wi-Fi controller uses OAuth for authentication. A bearer token must first be obtained for subsequent API calls to succeed.
+TIP OpenWiFi controller uses OAuth for authentication. A bearer token must first be obtained for subsequent API calls to succeed.
 
 ## Curl Request to controller for Bearer Token
 

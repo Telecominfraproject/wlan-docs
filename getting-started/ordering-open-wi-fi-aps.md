@@ -1,8 +1,8 @@
 ---
-description: TIP Wi-Fi Member Access Point Ordering Information
+description: TIP Member Access Point Ordering Information
 ---
 
-# Obtaining TIP Open Wi-Fi APs
+# Obtaining TIP OpenWiFi APs
 
 ### Open Wi-Fi Access Point Partners
 
@@ -14,7 +14,7 @@ description: TIP Wi-Fi Member Access Point Ordering Information
 
 
 
-TIP Wi-Fi members may contact the ODM manufacturers in the TIP Wi-Fi eco-system using the information posted within Community Confluence page.
+TIP members may contact the ODM manufacturers in the TIP OpenWiFi eco-system using the information posted within Community Confluence page.
 
 {% embed url="https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/112689187/AP+Hardware" caption="" %}
 

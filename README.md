@@ -1,20 +1,20 @@
 ---
-description: Telecom Infra Project Open Wi-Fi
+description: Telecom Infra Project Open WiFi
 ---
 
-# Open Wi-Fi
+# OpenWiFi
 
-## What is Open Wi-Fi?
+## What is OpenWiFi?
 
-TIP Open Wi-Fi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to Open Wi-Fi creates an open source disaggregated technology stack without any vendor lock in. Open Wi-Fi offers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly.
+TIP OpenWiFi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to OpenWiFi creates an open source disaggregated technology stack without any vendor lock in. OpenWiFi offers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly.
 
 ![TIP Open Wi-Fi 1.x Solution](.gitbook/assets/image%20%285%29.png)
 
-TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built nightly with a strong community of Wi-Fi leaders, new features are unit tested in automated RF chambers and checked from cloud to ground for Wi-Fi performance and conformance.
+TIP OpenWiFi is the industry's first CI/CD open source Wi-Fi eco-system. Built nightly with a strong community of Wi-Fi leaders, new features are unit tested in automated RF chambers and checked from cloud to ground for Wi-Fi performance and conformance.
 
 ### High Level Features
 
-#### Cloud SDK in Open Wi-Fi offers:
+#### Cloud SDK in OpenWiFi offers:
 
 * Zero Touch Provisioning 
 * Firmware Management
@@ -23,7 +23,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 * Template based device provisioning with RADIUS profile management 
 * Advanced RF control with RRM  
 
-#### Each Open Wi-Fi AP offers:
+#### Each OpenWiFi AP offers:
 
 * Multiple topologies including Bridging, Virtual LAN, NAT Gateway, Local Breakout, Overlay 
 * Multiple authentications WPA2, WPA3, Enterprise Radius models
@@ -31,7 +31,7 @@ TIP Open Wi-Fi is the industry's first CI/CD open source Wi-Fi eco-system. Built
 * Zero Touch Provisioning 
 * Captive Portal
 
-**Open Wi-Fi AP Detail List:**
+**OpenWiFi AP Detail List:**
 
 * Wi-Fi 4 \(n\) Wi-Fi 5 \(ac\) Wi-Fi 6 \(ax\) 
 * Dual Bank Bootloader

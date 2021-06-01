@@ -1,5 +1,5 @@
 ---
-description: TIP Open Wi-Fi
+description: TIP OpenWiFi
 ---
 
 # Cloud SDK

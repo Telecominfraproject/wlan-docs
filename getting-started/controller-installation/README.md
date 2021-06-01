@@ -1,6 +1,6 @@
 # Cloud SDK Installation
 
-Open Wi-Fi Cloud SDK may be deployed to both public and private cloud environments.
+OpenWiFi Cloud SDK may be deployed to both public and private cloud environments.
 
 Helm charts support automated deployment of the Cloud SDK PODs and containers into AWS and MicroK8s Kubernetes platforms.
 

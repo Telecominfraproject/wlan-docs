@@ -1,11 +1,11 @@
 # Access Points
 
-TIP Open WiFi devices are available from many hardware partners. All TIP Open WiFi devices have the same standard image of open source software. 
+TIP OpenWiFi devices are available from many hardware partners. All TIP OpenWiFi devices have the same standard image of open source software. 
 
-TIP Open WiFi 1.0 devices run OpenWrt operating system with OpenSync as a management stack.   
+TIP OpenWiFi 1.0 devices run OpenWrt operating system with OpenSync as a management stack.   
 The use of OpenWrt is largely upstream based on OpenWrt 19.07 in Open WiFi 1.0. 
 
-When a TIP firmware image is created, the system will merge TIP specific patches, kernel specific patches, and build this with the target OpenWrt 19.07 operating system as one complete firmware image. From this process a TIP Open WiFi standard firmware results with the following settings.
+When a TIP firmware image is created, the system will merge TIP specific patches, kernel specific patches, and build this with the target OpenWrt 19.07 operating system as one complete firmware image. From this process a TIP OpenWiFi standard firmware results with the following settings.
 
 ### Device Defaults
 
@@ -17,7 +17,7 @@ When a TIP firmware image is created, the system will merge TIP specific patches
 
 ### Unable to Connect to WAN or Controller
 
-If the Open WiFi device has been unable to reach the internet or the assigned controller, the 'Maverick' SSID will appear. Joining this Wi-Fi network will join the local management interface to help onboard the device to the internet and controller. 
+If the OpenWiFi device has been unable to reach the internet or the assigned controller, the 'Maverick' SSID will appear. Joining this Wi-Fi network will join the local management interface to help onboard the device to the internet and controller. 
 
 After joining Maverick SSID, opening a web browser to the address 192.168.1.1 where the following login displays. Enter root login and password. 
 
