@@ -8,7 +8,7 @@ description: Root Certificate Trust
 
 TIP OpenWiFi program ensures unique identity of all devices, encryption of traffic to and from the management cloud, discovery of management cloud, and ability to change device to cloud service discovery. TIP model ensures worldwide Zero Touch Provisioning, unique identity of all device and cloud conversation with no vendor lock in.
 
-![TIP CA Cloud &amp; ODM Partners](../.gitbook/assets/image%20%2820%29.png)
+![CA Root OpenWiFi Process](../.gitbook/assets/image%20%2819%29.png)
 
 TIP device and cloud partners in OpenWiFi are uniquely managed members within a division of the Telecom Infra Project CA within DigiCert. 
 
