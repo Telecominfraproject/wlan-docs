@@ -12,7 +12,7 @@ When a device boots for the first time, or is factory reset, a 'first-boot' proc
 First-boot initiates a connection over HTTPs to the Certificate Authority requesting the unique device record information. All connections to the Certificate Authority occur over mTLS encrypted session.   
 Devices use their unique certificate identity to authenticate and retrieve the location of the assigned cloud. 
 
-![Device First Boot / Factory Cloud Discovery](../.gitbook/assets/image%20%2822%29.png)
+![Device First Boot / Factory Cloud Discovery](../../.gitbook/assets/image%20%2823%29.png)
 
 Once the cloud location has been learned from first-boot, the device no longer depends on this cloud discovery and will return to the assigned cloud learned from first-boot. 
 
