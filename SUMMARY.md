@@ -3,6 +3,7 @@
 * [OpenWiFi Release 2.0](README.md)
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
+  * [Cloud Discovery](getting-started/cloud-discovery.md)
   * [Release 2.0 SDK](getting-started/controller.md)
   * [Access Points](getting-started/access-points.md)
 * [User Interface](user-interface.md)
