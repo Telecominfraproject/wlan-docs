@@ -13,7 +13,7 @@ These include:
 * No Configuration of Cloud in Certificate Authority 
   * Manufacturer may have left this value blank in the device record stored in Certificate Authority
 
-![Manual Cloud Entry](../../.gitbook/assets/image%20%2824%29.png)
+![Manual Cloud Entry](../../.gitbook/assets/image%20%2825%29.png)
 
 When the cloud can not be automatically discovered, OpenWiFi devices will turn on a local admin web UI made available via SSID "Maverick". 
 
@@ -22,5 +22,5 @@ Additionally the Maverick UI supports direct entry of the cloud for cases when t
 
 For non-Wi-Fi devices such as PoE access switches, the same cloud location information may be configured using local management interface. 
 
-![Admin / User Entered WAN or Cloud](../../.gitbook/assets/image%20%2822%29.png)
+![Admin / User Entered WAN or Cloud](../../.gitbook/assets/image%20%2823%29.png)
 
