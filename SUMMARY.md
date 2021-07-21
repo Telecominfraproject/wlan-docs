@@ -1,7 +1,7 @@
 # Table of contents
 
-* [Open Wi-Fi](README.md)
-* [Ordering Open Wi-Fi APs](ordering-open-wi-fi-aps.md)
+* [OpenWiFi Release 2.0](README.md)
+* [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
   * [Release 2.0 SDK](getting-started/controller.md)
   * [Access Points](getting-started/access-points.md)
