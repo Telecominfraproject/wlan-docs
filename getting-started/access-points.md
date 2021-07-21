@@ -18,7 +18,7 @@ All devices are known to the cloud by their unique id and provisioned based on a
 
 If the cloud sends invalid configuration data or the device has insufficient ability to complete the provisioning commands, the error handling process will send this response back to the cloud. 
 
-For example: 
+For example results returned to SDK from a device configuration error: 
 
 ```text
 "results": { 
@@ -29,4 +29,6 @@ For example:
                              "[W] ("A Reason will be given"
                              ],
 ```
+
+
 
