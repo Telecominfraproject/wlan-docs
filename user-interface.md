@@ -1,5 +1,5 @@
 ---
-description: TIP Cloud SDK
+description: OpenWiFi 2.0
 ---
 
 # User Interface

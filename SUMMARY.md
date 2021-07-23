@@ -22,6 +22,8 @@
 * [Bridge Mode SSID](configuration-examples/bridge-mode-ssid.md)
 * [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
 * [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
+* [WDS Topologies](configuration-examples/wds-topologies.md)
+* [Mesh](configuration-examples/mesh.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
 * [Passpoint](configuration-examples/passpoint-r1.md)
 

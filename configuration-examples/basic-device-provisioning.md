@@ -1,5 +1,5 @@
 ---
-description: Cloud SDK Profile Use
+description: OpenWiFi 2.0
 ---
 
 # Basic Device Provisioning

@@ -2,5 +2,5 @@
 description: OpenWiFi 2.0
 ---
 
-# RADIUS Authenticated SSID
+# WDS Topologies
 
