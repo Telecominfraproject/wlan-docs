@@ -31,5 +31,5 @@ uCentral framework configuration source of truth is the uCentral-Gateway or esse
 
 Once present, all configuration data is preserved on device restart.
 
-It is possible to generate device configurations outside of the OpenWiFi 2.0 cloud when the OpenWiFi Provisioning micro service is not present. In this way, integrators of commercial products are welcome to build device provisioning outside of OpenWiFi and use the OpenWiFi cloud to manage the scale, state, and validation of device websocket communications. 
+It is possible to generate device configurations outside of the OpenWiFi 2.0 cloud when the OpenWiFi Provisioning micro service is not present. In this way, integrators of commercial products are welcome to build device provisioning outside of OpenWiFi and use the OpenWiFi cloud to manage the scale, state, security and validation of device websocket communications. 
 
