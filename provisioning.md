@@ -8,7 +8,7 @@ OpenWiFi 2.0 uses the uCentral data model for OpenWrt. It is possible for integr
 
 OpenWiFi provides options to receive telemetry and events over both OpenAPI interface as well as Kafka message bus. When using Kafka, OpenWiFi uCentral-Gateway directly publishes telemetry and event topics to the bus.
 
-![3rd Party Minimum SDK Use](../../.gitbook/assets/image%20%2826%29.png)
+![3rd Party Minimum SDK Use](.gitbook/assets/image%20%2826%29.png)
 
 In future sprints of OpenWiFi dynamic device provisioning will be available as an added micro service. 
 

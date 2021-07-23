@@ -6,8 +6,8 @@
   * [Cloud Discovery](getting-started/cloud-discovery/README.md)
     * [Discovery without Cloud](getting-started/cloud-discovery/discovery-without-cloud.md)
   * [Release 2.0 SDK](getting-started/sdk.md)
-  * [Access Points](getting-started/access-points/README.md)
-    * [Provisioning](getting-started/access-points/provisioning.md)
+  * [Access Points](getting-started/access-points.md)
+* [Provisioning](provisioning.md)
 * [User Interface](user-interface.md)
 * [API](api.md)
 
