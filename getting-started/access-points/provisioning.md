@@ -25,7 +25,7 @@ Within OpenWiFi devices, the uCentral agent has a reader and renderer process pr
 If any data presented can not be processed by the local agent, this is returned within an ERROR message using the same websocket connection. 
 
   
-If the device agrees with provisioning information presented, the render process will build calls into the operating system configuration sub-system known as UCI. The Unified Configuration Interface ensures OpenWrt compliant syntax is persisted within the device. 
+If the device agrees with provisioning information presented, the render process builds calls into the operating system configuration sub-system known as UCI. The Unified Configuration Interface ensures OpenWrt compliant syntax is persisted within the device. 
 
 uCentral framework configuration source of truth is the uCentral-Gateway or essentially the OpenWiFi cloud. Consistency of device configuration is handled with an applied hash compared by the uCentral-Gateway for each device. If the value differs on device from that of the stored information in cloud, the device will be immediately resent its configuration from the OpenWiFi cloud. 
 
