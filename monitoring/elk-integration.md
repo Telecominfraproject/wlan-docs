@@ -4,7 +4,9 @@ description: Kafka integration with ELK
 
 # ELK Integration
 
-ELK
+The  pipeline for Kafka and ELK is as follows:
+
+
 
 
 
