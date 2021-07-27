@@ -10,6 +10,8 @@
 * [Provisioning](provisioning.md)
 * [User Interface](user-interface.md)
 * [API](api.md)
+* [Monitoring](monitoring/README.md)
+  * [ELK Integration](monitoring/elk-integration.md)
 
 ## MDU Quick Start
 
