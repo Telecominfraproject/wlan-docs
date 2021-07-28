@@ -17,7 +17,7 @@ Features of the 2.0 SDK at July MVP include:
 * User Interface 
 * Docker Compose & Helm DevOps Deployment Automation
 
-![OpenWiFi SDK 2.0](../../.gitbook/assets/image%20%2827%29.png)
+![OpenWiFi 2.0 SDK](../../.gitbook/assets/image%20%2835%29.png)
 
 
 
