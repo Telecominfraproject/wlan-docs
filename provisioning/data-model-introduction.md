@@ -14,18 +14,18 @@ The complete data model may be found here : [https://ucentral.io/docs/ucentral-s
 
 ### Organization
 
-Each device has a Universally Unique Identifier \(UUID\).   
-For each UUID 'unit' a Description, Location, TimeZone may be set.    
+Each device has a Universally Unique Identifier \(UUID\). For each device, the configuration presented either manually, via the future Provisioning service from OpenWifi or via a commercial controller generation of provisioning data, the high level relationships of the schema may be understood as follows.
+
+![uCentral Schema Processing](../.gitbook/assets/image%20%2835%29.png)
+
   
-Globals may be defined which the rendered in the uCentral Agent will determine apply to certain portions of the configuration once processed.   
+The unique device record has a set of top level configurations. A device is referred to as a 'unit' that may have a Description, Location, TimeZone as example.  Each unit may have globals for IPv4 and IPv6 networks that are derived to lower lever interfaces in later generation.   
   
-Common data such as RADIUS or wireless encryption information may be referenced within 'definitions' to avoid duplication of configuration data within the device when multiple SSIDs share the same values.  
+Common data such as RADIUS or wireless encryption information may be referenced within 'definitions' to avoid duplication of configuration data within the device when multiple SSIDs share the same values. This may then be referenced by lower level sections to avoid repeating shared settings.   
   
-Radios permit configuration of all Wi-Fi settings including support for passing in raw commands to hostapd gaining direct control of the hostapd.conf configuration from the cloud.   
+Services and Metrics are associated with logical and physical interfaces. Services enable configuration of features such as LLDP or SSH, rTTY, IGMP, 802.1x, RADIUS Proxy, WiFi-Steering, or NTP and are then associated with Interfaces as desired.   
   
 Interfaces define upstream and downstream configuration over both Wi-Fi logical \(SSID\) and wired physical ports. 
-
-Services enable configuration of features such as LLDP or SSH, rTTY, IGMP, 802.1x, RADIUS Proxy, WiFi-Steering, or NTP and are then associated with Interfaces as desired. 
 
 Metrics enable visibility to the cloud for numerous states of the device. These are associated per interface and may be sent in 60 second or greater intervals and include Statistics of SSID, LLDP, Clients. Also include Health check reports of device load, network reachability, temperature.   
 To assist with fingerprinting DHCP-Snooping exposes numerous interactions of IP binding to clients. Additionally wifi-frames expose all 802.11 management frames to the SDK Gateway. 
