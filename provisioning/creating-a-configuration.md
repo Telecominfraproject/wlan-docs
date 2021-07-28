@@ -4,7 +4,7 @@ description: OpenWiFi 2.0 Device Configuration
 
 # Creating a Configuration
 
-All device configurations are JSON defined data structures. There are examples of these files within the device /etc/ucentral/examples folder.  
+To introduce the Community to this structure, the below illustrates a basic Access Point configuration that assumes a typical enterprise Wi-Fi scenario of a ceiling mount or wall mount device presenting a single WAN interface with a private management network and separate  Wi-Fi network on a virtual local area network. 
 
 ### Start with Location and Radios
 
