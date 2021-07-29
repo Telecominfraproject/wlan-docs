@@ -17,9 +17,7 @@ The current Kafka topics used for this monitoring integration are:
 * state
 * healthcheck
 
-All Kafka messages carry a JSON payload:
-
-Example of an healthcheck message:
+All Kafka messages carry a JSON payload, example of a healthcheck message is as follow:
 
 ```text
 {
@@ -46,7 +44,7 @@ Example of an healthcheck message:
 }
 ```
 
-Example of a state message:
+A state Kafka message looks like:
 
 ```text
 {
