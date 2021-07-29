@@ -17,8 +17,9 @@ These include:
 
 When the cloud can not be automatically discovered, OpenWiFi devices will turn on a local admin web UI made available via SSID "Maverick". 
 
-The Maverick UI will support configuring WAN interface parameters, including DHCP, Static, PPPoE, and LTE/5G settings.   
-Additionally the Maverick UI supports direct entry of the cloud for cases when the cloud value has not been supplied during manufacture.
+The Maverick UI will support configuring WAN interface parameters, including DHCP, Static, PPPoE, and LTE/5G settings.  Please see [Local Device Settings](../access-points/local-device-settings.md) for details on using Maverick.   
+[  
+](../access-points/local-device-settings.md)Additionally the Maverick UI supports direct entry of the cloud for cases when the cloud value has not been supplied during manufacture.
 
 For non-Wi-Fi devices such as PoE access switches, the same cloud location information may be configured using local management interface. 
 
