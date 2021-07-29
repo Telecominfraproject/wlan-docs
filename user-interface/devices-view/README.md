@@ -63,9 +63,3 @@ Commands tile provides a number of administrative actions for the user:
 
 ![Commands Tile](../../.gitbook/assets/screen-shot-2021-07-28-at-5.25.50-pm.png)
 
-### Statistics
-
-
-
-### Command History
-

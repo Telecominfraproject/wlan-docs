@@ -10,7 +10,7 @@ Release 2.0 uses a Single-Page Application \(SPA\) as an example user interface 
 
 ![Login Page](../.gitbook/assets/screen-shot-2021-07-28-at-4.40.17-pm.png)
 
-Default username is: **tip@ucentral.com** and password is: **openwifi**
+Default username is: **`tip@ucentral.com`** and password is: **`openwifi`**
 
 ### **Base Navigation**
 

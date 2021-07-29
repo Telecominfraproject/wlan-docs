@@ -17,8 +17,8 @@ Association with and logging in to the device will permit initial WAN connectivi
 
 ![Maverick Login Page](../../.gitbook/assets/screen-shot-2021-07-29-at-5.04.23-pm.png)
 
-After association to the Maverick SSID, open a web browser to http://192.168.1.1   
-Log into the OpenWiFi device with username: **root** and password: **openwifi**
+After association to the Maverick SSID, open a web browser to `http://192.168.1.1`   
+Log into the OpenWiFi device with username: **`root`** and password: **`openwifi`**
 
 ![Logged into Maverick](../../.gitbook/assets/screen-shot-2021-07-29-at-5.06.35-pm.png)
 
