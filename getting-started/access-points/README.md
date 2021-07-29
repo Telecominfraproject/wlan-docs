@@ -10,7 +10,7 @@ Given many cloud and ODM partners wish to consume the 2.0 reference stack early,
 
 ### Device Interactions with SDK
 
-![OpenWiFi with uCentral Management](../.gitbook/assets/image%20%2822%29.png)
+![OpenWiFi with uCentral Management](../../.gitbook/assets/image%20%2822%29.png)
 
 OpenWiFi 2.0 follows the uCentral system. Complete data model is available [here](http://ucentral.io/docs/ucentral-schema.html). Upon discovery of the cloud, a device default or specific configuration is transferred. 
 
