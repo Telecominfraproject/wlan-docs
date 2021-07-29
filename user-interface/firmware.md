@@ -10,7 +10,7 @@ From the Devices table, any device with a newer firmware published by TIP OpenWi
 
 ![](../.gitbook/assets/screen-shot-2021-07-29-at-4.36.31-pm.png)
 
-When the upgrade has been sent successfully, a green Success dialog will display in the upper right of the screen. 
+When the upgrade has been sent successfully, a green Success dialog will display in the upper right of the screen. Devices with latest firmware version will show a green firmware icon in the Devices row. 
 
 ### Firmware Management Service
 
