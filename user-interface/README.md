@@ -12,6 +12,18 @@ Release 2.0 uses a Single-Page Application \(SPA\) as an example user interface 
 
 Default username is: **tip@ucentral.com** and password is: **openwifi**
 
+### **Base Navigation**
+
+A left side navigation menu provides direction to major feature or service settings. 
+
+![Left Navigation](../.gitbook/assets/screen-shot-2021-07-29-at-3.21.37-pm.png)
+
+### Internationalization
+
+OpenWiFi 2.0 SDK supports multiple languages. Simply select the desired language from the right drop down for pages to re-populate accordingly. 
+
+![](../.gitbook/assets/screen-shot-2021-07-29-at-3.26.35-pm.png)
+
 ### Devices
 
 Upon login the first page presented is a Devices table. This table reflects all discovered and managed devices known by the OpenWiFi SDK.

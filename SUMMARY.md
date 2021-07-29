@@ -13,6 +13,7 @@
   * [Data Model Introduction](provisioning/data-model-introduction.md)
   * [Creating a Configuration](provisioning/creating-a-configuration.md)
 * [User Interface](user-interface/README.md)
+  * [Firmware](user-interface/firmware.md)
   * [Devices View](user-interface/devices-view/README.md)
     * [Commands](user-interface/devices-view/commands.md)
   * [Statistics](user-interface/statistics.md)
