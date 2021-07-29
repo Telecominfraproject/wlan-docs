@@ -16,6 +16,7 @@
   * [Devices View](user-interface/devices-view/README.md)
     * [Commands](user-interface/devices-view/commands.md)
   * [Statistics](user-interface/statistics.md)
+  * [Command History](user-interface/command-history.md)
 * [API](api.md)
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
