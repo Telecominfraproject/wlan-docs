@@ -2,7 +2,7 @@
 description: OpenWiFi 2.0 SDK
 ---
 
-# Devices View
+# Devices
 
 Each device presents Metrics and Health check  data to the Gateway. Devices view displays this information in the following organization:
 
