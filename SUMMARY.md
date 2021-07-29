@@ -19,7 +19,8 @@
     * [Statistics](user-interface/devices-view/statistics.md)
     * [Command History](user-interface/devices-view/command-history.md)
   * [Firmware](user-interface/firmware.md)
-* [API](api.md)
+* [API](api/README.md)
+  * [OpenAPI Definitions](api/openapi-definitions.md)
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
 
