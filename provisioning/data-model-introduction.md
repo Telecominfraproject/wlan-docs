@@ -16,12 +16,10 @@ The complete data model may be found here : [https://ucentral.io/docs/ucentral-s
 
 Each device has a Universally Unique Identifier \(UUID\). For each device, the configuration presented either manually, via the future Provisioning service from OpenWifi or via a commercial controller generation of provisioning data, the high level relationships of the schema may be understood as follows.
 
-![uCentral Schema Processing](../.gitbook/assets/image%20%2836%29.png)
+![uCentral Agent Schema Processing](../.gitbook/assets/image%20%2837%29.png)
 
   
 The unique device record has a set of top level configurations. A device is referred to as a 'unit' that may have a Description, Location, TimeZone as example.  Each unit may have globals for IPv4 and IPv6 networks that are derived to lower lever interfaces in later generation.   
-  
-Common data such as RADIUS or wireless encryption information may be referenced within 'definitions' to avoid duplication of configuration data within the device when multiple SSIDs share the same values. This may then be referenced by lower level sections to avoid repeating shared settings.   
   
 Services and Metrics are associated with logical and physical interfaces. Services enable configuration of features such as LLDP or SSH, rTTY, IGMP, 802.1x, RADIUS Proxy, WiFi-Steering, or NTP and are then associated with Interfaces as desired.   
   
