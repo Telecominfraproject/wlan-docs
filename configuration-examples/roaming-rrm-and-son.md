@@ -112,3 +112,23 @@ To enable 80211k parameters, associate these on a participating SSID basis.
 
 In addition to 802.11k features for neighbor reporting, fine timing measurement responder and stationary ap indication, OpenWiFi also supports LCI measurement, Civic Location subelement as well. 
 
+### Automatic Channel Balancing
+
+As part of "wifi-steering" feature, autonomous channel management algorithm may be enabled to establish a self organizing Wi-Fi network. 
+
+The auto-channel setting operates in co-ordination with other OpenWiFi Access Points by enumerating the newest AP in the network, then running neighbor and RF scans to determine the best channel of operation. Once the newest AP completes this process, the next AP is sequence will run the same algorithm for channel balancing until all APs in the network complete. The entire process may take up to 5 minutes the first time a network is powered on. The algorithm will re-run every 12 hours. 
+
+```text
+	"services": {
+      "wifi-steering": {
+			"mode": "local",
+			"network": "upstream",
+			"auto-channel": true,
+			"assoc-steering": true,
+			"required-snr": -75,
+			"required-probe-snr": -70,
+			"required-roam-snr": -85,
+			"load-kick-threshold": 90
+		},  
+```
+
