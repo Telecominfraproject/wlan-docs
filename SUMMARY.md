@@ -37,6 +37,7 @@
 * [Multi-PSK \(MDU Shared Key\)](configuration-examples/multi-psk-mdu-multiple-shared-key.md)
 * [VxLAN](configuration-examples/vxlan.md)
 * [L2TP](configuration-examples/l2tp.md)
+* [GRE](configuration-examples/gre.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
 * [Passpoint®](configuration-examples/passpoint-r1/README.md)
   * [Configuration Introduction](configuration-examples/passpoint-r1/configuration-introduction.md)
