@@ -69,8 +69,8 @@ Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstr
 	],
 		"services": {
 		"lldp": {
-			"describe": "uCentral",
-			"location": "universe"
+			"describe": "OpenWiFi - expressWiFi",
+			"location": "Hotspot"
 		},
 		"ssh": {
 			"port": 22
