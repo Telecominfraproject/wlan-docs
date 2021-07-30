@@ -40,5 +40,6 @@
 * [Passpoint®](configuration-examples/passpoint-r1/README.md)
   * [Configuration Introduction](configuration-examples/passpoint-r1/configuration-introduction.md)
   * [Advertising Services](configuration-examples/passpoint-r1/advertising-services.md)
+  * [Passpoint® Configuration](configuration-examples/passpoint-r1/passpoint-r-configuration.md)
 * [Metrics](configuration-examples/metrics.md)
 
