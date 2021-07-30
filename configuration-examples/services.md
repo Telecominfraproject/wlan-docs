@@ -10,7 +10,7 @@ Within the "services" configuration block, define the operating mode for each se
 
 ### SSH
 
-Secure shell may be enabled on OpenWiFi devices, associated to specific interface\(s\), and support operator defined keys or password authentication.
+Secure shell may optionally be enabled on OpenWiFi devices, associated to specific interface\(s\), and optionally support operator defined keys or password authentication.
 
 ```text
 	"services": {
