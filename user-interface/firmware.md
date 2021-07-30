@@ -28,7 +28,7 @@ Once in Firmware, it is possible to search by device model for all known firmwar
 
 ![Firmware Management Service](../.gitbook/assets/screen-shot-2021-07-29-at-4.43.57-pm.png)
 
-If in the start of this page, instead of selecting Upgrade to Latest, the specific URI location of any available firmware is found using the Firmware table. 
+If in the Device Table reference above,  instead of selecting Upgrade to Latest, the specific URI location of any available firmware is found using the Firmware table. 
 
 Selecting Details will present information for any firmware row, including the URI which may be copied into the Choose Custom Firmware dialog prompt accordingly. 
 
