@@ -4,7 +4,13 @@ description: OpenWiFi 2.0
 
 # Metrics
 
-Each OpenWiFi device is capable of sending statistics on SSID, LLDP, and associated Clients learned by the device. Additionally, OpenWiFi devices expose all 802.11 management data within wifi-frames and to assist network troubleshooting and client fingerprinting solutions OpenWiFi provides dhcp-snooping for all possible client exchanges over DHCP and DHCPv6. 
+### Metrics
+
+Several metrics are reported during intervals to the OpenWiFi Gateway. In general metrics contain traffic counters, neighbor tables, discovered clients. 
+
+Each OpenWiFi device is capable of sending statistics on SSID, LLDP, and associated Clients learned by the device. 
+
+Additionally, OpenWiFi devices expose all 802.11 management data within wifi-frames and to assist network troubleshooting and client fingerprinting solutions OpenWiFi provides dhcp-snooping for all possible client exchanges over DHCP and DHCPv6. 
 
 ```text
 	"metrics": {

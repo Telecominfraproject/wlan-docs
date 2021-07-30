@@ -107,15 +107,27 @@ Associate "mdns" as a services attribute to any interface.
 
 ### Syslog 
 
-Remote syslog systems may be configured to receive device logs in a central location. This content is standard device log and not related to telemetry for metrics and service information received by the OpenWiFi Gateway. 
+Remote syslog systems may be configured to receive device logs in a central location. This content is standard device log and not related to telemetry for metrics and service information received by the OpenWiFi Gateway.  Valid port range is from 100 - 65535 with operation over UDP or TCP. 
 
+```text
+		"log": {
+			"host": "Syslog Server IP",
+			"port": 514,
+			"proto": "udp"
+		},
+```
 
+Associate "log" as a services attribute to appropriate interface. 
 
 ### IGMP
 
 When enabled the OpenWiFi device will process IGMP Proxy. 
 
+```text
+		"igmp": {
+			"enable": true
+		},
+```
 
-
-
+Associate "igmp" as a services attribute to any interface participating in IGMP Proxy.
 
