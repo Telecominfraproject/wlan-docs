@@ -34,6 +34,7 @@
 * [WDS Topologies](configuration-examples/wds-topologies.md)
 * [Mesh](configuration-examples/mesh.md)
 * [Roaming RRM and SON](configuration-examples/roaming-rrm-and-son.md)
+* [Captive Portal](configuration-examples/captive-portal.md)
 * [Multi-PSK \(MDU Shared Key\)](configuration-examples/multi-psk-mdu-multiple-shared-key.md)
 * [VxLAN](configuration-examples/vxlan.md)
 * [L2TP](configuration-examples/l2tp.md)
