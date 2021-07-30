@@ -103,6 +103,8 @@ To assist in device or service discovery over smaller networks,  multicast DNS \
 		},
 ```
 
+Associate "mdns" as a services attribute to any interface.
+
 ### Syslog 
 
 Remote syslog systems may be configured to receive device logs in a central location. This content is standard device log and not related to telemetry for metrics and service information received by the OpenWiFi Gateway. 
