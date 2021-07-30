@@ -31,10 +31,11 @@
 
 ## Configuration Examples
 
-* [Basic Device Provisioning](configuration-examples/basic-device-provisioning.md)
-* [Bridge Mode SSID](configuration-examples/bridge-mode-ssid.md)
-* [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
-* [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
+* [Basic Device Provisioning](configuration-examples/basic-device-provisioning/README.md)
+  * [Bridge Mode SSID](configuration-examples/basic-device-provisioning/bridge-mode-ssid.md)
+  * [NAT Gateway Mode SSID](configuration-examples/basic-device-provisioning/nat-gateway-mode-ssid.md)
+  * [Multi-VLAN SSID](configuration-examples/basic-device-provisioning/multi-vlan-ssid.md)
+* [ExpressWiFi](configuration-examples/expresswifi.md)
 * [WDS Topologies](configuration-examples/wds-topologies.md)
 * [Mesh](configuration-examples/mesh.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
