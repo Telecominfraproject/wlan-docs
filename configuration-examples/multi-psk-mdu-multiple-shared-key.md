@@ -2,7 +2,7 @@
 description: OpenWiFi 2.0
 ---
 
-# Multi-PSK \(MDU Multiple Shared Key\)
+# Multi-PSK \(MDU Shared Key\)
 
 Multiple Pre Shared Key is a popular configuration option in Multi Dwelling Unit, dormitory or similar environment where it is costly to implement complex 802.1x security however that same level of per-client security is highly desired. 
 
