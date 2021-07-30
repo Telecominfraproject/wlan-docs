@@ -39,6 +39,7 @@
 * [WDS Topologies](configuration-examples/wds-topologies.md)
 * [Mesh](configuration-examples/mesh.md)
 * [Roaming RRM and SON](configuration-examples/roaming-rrm-and-son.md)
+* [Multi-PSK \( MDU Multiple Shared Key \)](configuration-examples/multi-psk-mdu-multiple-shared-key.md)
 * [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
 * [Passpoint](configuration-examples/passpoint-r1.md)
 * [Metrics](configuration-examples/metrics.md)
