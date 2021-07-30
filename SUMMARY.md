@@ -24,11 +24,6 @@
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
 
-## MDU Quick Start
-
-* [Solution Overview](mdu-quick-start/solution-overview/README.md)
-  * [Supported Configuration](mdu-quick-start/solution-overview/supported-configuration.md)
-
 ## Configuration Examples
 
 * [Basic Device Provisioning](configuration-examples/basic-device-provisioning/README.md)
