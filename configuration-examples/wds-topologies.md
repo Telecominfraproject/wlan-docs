@@ -2,7 +2,7 @@
 description: OpenWiFi 2.0
 ---
 
-# WDS Topologies
+# WDS
 
 Wireless Distribution System \(WDS\) supports an Access Point, Station and Repeater mode of operation. OpenWiFi 2.0 supports all three. 
 

@@ -31,7 +31,7 @@
   * [NAT Gateway Mode SSID](configuration-examples/basic-device-provisioning/nat-gateway-mode-ssid.md)
   * [Multi-VLAN SSID](configuration-examples/basic-device-provisioning/multi-vlan-ssid.md)
 * [ExpressWiFi](configuration-examples/expresswifi.md)
-* [WDS Topologies](configuration-examples/wds-topologies.md)
+* [WDS](configuration-examples/wds-topologies.md)
 * [Mesh](configuration-examples/mesh.md)
 * [Roaming RRM and SON](configuration-examples/roaming-rrm-and-son.md)
 * [Captive Portal](configuration-examples/captive-portal.md)
