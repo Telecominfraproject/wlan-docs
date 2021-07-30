@@ -4,7 +4,7 @@ description: OpenWiFi 2.0
 
 # Getting Started
 
-OpenWiFi 2.0 Minimum Viable Product at the end of July, 2020 enables a cloud native and cloud agnostic Software Development Kit \(SDK\) with management and deployment support for a wide range of Access Point and PoE network switch platforms. 
+OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud native and cloud agnostic Software Development Kit \(SDK\) with management and deployment support for a wide range of Access Point and PoE network switch platforms. 
 
 ### Initial release 2.0 SDK includes:
 
