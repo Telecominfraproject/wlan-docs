@@ -4,7 +4,15 @@ description: OpenWiFi 2.0 SDK
 
 # Firmware
 
-Firmware management service integrates across all OpenWifi Gateways deployed in a cluster enabling updates to running firmware either from the latest published version, or any other released version. 
+Firmware management service integrates across all OpenWiFi Gateways deployed in a cluster enabling updates to running firmware either from the latest published version, or any other released version. 
+
+### Dashboard
+
+Firmware dashboard provides a single view for overall health of deployed device firmware. Latest firmware charts, device  firmware version distribution, distribution of device by type and current connected devices.
+
+![](../.gitbook/assets/screen-shot-2021-07-30-at-12.12.02-am.png)
+
+### Device Table
 
 From the Devices table, any device with a newer firmware published by TIP OpenWiFi is indicated with a yellow icon. Selecting this icon presents the option to upgrade to latest or specify which firmware to use. 
 

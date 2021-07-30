@@ -54,5 +54,13 @@ For each association the device MAC address, mode of connection and SSID are dis
 
 Associations have RSSI, Rx Rate & Bytes, Tx Rate & Bytes, MCS negotiated, Number Spatial Streams and IP Address information.   
 
+### Dashboard View
 
+OpenWiFi SDK provides visual indications on the overall health of the deployed Wi-Fi network. this includes Device Status for connected and non-connected devices. Device health indicating percentage of devices failing a health check. Distribution of devices by vendor in the network and by model. 
+
+![](../.gitbook/assets/screen-shot-2021-07-30-at-12.06.28-am.png)
+
+Additionally, verified certificates or serial mismatch certificates, number of Command actions from all Gateways to devices and devices with greater than 75% memory utilization, greater than 50% less than 75% memory and less than 50% utilization are displayed. 
+
+![](../.gitbook/assets/screen-shot-2021-07-30-at-12.09.27-am.png)
 
