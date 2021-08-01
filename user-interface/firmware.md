@@ -10,15 +10,15 @@ Firmware management service integrates across all OpenWiFi Gateways deployed in 
 
 Firmware dashboard provides a single view for overall health of deployed device firmware. Latest firmware charts, device  firmware version distribution, distribution of device by type and current connected devices.
 
-![](../.gitbook/assets/screen-shot-2021-07-30-at-12.12.02-am.png)
+![Firmware Dashboard](../.gitbook/assets/screen-shot-2021-08-01-at-12.07.27-pm.png)
 
 ### Device Table
 
 From the Devices table, any device with a newer firmware published by TIP OpenWiFi is indicated with a yellow icon. Selecting this icon presents the option to upgrade to latest or specify which firmware to use. 
 
-![](../.gitbook/assets/screen-shot-2021-07-29-at-4.36.31-pm.png)
+![Firmware Control in Device Table](../.gitbook/assets/screen-shot-2021-08-01-at-12.08.45-pm.png)
 
-When the upgrade has been sent successfully, a green Success dialog will display in the upper right of the screen. Devices with latest firmware version will show a green firmware icon in the Devices row. 
+When the upgrade has been sent successfully, a green Success dialog will display in the upper right  on the screen. Devices with latest firmware version will show a green firmware icon in the Devices row. 
 
 ### Firmware Management Service
 
