@@ -24,7 +24,7 @@ OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expa
 * Passpoint R1 and R2 Mobile Offload
 * Encrypted Zero Touch Provisioning and Cloud Discovery
 * Autonomous RRM and Channel Control
-* Captive Portal
+* Captive Portal & ExpressWiFi
 
 #### Each OpenWiFi PoE Switch offers:
 
