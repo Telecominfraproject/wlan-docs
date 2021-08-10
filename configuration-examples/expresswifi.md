@@ -1,5 +1,5 @@
 ---
-description: OpenWiFi 2.0
+description: OpenWiFi 2.1
 ---
 
 # ExpressWiFi
@@ -76,7 +76,10 @@ Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstr
             "port": 22
         },
         "open-flow": {
-            "controller": " IP / FQDN of expressWiFi Controller " 
+            "controller": " IP / FQDN of expressWiFi Controller ",
+            "ca-certificate": " the client cert as string pasted here ",
+            "server-certificate": "the shared ca as string pasted here",
+            "private-key": "client key as string pasted here" 
         }
     }
 ```
@@ -84,6 +87,6 @@ Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstr
 {% endtabs %}
 
 {% hint style="info" %}
-TLS Security is coming to OpenWiFi OpenFlow implementation in next sprint
+Contact ExpressWiFi for appropriate CA, Client Cert, and Key for TLS Security mode in addition to the specific ExpressWiFi Controller FQDN 
 {% endhint %}
 
