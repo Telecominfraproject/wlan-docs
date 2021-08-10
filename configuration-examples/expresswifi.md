@@ -87,6 +87,6 @@ Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstr
 {% endtabs %}
 
 {% hint style="info" %}
-Contact ExpressWiFi for appropriate CA, Client Cert, and Key for TLS Security mode in addition to the specific ExpressWiFi Controller FQDN 
+Contact expressWiFi for appropriate CA, Client Cert, and Key for TLS Security mode in addition to the specific expressWiFi Controller FQDN 
 {% endhint %}
 
