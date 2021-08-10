@@ -1,5 +1,5 @@
 ---
-description: OpenWiFi 2.0
+description: OpenWiFi 2.1
 ---
 
 # Multi-PSK \(MDU Shared Key\)
@@ -29,6 +29,7 @@ A SSID when configured for multi-psk can have multiple PSK/VID mappings. Each on
                         },
                         {
                             "key": "bkey"
+                            "vlan-id": 200
                         }
                     ],
                     "roaming": {
@@ -38,4 +39,8 @@ A SSID when configured for multi-psk can have multiple PSK/VID mappings. Each on
                 }
             ]
 ```
+
+{% hint style="info" %}
+Note: M-PSK passwords must be unique per `vlan-id`  as the device will attempt to match security key to assigned virtual lan. In the above example, a password of `OpenWifi` will match the untagged interface of the SSID and unique password of `"akey"` will match client\(s\) to virtual lan 100. 
+{% endhint %}
 
