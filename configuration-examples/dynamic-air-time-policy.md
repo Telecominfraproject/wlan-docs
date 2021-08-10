@@ -19,6 +19,10 @@ This results in the UE, by its IP address having matched a specific fully qualif
             }
 ```
 
+{% hint style="info" %}
+Note: In release 2.1, airtime-policies must be applied to SSIDs in a NAT configuration. Bridge / VLAN mode SSIDs with airtime-policies will be updated in a future release
+{% endhint %}
+
 ### Possible Uses 
 
 Any application a user may commonly use the OpenWiFi administrator seeks to prioritize air-time for may be triggered via the airtime-policies.
