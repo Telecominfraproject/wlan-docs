@@ -77,9 +77,9 @@ Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstr
         },
         "open-flow": {
             "controller": " IP / FQDN of expressWiFi Controller ",
-            "ca-certificate": " the client cert as string pasted here ",
-            "server-certificate": "the shared ca as string pasted here",
-            "private-key": "client key as string pasted here" 
+            "ca-certificate": " the client cert as string here ",
+            "server-certificate": "the shared ca as string here",
+            "private-key": "client key as string here" 
         }
     }
 ```
