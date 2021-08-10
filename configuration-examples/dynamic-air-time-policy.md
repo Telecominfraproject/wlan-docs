@@ -13,7 +13,7 @@ This results in the UE, by its IP address having matched a specific fully qualif
 ```text
             "services": {     
                 "airtime-policies": {
-                    "dns-match": ["*.example.com", "host.example2.com" ]
+                    "dns-match": ["*.example.com", "host.example2.com" ],
                     "dns-weight": 256
                 }
             }
