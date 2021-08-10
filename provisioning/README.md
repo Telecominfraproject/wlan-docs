@@ -27,7 +27,7 @@ Upon successful connection the device exchanges its capabilities with the OpenWi
 Within OpenWiFi devices, the uCentral agent has a reader and renderer process providing serialization and validation of data sent from cloud.   
 If any data presented can not be processed by the local agent, this is returned within an ERROR message using the same websocket connection. 
 
-![High Level SDK Gateway to uCentral Agent](../.gitbook/assets/image%20%2830%29.png)
+![High Level SDK Gateway to uCentral Agent](../.gitbook/assets/image%20%2822%29.png)
 
   
 If the device agrees with provisioning information presented, the render process builds calls into the operating system configuration sub-system known as UCI. The Unified Configuration Interface ensures OpenWrt compliant syntax is persisted within the device. 
