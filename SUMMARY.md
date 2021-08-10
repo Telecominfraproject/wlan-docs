@@ -36,6 +36,7 @@
 * [Roaming RRM and SON](configuration-examples/roaming-rrm-and-son.md)
 * [Captive Portal](configuration-examples/captive-portal.md)
 * [Multi-PSK \(MDU Shared Key\)](configuration-examples/multi-psk-mdu-multiple-shared-key.md)
+* [Dynamic Air-Time Policy](configuration-examples/dynamic-air-time-policy.md)
 * [VxLAN](configuration-examples/vxlan.md)
 * [L2TP](configuration-examples/l2tp.md)
 * [GRE](configuration-examples/gre.md)
