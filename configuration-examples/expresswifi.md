@@ -12,73 +12,73 @@ For information about becoming an expressWIFI partner please visit their [site.]
 
 ![](../.gitbook/assets/image%20%2840%29.png)
 
-### Configuration 
+## Configuration
 
-ExpressWiFi builds a captive portal experience using a control plane protocol called OpenFlow.   
-Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstream interface and associating with an SSID and the open-flow service. 
+ExpressWiFi builds a captive portal experience using a control plane protocol called OpenFlow.  
+Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstream interface and associating with an SSID and the open-flow service.
 
 {% tabs %}
 {% tab title="expressWIFI" %}
 ```text
-	"interfaces": [
-		{
-			"name": "WAN",
-			"role": "upstream",
-			"services": [ "lldp" ],
-			"ethernet": [
-				{
-					"select-ports": [
-						"WAN*"
-					]
-				}
-			],
-			"ipv4": {
-				"addressing": "dynamic"
-			}
+    "interfaces": [
+        {
+            "name": "WAN",
+            "role": "upstream",
+            "services": [ "lldp" ],
+            "ethernet": [
+                {
+                    "select-ports": [
+                        "WAN*"
+                    ]
+                }
+            ],
+            "ipv4": {
+                "addressing": "dynamic"
+            }
         },
-		{
-			"name": "LAN",
-			"role": "downstream",
-			"services": [ "ssh", "lldp", "open-flow"],
-			"ethernet": [
-				{
-					"select-ports": [
-						"LAN*"
-					]
-				}
-			],
-			"ipv4": {
-				"addressing": "static",
-				"subnet": "192.168.1.1/24",
-				"dhcp": {
-					"lease-first": 10,
-					"lease-count": 100,
-					"lease-time": "6h"
-				}
+        {
+            "name": "LAN",
+            "role": "downstream",
+            "services": [ "ssh", "lldp", "open-flow"],
+            "ethernet": [
+                {
+                    "select-ports": [
+                        "LAN*"
+                    ]
+                }
+            ],
+            "ipv4": {
+                "addressing": "static",
+                "subnet": "192.168.1.1/24",
+                "dhcp": {
+                    "lease-first": 10,
+                    "lease-count": 100,
+                    "lease-time": "6h"
+                }
             },
-			"ssids": [
-				{
-					"name": "ExpressWiFi",
-					"wifi-bands": [
-						"5G", "2G"
-					],
-					"bss-mode": "ap"
-				}
-			]
-		}
-	],
-		"services": {
-		"lldp": {
-			"describe": "OpenWiFi - expressWiFi",
-			"location": "Hotspot"
-		},
-		"ssh": {
-			"port": 22
-		},
-		"open-flow": {
-			"controller": " IP / FQDN of expressWiFi Controller " 
-		}
-	}
+            "ssids": [
+                {
+                    "name": "ExpressWiFi",
+                    "wifi-bands": [
+                        "5G", "2G"
+                    ],
+                    "bss-mode": "ap"
+                }
+            ]
+        }
+    ],
+        "services": {
+        "lldp": {
+            "describe": "OpenWiFi - expressWiFi",
+            "location": "Hotspot"
+        },
+        "ssh": {
+            "port": 22
+        },
+        "open-flow": {
+            "controller": " IP / FQDN of expressWiFi Controller " 
+        }
+    }
 ```
 {% endtab %}
 {% endtabs %}

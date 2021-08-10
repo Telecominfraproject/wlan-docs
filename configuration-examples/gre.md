@@ -4,60 +4,60 @@ description: OpenWiFi 2.0
 
 # GRE
 
-OpenWiFi 2.0 supports Generic Routing Encapsulation as an available "tunnel" protocol type. 
+OpenWiFi 2.0 supports Generic Routing Encapsulation as an available "tunnel" protocol type.
 
-This makes it possible to configure GRE for multiple types of deployments as any interface may be encapsulated by the "tunnel" parameter. 
+This makes it possible to configure GRE for multiple types of deployments as any interface may be encapsulated by the "tunnel" parameter.
 
-For example, to send all content of a specific SSID over an GRE tunnel, the following configuration would apply. 
+For example, to send all content of a specific SSID over an GRE tunnel, the following configuration would apply.
 
 ```text
-	"interfaces": [
-		{
-			"name": "WAN",
-			"role": "upstream",
-			"ethernet": [
-				{
-					"select-ports": [
-						"WAN*"
-					]
-				}
-			],
-			"ipv4": {
-				"addressing": "dynamic"
-			}
-		},
-		{
-			"name": "GRE",
-			"role": "upstream",
-			"vlan": {
-				"id": 20
-			},
-			"tunnel": {
-				"proto": "gre",
-				"peer-address": "far end IP address"
-			},
-			"ssids": [
-				{
-					"name": "Tunneled SSID via GRE from VLAN 20 Interface",
-					"wifi-bands": [
-						"2G", "5G"
-					],
-					"bss-mode": "ap",
-					"encryption": {
-						"proto": "none",
-						"ieee80211w": "optional"
-					},
-					"rate-limit": {
-						"ingress-rate": 100,
-						"egress-rate": 100
-					},                    
-					"roaming": {
-						"message-exchange": "ds",
-						"generate-psk": true
-					}
+    "interfaces": [
+        {
+            "name": "WAN",
+            "role": "upstream",
+            "ethernet": [
+                {
+                    "select-ports": [
+                        "WAN*"
+                    ]
                 }
-			]
-		},	
+            ],
+            "ipv4": {
+                "addressing": "dynamic"
+            }
+        },
+        {
+            "name": "GRE",
+            "role": "upstream",
+            "vlan": {
+                "id": 20
+            },
+            "tunnel": {
+                "proto": "gre",
+                "peer-address": "far end IP address"
+            },
+            "ssids": [
+                {
+                    "name": "Tunneled SSID via GRE from VLAN 20 Interface",
+                    "wifi-bands": [
+                        "2G", "5G"
+                    ],
+                    "bss-mode": "ap",
+                    "encryption": {
+                        "proto": "none",
+                        "ieee80211w": "optional"
+                    },
+                    "rate-limit": {
+                        "ingress-rate": 100,
+                        "egress-rate": 100
+                    },                    
+                    "roaming": {
+                        "message-exchange": "ds",
+                        "generate-psk": true
+                    }
+                }
+            ]
+        },
 ```
 
 In the above example, the WAN untagged port will request DHCP in addition to present a VLAN interface with id 20 that both initiates the GRE tunnel as well as passes SSID traffic over that tunnel.

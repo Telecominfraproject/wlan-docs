@@ -4,13 +4,13 @@ description: OpenWiFi 2.0 Telemetry and Analysis
 
 # Monitoring
 
-TIP OpenWiFi software stack is envisioned to have a rich telemetry data that can be extracted, transformed and stored for analytics purposes. This section will outline various integration using the current capabilities of the OpenWiFi release. These integrations will provide examples for the community to enrich, adopt and productize. 
+TIP OpenWiFi software stack is envisioned to have a rich telemetry data that can be extracted, transformed and stored for analytics purposes. This section will outline various integration using the current capabilities of the OpenWiFi release. These integrations will provide examples for the community to enrich, adopt and productize.
 
-The current release of OpenWiFi utilizes both a rich open API and Kafka for retrieving telemetry information from Access Points and  SDK services. For the purpose of this section and Release 2.0  we will be showcasing Kafka integration with third party monitoring subsystems.
+The current release of OpenWiFi utilizes both a rich open API and Kafka for retrieving telemetry information from Access Points and SDK services. For the purpose of this section and Release 2.0 we will be showcasing Kafka integration with third party monitoring subsystems.
 
 ## Kafka Data Source
 
-The current release of 2.0 SDK architecture contains a Kafka broker for the purposes inter-services communication, state, healthcheck, device provisioning state  producing and consuming Kafka topics. You can find the latest information related to Kafka topics here: [https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/KAFKA.md\#kafka-integration](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/KAFKA.md#kafka-integration) 
+The current release of 2.0 SDK architecture contains a Kafka broker for the purposes inter-services communication, state, healthcheck, device provisioning state producing and consuming Kafka topics. You can find the latest information related to Kafka topics here: [https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/KAFKA.md\#kafka-integration](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/KAFKA.md#kafka-integration)
 
 The current Kafka topics used for this monitoring integration are:
 

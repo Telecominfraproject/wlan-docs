@@ -2,7 +2,7 @@
 description: Telecom Infra Project OpenWiFi
 ---
 
-# OpenWiFi Release 2.0
+# OpenWiFi Release 2.1
 
 ## What is OpenWiFi?
 
@@ -12,7 +12,7 @@ TIP OpenWiFi is an open source community project that believes in democratizing 
 
 TIP OpenWiFi is the industry's first CI/CD open source Wi-Fi eco-system. Built nightly with a strong community of Wi-Fi leaders, new features are unit tested in automated RF chambers and checked from cloud to ground for Wi-Fi performance and conformance.
 
-OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expanded selection of managed devices including smaller APs and PoE access switches. 
+OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expanded selection of managed devices including smaller APs and PoE access switches.
 
 ### High Level Features
 

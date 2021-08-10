@@ -8,40 +8,40 @@ The [wlan-cloud-ucentral-deploy repository](https://github.com/Telecominfraproje
 
 ### Volumes
 
-The deployment creates local volumes to persist mostly application and database data. In addition to that several bind mounts are created:   
-  
-`docker-compose/certs/` directory used by multiple services  
-  
+The deployment creates local volumes to persist mostly application and database data. In addition to that several bind mounts are created:
+
+`docker-compose/certs/` directory used by multiple services
+
 Service specific data directories and configuration files located under `docker-compose/` mounted into the appropriate containers.
 
 {% hint style="info" %}
-Be aware that the deployment uses bind mounts on the host to mount certificate and configuration data for the micro services and therefore these files and directories will be owned by the user in the container.   
+Be aware that the deployment uses bind mounts on the host to mount certificate and configuration data for the micro services and therefore these files and directories will be owned by the user in the container.  
 Since the files are under version control, you may have to change the ownership to your user again before pulling changes.
 {% endhint %}
 
 ### Configuration
 
-Changing image tags used in the deployments may be performed in `docker-compose/.env`. 
+Changing image tags used in the deployments may be performed in `docker-compose/.env`.
 
-By default this file specifies the micro service image tags according to the release branch you have checked out. 
+By default this file specifies the micro service image tags according to the release branch you have checked out.
 
-Additional configuration changes such as database settings or passwords are found in the various other service specific `.env` files. 
+Additional configuration changes such as database settings or passwords are found in the various other service specific `.env` files.
 
 The rest of the configuration is done through the config files located in the appropriate subdirectories of the Compose project directory.
 
 ### Ports
 
-Exposed port dependencies by application are listed below:  
-  
-`127.0.0.1:80/tcp`        - OpenWiFi-UI  
-`127.0.0.1:5912/tcp`    - rttys dev  
-`127.0.0.1:5913/tcp`    - rttys user  
-`0.0.0.0:15002/tcp`      - OpenWiFi-uCentralGW websocket  
-`127.0.0.1:16002/tcp`  - OpenWiFi-uCentralGW REST API public  
-`0.0.0.0:16003/tcp`      - OpenWiFi-uCentralGW fileupload  
-`127.0.0.1:16102/tcp`  - OpenWiFi-uCentralGW alivecheck  
-`127.0.0.1:16001/tcp`  - OpenWiFi-uCentralSec REST API public  
-`127.0.0.1:16101/tcp`  - OpenWiFi-uCentralSec alivecheck
+Exposed port dependencies by application are listed below:
+
+`127.0.0.1:80/tcp` - OpenWiFi-UI  
+`127.0.0.1:5912/tcp` - rttys dev  
+`127.0.0.1:5913/tcp` - rttys user  
+`0.0.0.0:15002/tcp` - OpenWiFi-uCentralGW websocket  
+`127.0.0.1:16002/tcp` - OpenWiFi-uCentralGW REST API public  
+`0.0.0.0:16003/tcp` - OpenWiFi-uCentralGW fileupload  
+`127.0.0.1:16102/tcp` - OpenWiFi-uCentralGW alivecheck  
+`127.0.0.1:16001/tcp` - OpenWiFi-uCentralSec REST API public  
+`127.0.0.1:16101/tcp` - OpenWiFi-uCentralSec alivecheck
 
 {% hint style="info" %}
 By default only the websocket and fileupload component of the OpenWiFi uCentralGW \(Gateway\) micro service are exposed on all interfaces. All other exposed services listen on localhost. You can change that according to your needs in the `ports` sections of`docker-compose/docker-compose.yml`.
@@ -49,9 +49,9 @@ By default only the websocket and fileupload component of the OpenWiFi uCentralG
 
 ### Certificates
 
-The repository includes a TIP Root CA Digicert-signed \(for the Gateway websocket to devices\) and a self-signed certificate \(for the REST API northbound and other components\), which you can use to create a local deployment out of the box. 
+The repository includes a TIP Root CA Digicert-signed \(for the Gateway websocket to devices\) and a self-signed certificate \(for the REST API northbound and other components\), which you can use to create a local deployment out of the box.
 
-The certificates are valid for the `*.wlan.local` domain. 
+The certificates are valid for the `*.wlan.local` domain.
 
 ## How to
 
@@ -71,12 +71,14 @@ ucentral_ucentralsec.wlan.local_1   /bin/sh -c /ucentral/ucent ...   Up      127
 ucentral_zookeeper_1                /docker-entrypoint.sh zkSe ...   Up      2181/tcp, 2888/tcp, 3888/tcp, 8080/tcp
 ```
 
-5. Since the certificate for the REST API and other components is self-signed, you have to add it to the system trust store of the containers communicating together internally via TLS. The `add-ca-cert.sh` script located in the Compose project directory does the work for you.  
-You also have to trust the self-signed REST API certificate on your local machine. To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001` and `https://ucentral.wlan.local:16002` and accepting the self-signed SSL certificate warnings \(make sure to visit both and add the exceptions\).  
-6. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `ucentral.wlan.local` which points to the address of the host the Compose deployment runs on.  
-7. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate.  
-8. Go to `http://ucentral.wlan.local` to visit the UI and login with username `tip@ucentral.com` and password `openwifi` if you didn't change the default credentials in the uCentralSec configuration.  
-9. To use the curl test scripts which are included in the  micro service repositories make sure to set the following environment variables before issuing a request:
+1. Since the certificate for the REST API and other components is self-signed, you have to add it to the system trust store of the containers communicating together internally via TLS. The `add-ca-cert.sh` script located in the Compose project directory does the work for you.  
+
+   You also have to trust the self-signed REST API certificate on your local machine. To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001` and `https://ucentral.wlan.local:16002` and accepting the self-signed SSL certificate warnings \(make sure to visit both and add the exceptions\).  
+
+2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `ucentral.wlan.local` which points to the address of the host the Compose deployment runs on.  
+3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate.  
+4. Go to `http://ucentral.wlan.local` to visit the UI and login with username `tip@ucentral.com` and password `openwifi` if you didn't change the default credentials in the uCentralSec configuration.  
+5. To use the curl test scripts which are included in the  micro service repositories make sure to set the following environment variables before issuing a request:
 
 ```text
 export UCENTRALSEC="ucentral.wlan.local:16001"

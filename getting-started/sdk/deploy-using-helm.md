@@ -17,16 +17,16 @@ There are multiple ways you can install OpenWiFi SDK with assembly charts:
 1. One way is by installing directly from the assembly chart’s repository. For that, you’ll need to install and extra Helm plugin that is used to pull the latest charts code from all the referenced micro services: [https://github.com/aslafy-z/helm-git](https://github.com/aslafy-z/helm-git).
 2. Another way, which is considered more stable, is by installing from a prepackaged bundle that is published to [https://tip.jfrog.io/ui/native/tip-wlan-cloud-ucentral-helm/](https://tip.jfrog.io/ui/native/tip-wlan-cloud-ucentral-helm/) on every official uCentral release. For this approach to work, you don’t need to install any additional plugins or dependencies, just to make sure you’ve got Helm installed on your local system.
 
-#### Directly from the Assembly repository
+### Directly from the Assembly repository
 
 1. Install the helm-git pluging according to the official documentation
-2. Run helm upgrade --install tip-ucentral git+https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/@chart?ref=main
-3. You can also reference any other open branch from the deployment repository. For example, if you want to deploy using the assembly code from the v2.0.0-rc1 branch, you can just run helm upgrade --install tip-ucentral git+https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/@chart?ref=v2.0.0-rc1
+2. Run helm upgrade --install tip-ucentral git+[https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/@chart?ref=main](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/@chart?ref=main)
+3. You can also reference any other open branch from the deployment repository. For example, if you want to deploy using the assembly code from the v2.0.0-rc1 branch, you can just run helm upgrade --install tip-ucentral git+[https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/@chart?ref=v2.0.0-rc1](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/@chart?ref=v2.0.0-rc1)
 
-#### Using the pre-built Helm package
+### Using the pre-built Helm package
 
 1. This method doesn’t require to install anything locally other than Helm
-2.  Start by adding the wlan-cloud-ucentral Helm repository to your local list of repositories by running helm repo add tip-ucentral https://tip.jfrog.io/artifactory/tip-wlan-cloud-ucentral-helm/
+2. Start by adding the wlan-cloud-ucentral Helm repository to your local list of repositories by running helm repo add tip-ucentral [https://tip.jfrog.io/artifactory/tip-wlan-cloud-ucentral-helm/](https://tip.jfrog.io/artifactory/tip-wlan-cloud-ucentral-helm/)
 3. helm upgrade --install tip-ucentral wlan-cloud-ucentral to install the latest version, or specify the release you want to install by adding the --version x.y.z flag.
 
 ## Chart configuration using the Values file

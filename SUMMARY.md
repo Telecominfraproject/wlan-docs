@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi Release 2.0](README.md)
+* [OpenWiFi Release 2.1](README.md)
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
   * [Cloud Discovery](getting-started/cloud-discovery/README.md)

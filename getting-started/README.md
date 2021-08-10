@@ -4,9 +4,9 @@ description: OpenWiFi 2.0
 
 # Getting Started
 
-OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud native and cloud agnostic Software Development Kit \(SDK\) with management and deployment support for a wide range of Access Point and PoE network switch platforms. 
+OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud native and cloud agnostic Software Development Kit \(SDK\) with management and deployment support for a wide range of Access Point and PoE network switch platforms.
 
-### Initial release 2.0 SDK includes:
+## Initial release 2.0 SDK includes:
 
 * Zero Touch Cloud Discovery
 * Firmware Management
@@ -30,6 +30,4 @@ OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud nat
 Upcoming sprint for August includes Dynamic Provisioning service support for template based device configuration.
 
 OpenWiFi 2.0 SDK is deployable as both a Docker Compose or a Helm on Kubernetes model. See [Release 2.0 SDK](sdk/) section for installation instructions.
-
-
 

@@ -4,11 +4,11 @@ description: OpenWiFi 2.0
 
 # Configuration Introduction
 
-TIP OpenWiFi devices implement support for both the air interface and systems interfaces necessary to support Passpoint® Release 2 and above. Once also termed Hotspot 2.0, IEEE 802.11u specified added air interface fields exposing Access Network Query Protocol interactions for clients to discovery Access Point capabilities. 
+TIP OpenWiFi devices implement support for both the air interface and systems interfaces necessary to support Passpoint® Release 2 and above. Once also termed Hotspot 2.0, IEEE 802.11u specified added air interface fields exposing Access Network Query Protocol interactions for clients to discovery Access Point capabilities.
 
-Wi-Fi Alliance expanded ANQP to include Online Signup \(OSU\) concepts to leverage seamless onboarding and client security for Passpoint® networks. Following on from these efforts, Wireless Broadband Alliance has provided the necessary system interfaces for identity, security, mobile offload within a common federated operator solution known as OpenRoaming. 
+Wi-Fi Alliance expanded ANQP to include Online Signup \(OSU\) concepts to leverage seamless onboarding and client security for Passpoint® networks. Following on from these efforts, Wireless Broadband Alliance has provided the necessary system interfaces for identity, security, mobile offload within a common federated operator solution known as OpenRoaming.
 
-TIP OpenWiFi enables operators to deploy the full range of Passpoint® and OpenRoaming solutions. 
+TIP OpenWiFi enables operators to deploy the full range of Passpoint® and OpenRoaming solutions.
 
 <table>
   <thead>
@@ -80,7 +80,6 @@ TIP OpenWiFi enables operators to deploy the full range of Passpoint® and OpenR
       <td style="text-align:left">OSU</td>
       <td style="text-align:left">
         <p>Online Signup - Advertised over ANQP contains:</p>
-        <p></p>
         <ul>
           <li>OSU SSID</li>
           <li>OSU URI</li>
@@ -97,6 +96,4 @@ TIP OpenWiFi enables operators to deploy the full range of Passpoint® and OpenR
     </tr>
   </tbody>
 </table>
-
- 
 
