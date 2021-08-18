@@ -85,3 +85,12 @@ export UCENTRALSEC="ucentral.wlan.local:16001"
 export FLAGS="-s --cacert <your-wlan-cloud-ucentral-deploy-location>/docker-compose/certs/restapi-ca.pem"
 ```
 
+### Upgrading Compose Deployments
+
+Stop the running containers with `docker-compose down`
+
+Check out the new branch by repeating _Step 1_ from _How to_  above for the given release and `docker-compose up -d`.   
+  
+Don’t forget to re-add the self-signed certificates to the containers with the provided script.   
+Also be aware that you may have to change back some file permissions. To obtain the most recent changes as the files are under version control, you may have to change the ownership to your user again before pulling changes.
+
