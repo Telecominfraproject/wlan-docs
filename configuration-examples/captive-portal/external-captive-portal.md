@@ -8,13 +8,13 @@ When an external access controller, such as a captive portal appliance or a Univ
 
 To configure a CoovaChilli service, OpenWiFi supports the `"third-party"` schema definition.  
 
-Through the use of third-party, many configurations are possible, for external captive portal, third-party will process a services lookup of `"chilli"` applied to an interface. 
+Through the use of third-party, many configurations are possible, for external captive portal, third-party will process a services lookup of `"chilli-redirect"` applied to an interface. 
 
 Within `"third-party"` will be the necessary CoovaChilli configuration parameters.
 
 ```text
 "third-party": {
-                "chilli": {
+                "chilli-redirect": {
                         "uamport": 3990,
                         "radiusauthport": 1812,
                         "radiusacctport": 1813,
