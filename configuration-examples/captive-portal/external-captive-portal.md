@@ -33,6 +33,8 @@ Within `"third-party"` will be the necessary CoovaChilli configuration parameter
         }
 ```
 
+### NAT Mode 
+
 Associate to an interface:
 
 ```text
@@ -58,7 +60,7 @@ Associate to an interface:
 			},
 			"ssids": [
 				{
-					"name": "chilli-redirect",
+					"name": "Hotspot SSID Name",
 					"wifi-bands": [
 						"2G", "5G"
 					],
@@ -67,4 +69,42 @@ Associate to an interface:
 			]
 		}
 ```
+
+### Bridge Mode
+
+In the above example, captive portal redirection occurs via a NAT interface on LAN side or `"downstream"` role.
+
+When a direct to WAN presentation, or bridge mode operation is desired, associate the service to the `"upstream"` interface.
+
+Associate to an interface:
+
+```text
+"interfaces": [
+		{
+			"name": "WAN",
+			"role": "upstream",
+			"services": [ "chilli-redirect" ],
+			"ethernet": [
+				{
+					"select-ports": [
+						"WAN*"
+					]
+				}
+			],
+			"ipv4": {
+				"addressing": "dynamic"
+			},
+			"ssids": [
+				{
+					"name": "Hotspot SSID Name",
+					"wifi-bands": [
+						"2G", "5G"
+					],
+					"bss-mode": "ap"
+				}
+			]
+		},
+```
+
+  
 
