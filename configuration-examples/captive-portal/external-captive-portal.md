@@ -4,7 +4,7 @@ description: OpenWiFi 2.1
 
 # External Captive Portal
 
-When an external access controller, such as a captive portal appliance or a Universal Access Method \(UAM\) redirector is required to handle subscriber login, OpenWiFi optionally supports builds that include use of CoovaChili. 
+When an external access controller, such as a captive portal appliance or a Universal Access Method \(UAM\) redirector is required to handle subscriber login, OpenWiFi optionally supports builds that include use of CoovaChili. This would be found in build profile chilli-redirect.yml.
 
 To configure a CoovaChilli service, OpenWiFi supports the `"third-party"` schema definition.  
 
