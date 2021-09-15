@@ -80,7 +80,7 @@ Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstr
             "mode": "specific mode pssl, ptcp, ssl, tcp"
             "ca-certificate": " the client cert as Base64 here ",
             "ssl-certificate": "the shared ca as Base64 here",
-            "private-key": "client key as string here" 
+            "private-key": "client key as Base64 here" 
         }
     }
 ```
