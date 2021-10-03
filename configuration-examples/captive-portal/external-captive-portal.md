@@ -6,9 +6,9 @@ description: OpenWiFi 2.1
 
 When an external access controller, such as a captive portal appliance or a Universal Access Method \(UAM\) redirector is required to handle subscriber login, OpenWiFi optionally supports builds that include use of CoovaChili. This would be found in build profile chilli-redirect.yml.
 
-To configure a CoovaChilli service, OpenWiFi supports the `"third-party"` schema definition.  
+To configure a CoovaChilli service, OpenWiFi supports the `"third-party"` schema definition.
 
-Through the use of third-party, many configurations are possible, for external captive portal, third-party will process a services lookup of `"chilli-redirect"` applied to an interface. 
+Through the use of third-party, many configurations are possible, for external captive portal, third-party will process a services lookup of `"chilli-redirect"` applied to an interface.
 
 Within `"third-party"` will be the necessary CoovaChilli configuration parameters.
 
@@ -33,44 +33,44 @@ Within `"third-party"` will be the necessary CoovaChilli configuration parameter
         }
 ```
 
-### NAT Mode 
+## NAT Mode
 
 Associate to an interface:
 
 ```text
 {
-			"name": "LAN",
-			"role": "downstream",
-			"services": [ "ssh", "chilli-redirect" ],
-			"ethernet": [
-				{
-					"select-ports": [
-						"LAN*"
-					]
-				}
-			],
-			"ipv4": {
-				"addressing": "static",
-				"subnet": "192.168.1.1/24",
-				"dhcp": {
-					"lease-first": 10,
-					"lease-count": 100,
-					"lease-time": "6h"
-				}
-			},
-			"ssids": [
-				{
-					"name": "Hotspot SSID Name",
-					"wifi-bands": [
-						"2G", "5G"
-					],
-					"bss-mode": "ap"
-				}
-			]
-		}
+            "name": "LAN",
+            "role": "downstream",
+            "services": [ "ssh", "chilli-redirect" ],
+            "ethernet": [
+                {
+                    "select-ports": [
+                        "LAN*"
+                    ]
+                }
+            ],
+            "ipv4": {
+                "addressing": "static",
+                "subnet": "192.168.1.1/24",
+                "dhcp": {
+                    "lease-first": 10,
+                    "lease-count": 100,
+                    "lease-time": "6h"
+                }
+            },
+            "ssids": [
+                {
+                    "name": "Hotspot SSID Name",
+                    "wifi-bands": [
+                        "2G", "5G"
+                    ],
+                    "bss-mode": "ap"
+                }
+            ]
+        }
 ```
 
-### Bridge Mode
+## Bridge Mode
 
 In the above example, captive portal redirection occurs via a NAT interface on LAN side or `"downstream"` role.
 
@@ -80,31 +80,29 @@ Associate to an interface:
 
 ```text
 "interfaces": [
-		{
-			"name": "WAN",
-			"role": "upstream",
-			"services": [ "chilli-redirect" ],
-			"ethernet": [
-				{
-					"select-ports": [
-						"WAN*"
-					]
-				}
-			],
-			"ipv4": {
-				"addressing": "dynamic"
-			},
-			"ssids": [
-				{
-					"name": "Hotspot SSID Name",
-					"wifi-bands": [
-						"2G", "5G"
-					],
-					"bss-mode": "ap"
-				}
-			]
-		},
+        {
+            "name": "WAN",
+            "role": "upstream",
+            "services": [ "chilli-redirect" ],
+            "ethernet": [
+                {
+                    "select-ports": [
+                        "WAN*"
+                    ]
+                }
+            ],
+            "ipv4": {
+                "addressing": "dynamic"
+            },
+            "ssids": [
+                {
+                    "name": "Hotspot SSID Name",
+                    "wifi-bands": [
+                        "2G", "5G"
+                    ],
+                    "bss-mode": "ap"
+                }
+            ]
+        },
 ```
-
-  
 

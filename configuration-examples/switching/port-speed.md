@@ -4,9 +4,9 @@ description: OpenWiFi 2.1
 
 # Port Speed
 
-Configuring port speed and operation is most commonly done with PoE access switches however the same configurations are possible for all OpenWiFi device types. 
+Configuring port speed and operation is most commonly done with PoE access switches however the same configurations are possible for all OpenWiFi device types.
 
-By default all ports attempt 1,000 Mb/s full duplex operation. 
+By default all ports attempt 1,000 Mb/s full duplex operation.
 
 ```text
  "ethernet": [

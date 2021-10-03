@@ -71,11 +71,11 @@ ucentral_ucentralsec.wlan.local_1   /bin/sh -c /ucentral/ucent ...   Up      127
 ucentral_zookeeper_1                /docker-entrypoint.sh zkSe ...   Up      2181/tcp, 2888/tcp, 3888/tcp, 8080/tcp
 ```
 
-1. Since the certificate for the REST API and other components is self-signed, you have to add it to the system trust store of the containers communicating together internally via TLS. The `add-ca-cert.sh` script located in the Compose project directory does the work for you.  
+1. Since the certificate for the REST API and other components is self-signed, you have to add it to the system trust store of the containers communicating together internally via TLS. The `add-ca-cert.sh` script located in the Compose project directory does the work for you.
 
-   You also have to trust the self-signed REST API certificate on your local machine. To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001` and `https://ucentral.wlan.local:16002` and accepting the self-signed SSL certificate warnings \(make sure to visit both and add the exceptions\).  
+   You also have to trust the self-signed REST API certificate on your local machine. To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001` and `https://ucentral.wlan.local:16002` and accepting the self-signed SSL certificate warnings \(make sure to visit both and add the exceptions\).
 
-2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `ucentral.wlan.local` which points to the address of the host the Compose deployment runs on.  
+2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `ucentral.wlan.local` which points to the address of the host the Compose deployment runs on.
 3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate.  
 4. Go to `http://ucentral.wlan.local` to visit the UI and login with username `tip@ucentral.com` and password `openwifi` if you didn't change the default credentials in the uCentralSec configuration.  
 5. To use the curl test scripts which are included in the  micro service repositories make sure to set the following environment variables before issuing a request:
@@ -89,8 +89,8 @@ export FLAGS="-s --cacert <your-wlan-cloud-ucentral-deploy-location>/docker-comp
 
 Stop the running containers with `docker-compose down`
 
-Check out the new branch by repeating _Step 1_ from _How to_  above for the given release and `docker-compose up -d`.   
-  
-Don’t forget to re-add the self-signed certificates to the containers with the provided script.   
+Check out the new branch by repeating _Step 1_ from _How to_ above for the given release and `docker-compose up -d`.
+
+Don’t forget to re-add the self-signed certificates to the containers with the provided script.  
 Also be aware that you may have to change back some file permissions. To obtain the most recent changes as the files are under version control, you may have to change the ownership to your user again before pulling changes.
 
