@@ -1,5 +1,5 @@
 ---
-description: OpenWiFi 2.1
+description: TIP OpenWiFi 2.0
 ---
 
 # Switching

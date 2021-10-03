@@ -1,5 +1,5 @@
 ---
-description: OpenWiFi 2.0
+description: TIP OpenWiFi 2.0
 ---
 
 # Passpoint®
