@@ -30,6 +30,7 @@
   * [Bridge Mode SSID](configuration-examples/basic-device-provisioning/bridge-mode-ssid.md)
   * [NAT Gateway Mode SSID](configuration-examples/basic-device-provisioning/nat-gateway-mode-ssid.md)
   * [Multi-VLAN SSID](configuration-examples/basic-device-provisioning/multi-vlan-ssid.md)
+* [Device Feature Configuration Examples](configuration-examples/device-feature-configuration-examples.md)
 * [ExpressWiFi](configuration-examples/expresswifi.md)
 * [WDS](configuration-examples/wds-topologies.md)
 * [Mesh](configuration-examples/mesh.md)
