@@ -1,5 +1,5 @@
 ---
-description: OpenWiFi 2.0 SDK
+description: TIP OpenWiFi 2.0 SDK
 ---
 
 # Deploy using Helm

@@ -2,7 +2,7 @@
 description: Telecom Infra Project OpenWiFi
 ---
 
-# OpenWiFi Release 2.1
+# OpenWiFi Release 2.2
 
 ## What is OpenWiFi?
 

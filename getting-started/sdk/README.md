@@ -1,5 +1,5 @@
 ---
-description: TIP OpenWiFi
+description: TIP OpenWiFi 2.0
 ---
 
 # Release 2.0 SDK
