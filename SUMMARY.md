@@ -31,6 +31,7 @@
   * [NAT Gateway Mode SSID](configuration-examples/basic-device-provisioning/nat-gateway-mode-ssid.md)
   * [Multi-VLAN SSID](configuration-examples/basic-device-provisioning/multi-vlan-ssid.md)
 * [Device Feature Configuration Examples](configuration-examples/device-feature-configuration-examples/README.md)
+  * [DHCP Relay](configuration-examples/device-feature-configuration-examples/dhcp-relay.md)
   * [Services](configuration-examples/device-feature-configuration-examples/services.md)
   * [Metrics](configuration-examples/device-feature-configuration-examples/metrics.md)
   * [GRE](configuration-examples/device-feature-configuration-examples/gre.md)
