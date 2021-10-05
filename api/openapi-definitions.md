@@ -6,7 +6,7 @@ description: OpenWiFi 2.0 SDK
 
 ## Where is the OpenAPI?
 
-This uses OpenAPI definition 3.0 and can be found [here](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/main/openapi/ucentral/ucentral.yaml). All endpoints begin with `/api/v1`.
+This uses OpenAPI definition 3.0 and can be found [here](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/openapi/ucentral/owgw.yaml). All endpoints begin with `/api/v1`.
 
 ## API Flow
 
