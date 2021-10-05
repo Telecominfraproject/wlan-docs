@@ -5,7 +5,7 @@ description: OpenWiFi 2.0 SDK
 # API
 
 OpenWiFi services follow the OpenAPI 3.0 definition.  
-The complete API is described here: [OpenWiFi SDK OpenAPI](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/openapi/ucentral/ucentral.yaml)
+The complete API is described here: [OpenWiFi SDK OpenAPI](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/openapi/ucentral/owgw.yaml)
 
 ## Devices
 
