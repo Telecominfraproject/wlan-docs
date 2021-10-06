@@ -123,7 +123,7 @@ Without any "interfaces" defined, the ifconfig on the switch will return eth0, l
 		{
         {
 			"name": "VLAN-30-Ports",
-			"role": "upstream",
+			"role": "downstream",
 			"services": [ "lldp" ],
             "vlan": {
                 "id": 30,
@@ -139,75 +139,75 @@ Without any "interfaces" defined, the ifconfig on the switch will return eth0, l
      }
 ```
 
-Vlan-Id 30 has been assigned to interfaces 7 and 8 on the switch. 
+Vlan-Id 30 has been assigned to interfaces 7 and 8 on the switch. Traffic is isolated among participating ports.  
 
 #### Ifconfig output example
 
 ```text
 # ifconfig
+down1v30  Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
+          inet6 addr: fe80::923c:b3ff:fe39:c0c1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:79 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:10 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:22135 (21.6 KiB)  TX bytes:1036 (1.0 KiB)
+
 eth0      Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C0  
           inet6 addr: fe80::923c:b3ff:fe39:c0c0/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1504  Metric:1
-          RX packets:24115 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:4807 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:31617 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:7479 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:3322522 (3.1 MiB)  TX bytes:865658 (845.3 KiB)
+          RX bytes:4293282 (4.0 MiB)  TX bytes:1228185 (1.1 MiB)
           Interrupt:24 Memory:c000000-bb00a3ff 
 
 lan1      Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:20544 errors:0 dropped:68 overruns:0 frame:0
-          TX packets:3061 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:27321 errors:0 dropped:69 overruns:0 frame:0
+          TX packets:5445 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:2194380 (2.0 MiB)  TX bytes:540139 (527.4 KiB)
+          RX bytes:2893034 (2.7 MiB)  TX bytes:825702 (806.3 KiB)
 
 lan7      Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C7  
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1772 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:360 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:2204 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:507 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:343681 (335.6 KiB)  TX bytes:72656 (70.9 KiB)
+          RX bytes:421385 (411.5 KiB)  TX bytes:100251 (97.9 KiB)
 
 lan8      Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C8  
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:948 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:355 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:1241 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:496 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:161130 (157.3 KiB)  TX bytes:71641 (69.9 KiB)
+          RX bytes:220496 (215.3 KiB)  TX bytes:98164 (95.8 KiB)
 
 lo        Link encap:Local Loopback  
           inet addr:127.0.0.1  Mask:255.0.0.0
           inet6 addr: ::1/128 Scope:Host
           UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:742 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:742 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:958 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:958 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:59470 (58.0 KiB)  TX bytes:59470 (58.0 KiB)
+          RX bytes:76410 (74.6 KiB)  TX bytes:76410 (74.6 KiB)
 
 up        Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
           inet6 addr: fe80::923c:b3ff:fe39:c0c1/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:20024 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:2090 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:27027 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4368 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:2254588 (2.1 MiB)  TX bytes:325852 (318.2 KiB)
+          RX bytes:3008700 (2.8 MiB)  TX bytes:587431 (573.6 KiB)
 
 up0v0     Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
           inet addr:10.75.0.154  Bcast:10.75.0.255  Mask:255.255.255.0
           inet6 addr: fe80::923c:b3ff:fe39:c0c1/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:16032 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:1615 errors:0 dropped:0 overruns:0 carrier:0
+          RX packets:22673 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3865 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:1713250 (1.6 MiB)  TX bytes:266686 (260.4 KiB)
-
-up1v30    Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
-          inet6 addr: fe80::923c:b3ff:fe39:c0c1/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1096 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:233477 (228.0 KiB)  TX bytes:816 (816.0 B)
+          RX bytes:2390361 (2.2 MiB)  TX bytes:525377 (513.0 KiB)
 ```
 
 #### Bridge Vlan Table Output
@@ -216,12 +216,85 @@ up1v30    Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1
 # bridge vlan
 port              vlan-id  
 lan1              4090 PVID Egress Untagged
-lan7              30
-lan8              30
+lan7              30 PVID Egress Untagged
+lan8              30 PVID Egress Untagged
 up                30
                   4090
-# 
+#
 ```
+
+### Assigning VLANs to Ports
+
+To define additional VLAN memberships to any port, create additional "interfaces" configuration.
+
+```text
+     {
+			"name": "VLAN-30-Ports",
+			"role": "upstream",
+			"services": [ "lldp" ],
+            "vlan": {
+                "id": 30,
+                "proto": "802.1q"
+            },
+			"ethernet": [
+				{
+					"select-ports": [
+						"WAN7", "WAN8"
+					]
+				}
+			]
+        },
+        {
+			"name": "VLAN-40-Ports",
+			"role": "upstream",
+			"services": [ "lldp" ],
+            "vlan": {
+                "id": 40,
+                "proto": "802.1q"
+            },
+			"ethernet": [
+				{
+					"select-ports": [
+						"WAN7", "WAN8"
+					]
+				}
+			]
+     }
+```
+
+#### Ifconfig and Bridge Results
+
+```text
+up1v30    Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
+          inet6 addr: fe80::923c:b3ff:fe39:c0c1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1178 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:245923 (240.1 KiB)  TX bytes:816 (816.0 B)
+
+up2v40    Link encap:Ethernet  HWaddr 90:3C:B3:39:C0:C1  
+          inet6 addr: fe80::923c:b3ff:fe39:c0c1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:106 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:34638 (33.8 KiB)  TX bytes:816 (816.0 B)
+
+
+# bridge vlan
+port              vlan-id  
+lan1              4090 PVID Egress Untagged
+lan7              30
+                  40
+lan8              30
+                  40
+up                30
+                  40
+                  4090
+```
+
+
 
 
 
