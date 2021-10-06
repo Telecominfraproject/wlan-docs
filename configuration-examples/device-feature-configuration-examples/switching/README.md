@@ -4,6 +4,10 @@ description: TIP OpenWiFi 2.0
 
 # Switching
 
+{% hint style="info" %}
+Switching Features Remain Under Test
+{% endhint %}
+
 TIP OpenWiFi use of the OpenWrt operating system combined with new virtual data plane present in all images for 2.0 major release and the uCentral data model make it possible to include PoE access switching as a cloud managed component of the OpenWiFi stack.
 
 Nightly builds include supported switch platforms. 
