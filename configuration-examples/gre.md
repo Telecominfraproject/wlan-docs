@@ -34,7 +34,8 @@ For example, to send all content of a specific SSID over an GRE tunnel, the foll
             },
             "tunnel": {
                 "proto": "gre",
-                "peer-address": "far end IP address"
+                "peer-address": "far end IP address",
+                "vlan-id": 30
             },
             "ssids": [
                 {
@@ -60,5 +61,5 @@ For example, to send all content of a specific SSID over an GRE tunnel, the foll
         },
 ```
 
-In the above example, the WAN untagged port will request DHCP in addition to present a VLAN interface with id 20 that both initiates the GRE tunnel as well as passes SSID traffic over that tunnel.
+In the above example, the WAN untagged port will request DHCP in addition to present a VLAN interface with id 20 that both initiates the GRE tunnel as well as passes SSID traffic over that tunnel. Optionally the GRE tunnel itself may also carry a VLAN encapsulated payload. In the above example a WAN presentation of VLAN interface 20 has GRE tunnel. Within the GRE tunnel on WAN interface of VLAN 20 is a GRE payload with VLAN 30 in the payload header. 
 
