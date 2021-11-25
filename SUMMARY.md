@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi](README.md)
+* [OpenWiFi 1.2](README.md)
 * [Getting Started](getting-started/README.md)
   * [Working With a Cloud Provider](getting-started/working-with-a-cloud-provider.md)
   * [Obtaining TIP OpenWiFi APs](getting-started/ordering-open-wi-fi-aps.md)
@@ -34,4 +34,3 @@
   * [Passpoint® Cloud SDK Configuration](configuration-examples/passpoint/passpoint-r-cloud-sdk-configuration/README.md)
     * [Passpoint® Postman Collection](configuration-examples/passpoint/passpoint-r-cloud-sdk-configuration/passpoint-postman-collection.md)
     * [Passpoint® via UI](configuration-examples/passpoint/passpoint-r-cloud-sdk-configuration/passpoint-via-ui.md)
-
