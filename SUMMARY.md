@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi Release 2.2](README.md)
+* [OpenWiFi Release 2.4 GA Preview](README.md)
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
   * [Cloud Discovery](getting-started/cloud-discovery/README.md)
@@ -39,13 +39,16 @@
   * [VxLAN](configuration-examples/device-feature-configuration-examples/vxlan.md)
   * [WDS](configuration-examples/device-feature-configuration-examples/wds-topologies.md)
   * [Mesh](configuration-examples/device-feature-configuration-examples/mesh.md)
+  * [QoS](configuration-examples/device-feature-configuration-examples/qos.md)
+  * [Dynamic Air Time Fairness](configuration-examples/device-feature-configuration-examples/dynamic-air-time-fairness.md)
+  * [Dynamic Subscriber QoS](configuration-examples/device-feature-configuration-examples/dynamic-subscriber-qos.md)
   * [Captive Portal](configuration-examples/device-feature-configuration-examples/captive-portal/README.md)
     * [External Captive Portal](configuration-examples/device-feature-configuration-examples/captive-portal/external-captive-portal.md)
   * [ExpressWiFi](configuration-examples/device-feature-configuration-examples/expresswifi.md)
   * [Roaming RRM and SON](configuration-examples/device-feature-configuration-examples/roaming-rrm-and-son.md)
   * [RADIUS Authenticated SSID](configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/README.md)
     * [Dynamic VLANs with RADIUS](configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/dynamic-vlans-with-radius.md)
-  * [Multi-PSK \(MDU Shared Key\)](configuration-examples/device-feature-configuration-examples/multi-psk-mdu-multiple-shared-key.md)
+  * [Multi-PSK (MDU Shared Key)](configuration-examples/device-feature-configuration-examples/multi-psk-mdu-multiple-shared-key.md)
   * [Dynamic Air-Time Policy](configuration-examples/device-feature-configuration-examples/dynamic-air-time-policy.md)
   * [Passpoint®](configuration-examples/device-feature-configuration-examples/passpoint-r1/README.md)
     * [Configuration Introduction](configuration-examples/device-feature-configuration-examples/passpoint-r1/configuration-introduction.md)
@@ -54,4 +57,3 @@
   * [Switching](configuration-examples/device-feature-configuration-examples/switching/README.md)
     * [Port Speed](configuration-examples/device-feature-configuration-examples/switching/port-speed.md)
   * [P4](configuration-examples/device-feature-configuration-examples/p4.md)
-

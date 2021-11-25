@@ -9,13 +9,12 @@ Release 2.0 SDK offers a number of ways to consume OpenWiFi. Available as a sing
 Features of the 2.0 SDK at July MVP include:
 
 * RBAC based security framework
-* OpenAPI compliant Northbound 
+* OpenAPI compliant Northbound&#x20;
 * Kafka Message Bus
 * PGSql HA Cluster
-* Firmware Manager 
-* Central Logging Dashboard 
-* User Interface 
+* Firmware Manager&#x20;
+* Central Logging Dashboard&#x20;
+* User Interface&#x20;
 * Docker Compose & Helm DevOps Deployment Automation
 
-![OpenWiFi 2.0 SDK](../../.gitbook/assets/image%20%2835%29.png)
-
+![OpenWiFi 2.0 SDK](<../../.gitbook/assets/image (31).png>)
