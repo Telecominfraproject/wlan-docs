@@ -57,3 +57,14 @@
   * [Switching](configuration-examples/device-feature-configuration-examples/switching/README.md)
     * [Port Speed](configuration-examples/device-feature-configuration-examples/switching/port-speed.md)
   * [P4](configuration-examples/device-feature-configuration-examples/p4.md)
+
+## Release Notes
+
+* [Features](release-notes/features.md)
+* [Security](release-notes/security.md)
+* [Issues](release-notes/issues.md)
+
+## Performance
+
+* [AP NOS](performance/ap-nos.md)
+* [SDK](performance/sdk.md)
