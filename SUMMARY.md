@@ -62,7 +62,7 @@
 
 * [Features](release-notes/features.md)
 * [Security](release-notes/security.md)
-* [Issues](release-notes/issues.md)
+* [Resolved Issues](release-notes/resolved-issues.md)
 
 ## Performance
 
