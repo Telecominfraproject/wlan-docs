@@ -17,7 +17,7 @@ The following list of major security enhancements have been implemented within t
 | [WIFI-5727](https://telecominfraproject.atlassian.net/browse/WIFI-5727)               | Weak UUID generation with reduced entropy                                                                                            | Hardened UUID by increasing entropy                                                              |
 | [WIFI-5772](https://telecominfraproject.atlassian.net/browse/WIFI-5772?src=confmacro) | RTTY-enabled APs can be overtaken by an adversary accessing RTTYS dedicated management interface using default hardcoded credentials | Hardened RTTYS access by randomizing default credentials at deployment                           |
 
-### Major known security issues <a href="#major-known-security-issues" id="major-known-security-issues"></a>
+### Known security issues <a href="#major-known-security-issues" id="major-known-security-issues"></a>
 
 * [WIFI-5770](https://telecominfraproject.atlassian.net/browse/WIFI-5770) - RTTYS version used has security flaws which are to be resolved in next releases
 

@@ -5,9 +5,7 @@
 * [Getting Started](getting-started/README.md)
   * [Cloud Discovery](getting-started/cloud-discovery/README.md)
     * [Discovery without Cloud](getting-started/cloud-discovery/discovery-without-cloud.md)
-  * [Release 2.0 SDK](getting-started/sdk/README.md)
-    * [Deploy using Docker Compose](getting-started/sdk/deploy-using-docker-compose.md)
-    * [Deploy using Helm](getting-started/sdk/deploy-using-helm.md)
+  * [Release 2.0 SDK](getting-started/sdk.md)
   * [Access Points](getting-started/access-points/README.md)
     * [Local Device Settings](getting-started/access-points/local-device-settings.md)
 * [Provisioning](provisioning/README.md)
@@ -23,6 +21,12 @@
   * [OpenAPI Definitions](api/openapi-definitions.md)
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
+
+## SDK Installation - WIP
+
+* [Overview](sdk-installation-wip/overview.md)
+* [Deploy using Docker Compose](sdk-installation-wip/deploy-using-docker-compose.md)
+* [Deploy using Helm](sdk-installation-wip/deploy-using-helm.md)
 
 ## Configuration Examples
 
@@ -68,3 +72,7 @@
 
 * [AP NOS](performance/ap-nos.md)
 * [SDK](performance/sdk.md)
+
+## Troubleshooting
+
+* [Untitled](troubleshooting/untitled.md)

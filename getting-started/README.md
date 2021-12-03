@@ -4,13 +4,13 @@ description: TIP OpenWiFi 2.0
 
 # Getting Started
 
-OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud native and cloud agnostic Software Development Kit \(SDK\) with management and deployment support for a wide range of Access Point and PoE network switch platforms.
+OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud native and cloud agnostic Software Development Kit (SDK) with management and deployment support for a wide range of Access Point and PoE network switch platforms.
 
 ## Initial release 2.0 SDK includes:
 
 * Zero Touch Cloud Discovery
 * Firmware Management
-* User Interface 
+* User Interface&#x20;
   * Device List
   * Device Reboot
   * Device LED Blink
@@ -20,27 +20,27 @@ OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud nat
   * Device Remote TTY shell
   * Remote Wi-Fi Scan
   * Associations
-    * UE \(Wi-Fi Clients\)
+    * UE (Wi-Fi Clients)
     * Mesh and WDS Clients
     * MCS, NSS, RSSI, Channel, SSID, Tx/Rx
-  * Device Health Check 
+  * Device Health Check&#x20;
   * Interface Statistics
   * Device Command History
 
 Upcoming sprint for August includes Dynamic Provisioning service support for template based device configuration.
 
-OpenWiFi 2.0 SDK is deployable as both a Docker Compose or a Helm on Kubernetes model. See [Release 2.0 SDK](sdk/) section for installation instructions.
+OpenWiFi 2.0 SDK is deployable as both a Docker Compose or a Helm on Kubernetes model. See [Release 2.0 SDK](sdk.md) section for installation instructions.
 
-## New in this Release 
+## New in this Release&#x20;
 
 * Firmware
   * Basic Features for OpenWiFi Switching
-  * Passpoint 
+  * Passpoint&#x20;
     * NAPTR Functionality
     * Proxy Static Routing
     * HSP Auth / Acc Service Discovery
-    * Last Resort Proxy 
-    * RADIUS OpenRoaming Compliance 
+    * Last Resort Proxy&#x20;
+    * RADIUS OpenRoaming Compliance&#x20;
   * External 3rd Party Captive Portal Redirect
   * Burst Rate Ad-Hoc Telemetry
   * Static Routing
@@ -49,11 +49,11 @@ OpenWiFi 2.0 SDK is deployable as both a Docker Compose or a Helm on Kubernetes 
   * Timestamp on Health Check messages
   * L2 DHCP Relay
   * Station Association Idle and Session time
-* SDK
+*   SDK
 
-  * OpenWiFi Provisioning Service
-  * OpenWiFi Inventory Service
-  * Multi Tenant Support 
-  * Service Group - Venues
-  * Logical Regions - Entities
+    * OpenWiFi Provisioning Service
+    * OpenWiFi Inventory Service
+    * Multi Tenant Support&#x20;
+    * Service Group - Venues
+    * Logical Regions - Entities
 
