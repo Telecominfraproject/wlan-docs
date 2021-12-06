@@ -22,11 +22,11 @@
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
 
-## SDK Installation - WIP
+## SDK Installation
 
-* [Overview](sdk-installation-wip/overview.md)
-* [Deploy using Docker Compose](sdk-installation-wip/deploy-using-docker-compose.md)
-* [Deploy using Helm](sdk-installation-wip/deploy-using-helm.md)
+* [Overview](sdk-installation/overview.md)
+* [Deploy using Docker Compose](sdk-installation/deploy-using-docker-compose.md)
+* [Deploy using Helm](sdk-installation/deploy-using-helm.md)
 
 ## Configuration Examples
 
