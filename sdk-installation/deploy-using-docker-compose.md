@@ -82,16 +82,11 @@ The certificates are valid for the `*.wlan.local` domain.
 ## How to
 
 1. First you'll have to [install Docker Compose](https://docs.docker.com/compose/install/) according to your platform specific instructions. After that clone the repository with `git clone https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy`. &#x20;
-2. The Docker Compose uCentral micro service configs use `openwifi.wlan.local` as a hostname, so make sure you add an entry in your hosts file (or in your local DNS solution) which points to `127.0.0.1` or whatever the IP of the host running the deployment is. &#x20;
+2. The Docker Compose uCentral micro service configs use `openwifi.wlan.local` as a hostname, so make sure you add an entry in your hosts file (or in your local DNS solution) which points to `127.0.0.1` or the IP of the host running the SDK. &#x20;
 3. Switch to the Compose project directory with `cd docker-compose/`. &#x20;
-4. Set the default user and temporary password by following instruction of security service [here](https://github.com/Telecominfraproject/wlan-cloud-ucentralsec/tree/main#default-username-and-password).
-5.  Edit owsec.env and ensure the following variable contains the username and shasum from step 4:
-
-    ```
-    AUTHENTICATION_DEFAULT_USERNAME=##username from step 4##
-    AUTHENTICATION_DEFAULT_PASSWORD=##hash from step 4##
-    ```
-6. Spin up the deployment with `docker-compose up -d`. If your deployment was successfully created, you should see the following output with `docker-compose ps`:
+4. Default user is: tip@ucentral.com and password is: openwifi&#x20;
+   1. Service enforces a password change on first login
+5. Initialize the deployment with `docker-compose up -d`. If your deployment was successfully created, you should see the following output with `docker-compose ps`:
 
 ```
           Name                      Command               State                                                   Ports
@@ -108,11 +103,12 @@ openwifi_rttys_1       /rttys/rttys                     Up      0.0.0.0:5912->59
 ```
 
 1. Since the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required. \
-   To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001 and ports :16002 : 16003 :16004 and :16005` \
+   To achieve this, either add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting each of the following URLs (one per port) : \
+   `https://ucentral.wlan.local:16001 and ports :16002 : 16003 :16004 and :16005` \
    When navigating accept the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
 2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `openwifi.wlan.local` which points to the address of the host the Compose deployment runs on.
 3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate. &#x20;
-4. Go to `https://openwifi.wlan.local` to visit the UI and login with default username and password. You will now be prompted to change this default password to something more secured. &#x20;
+4. Navigate in a web browser to `https://openwifi.wlan.local` to access the UI and login with default username and password. You will now be prompted to change this default password to something more secured. &#x20;
 
 ![
 ](<../.gitbook/assets/Screen Shot 2021-12-08 at 2.14.02 PM.png>)
