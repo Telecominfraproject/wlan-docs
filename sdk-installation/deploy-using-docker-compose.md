@@ -107,13 +107,17 @@ openwifi_owsec_1       /docker-entrypoint.sh /ope ...   Up      0.0.0.0:16001->1
 openwifi_rttys_1       /rttys/rttys                     Up      0.0.0.0:5912->5912/tcp,:::5912->5912/tcp, 0.0.0.0:5913->5913/tcp,:::5913->5913/tcp
 ```
 
-1.  Since the certificate for the REST API and other components is self-signed, you have to add it to the system trust store of the containers communicating together internally via TLS. The `add-ca-cert.sh` script located in the Compose project directory does the work for you.
-
-    You also have to trust the self-signed REST API certificate on your local machine. To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001` and `https://ucentral.wlan.local:16002` and accepting the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
+1. Since the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required. \
+   To achieve that you either have to add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting `https://ucentral.wlan.local:16001 and ports :16002 : 16003 :16004 and :16005` \
+   When navigating accept the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
 2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `openwifi.wlan.local` which points to the address of the host the Compose deployment runs on.
 3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate. &#x20;
-4. Go to `http://openwifi.wlan.local` to visit the UI and login with default username and password. You will now be prompted to change this default password to something more secured. &#x20;
-5. To use the curl test scripts which are included in the  micro service repositories make sure to set the following environment variables before issuing a request:
+4. Go to `https://openwifi.wlan.local` to visit the UI and login with default username and password. You will now be prompted to change this default password to something more secured. &#x20;
+
+![
+](<../.gitbook/assets/Screen Shot 2021-12-08 at 2.14.02 PM.png>)
+
+1. To use the curl test scripts which are included in the  micro service repositories make sure to set the following environment variables before issuing a request:
 
 ```
 export UCENTRALSEC="openwifi.wlan.local:16001"
