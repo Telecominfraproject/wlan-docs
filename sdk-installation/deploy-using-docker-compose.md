@@ -4,21 +4,28 @@ description: TIP OpenWiFi 2.0 SDK
 
 # Deploy using Docker Compose
 
-The docker-compose  [directory](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose) within the deploy repository contains all the relevant files for various modes of SDK.&#x20;
+The docker-compose [directory](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose) within the deploy repository contains all the relevant files for various modes of SDK.&#x20;
 
 ### Modes&#x20;
 
 The following two modes are currently supported by docker-compose:
 
-*   Deployments without a Load Balancer
+*   **Deployments without a Load Balancer**
 
-    This model is suitable for scenarios where there are no additional needs on handling number of APs. This model contains single instances of SDK micro-services. A single local docker-compose deployment performance is listed [here](../performance/sdk.md). Additionally this deployment includes options to use either self-signed certificates or user provided certificates: &#x20;
+    This model contains single instances of SDK micro-services. Non-Load Balancer is suitable for scenarios where load given number of APs is below 10,000 or design for network availability is not required. \
+    \
+    A single local docker-compose deployment performance is listed [here](../performance/sdk.md). Additionally this deployment includes options to use either self-signed certificates or user provided certificates: &#x20;
 
     * [Non-LB deployment with self-signed certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-self-signed-certificates)
-    * [Non-LB deployment with own certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-own-certificates)
-*   Deployments with a Load Balancer
+    * [Non-LB deployment with own certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-own-certificates)\
 
-    This model is suitable for deployments where there is a need to scale performance and/or use Letsencrypt certificates for northbound service interactions. This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](../performance/sdk.md).  The repository contains the instructions here:&#x20;
+*   **Deployments with a Load Balancer**
+
+    This model is suitable for deployments where there is a need to scale performance and/or use Letsencrypt certificates for northbound service interactions. \
+    \
+    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](../performance/sdk.md).  \
+    \
+    The repository contains the instructions here:&#x20;
 
     * [LB deployment with self-signed certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#lb-deployment-with-self-signed-certificates)
     * [LB deployment with Letsencrypt certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#lb-deployment-with-letsencrypt-certificates)
@@ -50,9 +57,11 @@ Be aware that the deployment uses bind mounts on the host to mount certificate a
 Since the files are under version control, you may have to change the ownership to your user again before pulling changes.
 {% endhint %}
 
-### Configuration
+### Configuration Variables
 
-This configuration information specific to the deployment is kept in environment files per microservices. These files are: owgw.env, owgw-ui.env, owsec.env, owfms.env, owprov.env and owprov-ui.env. These env files are used to generated the runtime configuration(properties) file when no configuration is found in their respective {microservices}-data directory. &#x20;
+Localizing the installation to the production environment is done through configuration information environment files per microservice. These files are: owgw.env, owgw-ui.env, owsec.env, owfms.env, owprov.env and owprov-ui.env. \
+\
+These env files are used to generate runtime configuration (properties) file when no configuration is found in their respective {microservices}-data directory. &#x20;
 
 ### Ports
 
@@ -73,11 +82,11 @@ Exposed port dependencies by application are listed below:
 By default only the websocket and fileupload component of the OpenWiFi uCentralGW (Gateway) micro service are exposed on all interfaces. All other exposed services listen on localhost. You can change that according to your needs in the `ports` sections of`docker-compose/docker-compose.yml`.
 {% endhint %}
 
-### Certificates
+### Default Certificates
 
-The repository includes a TIP Root CA Digicert-signed (for the Gateway websocket to devices) and a self-signed certificate (for the REST API northbound and other components), which you can use to create a local deployment out of the box.
+When cloning the repository, by default the southbound websocket certificate signed by TIP Root CA is provided for the \*.wlan.local domain. Additionally a self-signed certificate for the northbound REST API is present. These enable creating a local deployment out of the box. Production deployments will replace both the southbound websocket and northbound API certificates.&#x20;
 
-The certificates are valid for the `*.wlan.local` domain.
+The supplied certificates are valid for the `*.wlan.local` domain.
 
 ## How to
 
@@ -102,12 +111,15 @@ openwifi_owsec_1       /docker-entrypoint.sh /ope ...   Up      0.0.0.0:16001->1
 openwifi_rttys_1       /rttys/rttys                     Up      0.0.0.0:5912->5912/tcp,:::5912->5912/tcp, 0.0.0.0:5913->5913/tcp,:::5913->5913/tcp
 ```
 
-1. Since the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required. \
-   To achieve this, either add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting each of the following URLs (one per port) : \
+1. When the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required. \
+   \
+   Add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting each of the following URLs (one per port) : \
    `https://ucentral.wlan.local:16001 and ports :16002 : 16003 :16004 and :16005` \
-   When navigating accept the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
-2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `openwifi.wlan.local` which points to the address of the host the Compose deployment runs on.
-3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate. &#x20;
+   \
+   Using the browser, accept the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
+2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `openwifi.wlan.local` which points to the address of the host the SDK deployment runs on.
+3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate.  \
+   This step is necessary for rtty features and only required when using self-signed test deployment.&#x20;
 4. Navigate in a web browser to `https://openwifi.wlan.local` to access the UI and login with default username and password. You will now be prompted to change this default password to something more secured. &#x20;
 
 ![
