@@ -8,6 +8,7 @@
   * [Release 2.0 SDK](getting-started/sdk.md)
   * [Access Points](getting-started/access-points/README.md)
     * [Local Device Settings](getting-started/access-points/local-device-settings.md)
+  * [Repositories](getting-started/repositories.md)
 * [Provisioning](provisioning/README.md)
   * [Data Model Introduction](provisioning/data-model-introduction.md)
   * [Creating a Configuration](provisioning/creating-a-configuration.md)
