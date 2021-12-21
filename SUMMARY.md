@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi Release 2.4 GA Preview](README.md)
+* [OpenWiFi Release 2.4 GA](README.md)
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Getting Started](getting-started/README.md)
   * [Cloud Discovery](getting-started/cloud-discovery/README.md)
@@ -36,6 +36,7 @@
   * [NAT Gateway Mode SSID](configuration-examples/basic-device-provisioning/nat-gateway-mode-ssid.md)
   * [Multi-VLAN SSID](configuration-examples/basic-device-provisioning/multi-vlan-ssid.md)
 * [Device Feature Configuration Examples](configuration-examples/device-feature-configuration-examples/README.md)
+  * [Zero Touch Provisioning](configuration-examples/device-feature-configuration-examples/zero-touch-provisioning.md)
   * [DHCP Relay](configuration-examples/device-feature-configuration-examples/dhcp-relay.md)
   * [Services](configuration-examples/device-feature-configuration-examples/services.md)
   * [Metrics](configuration-examples/device-feature-configuration-examples/metrics.md)
@@ -61,7 +62,6 @@
     * [Passpoint® Configuration](configuration-examples/device-feature-configuration-examples/passpoint-r1/passpoint-r-configuration.md)
   * [Switching](configuration-examples/device-feature-configuration-examples/switching/README.md)
     * [Port Speed](configuration-examples/device-feature-configuration-examples/switching/port-speed.md)
-  * [P4](configuration-examples/device-feature-configuration-examples/p4.md)
 
 ## Release Notes
 
