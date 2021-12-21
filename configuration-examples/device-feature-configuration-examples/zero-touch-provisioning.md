@@ -35,7 +35,7 @@ Onboarding is a local EAP-TLS based authentication service available on any Open
    * Any radio(s) may be used
 3. Firstboot devices with no WAN wired port detected will
    * Enable all radios
-   * Scan for SSID "OpenWifi-onboardin"
+   * Scan for SSID "OpenWifi-onboarding"
    * Associate and when challenged use TIP certificate as identity
    * Obtain IP connection using DHCP over wireless interface association to onboarding AP
    * Connect to SDK, obtain provisioning from OpenWiFi Gateway service
