@@ -14,7 +14,7 @@ The following two modes are currently supported by docker-compose:
 
     This model contains single instances of SDK micro-services. Non-Load Balancer is suitable for scenarios where load given number of APs is below 10,000 or design for network availability is not required. \
     \
-    A single local docker-compose deployment performance is listed [here](../performance/sdk.md). Additionally this deployment includes options to use either self-signed certificates or user provided certificates: &#x20;
+    A single local docker-compose deployment performance is listed [here](broken-reference). Additionally this deployment includes options to use either self-signed certificates or user provided certificates: &#x20;
 
     * [Non-LB deployment with self-signed certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-self-signed-certificates)
     * [Non-LB deployment with own certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-own-certificates)\
@@ -23,7 +23,7 @@ The following two modes are currently supported by docker-compose:
 
     This model is suitable for deployments where there is a need to scale performance and/or use Letsencrypt certificates for northbound service interactions. \
     \
-    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](../performance/sdk.md).  \
+    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](broken-reference).  \
     \
     The repository contains the instructions here:&#x20;
 

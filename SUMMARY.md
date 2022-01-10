@@ -68,8 +68,3 @@
 * [Features](release-notes/features.md)
 * [Security](release-notes/security.md)
 * [Resolved Issues](release-notes/resolved-issues.md)
-
-## Performance
-
-* [AP NOS](performance/ap-nos.md)
-* [SDK](performance/sdk.md)
