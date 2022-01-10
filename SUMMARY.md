@@ -73,7 +73,3 @@
 
 * [AP NOS](performance/ap-nos.md)
 * [SDK](performance/sdk.md)
-
-## Troubleshooting
-
-* [Untitled](troubleshooting/untitled.md)
