@@ -114,7 +114,7 @@ openwifi_rttys_1       /rttys/rttys                     Up      0.0.0.0:5912->59
 1. When the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required. \
    \
    Add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting each of the following URLs (one per port) : \
-   `https://ucentral.wlan.local:16001 and ports :16002 : 16003 :16004 and :16005` \
+   `https://openwifi.wlan.local:16001 and ports :16002 :16003 :16004 and :16005` \
    \
    Using the browser, accept the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
 2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `openwifi.wlan.local` which points to the address of the host the SDK deployment runs on.
