@@ -68,3 +68,7 @@
 * [Features](release-notes/features.md)
 * [Security](release-notes/security.md)
 * [Resolved Issues](release-notes/resolved-issues.md)
+
+## Test Automation Framework
+
+* [Overview](test-automation-framework/overview.md)
