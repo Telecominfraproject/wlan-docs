@@ -4,12 +4,12 @@ description: OpenWiFi 2.0 SDK
 
 # API
 
-OpenWiFi services follow the OpenAPI 3.0 definition.  
-The complete API is described here: [OpenWiFi SDK OpenAPI](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/openapi/ucentral/owgw.yaml)
+OpenWiFi services follow the OpenAPI 3.0 definition.\
+The complete API is described here: [OpenWiFi SDK OpenAPI](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/openapi/owgw.yaml)
 
 ## Devices
 
-OpenWiFi devices are Access Points or Switches \(and other forms in the future\), that support the uCentral configuration schema. Devices contact a controller using the uCentral protocol.
+OpenWiFi devices are Access Points or Switches (and other forms in the future), that support the uCentral configuration schema. Devices contact a controller using the uCentral protocol.
 
 ## Communication
 
@@ -39,7 +39,7 @@ Device capabilities are uploaded to the Gateway when the device performs its ini
 
 ### Command Queue
 
-The Gateway will send commands to the devices. These commands are kept in a table and are sent at the appropriate time or immediately when the device connects.  
+The Gateway will send commands to the devices. These commands are kept in a table and are sent at the appropriate time or immediately when the device connects.\
 For example, you could ask a device to change its configuration, however it might be unreachable. Upon next device connection, this configure command will be sent. The list of commands is retrieved using the `/commands` endpoint.
 
 ### Commands
@@ -58,4 +58,3 @@ For each device, a number of collections are collected and kept in the database.
 ## The API is for an operator
 
 This API is meant for an operator who would have to help a subscriber in configuring devices, reboot, manage firmware, etc.
-
