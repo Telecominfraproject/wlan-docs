@@ -1,6 +1,6 @@
-# Security
+# Security Service
 
-{% swagger src="../.gitbook/assets/owsec.yaml" path="undefined" method="undefined" %}
+{% swagger src="../.gitbook/assets/owsec.yaml" path="/oauth2" method="post" %}
 [owsec.yaml](../.gitbook/assets/owsec.yaml)
 {% endswagger %}
 
