@@ -22,6 +22,7 @@
   * [Firmware](user-interface/firmware.md)
 * [API](api/README.md)
   * [OpenAPI Definitions](api/openapi-definitions.md)
+  * [Security](api/security.md)
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
 
