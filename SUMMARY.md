@@ -24,6 +24,7 @@
   * [OpenAPI Definitions](api/openapi-definitions.md)
   * [Security Service](api/security-service.md)
   * [Gateway Service](api/gateway-service.md)
+  * [Firmware Management Service](api/firmware-management-service.md)
 * [Monitoring](monitoring/README.md)
   * [ELK Integration](monitoring/elk-integration.md)
 
