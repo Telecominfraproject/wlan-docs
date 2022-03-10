@@ -1,0 +1,113 @@
+{
+	"uuid": 2,
+	"unit": {
+		"location": "TIP Lab Network",
+		"timezone": "EST+5EDT,M3.2.0/2,M11.1.0/2"
+	},
+	"radios": [
+		{
+			"band": "5G",
+			"country": "CA",
+			"channel": "auto",
+			"channel-mode": "HE",
+			"channel-width": 80,
+			"require-mode": "HT",
+			"rates": {
+				"beacon": 6000,
+				"multicast": 24000
+			}
+		},
+		{
+			"band": "2G",
+			"country": "CA",
+			"channel": 11,
+			"channel-mode": "HE",
+			"channel-width": 80,
+			"require-mode": "HT",
+			"rates": {
+				"beacon": 6000,
+				"multicast": 24000
+			}
+		}
+	],
+    	"interfaces": [
+		{
+			"name": "WAN",
+			"role": "upstream",
+			"services": [ "lldp", "dhcp-snooping" ],
+			"ethernet": [
+				{
+					"select-ports": [
+						"WAN*"
+					]
+				}
+			],
+			"ipv4": {
+				"addressing": "dynamic"
+			}
+        },
+                   {
+                "name": "WAN100",
+                "role": "upstream",
+			          "services": [ "lldp", "dhcp-snooping" ],                
+                "vlan": {
+                    "id": 100
+                },
+                "ethernet": [
+                    {
+                        "select-ports": [
+                            "WAN*"
+                        ]
+                    }
+                ],   
+                "ssids": [
+                    {
+                        "name": "TIP OpenWiFi",
+                        "wifi-bands": [
+                            "2G", "5G"
+                        ],
+                        "bss-mode": "ap",
+                        "encryption": {
+                            "proto": "psk2",
+                            "key": "OpenWiFi",
+                            "ieee80211w": "optional"
+                        },                   
+                        "services": [ "wifi-frames"]
+                    }
+                ]
+            }
+        ],
+            "metrics": {
+                "statistics": {
+                    "interval": 120,
+                    "types": [ "ssids", "lldp", "clients" ]
+                },
+                "health": {
+                    "interval": 120
+                },
+                "wifi-frames": {
+                    "filters": [ "probe",
+                        "auth",
+                        "assoc",
+                        "disassoc",
+                        "deauth",
+                        "local-deauth",
+                        "inactive-deauth",
+                        "key-mismatch",
+                        "beacon-report",
+                        "radar-detected"]
+                },
+                "dhcp-snooping": {
+                    "filters": [ "ack", "discover", "offer", "request", "solicit", "reply", "renew" ]
+                }        
+            },
+            "services": {     
+                "lldp": {
+                    "describe": "TIP OpenWiFi",
+                    "location": "LivingLab"
+                },
+                "ssh": {
+                    "port": 22
+                }
+            }
+}
