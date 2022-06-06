@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi Release 2.5](README.md)
+* [OpenWiFi Release 2.5 GA](README.md)
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Device Partner Information](device-partner-information.md)
 * [Cloud Partner Information](cloud-partner-information.md)
