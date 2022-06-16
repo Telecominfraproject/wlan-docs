@@ -4,9 +4,9 @@
 
 ## Guides
 
-* [Creating your first project](guides/creating-your-first-project.md)
-* [Creating your first task](guides/creating-your-first-task.md)
-* [Advanced permissions](guides/advanced-permissions.md)
+* [Sample](guides/sample.md)
+* [Sample](guides/sample-1.md)
+* [Sample](guides/sample-2.md)
 
 ## Fundamentals
 
