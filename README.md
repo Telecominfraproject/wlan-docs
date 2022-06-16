@@ -1,123 +1,71 @@
----
-description: Telecom Infra Project Open WiFi
----
+# What is MyProduct?
 
-# OpenWiFi
+{% hint style="info" %}
+**Good to know:** providing a brief overview of your product and its core use cases is a great place to start with product docs. Your product might seem obvious to you – you made it! However, to others, even folks who are trying your product after reading your site or getting a sales demo, it can still be unclear. This is your chance to clarify your product and set the right expectations!
+{% endhint %}
 
-## What is OpenWiFi?
+Here are a couple of examples of succinct overviews from products with really great docs:
 
-TIP OpenWiFi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to OpenWiFi creates an open source disaggregated technology stack without any vendor lock in. OpenWiFi offers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly.
+> Loom is a video messaging tool that helps you get your message across through instantly shareable videos.
+>
+> With Loom, you can record your camera, microphone, and desktop simultaneously. Your video is then instantly available to share through Loom's patented technology.
+>
+> — From the [Loom Docs](https://support.loom.com/hc/en-us/articles/360002158057-What-is-Loom-)
 
-![TIP Open Wi-Fi 1.x Solution](.gitbook/assets/image%20%285%29.png)
+> The Mailchimp Marketing API provides programmatic access to Mailchimp data and functionality, allowing developers to build custom features to do things like sync email activity and campaign analytics with their database, manage audiences and campaigns, and more.
+>
+> — From the [Mailchimp Marketing API docs](https://mailchimp.com/developer/marketing/docs/fundamentals/)
 
-TIP OpenWiFi is the industry's first CI/CD open source Wi-Fi eco-system. Built nightly with a strong community of Wi-Fi leaders, new features are unit tested in automated RF chambers and checked from cloud to ground for Wi-Fi performance and conformance.
+## Getting Started
 
-### High Level Features
+**Got 2 minutes?** Check out a video overview of our product:
 
-#### Cloud SDK in OpenWiFi offers:
+{% embed url="https://www.loom.com/share/3bfa83acc9fd41b7b98b803ba9197d90" %}
 
-* Zero Touch Provisioning 
-* Firmware Management
-* Integration Northbound Interface \(NBI\) RESTful
-* Data model driven API 
-* Template based device provisioning with RADIUS profile management 
-* Advanced RF control with RRM  
+{% hint style="info" %}
+**Good to know:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at [Loom](https://loom.com) as a perfect example of a succinct feature overview.
+{% endhint %}
 
-#### Each OpenWiFi AP offers:
+### Guides: Jump right in
 
-* Multiple topologies including Bridging, Virtual LAN, NAT Gateway, Local Breakout, Overlay 
-* Multiple authentications WPA2, WPA3, Enterprise Radius models
-* Passpoint® Release 2 and above
-* Zero Touch Provisioning 
-* Captive Portal
+Follow our handy guides to get started on the basics as quickly as possible:
 
-**OpenWiFi AP Detail List:**
+{% content-ref url="guides/creating-your-first-project.md" %}
+[creating-your-first-project.md](guides/creating-your-first-project.md)
+{% endcontent-ref %}
 
-* Wi-Fi 4 \(n\) Wi-Fi 5 \(ac\) Wi-Fi 6 \(ax\) 
-* Dual Bank Bootloader
-* Multi-SSID per Radio
-* SSID Authentications: WPA/WPA2/WPA3 - Mixed, Personal, Enterprise
-* Un-Authorized Device Control
-* 802.1Q VLAN per SSID 
-* 802.1d Bridge Mode per SSID
-* RADIUS Accounting, Interim-Accounting, NAS-IP, CUI
-* Network Address Translation Gateway Mode Operation
-* Network Time Protocol Client
-* Management VLAN 
-* Wi-Fi 6 \(ax\) Specific
-  * BSS Coloring
-  * UL/DL OFDMA sub-carrier allocation
-  * Channel Switch Announcement
-* Wi-Fi General Features
+{% content-ref url="guides/creating-your-first-task.md" %}
+[creating-your-first-task.md](guides/creating-your-first-task.md)
+{% endcontent-ref %}
 
-  * WMM® - Wi-Fi Multi Media
-    * UAPSD Procedures \(Unscheduled Power Save\) 
-    * Upstream/Downstream Queues & L3 DSCP
-    * Over The Air QoS EDCH Procedures
-  * WMM-Admission Control \(AC\) 
-  * WMM-Power Save \(PS\)
-  * Wi-Fi Optimized Connectivity
-    * \(ai\) Fast Initial Link Support
-  * Wi-Fi Agile Multiband
-    * \(k\) Client Radio Resource Management - Directed Steering
-    * \(v\) Network Assisted Roaming
-    * \(r\) Fast BSS Transition
-  * Protected Management Frames \(PMF\) 
-    * \(w\) Management Frame Encryption
-  * Channel Switch Announcement \(CSA\)
-  * Dynamic Frequency Selection & Transmit Power Control \(DFS/TPC\)
-  * Beacon Rate 
-  * Min Client Noise Immunity
-  * Basic Rate Control
-  * De-Auth RSSI Control
-  * Burst Beacon Support
-  * Per SSID Client Rate Limiting
-  * Promiscuous Mode Support
+{% content-ref url="guides/advanced-permissions.md" %}
+[advanced-permissions.md](guides/advanced-permissions.md)
+{% endcontent-ref %}
 
-* **Additional TIP AP NOS Features**
-  * Embedded Captive Portal \(Local Splash non-auth\)
-  * Link Layer Discovery Protocol \(LLDP\)
-  * Airtime Fairness
-  * Wireline & Wireless Tracing \(PCAP Cloud Remote Troubleshooting\)
-  * Synthetic Client \(Cloud Remote Troubleshooting\)
-  * Flight Recorder \(Stack Remote Collection\)
-  * Local Provisioning over SSID \(when Cloud or WAN down\)
-  * Multimedia Heuristics \(Detection of Unified Communication Sessions\)
-  * SSID Rate Limiting
-  * Inter-AP Communication \(Client - Session Signalling\)
-  * Client / AP / Network Metric Telemetry \(MQTT\)
+{% hint style="info" %}
+**Good to know:** your product docs aren't just a reference of all your features! use them to encourage folks to perform certain actions and discover the value in your product.
+{% endhint %}
 
-**Cloud SDK additional features**
+### Fundamentals: Dive a little deeper
 
-* **Provisioning** 
-  * Device Identity \(Model, MAC, Serial Number\)
-  * AP Software Upgrade
-  * Profile Provisioning Templates
-  * Multiple SSID Configuration
-  * Bandwidth Rate Control per SSID
-  * Multi-Radio 2.4/5GHz control
-  * AP Network Mode Control \(Bridge/NAT mode\)
-  * Basic Captive Portal \(Local Splash Page admin from Controller\)
-  * Security \(WPA2/WPA3 Personal/Enterprise Mixed\)
-  * VLAN per SSID
-  * NTP Enable/Disable
-  * RTLS \(Location Services\) Enable/Disable 
-* **RF Control**
-  * Wi-Fi Agile Multiband
-    * \(k\) Client Radio Resource Management - Directed Steering
-    * \(v\) Network Assisted Roaming
-    * \(r\) Fast BSS Transition
-  * RRM Location AP Channel Table Provisioning
-  * RRM Location AP Cell Size Table Provisioning
-  * RRM Location Client Steering Threshold Table Provisioning 
-* **Remote Troubleshooting and Service Assurance**
-  * Syslog 
-  * Synthetic Client
-    * Remote DHCP, RADIUS, UE Network Analysis 
-  * Remote Shell 
-  * Remote Packet Capture Analysis
+Learn the fundamentals of MyProduct to get a deeper understanding of our main features:
 
-### **How to contribute**
+{% content-ref url="fundamentals/projects.md" %}
+[projects.md](fundamentals/projects.md)
+{% endcontent-ref %}
 
-If you or your company are interested in contributing to TIP Open Wi-Fi, please join the Wi-Fi Product Group by visiting [Telecom Infra Project](https://telecominfraproject.com/apply-for-membership/) to become a member.
+{% content-ref url="fundamentals/members.md" %}
+[members.md](fundamentals/members.md)
+{% endcontent-ref %}
 
+{% content-ref url="fundamentals/task-lists.md" %}
+[task-lists.md](fundamentals/task-lists.md)
+{% endcontent-ref %}
+
+{% content-ref url="fundamentals/tasks.md" %}
+[tasks.md](fundamentals/tasks.md)
+{% endcontent-ref %}
+
+{% hint style="info" %}
+**Good to know:** Splitting your product into fundamental concepts, objects, or areas can be a great way to let readers deep dive into the concepts that matter most to them. Combine guides with this approach to 'fundamentals' and you're well on your way to great documentation!
+{% endhint %}

@@ -1,36 +1,29 @@
 # Table of contents
 
-* [OpenWiFi 1.2](README.md)
-* [Getting Started](getting-started/README.md)
-  * [Working With a Cloud Provider](getting-started/working-with-a-cloud-provider.md)
-  * [Obtaining TIP OpenWiFi APs](getting-started/ordering-open-wi-fi-aps.md)
-  * [Creating Your Own Cloud Solution](getting-started/roll-your-own.md)
-  * [Device and Cloud Keys](getting-started/device-and-cloud-keys.md)
-  * [Cloud SDK Installation](getting-started/controller-installation/README.md)
-    * [AWS Install](getting-started/controller-installation/aws-install.md)
-    * [MicroK8s Install](getting-started/controller-installation/microk8s-install.md)
-  * [Cloud SDK](getting-started/controller.md)
-  * [Access Points](getting-started/access-points.md)
-* [User Interface](user-interface/README.md)
-  * [Dashboard](user-interface/dashboard.md)
-  * [Network](user-interface/network.md)
-  * [Profiles](user-interface/profiles.md)
-  * [System](user-interface/system.md)
-  * [Accounts](user-interface/accounts.md)
-* [API](api/README.md)
-  * [Open API](api/swagger.md)
+* [What is MyProduct?](README.md)
 
-## Configuration Examples
+## Guides
 
-* [Basic Device Provisioning](configuration-examples/basic-device-provisioning.md)
-* [Access Point](configuration-examples/access-point.md)
-* [Bridge Mode SSID](configuration-examples/bridge-mode-ssid.md)
-* [Multi-VLAN SSID](configuration-examples/multi-vlan-ssid.md)
-* [NAT Gateway Mode SSID](configuration-examples/nat-gateway-mode-ssid.md)
-* [RADIUS Authenticated SSID](configuration-examples/radius-authenticated-ssid.md)
-* [Passpoint®](configuration-examples/passpoint/README.md)
-  * [Configuration Introduction](configuration-examples/passpoint/configuration-introduction.md)
-  * [Advertising Services](configuration-examples/passpoint/advertising-services.md)
-  * [Passpoint® Cloud SDK Configuration](configuration-examples/passpoint/passpoint-r-cloud-sdk-configuration/README.md)
-    * [Passpoint® Postman Collection](configuration-examples/passpoint/passpoint-r-cloud-sdk-configuration/passpoint-postman-collection.md)
-    * [Passpoint® via UI](configuration-examples/passpoint/passpoint-r-cloud-sdk-configuration/passpoint-via-ui.md)
+* [Creating your first project](guides/creating-your-first-project.md)
+* [Creating your first task](guides/creating-your-first-task.md)
+* [Advanced permissions](guides/advanced-permissions.md)
+
+## Fundamentals
+
+* [Projects](fundamentals/projects.md)
+* [Members](fundamentals/members.md)
+* [Task Lists](fundamentals/task-lists.md)
+* [Tasks](fundamentals/tasks.md)
+
+## Use Cases
+
+* [For Designers](use-cases/for-designers/README.md)
+  * [Figma Integration](use-cases/for-designers/figma-integration.md)
+* [For Engineers](use-cases/for-engineers/README.md)
+  * [GitHub Integration](use-cases/for-engineers/github-integration.md)
+* [For Support](use-cases/for-support/README.md)
+  * [Intercom Integration](use-cases/for-support/intercom-integration.md)
+
+## Extras
+
+* [Keyboard Shortcuts](extras/keyboard-shortcuts.md)
