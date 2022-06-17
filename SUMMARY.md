@@ -4,9 +4,9 @@
 
 ## Guides
 
-* [Sample](guides/sample.md)
-* [Sample](guides/sample-1.md)
-* [Sample](guides/sample-2.md)
+* [Sample1](guides/sample.md)
+* [Sample2](guides/sample-1.md)
+* [Sample3](guides/sample-2.md)
 
 ## Fundamentals
 
