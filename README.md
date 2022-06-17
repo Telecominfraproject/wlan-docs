@@ -1,71 +1,130 @@
-# What is MyProduct?
+---
+description: Telecom Infra Project OpenWiFi
+---
 
-{% hint style="info" %}
-**Good to know:** providing a brief overview of your product and its core use cases is a great place to start with product docs. Your product might seem obvious to you – you made it! However, to others, even folks who are trying your product after reading your site or getting a sales demo, it can still be unclear. This is your chance to clarify your product and set the right expectations!
-{% endhint %}
+# OpenWiFi Release 2.5 In Progress
 
-Here are a couple of examples of succinct overviews from products with really great docs:
+## What is OpenWiFi?
 
-> Loom is a video messaging tool that helps you get your message across through instantly shareable videos.
->
-> With Loom, you can record your camera, microphone, and desktop simultaneously. Your video is then instantly available to share through Loom's patented technology.
->
-> — From the [Loom Docs](https://support.loom.com/hc/en-us/articles/360002158057-What-is-Loom-)
+TIP OpenWiFi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to OpenWiFi creates an open source disaggregated technology stack without any vendor lock in. OpenWiFi offers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly.
 
-> The Mailchimp Marketing API provides programmatic access to Mailchimp data and functionality, allowing developers to build custom features to do things like sync email activity and campaign analytics with their database, manage audiences and campaigns, and more.
->
-> — From the [Mailchimp Marketing API docs](https://mailchimp.com/developer/marketing/docs/fundamentals/)
+![Open Technology Stack - Many Platforms - Many Service Options](<.gitbook/assets/image (5).png>)
 
-## Getting Started
+TIP OpenWiFi is the industry's first CI/CD open source Wi-Fi eco-system. Built nightly with a strong community of Wi-Fi leaders, new features are unit tested in automated RF chambers and checked from cloud to ground for Wi-Fi performance and conformance.
 
-**Got 2 minutes?** Check out a video overview of our product:
+OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expanded selection of managed devices including smaller APs and PoE access switches.
 
-{% embed url="https://www.loom.com/share/3bfa83acc9fd41b7b98b803ba9197d90" %}
+### High Level Features
 
-{% hint style="info" %}
-**Good to know:** A succinct video overview is a great way to introduce folks to your product. Embed a Loom, Vimeo or YouTube video and you're good to go! We love this video from the fine folks at [Loom](https://loom.com) as a perfect example of a succinct feature overview.
-{% endhint %}
+#### Each OpenWiFi AP offers:
 
-### Guides: Jump right in
+* Multiple topologies including :
+  * Bridging, Virtual LAN, VxLAN, NAT Gateway, Local Breakout, Overlay (PPPoE, L2oGRE, L2TP), Mesh, WDS&#x20;
+* Multiple authentications including WPA, WPA2, WPA3, Enterprise Radius models, M-PSK
+* Passpoint R1 and R2 Mobile Offload
+* Encrypted Zero Touch Provisioning and Cloud Discovery
+* Autonomous RRM and Channel Control
+* Captive Portal & ExpressWiFi
 
-Follow our handy guides to get started on the basics as quickly as possible:
+#### Each OpenWiFi PoE Switch offers:
 
-{% content-ref url="guides/sample.md" %}
-[sample.md](guides/sample.md)
-{% endcontent-ref %}
+* IEEE802.1Q Virtual LAN
+* VxLAN
+* DHCP Snooping & Relay
+* Multicast
+* PoE
+* IEEE802.1x Access Control
 
-{% content-ref url="guides/sample-1.md" %}
-[sample-1.md](guides/sample-1.md)
-{% endcontent-ref %}
+#### Cloud SDK in OpenWiFi offers:
 
-{% content-ref url="guides/sample-2.md" %}
-[sample-2.md](guides/sample-2.md)
-{% endcontent-ref %}
+* Zero Touch Provisioning&#x20;
+* Firmware Management
+* Integration Northbound Interface (NBI) RESTful
+* Data model driven API&#x20;
+* Enterprise Message Bus data access&#x20;
 
-{% hint style="info" %}
-**Good to know:** your product docs aren't just a reference of all your features! use them to encourage folks to perform certain actions and discover the value in your product.
-{% endhint %}
+**OpenWiFi AP Detail List:**
 
-### Fundamentals: Dive a little deeper
+* Wi-Fi 4 (n) Wi-Fi 5 (ac) Wi-Fi 6 (ax)&#x20;
+* Dual Bank Bootloader
+* Multi-SSID per Radio
+* SSID Authentications: WPA/WPA2/WPA3 - Mixed, Personal, Enterprise
+* 802.1Q VLAN per SSID&#x20;
+* 802.1d Bridge Mode per SSID
+* RADIUS Accounting, Interim-Accounting, NAS-IP, CUI
+* Network Address Translation Gateway Mode Operation
+* Network Time Protocol Client
+* Management VLAN&#x20;
+* Wi-Fi 6 (ax) Specific
+  * BSS Coloring
+  * UL/DL OFDMA sub-carrier allocation
+  * Channel Switch Announcement
+* Wi-Fi General Features
+  * WMM® - Wi-Fi Multi Media
+    * UAPSD Procedures (Unscheduled Power Save)&#x20;
+    * Upstream/Downstream Queues & L3 DSCP
+    * Over The Air QoS EDCH Procedures
+* WMM-Admission Control (AC)&#x20;
+* WMM-Power Save (PS)
+* Wi-Fi Optimized Connectivity
+  * (ai) Fast Initial Link Support
+* Wi-Fi Agile Multiband
+  * (k) Client Radio Resource Management - Directed Steering
+  * (v) Network Assisted Roaming
+  * (r) Fast BSS Transition
+* Protected Management Frames (PMF)&#x20;
+  * (w) Management Frame Encryption
+* Channel Switch Announcement (CSA)
+* Dynamic Frequency Selection & Transmit Power Control (DFS/TPC)
+* Beacon Rate&#x20;
+* Min Client Noise Immunity
+* Basic Rate Control
+* De-Auth RSSI Control
+* Burst Beacon Support
+* Per SSID Client Rate Limiting
+* Promiscuous Mode Support&#x20;
+* **Additional TIP AP NOS Features**
+  * ISP WAN Profiles ( PPPoE, L2TP, L2oGRE )
+  * Embedded Captive Portal (Local Splash non-auth)
+  * Link Layer Discovery Protocol (LLDP)
+  * Dynamic Airtime Fairness
+  * Service Flow QoS&#x20;
+  * Wireline & Wireless Tracing (PCAP Cloud Remote Troubleshooting)
+  * Health Check Reports
+  * Local Provisioning over SSID (when Cloud or WAN down)
+  * Multimedia Heuristics (Detection of Unified Communication Sessions)
+  * SSID Rate Limiting
+  * GPS Reporting
+  * Autonomous RRM Client Steering&#x20;
+  * Client / AP / Network Metric Telemetry&#x20;
 
-Learn the fundamentals of MyProduct to get a deeper understanding of our main features:
+**Cloud SDK additional features**
 
-{% content-ref url="fundamentals/projects.md" %}
-[projects.md](fundamentals/projects.md)
-{% endcontent-ref %}
+* **Provisioning**&#x20;
+  * Device Identity (Model, MAC, Serial Number)
+  * Device Software Upgrade
+  * Multiple SSID Configuration
+  * Bandwidth Rate Control per SSID
+  * Multi-Radio 2.4/5/6GHz control
+  * AP Network Mode Control (Bridge/NAT mode)
+  * Security (WPA-Personal/WPA & WPA2/3 Personal Mixed/WPA & WPA2/3 Enterprise Mixed/WPA2/3 Personal/WPA2/3 Enterprise/WEP)
+  * VLAN per SSID
+  * VxLAN port configuration
+  * NTP Enable/Disable
+  * RTLS (Location Services) Enable/Disable&#x20;
+* **RF Control**
+  * IEEE802.11r Fast BSS Transition per Radio Control
+  * IEEE802.11k RRM Radio Information per Radio Control
+  * IEEE802.11v Network Assisted Roaming per Radio Control
+  * RRM Location AP Channel (uChannel) Provisioning
+  * RRM Location Client Steering (uSteer) Threshold Provisioning&#x20;
+* **Remote Troubleshooting and Service Assurance**
+  * Syslog&#x20;
+  * Health Check Reports
+    * Remote DHCP, RADIUS, UE Network Analysis&#x20;
+  * Remote TTY Shell&#x20;
+  * Remote Packet Capture Analysis&#x20;
 
-{% content-ref url="fundamentals/members.md" %}
-[members.md](fundamentals/members.md)
-{% endcontent-ref %}
+### **How to contribute**
 
-{% content-ref url="fundamentals/task-lists.md" %}
-[task-lists.md](fundamentals/task-lists.md)
-{% endcontent-ref %}
-
-{% content-ref url="fundamentals/tasks.md" %}
-[tasks.md](fundamentals/tasks.md)
-{% endcontent-ref %}
-
-{% hint style="info" %}
-**Good to know:** Splitting your product into fundamental concepts, objects, or areas can be a great way to let readers deep dive into the concepts that matter most to them. Combine guides with this approach to 'fundamentals' and you're well on your way to great documentation!
-{% endhint %}
+If you or your company are interested in contributing to TIP Open Wi-Fi, please join the Wi-Fi Product Group by visiting [Telecom Infra Project](https://telecominfraproject.com/apply-for-membership/) to become a member.
