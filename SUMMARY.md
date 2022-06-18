@@ -1,6 +1,15 @@
 # Table of contents
 
-* [OpenWiFi Release 2.5 GA](README.md)
+* [OpenWiFi Release 2.6 GA](README.md)
+* [What's New](whats-new.md)
+* [About OpenWifi](about-openwifi/about-openwifi.md)
+  * [Open WiFi First](about-openwifi/contribute.md)
+  * [Open WiFi Stack](about-openwifi/openwifi-stack.md)
+  * [About the OpenWiFi SDK](about-openwifi/about-the-sdk.md)
+  * [OpenWiFi Firmware](about-openwifi/firmware.md)
+  * [About Device Provisioning](about-openwifi/device-provisioning.md)
+  + [Supported Hardware](about-openwifi/supported-hardware.md)
+  + [Integrations](about-openwifi/openwifi-stack.md)
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Device Partner Information](device-partner-information.md)
 * [Cloud Partner Information](cloud-partner-information.md)
