@@ -181,28 +181,6 @@ components:
           items:
             $ref: '#/components/schemas/ManagementPolicy'
 
-    DeviceRules:
-      type: object
-      properties:
-        rcOnly:
-          type: string
-          enum:
-            - yes
-            - no
-            - inherit
-        rrm:
-          type: string
-          enum:
-            - yes
-            - no
-            - inherit
-        firmwareUpgrade:
-          type: string
-          enum:
-            - yes
-            - no
-            - inherit
-
     # uuids: ent:<uuid>
     Entity:
       type: object
@@ -277,19 +255,14 @@ components:
           items:
             type: string
             format: uuid
-        deviceRules:
-          $ref: '#/components/schemas/DeviceRules'
-        sourceIP:
-          $ref: '#/components/schemas/StringList'
-        defaultEntity:
-          type: boolean
-          default: false
-        type:
+        rrm:
           type: string
           enum:
-            - normal
-            - subscriber
-          default: normal
+            - off
+            - on
+            - inherit
+        sourceIP:
+          $ref: '#/components/schemas/StringList'
 
     EntityList:
       type: object
@@ -354,8 +327,12 @@ components:
         location:
           type: string
           format: uuid
-        deviceRules:
-          $ref: '#/components/schemas/DeviceRules'
+        rrm:
+          type: string
+          enum:
+            - off
+            - on
+            - inherit
         sourceIP:
           $ref: '#/components/schemas/StringList'
         managementPolicies:
@@ -384,12 +361,6 @@ components:
             format: uuid
         configurations:
           description: The list of UUID of the venues for this entity
-          type: array
-          items:
-            type: string
-            format: uuid
-        boards:
-          description: The list of OWAnalytics Boards created for this venue
           type: array
           items:
             type: string
@@ -510,98 +481,6 @@ components:
           items:
             $ref: '#/components/schemas/Location'
 
-    OperatorLocation:
-      type: object
-      properties:
-        allOf:
-          $ref: '#/components/schemas/ObjectInfo'
-        type:
-          type: string
-          enum:
-            - SERVICE
-            - EQUIPMENT
-            - AUTO
-            - MANUAL
-            - SPECIAL
-            - UNKNOWN
-            - CORPORATE
-        buildingName:
-          type: string
-        addressLines:
-          type: array
-          items:
-            type: string
-        city:
-          type: string
-        state:
-          type: string
-        postal:
-          type: string
-        country:
-          type: string
-        phones:
-          type: array
-          items:
-            type: string
-        mobiles:
-          type: array
-          items:
-            type: string
-        operatorId:
-          type: string
-          format: uuid
-        subscriberDeviceId:
-          type: string
-          format: uuid
-        geoCode:
-          type: string
-
-    OperatorLocationList:
-      type: object
-      properties:
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/OperatorLocation'
-
-    SubLocation:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-            - SERVICE
-            - EQUIPMENT
-            - AUTO
-            - MANUAL
-            - SPECIAL
-            - UNKNOWN
-            - CORPORATE
-        buildingName:
-          type: string
-        addressLines:
-          type: array
-          items:
-            type: string
-        city:
-          type: string
-        state:
-          type: string
-        postal:
-          type: string
-        country:
-          type: string
-        phones:
-          type: array
-          items:
-            type: string
-        mobiles:
-          type: array
-          items:
-            type: string
-        geoCode:
-          type: string
-
     # uuids: con:<uuid>
     Contact:
       type: object
@@ -665,104 +544,6 @@ components:
           items:
             $ref: '#/components/schemas/Contact'
 
-    OperatorContact:
-      type: object
-      properties:
-        allOf:
-          $ref: '#/components/schemas/ObjectInfo'
-        type:
-          type: string
-          enum:
-            - SUBSCRIBER
-            - USER
-            - INSTALLER
-            - CSR
-            - MANAGER
-            - BUSINESSOWNER
-            - TECHNICIAN
-            - CORPORATE
-        title:
-          type: string
-        salutation:
-          type: string
-        firstname:
-          type: string
-        lastname:
-          type: string
-        initials:
-          type: string
-        visual:
-          type: string
-        phones:
-          type: array
-          items:
-            type: string
-        mobiles:
-          type: array
-          items:
-            type: string
-        primaryEmail:
-          type: string
-        secondaryEmail:
-          type: string
-        accessPIN:
-          type: string
-        operatorId:
-          type: string
-          format: uuid
-        subscriberDeviceId:
-          type: string
-          format: uuid
-
-    OperatorContactList:
-      type: object
-      properties:
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/OperatorContact'
-
-    SubContact:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-            - SUBSCRIBER
-            - USER
-            - INSTALLER
-            - CSR
-            - MANAGER
-            - BUSINESSOWNER
-            - TECHNICIAN
-            - CORPORATE
-        title:
-          type: string
-        salutation:
-          type: string
-        firstname:
-          type: string
-        lastname:
-          type: string
-        initials:
-          type: string
-        visual:
-          type: string
-        phones:
-          type: array
-          items:
-            type: string
-        mobiles:
-          type: array
-          items:
-            type: string
-        primaryEmail:
-          type: string
-        secondaryEmail:
-          type: string
-        accessPIN:
-          type: string
-
     DeviceConfigurationElement:
       type: object
       properties:
@@ -804,8 +585,17 @@ components:
         subscriberOnly:
           type: boolean
           default: false
-        deviceRules:
-          $ref: '#/components/schemas/DeviceRules'
+        rrm:
+          type: string
+          enum:
+            - off
+            - on
+            - inherit
+        firmwareUpgrade:
+          type: string
+          example: auto or a time string of the format DOW-HH:MM
+        firmwareRCOnly:
+          type: boolean
         venue:
           type: string
           format: uuid
@@ -855,8 +645,12 @@ components:
         deviceConfiguration:
           type: string
           format: uuid
-        deviceRules:
-          $ref: '#/components/schemas/DeviceRules'
+        rrm:
+          type: string
+          enum:
+            - off
+            - on
+            - inherit
         managementPolicy:
           type: string
           format: uuid
@@ -873,21 +667,6 @@ components:
           type: string
           minLength: 2
           maxLength: 2
-
-    VenueDeviceList:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        devices:
-          type: array
-          items:
-            type: string
 
     InventoryTagList:
       type: object
@@ -1049,9 +828,6 @@ components:
         userId:
           type: string
           format: uuid
-        operatorId:
-          type: string
-          format: uuid
         macAddress:
           type: string
         serialNumber:
@@ -1070,10 +846,6 @@ components:
         statusCode:
           type: integer
           format: int64
-        registrationId:
-          type: string
-          minLength: 4
-          maxLength: 16
 
     Variable:
       type: object
@@ -1137,146 +909,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VariableBlock'
-
-    ServiceClass:
-      type: object
-      properties:
-        allOf:
-          $ref: '#/components/schemas/ObjectInfo'
-        operatorId:
-          type: string
-          format: uuid
-        cost:
-          type: number
-        currency:
-          type: string
-          minLength: 3
-          maxLength: 3
-        managementPolicy:
-          type: string
-          format: uuid
-        period:
-          type: string
-          enum:
-            - hourly
-            - daily
-            - monthly
-            - yearly
-            - quarterly
-            - lifetime
-            - custom1
-            - custom2
-            - custom3
-            - custom4
-          default: monthly
-        billingCode:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Variable'
-        defaultService:
-          type: boolean
-          default: false
-
-    ServiceClassList:
-      type: object
-      properties:
-        serviceClasses:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceClass'
-
-    Operator:
-      type: object
-      properties:
-        allOf:
-          $ref: '#/components/schemas/ObjectInfo'
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Variable'
-        defaultOperator:
-          type: boolean
-          default: false
-        deviceRules:
-          $ref: '#/components/schemas/DeviceRules'
-        managementPolicy:
-          type: string
-          format: uuid
-        managementRoles:
-          $ref: '#/components/schemas/ManagementRoleList'
-        sourceIP:
-          $ref: '#/components/schemas/StringList'
-        registrationId:
-          type: string
-          minLength: 4
-          maxLength: 16
-
-    OperatorList:
-      type: object
-      properties:
-        operators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Operator'
-
-    SubscriberDevice:
-      type: object
-      properties:
-        allOf:
-          $ref: '#/components/schemas/ObjectInfo'
-        serialNumber:
-          type: string
-        realMacAddress:
-          type: string
-        operatorId:
-          type: string
-          format: uuid
-        deviceType:
-          type: string
-        subscriberId:
-          type: string
-          format: uuid
-        qrCode:
-          type: string
-        geoCode:
-          type: string
-        location:
-          $ref: '#/components/schemas/SubLocation'
-        contact:
-          $ref: '#/components/schemas/SubContact'
-        deviceRules:
-          $ref: '#/components/schemas/DeviceRules'
-        state:
-          type: string
-        locale:
-          type: string
-          minLength: 2
-          maxLength: 2
-        managementPolicy:
-          type: string
-          format: uuid
-        suspended:
-          type: boolean
-          default: false
-        configuration:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceConfigurationElement'
-        serviceClass:
-          type: string
-          format: uuid
-        billingCode:
-          type: string
-
-    SubscriberDeviceList:
-      type: object
-      properties:
-        subscriberDevices:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriberDevice'
 
     #########################################################################################
     ##
@@ -1522,8 +1154,7 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/EntityList'
                   - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
+
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -1543,15 +1174,15 @@ paths:
             format: uuid
             example: When looking for the root entity, the uuid 0000-0000-0000 must be entered.
           required: true
+
       responses:
         200:
           $ref: '#/components/schemas/Entity'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Entities
@@ -1571,15 +1202,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Entity'
+
       responses:
         200:
           $ref: '#/components/schemas/Entity'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Entities
@@ -1599,15 +1230,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Entity'
+
       responses:
         200:
           $ref: '#/components/schemas/Entity'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Entities
@@ -1621,11 +1252,10 @@ paths:
             format: uuid
             example: The root entity cannot be deleted.
           required: true
+
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -1687,6 +1317,7 @@ paths:
             type: string
             format: uuid
           required: false
+
       responses:
         200:
           description: Return a list of contacts
@@ -1696,8 +1327,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ContactList'
                   - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -1731,12 +1360,11 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/Contact'
                   - $ref: '#/components/schemas/ExpandedUseEntryMapList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Contacts
@@ -1755,15 +1383,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Contact'
+
       responses:
         200:
           $ref: '#/components/schemas/Contact'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Contacts
@@ -1782,15 +1410,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Contact'
+
       responses:
         200:
           $ref: '#/components/schemas/Contact'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Contacts
@@ -1808,11 +1436,10 @@ paths:
           schema:
             type: boolean
           required: true
+
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -1862,6 +1489,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Return a list of Locations
@@ -1871,8 +1499,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/LocationList'
                   - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -1896,6 +1522,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Success
@@ -1905,12 +1532,11 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/Location'
                   - $ref: '#/components/schemas/ExpandedUseEntryMapList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Locations
@@ -1929,15 +1555,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Location'
+
       responses:
         200:
           $ref: '#/components/schemas/Location'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Locations
@@ -1956,15 +1582,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Location'
+
       responses:
         200:
           $ref: '#/components/schemas/Location'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Locations
@@ -1982,11 +1608,10 @@ paths:
           schema:
             type: boolean
           required: true
+
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2072,13 +1697,6 @@ paths:
             example: serialNumber:a,created:d
           required: false
         - in: query
-          description: return extended information
-          name: orderSpec
-          schema:
-            type: boolean
-            default: false
-          required: false
-        - in: query
           description: return the list of devices under RRM
           name: rrmOnly
           schema:
@@ -2102,7 +1720,6 @@ paths:
                   - $ref: '#/components/schemas/SerialNumberList'
                   - $ref: '#/components/schemas/InventoryTagList'
                   - $ref: '#/components/schemas/CountAnswer'
-                  - $ref: '#/components/schemas/StringList'
         400:
           $ref: '#/components/responses/BadRequest'
         403:
@@ -2143,12 +1760,6 @@ paths:
           schema:
             type: boolean
           required: false
-        - in: query
-          name: subscriberEntity
-          schema:
-            type: string
-            format: uuid
-          required: false
       responses:
         200:
           description: Succesful retrieve configuratiopn or part of the configuration
@@ -2186,12 +1797,11 @@ paths:
       responses:
         200:
           $ref: '#/components/schemas/InventoryTag'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Inventory
@@ -2209,7 +1819,7 @@ paths:
           schema:
             type: boolean
           required: false
-        - in: query
+        - in: path
           name: removeSubscriber
           schema:
             type: string
@@ -2230,12 +1840,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InventoryTag'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Inventory
@@ -2252,8 +1861,6 @@ paths:
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2325,20 +1932,7 @@ paths:
           schema:
             type: boolean
           required: false
-        - in: query
-          description: return the devices under a venue
-          name: getDevices
-          schema:
-            type: boolean
-            default: false
-          required: false
-        - in: query
-          description: return the devices under a venue and its children. Must select getDevices=true as well.
-          name: getChildren
-          schema:
-            type: boolean
-            default: false
-          required: false
+
       responses:
         200:
           description: Return a list of venues.
@@ -2348,9 +1942,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/VenueList'
                   - $ref: '#/components/schemas/CountAnswer'
-                  - $ref: '#/components/schemas/VenueDeviceList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2377,6 +1968,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Venues
@@ -2421,6 +2013,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Venues
@@ -2433,30 +2026,6 @@ paths:
             type: string
             format: uuid
           required: true
-        - in: query
-          name: updateAllDevices
-          schema:
-            type: boolean
-            default: false
-          required: false
-        - in: query
-          name: rebootAllDevices
-          schema:
-            type: boolean
-            default: false
-          required: false
-        - in: query
-          name: testUpdateOnly
-          schema:
-            type: boolean
-            default: false
-          required: false
-        - in: query
-          name: upgradeAllDevices
-          schema:
-            type: boolean
-            default: false
-          required: false
       requestBody:
         description: Information used to modify the new venue
         content:
@@ -2466,19 +2035,12 @@ paths:
 
       responses:
         200:
-          description: Return venue information or list of serial number updated
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/Venue'
-                  - $ref: '#/components/schemas/SerialNumberList'
-        400:
-          $ref: '#/components/responses/BadRequest'
+          $ref: '#/components/schemas/Venue'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Venues
@@ -2492,11 +2054,10 @@ paths:
             format: uuid
             example: The root entity cannot be deleted.
           required: true
+
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2539,6 +2100,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Return a list of Venues
@@ -2546,8 +2108,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MapList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2566,6 +2126,7 @@ paths:
             type: string
             format: uuid
           required: true
+
       responses:
         200:
           description: Successfull retrieval of a map
@@ -2573,12 +2134,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Map'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Maps
@@ -2597,6 +2157,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Map'
+
       responses:
         200:
           $ref: '#/components/schemas/Map'
@@ -2604,6 +2165,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Maps
@@ -2622,15 +2184,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Map'
+
       responses:
         200:
           $ref: '#/components/schemas/ManagementPolicy'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Maps
@@ -2646,8 +2208,6 @@ paths:
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2708,6 +2268,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Return a list of Venues
@@ -2717,8 +2278,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ManagementPolicyList'
                   - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2742,6 +2301,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Succesful retrieve a management policy
@@ -2751,12 +2311,11 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ManagementPolicy'
                   - $ref: '#/components/schemas/ExpandedUseEntryMapList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Management Policies
@@ -2775,15 +2334,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ManagementPolicy'
+
       responses:
         200:
           $ref: '#/components/schemas/ManagementPolicy'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Management Policies
@@ -2802,15 +2361,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ManagementPolicy'
+
       responses:
         200:
           $ref: '#/components/schemas/ManagementPolicy'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Management Policies
@@ -2824,11 +2383,10 @@ paths:
             format: uuid
             example: The root entity cannot be deleted.
           required: true
+
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2878,6 +2436,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Return a list of elements
@@ -2887,8 +2446,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ManagementRoleList'
                   - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2921,8 +2478,6 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/ManagementRole'
                   - $ref: '#/components/schemas/ExpandedUseEntryMapList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2950,12 +2505,11 @@ paths:
       responses:
         200:
           $ref: '#/components/schemas/ManagementRole'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Management Roles
@@ -2974,11 +2528,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ManagementRole'
+
       responses:
         200:
           $ref: '#/components/schemas/ManagementRole'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -2998,14 +2551,12 @@ paths:
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
 
-  /configuration:
+  /configurations:
     get:
       tags:
         - Configurations
@@ -3055,6 +2606,7 @@ paths:
             type: string
             format: uuid
           required: false
+
       responses:
         200:
           description: Return a list of elements
@@ -3064,14 +2616,13 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/DeviceConfigurationList'
                   - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
+
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
 
-  /configuration/{uuid}:
+  /configurations/{uuid}:
     get:
       tags:
         - Configurations
@@ -3090,6 +2641,7 @@ paths:
           schema:
             type: boolean
           required: false
+
       responses:
         200:
           description: Success
@@ -3099,12 +2651,11 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/DeviceConfiguration'
                   - $ref: '#/components/schemas/ExpandedUseEntryMapList'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Configurations
@@ -3129,15 +2680,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeviceConfiguration'
+
       responses:
         200:
           $ref: '#/components/schemas/DeviceConfiguration'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Configurations
@@ -3157,15 +2708,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeviceConfiguration'
+
       responses:
         200:
           $ref: '#/components/schemas/DeviceConfiguration'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Configurations
@@ -3179,11 +2730,10 @@ paths:
             format: uuid
             example: The root entity cannot be deleted.
           required: true
+
       responses:
         204:
           $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -3217,8 +2767,6 @@ paths:
                     type: array
                     items:
                       type: string
-        400:
-          $ref: '#/components/responses/BadRequest'
         403:
           $ref: '#/components/responses/Unauthorized'
         404:
@@ -3274,6 +2822,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     delete:
       tags:
         - Subscriber Registration
@@ -3311,6 +2860,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     post:
       tags:
         - Subscriber Registration
@@ -3333,11 +2883,6 @@ paths:
           schema:
             type: string
           required: false
-        - in: query
-          name: registrationId
-          schema:
-            type: string
-          required: true
       responses:
         200:
           $ref: '#/components/schemas/SignupEntry'
@@ -3347,6 +2892,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
+
     put:
       tags:
         - Subscriber Registration
@@ -3385,6 +2931,7 @@ paths:
                 status:
                   type: string
         required: false
+
       responses:
         200:
           $ref: '#/components/schemas/SignupEntry'
@@ -3395,7 +2942,7 @@ paths:
         404:
           $ref: '#/components/responses/NotFound'
 
-  /variable:
+  /variables:
     get:
       tags:
         - Variable Configuration Blocks
@@ -3454,815 +3001,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         404:
           $ref: '#/components/responses/NotFound'
-
-  /operator:
-    get:
-      operationId: getOperators
-      tags:
-        - Operators
-      summary: Retrieve the list of currently configured operators
-      parameters:
-        - in: query
-          description: Pagination start (starts at 1. If not specified, 1 is assumed)
-          name: offset
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Maximum number of entries to return (if absent, no limit is assumed)
-          name: limit
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Filter the results
-          name: filter
-          schema:
-            type: string
-          required: false
-        - in: query
-          description: Supply a list of operators comma separated
-          name: select
-          schema:
-            type: string
-            example: serial1,serial2,serial3
-          required: false
-        - in: query
-          description: return the number of operators
-          name: countOnly
-          schema:
-            type: boolean
-          required: false
-      responses:
-        200:
-          description: Successfully retrieved operator list
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/OperatorList'
-                  - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /operator/{uuid}:
-    get:
-      operationId: getOperator
-      tags:
-        - Operators
-      summary: Retrieve an operator
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        200:
-          $ref: '#/components/schemas/Operator'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    delete:
-      operationId: deleteOperator
-      tags:
-        - Operators
-      summary: Delete an operator
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        204:
-          $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    post:
-      summary: Create a new operator
-      operationId: createOperator
-      tags:
-        - Operators
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-            example:
-              should be set to 0 when creating a new operator
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Operator'
-      responses:
-        200:
-          $ref: '#/components/schemas/Operator'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    put:
-      summary: Update an existing operator
-      operationId: updateOperator
-      tags:
-        - Operators
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Operator'
-      responses:
-        200:
-          $ref: '#/components/schemas/Operator'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /serviceClass:
-    get:
-      operationId: getServiceClasses
-      tags:
-        - ServiceClass
-      summary: Retrieve the list of currently configured service class
-      parameters:
-        - in: query
-          description: The operator
-          name: operatorId
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: query
-          description: Pagination start (starts at 1. If not specified, 1 is assumed)
-          name: offset
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Maximum number of entries to return (if absent, no limit is assumed)
-          name: limit
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Filter the results
-          name: filter
-          schema:
-            type: string
-          required: false
-        - in: query
-          description: Supply a list of operators comma separated
-          name: select
-          schema:
-            type: string
-            example: serial1,serial2,serial3
-          required: false
-        - in: query
-          description: return the number of operators
-          name: countOnly
-          schema:
-            type: boolean
-          required: false
-      responses:
-        200:
-          description: Successfully retrieved operator list
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/ServiceClassList'
-                  - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /serviceClass/{uuid}:
-    get:
-      operationId: getServiceClass
-      tags:
-        - ServiceClass
-      summary: Retrieve a service class
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        200:
-          $ref: '#/components/schemas/ServiceClass'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    delete:
-      operationId: deleteServiceClass
-      tags:
-        - ServiceClass
-      summary: Delete a service class
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        204:
-          $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    post:
-      summary: Create a service class
-      tags:
-        - ServiceClass
-      operationId: createServiceClass
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-            example:
-              should be set to 0 when creating a new operator
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ServiceClass'
-      responses:
-        200:
-          $ref: '#/components/schemas/ServiceClass'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    put:
-      summary: Update a service class
-      tags:
-        - ServiceClass
-      operationId: updateServiceClass
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ServiceClass'
-      responses:
-        200:
-          $ref: '#/components/schemas/ServiceClass'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /subscriberDevice:
-    get:
-      operationId: getsubscriberDevices
-      tags:
-        - Subscriber Devices
-      summary: Retrieve the list of subscriber devices
-      parameters:
-        - in: query
-          description: The operator
-          name: operatorId
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: query
-          description: Pagination start (starts at 1. If not specified, 1 is assumed)
-          name: offset
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Maximum number of entries to return (if absent, no limit is assumed)
-          name: limit
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Filter the results
-          name: filter
-          schema:
-            type: string
-          required: false
-        - in: query
-          description: Supply a list of operators comma separated
-          name: select
-          schema:
-            type: string
-            example: serial1,serial2,serial3
-          required: false
-        - in: query
-          description: return the number of operators
-          name: countOnly
-          schema:
-            type: boolean
-          required: false
-      responses:
-        200:
-          description: list of subscriber devices
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/SubscriberDeviceList'
-                  - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /subscriberDevice/{uuid}:
-    get:
-      operationId: getSubscriberDevice
-      tags:
-        - Subscriber Devices
-      summary: Retrieve a subscriber device
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        200:
-          $ref: '#/components/schemas/SubscriberDevice'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    delete:
-      operationId: deleteSubscriberDevice
-      tags:
-        - Subscriber Devices
-      summary: Delete a subscriber device
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        204:
-          $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    post:
-      summary: Create a subscriber device
-      tags:
-        - Subscriber Devices
-      operationId: createSubscriberDevice
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-            example:
-              should be set to 0 when creating a new operator
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SubscriberDevice'
-      responses:
-        200:
-          $ref: '#/components/schemas/SubscriberDevice'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    put:
-      summary: Update a subscriber device
-      tags:
-        - Subscriber Devices
-      operationId: updateSubscriberDevice
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SubscriberDevice'
-      responses:
-        200:
-          $ref: '#/components/schemas/SubscriberDevice'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /operatorLocation:
-    get:
-      tags:
-        - Operator Locations
-      operationId: getOperatorLocations
-      summary: Retrieve a list of locations.
-      parameters:
-        - in: query
-          name: operatorId
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: query
-          description: Pagination start (starts at 1. If not specified, 1 is assumed)
-          name: offset
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Maximum number of entries to return (if absent, no limit is assumed)
-          name: limit
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Filter the results
-          name: filter
-          schema:
-            type: string
-          required: false
-        - in: query
-          description: Supply a list of Locations comma separated
-          name: select
-          schema:
-            type: string
-            example: uuid1,uuid2,uuid3
-          required: false
-        - in: query
-          description: return the number of Locations
-          name: countOnly
-          schema:
-            type: boolean
-          required: false
-        - in: query
-          description: return only the UUIDs of Locations
-          name: uuidOnly
-          schema:
-            type: boolean
-          required: false
-      responses:
-        200:
-          description: Return a list of Locations
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/OperatorLocationList'
-                  - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /operatorLocation/{uuid}:
-    get:
-      tags:
-        - Operator Locations
-      operationId: getOperatorLocation
-      summary: Retrieve a specific location.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        200:
-          $ref: '#/components/schemas/OperatorLocation'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    post:
-      tags:
-        - Operator Locations
-      operationId: createOperatorLocation
-      summary: Create a specific location.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        description: Information used to create the new location
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OperatorLocation'
-      responses:
-        200:
-          $ref: '#/components/schemas/OperatorLocation'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    put:
-      tags:
-        - Operator Locations
-      operationId: modifyOperatorLocation
-      summary: Modify a specific location.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        description: Information used to modify the new location
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OperatorLocation'
-      responses:
-        200:
-          $ref: '#/components/schemas/OperatorLocation'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    delete:
-      tags:
-        - Operator Locations
-      operationId: deleteOperatorLocation
-      summary: Delete a specific location.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: query
-          name: force
-          schema:
-            type: boolean
-          required: true
-      responses:
-        204:
-          $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /operatorContact:
-    get:
-      tags:
-        - Operator Contacts
-      operationId: getOperatorContacts
-      summary: Retrieve a list of operator contacts.
-      parameters:
-        - in: query
-          name: operatorId
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: query
-          description: Pagination start (starts at 1. If not specified, 1 is assumed)
-          name: offset
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Maximum number of entries to return (if absent, no limit is assumed)
-          name: limit
-          schema:
-            type: integer
-          required: false
-        - in: query
-          description: Filter the results
-          name: filter
-          schema:
-            type: string
-          required: false
-        - in: query
-          description: Supply a list of operator contacts comma separated
-          name: select
-          schema:
-            type: string
-            example: uuid1,uuid2,uuid3
-          required: false
-        - in: query
-          description: return the number of operator contacts
-          name: countOnly
-          schema:
-            type: boolean
-          required: false
-        - in: query
-          description: return only the UUIDs of operator contacts
-          name: uuidOnly
-          schema:
-            type: boolean
-          required: false
-      responses:
-        200:
-          description: Return a list of operator contacts
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/OperatorContactList'
-                  - $ref: '#/components/schemas/CountAnswer'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
-  /operatorContact/{uuid}:
-    get:
-      tags:
-        - Operator Contacts
-      operationId: getOperatorContact
-      summary: Retrieve a specific operator contact.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      responses:
-        200:
-          $ref: '#/components/schemas/OperatorContact'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    post:
-      tags:
-        - Operator Contacts
-      operationId: createOperatorContact
-      summary: Create a specific operator contact.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        description: Information used to create the new entity
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OperatorContact'
-      responses:
-        200:
-          $ref: '#/components/schemas/OperatorContact'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    put:
-      tags:
-        - Operator Contacts
-      operationId: modifyOperatorContact
-      summary: Modify a specific operator contact.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-      requestBody:
-        description: Information used to modify the new entity
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OperatorContact'
-      responses:
-        200:
-          $ref: '#/components/schemas/OperatorContact'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-    delete:
-      tags:
-        - Operator Contacts
-      operationId: deleteOperatorContact
-      summary: Delete a specific operator contact.
-      parameters:
-        - in: path
-          name: uuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-        - in: query
-          name: force
-          schema:
-            type: boolean
-          required: true
-      responses:
-        204:
-          $ref: '#/components/responses/Success'
-        400:
-          $ref: '#/components/responses/BadRequest'
-        403:
-          $ref: '#/components/responses/Unauthorized'
-        404:
-          $ref: '#/components/responses/NotFound'
-
 
   #########################################################################################
   ##
@@ -4328,6 +3066,7 @@ paths:
             enum:
               - info
           required: true
+
       responses:
         200:
           description: Successful command execution

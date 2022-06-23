@@ -1,0 +1,1409 @@
+openapi: 3.0.1
+info:
+  title: OpenWiFi Analytics Service
+  description: Definitions and APIs to analyze OpenWiFi network.
+  version: 2.6.0
+  license:
+    name: BSD3
+    url: https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/LICENSE
+
+servers:
+  - url: 'https://localhost:16009/api/v1'
+
+security:
+  - bearerAuth: []
+  - ApiKeyAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: string
+
+    Unauthorized:
+      description: The requested does not have sufficient rights to perform the operation.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+                enum:
+                  - 0     # Success
+                  - 1     # PASSWORD_CHANGE_REQUIRED,
+                  - 2     # INVALID_CREDENTIALS,
+                  - 3     # PASSWORD_ALREADY_USED,
+                  - 4     # USERNAME_PENDING_VERIFICATION,
+                  - 5     # PASSWORD_INVALID,
+                  - 6     # INTERNAL_ERROR,
+                  - 7     # ACCESS_DENIED,
+                  - 8     # INVALID_TOKEN
+                  - 9     # EXPIRED_TOKEN
+                  - 10    # RATE_LIMIT_EXCEEDED
+                  - 11    # BAD_MFA_TRANSACTION
+                  - 12    # MFA_FAILURE
+                  - 13    # SECURITY_SERVICE_UNREACHABLE
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: string
+
+    Success:
+      description: The requested operation was performed.
+      content:
+        application/json:
+          schema:
+            properties:
+              Operation:
+                type: string
+              Details:
+                type: string
+              Code:
+                type: integer
+
+    BadRequest:
+      description: The requested operation failed.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: integer
+
+  schemas:
+    ObjectInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteInfo'
+        created:
+          type: integer
+          format: int64
+        modified:
+          type: integer
+          format: int64
+        tags:
+          type: array
+          items:
+            type: integer
+            format: int64
+
+    VenueInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        retention:
+          type: integer
+        interval:
+          type: integer
+        monitorSubVenues:
+          type: boolean
+
+    BoardInfo:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        venueList:
+          type: array
+          items:
+            $ref: '#/components/schemas/VenueInfo'
+
+    BoardInfoList:
+      type: object
+      properties:
+        boards:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardInfo'
+
+    DeviceInfo:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - ap
+            - switch
+            - iot
+            - unknown
+        serialNumber:
+          type: string
+        deviceType:
+          type: string
+        lastHealth:
+          type: integer
+          format: int64
+        health:
+          type: integer
+          format: int64
+        lastContact:
+          type: integer
+          format: int64
+        lastPing:
+          type: integer
+          format: int64
+        lastState:
+          type: integer
+          format: int64
+        lastFirmwareUpdate:
+          type: integer
+          format: int64
+        lastFirmware:
+          type: string
+        lastConnection:
+          type: integer
+          format: int64
+        lastDisconnection:
+          type: integer
+          format: int64
+        pings:
+          type: integer
+          format: int64
+        states:
+          type: integer
+          format: int64
+        connected:
+          type: boolean
+        connectionIp:
+          type: string
+        associations_2g:
+          type: integer
+          format: int64
+        associations_5g:
+          type: integer
+          format: int64
+        associations_6g:
+          type: integer
+          format: int64
+        locale:
+          type: string
+        memory:
+          type: number
+        uptime:
+          type: integer
+          format: int64
+
+    DeviceInfoList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceInfo'
+
+    TIDstat_entry:
+      type: object
+      properties:
+        rx_msdu:
+          type: integer
+          format: int64
+        tx_msdu:
+          type: integer
+          format: int64
+        tx_msdu_failed:
+          type: integer
+          format: int64
+        tx_msdu_retries:
+          type: integer
+          format: int64
+
+    UE_rate:
+      type: object
+      properties:
+        bitrate:
+          type: integer
+          format: int64
+        mcs:
+          type: integer
+          format: int64
+        nss:
+          type: integer
+          format: int64
+        chwidth:
+          type: integer
+          format: int64
+        ht:
+          type: boolean
+        sgi:
+          type:
+            boolean
+
+    UETimePoint:
+      type: object
+      properties:
+        association_bssid:
+          type: integer
+          format: int64
+        station:
+          type: integer
+          format: int64
+        rssi:
+          type: integer
+          format: int64
+        tx_bytes:
+          type: integer
+          format: int64
+        rx_bytes:
+          type: integer
+          format: int64
+        tx_duration:
+          type: integer
+          format: int64
+        rx_packets:
+          type: integer
+          format: int64
+        tx_packets:
+          type: integer
+          format: int64
+        tx_retries:
+          type: integer
+          format: int64
+        tx_failed:
+          type: integer
+          format: int64
+        connected:
+          type: integer
+          format: int64
+        inactive:
+          type: integer
+          format: int64
+        tx_rate:
+          $ref: '#/components/schemas/UE_rate'
+        rx_rate:
+          $ref: '#/components/schemas/UE_rate'
+        tidstats:
+          type: array
+          items:
+            $ref: '#/components/schemas/TIDstat_entry'
+        tx_bytes_bw:
+          type: number
+        rx_bytes_bw:
+          type: number
+        tx_packets_bw:
+          type: number
+        rx_packets_bw:
+          type: number
+        tx_failed_pct:
+          type: number
+        tx_retries_pct:
+          type: number
+        tx_duration_pct:
+          type: number
+        tx_bytes_delta:
+          type: integer
+          format: int64
+        rx_bytes_delta:
+          type: integer
+          format: int64
+        tx_packets_delta:
+          type: integer
+          format: int64
+        rx_packets_delta:
+          type: integer
+          format: int64
+        tx_failed_delta:
+          type: integer
+          format: int64
+        tx_retries_delta:
+          type: integer
+          format: int64
+        tx_duration_delta:
+          type: integer
+          format: int64
+
+    AveragePoint:
+      type: object
+      properties:
+        min:
+          type: number
+        max:
+          type: number
+        avg:
+          type: number
+
+    SSIDTimePoint:
+      type: object
+      properties:
+        bssid:
+          type: string
+        mode:
+          type: string
+        ssid:
+          type: string
+        band:
+          type: integer
+        associations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UETimePoint'
+        tx_bytes_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        rx_bytes_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_packets_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        rx_packets_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_failed_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_retries_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_duration_pct:
+          $ref: '#/components/schemas/AveragePoint'
+
+    APTimePoint:
+      type: object
+      properties:
+        collisions:
+          type: integer
+          format: int64
+        multicast:
+          type: integer
+          format: int64
+        rx_bytes:
+          type: integer
+          format: int64
+        rx_dropped:
+          type: integer
+          format: int64
+        rx_errors:
+          type: integer
+          format: int64
+        rx_packets:
+          type: integer
+          format: int64
+        tx_bytes:
+          type: integer
+          format: int64
+        tx_dropped:
+          type: integer
+          format: int64
+        tx_errors:
+          type: integer
+          format: int64
+        tx_packets:
+          type: integer
+          format: int64
+        tx_bytes_delta:
+          type: integer
+          format: int64
+        rx_bytes_delta:
+          type: integer
+          format: int64
+        rx_dropped_delta:
+          type: integer
+          format: int64
+        tx_dropped_delta:
+          type: integer
+          format: int64
+        rx_packets_delta:
+          type: integer
+          format: int64
+        tx_packets_delta:
+          type: integer
+          format: int64
+        rx_errors_delta:
+          type: integer
+          format: int64
+        tx_errors_delta:
+          type: integer
+          format: int64
+
+    RadioTimePoint:
+      type: object
+      properties:
+        band:
+          type: integer
+          format: int64
+        radio_channel:
+          type: integer
+          format: int64
+        active_ms:
+          type: integer
+          format: int64
+        busy_ms:
+          type: integer
+          format: int64
+        receive_ms:
+          type: integer
+          format: int64
+        transmit_ms:
+          type: integer
+          format: int64
+        tx_power:
+          type: integer
+          format: int64
+        channel:
+          type: integer
+          format: int64
+        temperature:
+          type: integer
+          format: int64
+        noise:
+          type: integer
+          format: int64
+        active_pct:
+          type: number
+        busy_pct:
+          type: number
+        receive_pct:
+          type: number
+        transmit_pct:
+          type: number
+
+    DeviceTimePoint:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        boardId:
+          type: string
+          format: uuid
+        serialNumber:
+          type: string
+        timestamp:
+          type: integer
+          format: int64
+        ap_data:
+          $ref: '#/components/schemas/APTimePoint'
+        ssid_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SSIDTimePoint'
+        radio_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RadioTimePoint'
+        device_info:
+          $ref: '#/components/schemas/DeviceInfo'
+
+    DeviceTimePointAnalysis:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        noise:
+          $ref: '#/components/schemas/AveragePoint'
+        active_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        busy_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        receive_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        transmit_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_power:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_bytes_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        rx_bytes_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        rx_dropped_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_dropped_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        rx_packets_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_packets_bw:
+          $ref: '#/components/schemas/AveragePoint'
+        rx_errors_pct:
+          $ref: '#/components/schemas/AveragePoint'
+        tx_errors_pct:
+          $ref: '#/components/schemas/AveragePoint'
+
+    DeviceTimePointList:
+      type: object
+      properties:
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTimePoint'
+        stats:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTimePointAnalysis'
+
+    DeviceTimePointStats:
+      type: object
+      properties:
+        firstPoint:
+          type: integer
+          format: int64
+        lastPoint:
+          type: integer
+          format: int64
+        count:
+          type: integer
+          format: int64
+
+    WifiClientHistory:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+        station_id:
+          type: string
+        bssid:
+          type: string
+        ssid:
+          type: string
+        rssi:
+          type: integer
+        rx_bitrate:
+          type: integer
+        rx_chwidth:
+          type: integer
+        rx_mcs:
+          type: integer
+        rx_nss:
+          type: integer
+        rx_vht:
+          type: boolean
+        tx_bitrate:
+          type: integer
+        tx_chwidth:
+          type: integer
+        tx_mcs:
+          type: integer
+        tx_nss:
+          type: integer
+        tx_vht:
+          type: boolean
+        rx_bytes:
+          type: integer
+        tx_bytes:
+          type: integer
+        rx_duration:
+          type: integer
+        tx_duration:
+          type: integer
+        rx_packets:
+          type: integer
+        tx_packets:
+          type: integer
+        ipv4:
+          type: string
+        ipv6:
+          type: string
+        channel_width:
+          type: integer
+        noise:
+          type: integer
+        tx_power:
+          type: integer
+        channel:
+          type: integer
+        active_ms:
+          type: integer
+        busy_ms:
+          type: integer
+        receive_ms:
+          type: integer
+        mode:
+          type: string
+        ack_signal:
+          type: integer
+        ack_signal_avg:
+          type: integer
+        connected:
+          type: integer
+        inactive:
+          type: integer
+        tx_retries:
+          type: integer
+        venue_id:
+          type: string
+
+    WifiClientHistoryList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/WifiClientHistory'
+
+    MacList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            type: string
+
+    #########################################################################################
+    ##
+    ## These are endpoints that all services in the OPenWiFI stack must provide
+    ##
+    #########################################################################################
+    AnyPayload:
+      type: object
+      properties:
+        Document:
+          type: string
+
+    StringList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    TagValuePair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+
+    TagValuePairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    TagIntPair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: integer
+          format: int64
+
+    TagIntPairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagIntPair'
+
+    SystemCommandDetails:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevels
+            - getloglevels
+            - getSubSystemNames
+            - getLogLevelNames
+            - stats
+        parameters:
+          oneOf:
+            - $ref: '#/components/schemas/StringList'
+            - $ref: '#/components/schemas/TagValuePairList'
+
+    SystemCommandResults:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/StringList'
+        - $ref: '#/components/schemas/TagValuePairList'
+
+    NoteInfo:
+      type: object
+      properties:
+        created:
+          type: integer
+          format: int64
+        createdBy:
+          type: string
+        note:
+          type: string
+
+    SystemInfoResults:
+      type: object
+      properties:
+        version:
+          type: string
+        uptime:
+          type: integer
+          format: integer64
+        start:
+          type: integer
+          format: integer64
+        os:
+          type: string
+        processors:
+          type: integer
+        hostname:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              expires:
+                type: integer
+                format: int64
+
+    Dashboard:
+      type: object
+      properties:
+        snapshot:
+          type: integer
+          format: int64
+        tenants:
+          $ref: '#/components/schemas/TagIntPairList'
+
+    SystemCommandSetLogLevel:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevel
+        subsystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandReload:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - reload
+        subsystems:
+          type: array
+          items:
+            type: string
+            example: these are the SubSystems names retrieve with the GetSubSystemsNamesResult.
+
+    SystemCommandGetLogLevels:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevels
+
+    SystemGetLogLevelsResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandGetLogLevelNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevelnames
+
+    SystemCommandGetSubsystemNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getsubsystemnames
+
+    SystemCommandGetLogLevelNamesResult:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    SystemGetSubSystemNamesResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+paths:
+  /boards:
+    get:
+      tags:
+        - Boards
+      operationId: getBoards
+      summary: Retrieve a list of boards.
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: return the number of boards
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: list of boards for a given venue
+          name: forVenue
+          schema:
+            type: string
+            format: uuid
+          required: false
+      responses:
+        200:
+          description: Return a list of boards
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardInfoList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /board/{id}:
+    get:
+      tags:
+        - Boards
+      operationId: getBoard
+      summary: Retrieve a board
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          description: Return a list of boards
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardInfo'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Boards
+      operationId: deleteBoard
+      summary: Remove a board
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Boards
+      operationId: createBoard
+      summary: Create a board
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          example: value should be 0 for a post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardInfo'
+      responses:
+        200:
+          $ref: '#/components/schemas/BoardInfo'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Boards
+      operationId: modifyBoard
+      summary: Modify a board
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardInfo'
+      responses:
+        200:
+          $ref: '#/components/schemas/BoardInfo'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /board/{id}/devices:
+    get:
+      tags:
+        - Board Devices
+      summary: Get basic information about all the devices for a venue.
+      operationId: getBoardDevices
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+
+      responses:
+        200:
+          $ref: '#/components/schemas/DeviceInfoList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /board/{id}/timepoints:
+    get:
+      tags:
+        - Board data
+      summary: retrieve board data for a given time period.
+      operationId: getBoardTimepoint
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: fromDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: maxRecords
+          schema:
+            type: integer
+            default: 100
+          required: false
+        - in: query
+          name: statsOnly
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: pointsOnly
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: pointsStatsOnly
+          schema:
+            type: boolean
+            default: false
+          required: false
+
+      responses:
+        200:
+          $ref: '#/components/schemas/DeviceTimePointList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Board data
+      summary: delete board data for a given time period.
+      operationId: deleteBoardTimepoints
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: fromDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+          required: false
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+
+  /iptocountry:
+    get:
+      tags:
+        - Utility
+      summary: Get the country code for an IP address
+      operationId: getIpToCountry
+      parameters:
+        - in: query
+          name: iplist
+          schema:
+            type: string
+            example:
+              10.2.2.2,10.3.4.3
+          required: true
+      responses:
+        200:
+          description: List of country codes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                  countryCodes:
+                    type: array
+                    items:
+                      type: string
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /wifiClientHistory:
+    get:
+      tags:
+        - WiFiClientHistory
+      operationId: getWifiClientHistory
+      summary: Retrieve WiFi client history for debugging purpose
+      parameters:
+        - in: query
+          name: fromDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: macsOnly
+          schema:
+            type: boolean
+            default: false
+          required: true
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: macFilter
+          schema:
+            type: string
+            example:
+              112233445566, 11223344*, *5566
+          required: false
+        - in: query
+          description: The venue to for the search.
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/StringList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /wifiClientHistory/{client}:
+    get:
+      tags:
+        - WiFiClientHistory
+      operationId: getWifiClients
+      summary: Retrieve WiFi client history for debugging purpose
+      parameters:
+        - in: path
+          name: client
+          schema:
+            type: string
+            example:
+              "112233aabbcc"
+          required: true
+        - in: query
+          name: fromDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: The venue to for the search.
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          description: return extended information
+          name: orderBy
+          schema:
+            type: string
+            example: serialNumber:a,created:d
+          required: false
+        - in: query
+          description: return extended information
+          name: orderSpec
+          schema:
+            type: boolean
+            default: false
+          required: false
+      responses:
+        200:
+          $ref: '#/components/schemas/WifiClientHistoryList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - WiFiClientHistory
+      operationId: deleteWifiClientHistory
+      summary: Retrieve WiFi client history for debugging purpose
+      parameters:
+        - in: query
+          description: The venue to for the search.
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: path
+          name: client
+          schema:
+            type: string
+            example:
+              "112233aabbcc"
+          required: true
+        - in: query
+          name: fromDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: macFilter
+          schema:
+            type: string
+            example:
+              112233445566, 11223344*, *5566
+          required: false
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  #########################################################################################
+  ##
+  ## These are endpoints that all services in the OpenWiFi stack must provide
+  ##
+  #########################################################################################
+  /system:
+    post:
+      tags:
+        - System Commands
+      summary: Perform some system wide commands.
+      operationId: systemCommand
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/SystemCommandSetLogLevel'
+                - $ref: '#/components/schemas/SystemCommandReload'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevels'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevelNames'
+                - $ref: '#/components/schemas/SystemCommandGetSubsystemNames'
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemGetLogLevelsResult'
+                  - $ref: '#/components/schemas/SystemCommandGetLogLevelNamesResult'
+                  - $ref: '#/components/schemas/SystemGetSubSystemNamesResult'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    get:
+      tags:
+        - System Commands
+      summary: Retrieve different values from the running service.
+      operationId: getSystemCommand
+      parameters:
+        - in: query
+          description: Get a value
+          name: command
+          schema:
+            type: string
+            enum:
+              - info
+          required: true
+
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemInfoResults'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
