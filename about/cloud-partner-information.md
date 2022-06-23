@@ -37,7 +37,7 @@ Ensure your GitHub account was linked in your Telecom Infra Project user profile
 
 OpenWiFi SDK uses OpenAPI 3.0 compliant northbound Rest API and Kafka for message bus topics. Typical CRUD actions occur via the Rest API, Kafka will present topics for device discovery and all telemetry captured from the network edge.
 
-Please consult the [API topics](../sdk/api/) to begin with integration work.
+Please consult the [API topics](../developer-resources/api/) to begin with integration work.
 
 ### Summary
 

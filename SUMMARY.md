@@ -37,13 +37,6 @@
     * [Statistics](sdk/user-interface/devices-view/statistics.md)
     * [Command History](sdk/user-interface/devices-view/command-history.md)
   * [Firmware](sdk/user-interface/firmware.md)
-* [API](sdk/api/README.md)
-  * [OpenAPI Definitions](sdk/api/openapi-definitions.md)
-  * [Security Service](sdk/api/security-service.md)
-  * [Gateway Service](sdk/api/gateway-service.md)
-  * [Firmware Management Service](sdk/api/firmware-management-service.md)
-  * [Provisioning Service](sdk/api/provisioning-service.md)
-  * [Analytics Service](sdk/api/analytics-service.md)
 * [Monitoring](sdk/monitoring/README.md)
   * [ELK Integration](sdk/monitoring/elk-integration.md)
 
@@ -93,3 +86,14 @@
 * [Features](release/features.md)
 * [Security Updates](release/security.md)
 * [Resolved Issues](release/resolved-issues.md)
+
+## DEVELOPER RESOURCES
+
+* [SDK API](developer-resources/api/README.md)
+  * [OpenAPI Definitions](developer-resources/api/openapi-definitions.md)
+  * [Security Service](developer-resources/api/security-service.md)
+  * [Gateway Service](developer-resources/api/gateway-service.md)
+  * [Firmware Management Service](developer-resources/api/firmware-management-service.md)
+  * [Provisioning Service](developer-resources/api/provisioning-service.md)
+  * [Analytics Service](developer-resources/api/analytics-service.md)
+* [SDK KAFKA](developer-resources/sdk-kafka.md)
