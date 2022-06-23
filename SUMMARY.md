@@ -1,43 +1,51 @@
 # Table of contents
 
 * [OpenWiFi Release 2.6 GA](README.md)
-* [About OpenWifi](about-openwifi/about-openwifi.md)
-  * [Open WiFi First](about-openwifi/contribute.md)
-  * [About Device Provisioning](about-openwifi/device-provisioning.md)
-  * [Supported Hardware](about-openwifi/supported-hardware.md)
-  * [Integrations](openwifi-stack/README.md)
-* [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
-* [Device Partner Information](device-partner-information.md)
-* [Cloud Partner Information](cloud-partner-information.md)
-* [What's New](whats-new.md)
-* [Open WiFi Stack](openwifi-stack/README.md)
-  * [About the OpenWiFi SDK](openwifi-stack/about-the-sdk.md)
-  * [OpenWiFi Firmware](openwifi-stack/firmware.md)
-  * [Cloud Discovery](openwifi-stack/cloud-discovery/README.md)
-    * [Discovery without Cloud](openwifi-stack/cloud-discovery/discovery-without-cloud.md)
-  * [Access Points](openwifi-stack/access-points/README.md)
-    * [Local Device Settings](openwifi-stack/access-points/local-device-settings.md)
-* [Getting Started](getting-started/README.md)
-  * [Release 2.0 SDK](getting-started/sdk.md)
-  * [Repositories](getting-started/repositories.md)
-* [Provisioning](provisioning/README.md)
-  * [Data Model Introduction](provisioning/data-model-introduction.md)
-  * [Creating a Configuration](provisioning/creating-a-configuration.md)
-* [User Interface](user-interface/README.md)
-  * [Devices](user-interface/devices-view/README.md)
-    * [Commands](user-interface/devices-view/commands.md)
-    * [Statistics](user-interface/devices-view/statistics.md)
-    * [Command History](user-interface/devices-view/command-history.md)
-  * [Firmware](user-interface/firmware.md)
-* [API](api/README.md)
-  * [OpenAPI Definitions](api/openapi-definitions.md)
-  * [Security Service](api/security-service.md)
-  * [Gateway Service](api/gateway-service.md)
-  * [Firmware Management Service](api/firmware-management-service.md)
-  * [Provisioning Service](api/provisioning-service.md)
-  * [Analytics Service](api/analytics-service.md)
-* [Monitoring](monitoring/README.md)
-  * [ELK Integration](monitoring/elk-integration.md)
+
+## ABOUT
+
+* [About OpenWifi](about/about-openwifi.md)
+* [Open WiFi First](about/contribute.md)
+* [Supported Hardware](about/supported-hardware.md)
+* [Integrations](openwifi-stack/openwifi-stack.md)
+* [Device Partner Information](about/device-partner-information.md)
+* [Cloud Partner Information](about/cloud-partner-information.md)
+* [Ordering OpenWiFi APs](about/ordering-open-wi-fi-aps.md)
+
+## OPENWIFI STACK
+
+* [Open WiFi Stack](openwifi-stack/openwifi-stack.md)
+* [About the OpenWiFi SDK](openwifi-stack/about-the-sdk.md)
+* [OpenWiFi Firmware](openwifi-stack/firmware.md)
+* [Cloud Discovery](openwifi-stack/cloud-discovery/README.md)
+  * [Discovery without Cloud](openwifi-stack/cloud-discovery/discovery-without-cloud.md)
+* [Access Points](openwifi-stack/access-points/README.md)
+  * [Local Device Settings](openwifi-stack/access-points/local-device-settings.md)
+* [About Device Provisioning](openwifi-stack/device-provisioning.md)
+* [Repositories](openwifi-stack/repositories.md)
+
+## SDK
+
+* [Getting Started](sdk/getting-started.md)
+* [Release 2.0 SDK](sdk/sdk.md)
+* [Provisioning](sdk/provisioning/README.md)
+  * [Data Model Introduction](sdk/provisioning/data-model-introduction.md)
+  * [Creating a Configuration](sdk/provisioning/creating-a-configuration.md)
+* [User Interface](sdk/user-interface/README.md)
+  * [Devices](sdk/user-interface/devices-view/README.md)
+    * [Commands](sdk/user-interface/devices-view/commands.md)
+    * [Statistics](sdk/user-interface/devices-view/statistics.md)
+    * [Command History](sdk/user-interface/devices-view/command-history.md)
+  * [Firmware](sdk/user-interface/firmware.md)
+* [API](sdk/api/README.md)
+  * [OpenAPI Definitions](sdk/api/openapi-definitions.md)
+  * [Security Service](sdk/api/security-service.md)
+  * [Gateway Service](sdk/api/gateway-service.md)
+  * [Firmware Management Service](sdk/api/firmware-management-service.md)
+  * [Provisioning Service](sdk/api/provisioning-service.md)
+  * [Analytics Service](sdk/api/analytics-service.md)
+* [Monitoring](sdk/monitoring/README.md)
+  * [ELK Integration](sdk/monitoring/elk-integration.md)
 
 ## SDK Installation
 
@@ -79,12 +87,9 @@
   * [Switching](configuration-examples/device-feature-configuration-examples/switching/README.md)
     * [Port Speed](configuration-examples/device-feature-configuration-examples/switching/port-speed.md)
 
-## Release Notes
+## RELEASE
 
-* [Features](release-notes/features.md)
-* [Security](release-notes/security.md)
-* [Resolved Issues](release-notes/resolved-issues.md)
-
-## Test Automation Framework
-
-* [Overview](test-automation-framework/overview.md)
+* [What's New](release/whats-new.md)
+* [Features](release/features.md)
+* [Security Updates](release/security.md)
+* [Resolved Issues](release/resolved-issues.md)

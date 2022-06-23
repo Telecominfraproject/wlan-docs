@@ -1,9 +1,8 @@
-# Device Provisioning
+# About Device Provisioning
 
-![](./media/image12.jpeg)
+![](../about-openwifi/media/image12.jpeg)
 
-The OpenWiFi solution can be applied to a diverse number of use cases from enterprise networks, service provider access, and hotspots. OpenWiFi offers a variety of managed services from small to very large venues of roaming, client shared-key management, client steering, mobile offload, QoS-based services, and Layer 2 and Layer 3 breakout and overlay options. The Provisioning service provides a view into the network as a whole, and venues with entity-based
-control.
+The OpenWiFi solution can be applied to a diverse number of use cases from enterprise networks, service provider access, and hotspots. OpenWiFi offers a variety of managed services from small to very large venues of roaming, client shared-key management, client steering, mobile offload, QoS-based services, and Layer 2 and Layer 3 breakout and overlay options. The Provisioning service provides a view into the network as a whole, and venues with entity-based control.
 
 The provisioning service for OpenWiFi supports weighted order inheritance of configuration templates. These services and networks provide the greatest level of flexibility.
 
@@ -19,9 +18,9 @@ You can manage device inventory for both assigned and unassigned states. As devi
 
 Each inventory record, regardless of assignment state can be viewed in the OpenWifi dashboard.
 
-![](./media/image13.png){width="6.4in" height="3.0in"}Use the SDK UI to assign a device to a venue, review device configurations, update record tags or delete a device.
+![](../about-openwifi/media/image13.png){width="6.4in" height="3.0in"}Use the SDK UI to assign a device to a venue, review device configurations, update record tags or delete a device.
 
-![](./media/image14.png)
+![](../about-openwifi/media/image14.png)
 
 ### Bulk Inventory API
 
@@ -29,22 +28,19 @@ The TIP OpenWiFi inventory service API could be used to bulk load record formats
 
 \`\`\`
 
-\"SerialNumber\",Name,Description,DeviceType,NoteText for example:
-d1300f7b0732,Manufacturer,Desc, edgecore_spw2ac1200,OutdoorAP
+"SerialNumber",Name,Description,DeviceType,NoteText for example: d1300f7b0732,Manufacturer,Desc, edgecore\_spw2ac1200,OutdoorAP
 
 \`\`\`
 
-For each inventory record, the \`\`\`deviceType\`\`\` must match a valid
-OpenWiFi device type. For example:
+For each inventory record, the \`\`\`deviceType\`\`\` must match a valid OpenWiFi device type. For example:
 
 \`\`\`
 
-"deviceTypes": \[ "cig_wf160d", "cig_wf188", "cig_wf194c",
-"edgecore_eap101", "edgecore_eap102\",
+"deviceTypes": \[ "cig\_wf160d", "cig\_wf188", "cig\_wf194c", "edgecore\_eap101", "edgecore\_eap102",
 
-"edgecore_ecs4100-12ph", "edgecore_ecw5211\",
+"edgecore\_ecs4100-12ph", "edgecore\_ecw5211",
 
-> ...\]
+> ...]
 
 \`\`\`
 
@@ -56,20 +52,18 @@ Choosing to assign the device to a specific MDU location as an example can be do
 
 Devices can be assigned to the MDU—which may be an actual venue such as a building or a tenant operator with child venues.
 
-![](./media/image15.jpeg)
+![](../about-openwifi/media/image15.jpeg)
 
-![](./media/image16.png)
-
-
+![](../about-openwifi/media/image16.png)
 
 ## Provisioning Templates
 
 Use the Create Configuration window to create a configuration template for a specific venue or device.
 
-![](./media/image17.png)
+![](../about-openwifi/media/image17.png)
 
-![](./media/image18.png)
+![](../about-openwifi/media/image18.png)
 
-![](./media/image19.png)
+![](../about-openwifi/media/image19.png)
 
 For example, a configuration template for a local area network could include: address translation and local DHCP for on-premises devices, WAN interface with DHCP for IPv4/IPv6 service, and a basic Wi-Fi configuration.

@@ -7,7 +7,7 @@ description: uCentral Data Model Introduction
 OpenWiFi 2.0 makes it possible for integrators of the SDK to implement commercial products leveraging OpenWiFi Gateway service with vendor supplied provisioning above OpenWiFi SDK.\
 As a minimum, the OpenWiFi 2.0 SDK framework offers a Security service which handles all OpenAPI authentication northbound, and the Gateway service which provides all uCentral websocket interface functionality southbound.
 
-![Minimum 2.0 SDK - Assumes DB is either SQLite or PGSql](<../.gitbook/assets/image (28).png>)
+![Minimum 2.0 SDK - Assumes DB is either SQLite or PGSql](<../../.gitbook/assets/image (28).png>)
 
 OpenWiFi also provides options to receive telemetry and events over both OpenAPI interface as well as Kafka message bus. When using Kafka, OpenWiFi Gateway directly publishes telemetry and event topics to the bus.
 
@@ -18,7 +18,7 @@ In future sprints of OpenWiFi dynamic device provisioning will be available as a
 OpenWiFi 2.0 Gateway implements the uCentral device management interface. uCentral specifies the data model and interface for management and telemetry of OpenWrt based devices.\
 Gateway uCentral interface is a websocket JSON-RPC based design between OpenWiFi Gateway and the device running uCentral agent.
 
-![Southbound Interface to Devices](<../.gitbook/assets/image (29).png>)
+![Southbound Interface to Devices](<../../.gitbook/assets/image (29).png>)
 
 All communications from Gateway to Device are secured using mutual Transport Layer Security (mTLS). In mTLS systems each endpoint is a unique device sharing the same signed root or intermediate trust. In OpenWiFi each device has a signed certificate, key and device identifier. These are validated by the uCentral-Gateway to establish mTLS session.
 
@@ -26,7 +26,7 @@ Upon successful connection the device exchanges its capabilities with the OpenWi
 Within OpenWiFi devices, the uCentral agent has a reader and renderer process providing serialization and validation of data sent from cloud.\
 If any data presented can not be processed by the local agent, this is returned within an ERROR message using the same websocket connection.
 
-![High Level SDK Gateway to uCentral Agent](<../.gitbook/assets/image (22) (1) (1).png>)
+![High Level SDK Gateway to uCentral Agent](<../../.gitbook/assets/image (22) (1) (1).png>)
 
 If the device agrees with provisioning information presented, the render process builds calls into the operating system configuration sub-system known as UCI. The Unified Configuration Interface ensures OpenWrt compliant syntax is persisted within the device.
 

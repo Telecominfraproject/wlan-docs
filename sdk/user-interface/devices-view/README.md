@@ -14,7 +14,7 @@ Each device presents Metrics and Health check data to the Gateway. Devices view 
 * Statistics
 * Command History
 
-![Initial Device View](../../.gitbook/assets/screen-shot-2021-07-28-at-5.15.03-pm.png)
+![Initial Device View](../../../.gitbook/assets/screen-shot-2021-07-28-at-5.15.03-pm.png)
 
 ## Status
 
@@ -23,7 +23,7 @@ Uptime and Last Contact reflect communication state.\
 Load indicates processing load on the device.\
 Memory Used indicates free memory on the device.
 
-![Device Status](../../.gitbook/assets/screen-shot-2021-07-28-at-5.17.59-pm.png)
+![Device Status](../../../.gitbook/assets/screen-shot-2021-07-28-at-5.17.59-pm.png)
 
 ## Configuration
 
@@ -31,19 +31,19 @@ Device UUID, Serial Number, MAC Address and Device Type are displayed.\
 Last configuration update date and timestamp reflects the last time a "configure" action completed on the device.\
 Password may be set and device notes may be added.
 
-![Device view Configuration Panel](../../.gitbook/assets/screen-shot-2021-07-28-at-5.21.07-pm.png)
+![Device view Configuration Panel](../../../.gitbook/assets/screen-shot-2021-07-28-at-5.21.07-pm.png)
 
 ## Logs
 
 Log history of the device is presented within Logs. Expand the tile selecting the down arrow.
 
-![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.25.29-pm.png)
+![](../../../.gitbook/assets/screen-shot-2021-07-28-at-5.25.29-pm.png)
 
 ## Health
 
 Health score is an active tile reflecting the device health out of a score reported by the device to Gateway. Health metrics are configured on the device based on chosen data model options. When the device falls out of 100%, this tile changes to red. Expanding the tile will present all health reports. Those with less than 100% score will contain reasons for the result from this interface.
 
-![](../../.gitbook/assets/screen-shot-2021-07-28-at-5.24.00-pm.png)
+![](../../../.gitbook/assets/screen-shot-2021-07-28-at-5.24.00-pm.png)
 
 ## Commands
 
@@ -60,4 +60,4 @@ Commands tile provides a number of administrative actions for the user:
 | Factory Reset    | Hard Reset remote device - destroys device local config |
 | Configure        | Upload Device Configuration                             |
 
-![Commands Tile](../../.gitbook/assets/screen-shot-2021-07-28-at-5.25.50-pm.png)
+![Commands Tile](../../../.gitbook/assets/screen-shot-2021-07-28-at-5.25.50-pm.png)

@@ -10,4 +10,4 @@ New protocol support is both easily added to the system as well as associated wi
 
 The following sections offer feature configuration examples.
 
-For complete reference to the device data model please refer [here.](../../provisioning/data-model-introduction.md)
+For complete reference to the device data model please refer [here.](../../sdk/provisioning/data-model-introduction.md)
