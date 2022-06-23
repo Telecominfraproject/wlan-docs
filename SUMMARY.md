@@ -1,7 +1,6 @@
 # Table of contents
 
 * [OpenWiFi Release 2.6 GA](README.md)
-* [What's New](whats-new.md)
 * [About OpenWifi](about-openwifi/about-openwifi.md)
   * [Open WiFi First](about-openwifi/contribute.md)
   * [Open WiFi Stack](about-openwifi/openwifi-stack.md)
@@ -13,6 +12,7 @@
 * [Ordering OpenWiFi APs](ordering-open-wi-fi-aps.md)
 * [Device Partner Information](device-partner-information.md)
 * [Cloud Partner Information](cloud-partner-information.md)
+* [What's New](whats-new.md)
 * [Getting Started](getting-started/README.md)
   * [Cloud Discovery](getting-started/cloud-discovery/README.md)
     * [Discovery without Cloud](getting-started/cloud-discovery/discovery-without-cloud.md)
