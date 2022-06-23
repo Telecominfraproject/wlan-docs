@@ -1,4 +1,4 @@
-# OpenWiFi SDK
+# About the OpenWiFi SDK
 
 The TIP OpenWiFi SDK supports multiple hardware platforms for Wi-Fi and PoE switching. Commercial controllers are also integrating the OpenWiFi SDK with their go to market offers. This presents great opportunities for many operators. A full SDK for those who seek to work directly with the Open Source project to a full commercial vendor - operator model.
 
@@ -14,4 +14,4 @@ You can integrate OSS/BSS (Operations Back Office Support Software) systems with
 
 The SDK dashboard shows all devices deployed, their current state, and simplified reports of overall device health.
 
-![](./media/image10.png)
+![](../about-openwifi/media/image10.png)
