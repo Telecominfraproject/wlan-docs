@@ -14,15 +14,16 @@
 
 ## OPENWIFI STACK
 
-* [Open WiFi Stack](openwifi-stack/openwifi-stack.md)
-* [About the OpenWiFi SDK](openwifi-stack/about-the-sdk.md)
-* [OpenWiFi Firmware](openwifi-stack/firmware.md)
+* [Overview](openwifi-stack/openwifi-stack.md)
+* [SDK](openwifi-stack/about-the-sdk.md)
 * [Cloud Discovery](openwifi-stack/cloud-discovery/README.md)
   * [Discovery without Cloud](openwifi-stack/cloud-discovery/discovery-without-cloud.md)
 * [Access Points](openwifi-stack/access-points/README.md)
   * [Local Device Settings](openwifi-stack/access-points/local-device-settings.md)
-* [About Device Provisioning](openwifi-stack/device-provisioning.md)
-* [Repositories](openwifi-stack/repositories.md)
+* [Firmware Management](openwifi-stack/firmware.md)
+* [Device Provisioning](openwifi-stack/device-provisioning.md)
+* [Code Repositories](openwifi-stack/repositories.md)
+* [Artifacts](openwifi-stack/artifacts.md)
 
 ## SDK
 

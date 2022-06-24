@@ -4,9 +4,7 @@ description: TIP OpenWiFi 2.0
 
 # Access Points
 
-Initial Minimum Viable Product Release 2.0 does not include template driven device provisioning, this will be available in the next sprint.
-
-Given many cloud and ODM partners wish to consume the 2.0 reference stack early, some with their own device provisioning logic as part of commercial cloud controllers, the following describes uCentral based management and telemetry, interactions with the OpenWiFi SDK processing provisioning and telemetry data.
+Given many cloud and ODM partners wish to consume the 2.x reference stack early, some with their own device provisioning logic as part of commercial cloud controllers, the following describes uCentral based management and telemetry, interactions with the OpenWiFi SDK processing provisioning and telemetry data.
 
 ## Device Interactions with SDK
 

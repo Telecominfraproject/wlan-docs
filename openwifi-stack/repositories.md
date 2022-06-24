@@ -2,40 +2,41 @@
 description: 2.4 Repository Information
 ---
 
-# Repositories
+# Code Repositories
 
-**Access Point Network OS (APNOS)**
+**Access Point Firmware**
 
 License: BSD-3-Clause
 
-* Openwrt based APNOS: [https://github.com/Telecominfraproject/wlan-ap/tree/release/v2.4.0](https://github.com/Telecominfraproject/wlan-ap/tree/release/v2.4.0)
+* Openwrt based APNOS: [https://github.com/Telecominfraproject/wlan-ap](https://github.com/Telecominfraproject/wlan-ap)
 
 **Controller SDK**
 
 License: BSD-3-Clause
 
-* Gateway Service: [https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/tree/release/v2.4.0](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/tree/release/v2.4.0)
-* Gateway UI: [https://github.com/Telecominfraproject/wlan-cloud-ucentralgw-ui/tree/release/v2.4.0](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw-ui/tree/release/v2.4.0)
-* Security Service: [https://github.com/Telecominfraproject/wlan-cloud-ucentralsec/tree/release/v2.4.0](https://github.com/Telecominfraproject/wlan-cloud-ucentralsec/tree/release/v2.4.0)
-* Firmware Service: [https://github.com/Telecominfraproject/wlan-cloud-ucentralfms/tree/release/v2.4.0](https://github.com/Telecominfraproject/wlan-cloud-ucentralfms/tree/release/v2.4.0)
-* Provisioning Service:[https://github.com/Telecominfraproject/wlan-cloud-owprov/tree/main](https://github.com/Telecominfraproject/wlan-cloud-owprov/tree/main)
-* Provisioning UI: [https://github.com/Telecominfraproject/wlan-cloud-owprov-ui/tree/main](https://github.com/Telecominfraproject/wlan-cloud-owprov-ui/tree/main)
+* Gateway Service: [https://github.com/Telecominfraproject/wlan-cloud-ucentralgw](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw)
+* Gateway UI: [https://github.com/Telecominfraproject/wlan-cloud-ucentralgw-ui](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw-ui)
+* Security Service: [https://github.com/Telecominfraproject/wlan-cloud-ucentralsec](https://github.com/Telecominfraproject/wlan-cloud-ucentralsec)
+* Firmware Service: [https://github.com/Telecominfraproject/wlan-cloud-ucentralfms](https://github.com/Telecominfraproject/wlan-cloud-ucentralfms)
+* Provisioning Service: [https://github.com/Telecominfraproject/wlan-cloud-owprov](https://github.com/Telecominfraproject/wlan-cloud-owprov)
+* Provisioning UI: [https://github.com/Telecominfraproject/wlan-cloud-owprov-ui](https://github.com/Telecominfraproject/wlan-cloud-owprov-ui)
+* Analytics Service: [https://github.com/Telecominfraproject/wlan-cloud-analytics](https://github.com/Telecominfraproject/wlan-cloud-analytics)
+* Subscriber Service: [https://github.com/Telecominfraproject/wlan-cloud-userportal](https://github.com/Telecominfraproject/wlan-cloud-userportal)
 
 **Testing**
 
 License: BSD-3-Clause
 
-* Open Test Harness and Test cases: [https://github.com/Telecominfraproject/wlan-testing/tree/master](https://github.com/Telecominfraproject/wlan-testing/tree/master)
+* Open Test Harness and Test cases: [https://github.com/Telecominfraproject/wlan-testing](https://github.com/Telecominfraproject/wlan-testing/tree/master)
 
 **SDK Load Simulator**
 
 License: BSD-3-Clause
 
-* OpenWiFi Load Simulator (OWLS): [https://github.com/Telecominfraproject/wlan-cloud-owls/tree/main](https://github.com/Telecominfraproject/wlan-cloud-owls/tree/main)\
-
+* OpenWiFi Load Simulator (OWLS): [https://github.com/Telecominfraproject/wlan-cloud-owls](https://github.com/Telecominfraproject/wlan-cloud-owls/tree/main)
 
 **Deployment**
 
 License: BSD-3-Clause
 
-* Helm and Docker Compose Deployments: [https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0)
+* Helm and Docker Compose Deployments: [https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0)
