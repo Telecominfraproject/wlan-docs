@@ -2,7 +2,7 @@
 
 The latest release includes the following new features.
 
-## APNOS ...what's new...
+## APNOS
 
 * Ath11k Ath12k CSU updates
   * Latest stable Qualcomm patches
@@ -44,7 +44,7 @@ The latest release includes the following new features.
   * AAA builds knowledge of the TIPPEN 5888 Serial Number
 
 
-## SDK ...what's new...
+## SDK
 
 The latest release includes the following new SDK features.
 
