@@ -1,9 +1,9 @@
 # Access Points
 
-TIP OpenWiFi devices are available from many hardware partners. All TIP OpenWiFi devices have the same standard image of open source software. 
+TIP OpenWiFi devices are available from many hardware partners. All TIP OpenWiFi devices have the same standard image of open source software.
 
 TIP OpenWiFi 1.0 devices run OpenWrt operating system with OpenSync as a management stack.   
-The use of OpenWrt is largely upstream based on OpenWrt 19.07 in Open WiFi 1.0. 
+The use of OpenWrt is largely upstream based on OpenWrt 19.07 in Open WiFi 1.0.
 
 When a TIP firmware image is created, the system will merge TIP specific patches, kernel specific patches, and build this with the target OpenWrt 19.07 operating system as one complete firmware image. From this process a TIP OpenWiFi standard firmware results with the following settings.
 
@@ -17,9 +17,9 @@ When a TIP firmware image is created, the system will merge TIP specific patches
 
 ### Unable to Connect to WAN or Controller
 
-If the OpenWiFi device has been unable to reach the internet or the assigned controller, the 'Maverick' SSID will appear. Joining this Wi-Fi network will join the local management interface to help onboard the device to the internet and controller. 
+If the OpenWiFi device has been unable to reach the internet or the assigned controller, the 'Maverick' SSID will appear. Joining this Wi-Fi network will join the local management interface to help onboard the device to the internet and controller.
 
-After joining Maverick SSID, opening a web browser to the address 192.168.1.1 where the following login displays. Enter root login and password. 
+After joining Maverick SSID, opening a web browser to the address 192.168.1.1 where the following login displays. Enter root login and password.
 
 ![Maverick Local Web Page](../.gitbook/assets/image%20%2811%29.png)
 
@@ -35,9 +35,8 @@ It is possible to apply a firmware update from the Maverick interface. This oper
 
 ![Maverick based firmware upgrade](../.gitbook/assets/image%20%289%29.png)
 
-Manually setting the cloud location may be done using its Fully Qualified Domain Name \(FQDN\) in the Redirector field. Device certificates are unique per TIP Open WiFi access point or switch. It should not be required to change these values at any time. Please exercise caution if replacing certificates manually. 
+Manually setting the cloud location may be done using its Fully Qualified Domain Name \(FQDN\) in the Redirector field. Device certificates are unique per TIP OpenWiFi access point or switch. It should not be required to change these values at any time. Please exercise caution if replacing certificates manually. 
 
 ![Maverick set Cloud &apos;Redirector&apos;](../.gitbook/assets/image%20%2817%29.png)
 
-### 
-
+###

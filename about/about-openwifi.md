@@ -1,6 +1,6 @@
-# About OpenWifi
+# About TIP OpenWifi
 
-## About TIP OpenWifi
+## Moving OpenWifi. Further.
 
 Meta Connectivity provides solutions leveraging the Telecom Infra Project (TIP) OpenWiFi ecosystem—as part of the TIP Open Converged Wireless Project Group.
 
