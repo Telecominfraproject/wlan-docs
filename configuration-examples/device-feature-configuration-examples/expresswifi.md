@@ -10,7 +10,7 @@ Express Wi-Fi partners with service providers to deliver great wi-fi to people w
 
 For information about becoming an expressWIFI partner please visit their [site.](https://expresswifi.fb.com)
 
-![](<../../.gitbook/assets/image (40).png>)
+![](<../../.gitbook/assets/image (36).png>)
 
 ## Configuration
 

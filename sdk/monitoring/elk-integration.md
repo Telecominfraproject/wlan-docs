@@ -6,7 +6,7 @@ description: Kafka integration with ELK
 
 The following pipeline is used to leverage Kafka messages being emitted from OpenWiFi 2.0 for ELK (Elastic Logstash Kibana) stack integration :
 
-![](../../.gitbook/assets/kafka-elk-pipeline.png)
+![](../../.gitbook/assets/kafka-ELK-pipeline.png)
 
 TIP OpenWiFi project has deployed an ELK stack for community members to access [here](https://kibana.lab.wlan.tip.build).
 

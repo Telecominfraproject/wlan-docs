@@ -97,4 +97,5 @@
   * [Firmware Management Service](developer-resources/api/firmware-management-service.md)
   * [Provisioning Service](developer-resources/api/provisioning-service.md)
   * [Analytics Service](developer-resources/api/analytics-service.md)
+  * [Postman Collection](developer-resources/api/postman-collection.md)
 * [SDK KAFKA](developer-resources/sdk-kafka.md)
