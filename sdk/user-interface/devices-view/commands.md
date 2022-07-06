@@ -4,7 +4,7 @@ description: OpenWiFi 2.0 SDK
 
 # Commands
 
-Within the devices view, the Commands tile offers a number of features and administrative actions.\
+Within the devices view, the Commands tile offers a number of features and administrative actions.
 Each of these represent API calls exposed on the OpenAPI northbound interface from the SDK.
 
 ## Reboot

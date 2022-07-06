@@ -8,8 +8,8 @@ All TIP OpenWiFi devices use the same cloud discovery mechanism on initial boot.
 
 OpenWiFi devices ship from factory with a unique device certificate signed by the Telecom Infra Project Certificate Authority.
 
-When a device boots for the first time, or is factory reset, a 'first-boot' process occurs within the device.\
-First-boot initiates a connection over HTTPs to the Certificate Authority requesting the unique device record information. All connections to the Certificate Authority occur over mTLS encrypted session.\
+When a device boots for the first time, or is factory reset, a 'first-boot' process occurs within the device.
+First-boot initiates a connection over HTTPs to the Certificate Authority requesting the unique device record information. All connections to the Certificate Authority occur over mTLS encrypted session.
 Devices use their unique certificate identity to authenticate and retrieve the location of the assigned cloud.
 
 ![Device First Boot / Factory Cloud Discovery](<../../.gitbook/assets/image (22).png>)

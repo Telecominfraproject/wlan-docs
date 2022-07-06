@@ -18,17 +18,17 @@ Each device presents Metrics and Health check data to the Gateway. Devices view 
 
 ## Status
 
-Connection status reflects the Gateway to Device current communications status.\
-Uptime and Last Contact reflect communication state.\
-Load indicates processing load on the device.\
+Connection status reflects the Gateway to Device current communications status.
+Uptime and Last Contact reflect communication state.
+Load indicates processing load on the device.
 Memory Used indicates free memory on the device.
 
 ![Device Status](<../../../.gitbook/assets/Screen Shot 2021-07-28 at 5.17.59 PM.png>)
 
 ## Configuration
 
-Device UUID, Serial Number, MAC Address and Device Type are displayed.\
-Last configuration update date and timestamp reflects the last time a "configure" action completed on the device.\
+Device UUID, Serial Number, MAC Address and Device Type are displayed.
+Last configuration update date and timestamp reflects the last time a "configure" action completed on the device.
 Password may be set and device notes may be added.
 
 ![Device view Configuration Panel](<../../../.gitbook/assets/Screen Shot 2021-07-28 at 5.21.07 PM.png>)

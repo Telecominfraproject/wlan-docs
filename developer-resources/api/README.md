@@ -4,7 +4,7 @@ description: OpenWiFi 2.0 SDK
 
 # API
 
-OpenWiFi services follow the OpenAPI 3.0 definition.\
+OpenWiFi services follow the OpenAPI 3.0 definition.
 The complete API is described here: [OpenWiFi SDK OpenAPI](https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/openapi/owgw.yaml)
 
 ## Devices
@@ -39,7 +39,7 @@ Device capabilities are uploaded to the Gateway when the device performs its ini
 
 ### Command Queue
 
-The Gateway will send commands to the devices. These commands are kept in a table and are sent at the appropriate time or immediately when the device connects.\
+The Gateway will send commands to the devices. These commands are kept in a table and are sent at the appropriate time or immediately when the device connects.
 For example, you could ask a device to change its configuration, however it might be unreachable. Upon next device connection, this configure command will be sent. The list of commands is retrieved using the `/commands` endpoint.
 
 ### Commands

@@ -10,14 +10,14 @@ This uses OpenAPI definition 3.0 and can be found [here](https://github.com/Tele
 
 ## API Flow
 
-API endpoints are secured with bearer-token authentication using end-point `/oauth2`.\
+API endpoints are secured with bearer-token authentication using end-point `/oauth2`.
 Once you obtain `access-token`, you will need to pass it in the headers under `Authorization: Bearer <place your token here>`.
 
 ## Basic Entities
 
-The API revolves around `devices`, `commands`, and `default_configurations`.\
-To retrieve a list of `devices` to know what is available and then use the endpoint `device` to access all device specific information.\
-To retrieve `commands` and `default_configurations` follow those endpoints.\
+The API revolves around `devices`, `commands`, and `default_configurations`.
+To retrieve a list of `devices` to know what is available and then use the endpoint `device` to access all device specific information.
+To retrieve `commands` and `default_configurations` follow those endpoints.
 Most operations rely on the `serialNumber` of a device. That `serialNumber` is unique and generated on the device. Serial Number matches the device's MAC address.
 
 * `devices`: The list of all devices in the system. This maybe very large, pagination is recommended.
@@ -26,8 +26,8 @@ Most operations rely on the `serialNumber` of a device. That `serialNumber` is u
 
 ## Relationships
 
-A device is a physical (or potentially logical) entity using the ucentral protocol.\
-Currently, APs and Switches are the only devices used. A device has several attributes.\
+A device is a physical (or potentially logical) entity using the ucentral protocol.
+Currently, APs and Switches are the only devices used. A device has several attributes.
 Additionally, other collections are supported for each device:
 
 * `logs`: Specific for a device. Logs originate from the device or associated with the device by some mechanism.
@@ -35,7 +35,7 @@ Additionally, other collections are supported for each device:
 * `statistics`: Periodically produced by the devices and document actual state data from each device.
 * `capabilities`: This details the actual data model supported by the device.
 
-The `device` entry point is also used to query about the `status` of the device and used to inject certain commands for a specific device.\
+The `device` entry point is also used to query about the `status` of the device and used to inject certain commands for a specific device.
 Commands supported for each device:
 
 * `reboot`: This will force the device to reboot.

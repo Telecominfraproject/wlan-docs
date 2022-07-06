@@ -1,4 +1,4 @@
-# Open WiFi Stack
+# OpenWiFI Stack
 
 The TIP OpenWiFi SDK and the AP network operating system (AP NOS) firmware serves many use cases. With TIP OpenWiFi, the entire 'stack' from the SDK to the firmware can be consumed—lowering the cost of entry and time to market of a new entrant.
 

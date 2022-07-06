@@ -10,7 +10,7 @@ Certain WAN connections may require credentials such as a username and password 
 
 OpenWiFi 2.0 supports these scenarios. When a device does not have an existing configuration and is unable to contact the cloud for provisioning it enters "Maverick" mode.
 
-For all Wi-Fi devices this means a Wi-Fi network with the SSID 'Maverick' will become available.\
+For all Wi-Fi devices this means a Wi-Fi network with the SSID 'Maverick' will become available.
 Association with and logging in to the device will permit initial WAN connectivity to be entered.
 
 ## Using Maverick

@@ -10,7 +10,7 @@ Switching Features Remain Under Test
 
 TIP OpenWiFi use of the OpenWrt operating system combined with new virtual data plane present in all images for 2.0 major release and the uCentral data model make it possible to include PoE access switching as a cloud managed component of the OpenWiFi stack.
 
-Nightly builds include supported switch platforms.&#x20;
+Nightly builds include supported switch platforms.
 
 Currently the list of features for switching include:
 
@@ -18,16 +18,16 @@ Currently the list of features for switching include:
   * Port based Untagged
   * Tagged trunk
 * IEEE 802.1ad Q-inQ
-* VxLAN&#x20;
-* PoE Auto Power&#x20;
+* VxLAN
+* PoE Auto Power
 * Port Mirroring / Monitor
 * Link Aggregation
-* Link Layer Discovery Protocol&#x20;
-* Port Speed Control&#x20;
+* Link Layer Discovery Protocol
+* Port Speed Control
 
 ### Configuring a Switch
 
-All ports needs to be specified for link negotiation to occur. In the below example, the "ethernet" section defines the physical port. The "interfaces" configuration will cause the physical port to negotiate. Effectively removal of a "select-ports" for a physical port in any or all "interfaces" is the equivalent of an interface in shutdown state.&#x20;
+All ports needs to be specified for link negotiation to occur. In the below example, the "ethernet" section defines the physical port. The "interfaces" configuration will cause the physical port to negotiate. Effectively removal of a "select-ports" for a physical port in any or all "interfaces" is the equivalent of an interface in shutdown state.
 
 ```
     "ethernet": [
@@ -120,7 +120,7 @@ All ports needs to be specified for link negotiation to occur. In the below exam
     ],
 ```
 
-Without any "interfaces" defined, the ifconfig on the switch will return eth0, lan1, lo as an output. When adding "interfaces" additional ports become active and also visible.&#x20;
+Without any "interfaces" defined, the ifconfig on the switch will return eth0, lan1, lo as an output. When adding "interfaces" additional ports become active and also visible.
 
 ```
    "interfaces": [
@@ -143,7 +143,7 @@ Without any "interfaces" defined, the ifconfig on the switch will return eth0, l
      }
 ```
 
-Vlan-Id 30 has been assigned to interfaces 7 and 8 on the switch. Traffic is isolated among participating ports. &#x20;
+Vlan-Id 30 has been assigned to interfaces 7 and 8 on the switch. Traffic is isolated among participating ports. 
 
 #### Ifconfig output example
 

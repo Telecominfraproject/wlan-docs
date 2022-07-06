@@ -134,5 +134,5 @@ The most common use case for VLANs and Wi-Fi is likely the service provider, ven
 {% endtab %}
 {% endtabs %}
 
-In all cases the WAN port without VLAN id is using DHCP to obtain a management IP address.\
+In all cases the WAN port without VLAN id is using DHCP to obtain a management IP address.
 Each additional "upstream" role interface with an SSID associated have no IP configuration.

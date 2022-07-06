@@ -10,7 +10,7 @@ OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud nat
 
 * Zero Touch Cloud Discovery
 * Firmware Management
-* User Interface&#x20;
+* User Interface
   * Device List
   * Device Reboot
   * Device LED Blink
@@ -23,7 +23,7 @@ OpenWiFi 2.0 Minimum Viable Product at the end of July, 2021 enables a cloud nat
     * UE (Wi-Fi Clients)
     * Mesh and WDS Clients
     * MCS, NSS, RSSI, Channel, SSID, Tx/Rx
-  * Device Health Check&#x20;
+  * Device Health Check
   * Interface Statistics
   * Device Command History
 
@@ -31,16 +31,16 @@ Upcoming sprint for August includes Dynamic Provisioning service support for tem
 
 OpenWiFi 2.0 SDK is deployable as both a Docker Compose or a Helm on Kubernetes model. See [Release 2.0 SDK](sdk.md) section for installation instructions.
 
-## New in this Release&#x20;
+## New in this Release
 
 * Firmware
   * Basic Features for OpenWiFi Switching
-  * Passpoint&#x20;
+  * Passpoint
     * NAPTR Functionality
     * Proxy Static Routing
     * HSP Auth / Acc Service Discovery
-    * Last Resort Proxy&#x20;
-    * RADIUS OpenRoaming Compliance&#x20;
+    * Last Resort Proxy
+    * RADIUS OpenRoaming Compliance
   * External 3rd Party Captive Portal Redirect
   * Burst Rate Ad-Hoc Telemetry
   * Static Routing
@@ -53,7 +53,7 @@ OpenWiFi 2.0 SDK is deployable as both a Docker Compose or a Helm on Kubernetes 
 
     * OpenWiFi Provisioning Service
     * OpenWiFi Inventory Service
-    * Multi Tenant Support&#x20;
+    * Multi Tenant Support
     * Service Group - Venues
     * Logical Regions - Entities
 

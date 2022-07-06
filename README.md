@@ -19,7 +19,7 @@ OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expa
 #### Each OpenWiFi AP offers:
 
 * Multiple topologies including :
-  * Bridging, Virtual LAN, VxLAN, NAT Gateway, Local Breakout, Overlay (PPPoE, L2oGRE, L2TP), Mesh, WDS&#x20;
+  * Bridging, Virtual LAN, VxLAN, NAT Gateway, Local Breakout, Overlay (PPPoE, L2oGRE, L2TP), Mesh, WDS
 * Multiple authentications including WPA, WPA2, WPA3, Enterprise Radius models, M-PSK
 * Passpoint R1 and R2 Mobile Offload
 * Encrypted Zero Touch Provisioning and Cloud Discovery
@@ -37,34 +37,34 @@ OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expa
 
 #### Cloud SDK in OpenWiFi offers:
 
-* Zero Touch Provisioning&#x20;
+* Zero Touch Provisioning
 * Firmware Management
 * Integration Northbound Interface (NBI) RESTful
-* Data model driven API&#x20;
-* Enterprise Message Bus data access&#x20;
+* Data model driven API
+* Enterprise Message Bus data access
 
 **OpenWiFi AP Detail List:**
 
-* Wi-Fi 4 (n) Wi-Fi 5 (ac) Wi-Fi 6 (ax)&#x20;
+* Wi-Fi 4 (n) Wi-Fi 5 (ac) Wi-Fi 6 (ax)
 * Dual Bank Bootloader
 * Multi-SSID per Radio
 * SSID Authentications: WPA/WPA2/WPA3 - Mixed, Personal, Enterprise
-* 802.1Q VLAN per SSID&#x20;
+* 802.1Q VLAN per SSID
 * 802.1d Bridge Mode per SSID
 * RADIUS Accounting, Interim-Accounting, NAS-IP, CUI
 * Network Address Translation Gateway Mode Operation
 * Network Time Protocol Client
-* Management VLAN&#x20;
+* Management VLAN
 * Wi-Fi 6 (ax) Specific
   * BSS Coloring
   * UL/DL OFDMA sub-carrier allocation
   * Channel Switch Announcement
 * Wi-Fi General Features
   * WMM® - Wi-Fi Multi Media
-    * UAPSD Procedures (Unscheduled Power Save)&#x20;
+    * UAPSD Procedures (Unscheduled Power Save)
     * Upstream/Downstream Queues & L3 DSCP
     * Over The Air QoS EDCH Procedures
-* WMM-Admission Control (AC)&#x20;
+* WMM-Admission Control (AC)
 * WMM-Power Save (PS)
 * Wi-Fi Optimized Connectivity
   * (ai) Fast Initial Link Support
@@ -72,35 +72,35 @@ OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expa
   * (k) Client Radio Resource Management - Directed Steering
   * (v) Network Assisted Roaming
   * (r) Fast BSS Transition
-* Protected Management Frames (PMF)&#x20;
+* Protected Management Frames (PMF)
   * (w) Management Frame Encryption
 * Channel Switch Announcement (CSA)
 * Dynamic Frequency Selection & Transmit Power Control (DFS/TPC)
-* Beacon Rate&#x20;
+* Beacon Rate
 * Min Client Noise Immunity
 * Basic Rate Control
 * De-Auth RSSI Control
 * Burst Beacon Support
 * Per SSID Client Rate Limiting
-* Promiscuous Mode Support&#x20;
+* Promiscuous Mode Support
 * **Additional TIP AP NOS Features**
   * ISP WAN Profiles ( PPPoE, L2TP, L2oGRE )
   * Embedded Captive Portal (Local Splash non-auth)
   * Link Layer Discovery Protocol (LLDP)
   * Dynamic Airtime Fairness
-  * Service Flow QoS&#x20;
+  * Service Flow QoS
   * Wireline & Wireless Tracing (PCAP Cloud Remote Troubleshooting)
   * Health Check Reports
   * Local Provisioning over SSID (when Cloud or WAN down)
   * Multimedia Heuristics (Detection of Unified Communication Sessions)
   * SSID Rate Limiting
   * GPS Reporting
-  * Autonomous RRM Client Steering&#x20;
-  * Client / AP / Network Metric Telemetry&#x20;
+  * Autonomous RRM Client Steering
+  * Client / AP / Network Metric Telemetry
 
 **Cloud SDK additional features**
 
-* **Provisioning**&#x20;
+* **Provisioning**
   * Device Identity (Model, MAC, Serial Number)
   * Device Software Upgrade
   * Multiple SSID Configuration
@@ -111,19 +111,19 @@ OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expa
   * VLAN per SSID
   * VxLAN port configuration
   * NTP Enable/Disable
-  * RTLS (Location Services) Enable/Disable&#x20;
+  * RTLS (Location Services) Enable/Disable
 * **RF Control**
   * IEEE802.11r Fast BSS Transition per Radio Control
   * IEEE802.11k RRM Radio Information per Radio Control
   * IEEE802.11v Network Assisted Roaming per Radio Control
   * RRM Location AP Channel (uChannel) Provisioning
-  * RRM Location Client Steering (uSteer) Threshold Provisioning&#x20;
+  * RRM Location Client Steering (uSteer) Threshold Provisioning
 * **Remote Troubleshooting and Service Assurance**
-  * Syslog&#x20;
+  * Syslog
   * Health Check Reports
-    * Remote DHCP, RADIUS, UE Network Analysis&#x20;
-  * Remote TTY Shell&#x20;
-  * Remote Packet Capture Analysis&#x20;
+    * Remote DHCP, RADIUS, UE Network Analysis
+  * Remote TTY Shell
+  * Remote Packet Capture Analysis
 
 ### **How to contribute**
 

@@ -10,7 +10,7 @@ TIP OpenWiFi program ensures unique identity of all devices, encryption of traff
 
 ![CA Root OpenWiFi Process](../.gitbook/assets/image%20%2819%29.png)
 
-TIP device and cloud partners in OpenWiFi are uniquely managed members within a division of the Telecom Infra Project CA within DigiCert. 
+TIP device and Cloud Partners in OpenWiFi are uniquely managed members within a division of the Telecom Infra Project CA within DigiCert. 
 
 ### Device Onboarding
 

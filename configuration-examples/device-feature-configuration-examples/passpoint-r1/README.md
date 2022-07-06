@@ -9,11 +9,11 @@ Passpoint® brings seamless, automatic and secure Wi-Fi connectivity using eithe
 Passpoint® also delivers more value to carriers, service providers, and IT managers of enterprise networks, enabling:
 
 * Mobile data offload
-* Wi-Fi networks for&#x20;
-  * Hospitality, venues and enterprise&#x20;
+* Wi-Fi networks for
+  * Hospitality, venues and enterprise
   * Streamlined, enterprise-class device provisioning and credential management for enterprise and other private networks
-* Wi-Fi–based services such as Wi-Fi calling, and collaboration tools&#x20;
-* Wi-Fi roaming agreements across carriers and service providers&#x20;
-* Opportunities to engage users and extract additional value from the network&#x20;
+* Wi-Fi–based services such as Wi-Fi calling, and collaboration tools
+* Wi-Fi roaming agreements across carriers and service providers
+* Opportunities to engage users and extract additional value from the network
 
 Passpoint® is already supported by most enterprise-class APs on the market today, and natively supported by major mobile operating systems including Android, iOS, macOS, and Windows 10. With active support from a wide ecosystem of device manufacturers, mobile operators, and service providers, Passpoint® benefits both users and Wi-Fi network providers

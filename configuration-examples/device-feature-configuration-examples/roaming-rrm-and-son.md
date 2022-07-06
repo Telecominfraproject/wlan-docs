@@ -25,7 +25,7 @@ OpenWiFi services feature "wifi-steering" determines the operating parameters of
         },
 ```
 
-When mode is set to local, the Access Point handles steering decisions autonomously with the surrounding OpenWifi devices.\
+When mode is set to local, the Access Point handles steering decisions autonomously with the surrounding OpenWifi devices.
 Which network association, in this case "upstream" will steering be operating on. Note in prior examples most service provider, venue, enterprise services operate on the WAN side upstream network of the Access Point.
 
 | Parameter           | Value                                                                         |

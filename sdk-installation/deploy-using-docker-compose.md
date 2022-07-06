@@ -12,7 +12,7 @@ The following two modes are currently supported by docker-compose:
 
 *   **Deployments without a Load Balancer**
 
-    This model contains single instances of SDK micro-services. Non-Load Balancer is suitable for scenarios where load given number of APs is below 10,000 or design for network availability is not required.\
+    This model contains single instances of SDK micro-services. Non-Load Balancer is suitable for scenarios where load given number of APs is below 10,000 or design for network availability is not required.
     \
     A single local docker-compose deployment performance is listed [here](broken-reference/). Additionally this deployment includes options to use either self-signed certificates or user provided certificates:
 
@@ -20,9 +20,9 @@ The following two modes are currently supported by docker-compose:
     * [Non-LB deployment with own certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-own-certificates)
 *   **Deployments with a Load Balancer**
 
-    This model is suitable for deployments where there is a need to scale performance and/or use Letsencrypt certificates for northbound service interactions.\
+    This model is suitable for deployments where there is a need to scale performance and/or use Letsencrypt certificates for northbound service interactions.
     \
-    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](broken-reference/).\
+    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](broken-reference/).
     \
     The repository contains the instructions here:
 
@@ -52,13 +52,13 @@ The deployment creates local volumes to persist mostly application and database 
 `docker-compose/{microservice}_data/` directory used by each service for configuration and data. Where {microservice} is one of: owgw, owsec, owfms and owprov.
 
 {% hint style="info" %}
-Be aware that the deployment uses bind mounts on the host to mount certificate and configuration data for the micro services and therefore these files and directories will be owned by the user in the container.\
+Be aware that the deployment uses bind mounts on the host to mount certificate and configuration data for the microservices and therefore these files and directories will be owned by the user in the container.
 Since the files are under version control, you may have to change the ownership to your user again before pulling changes.
 {% endhint %}
 
 ### Configuration Variables
 
-Localizing the installation to the production environment is done through configuration information environment files per microservice. These files are: owgw.env, owgw-ui.env, owsec.env, owfms.env, owprov.env and owprov-ui.env.\
+Localizing the installation to the production environment is done through configuration information environment files per microservice. These files are: owgw.env, owgw-ui.env, owsec.env, owfms.env, owprov.env and owprov-ui.env.
 \
 These env files are used to generate runtime configuration (properties) file when no configuration is found in their respective {microservices}-data directory.
 
@@ -78,7 +78,7 @@ Exposed port dependencies by application are listed below:
 `127.0.0.1:16101/tcp` - OpenWiFi-uCentralSec alivecheck
 
 {% hint style="info" %}
-By default only the websocket and fileupload component of the OpenWiFi uCentralGW (Gateway) micro service are exposed on all interfaces. All other exposed services listen on localhost. You can change that according to your needs in the `ports` sections of`docker-compose/docker-compose.yml`.
+By default only the websocket and fileupload component of the OpenWiFi uCentralGW (Gateway) microservice are exposed on all interfaces. All other exposed services listen on localhost. You can change that according to your needs in the `ports` sections of`docker-compose/docker-compose.yml`.
 {% endhint %}
 
 ### Default Certificates
@@ -90,7 +90,7 @@ The supplied certificates are valid for the `*.wlan.local` domain.
 ## How to
 
 1. First you'll have to [install Docker Compose](https://docs.docker.com/compose/install/) according to your platform specific instructions. After that clone the repository with `git clone https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy`.
-2. The Docker Compose uCentral micro service configs use `openwifi.wlan.local` as a hostname, so make sure you add an entry in your hosts file (or in your local DNS solution) which points to `127.0.0.1` or the IP of the host running the SDK.
+2. The Docker Compose uCentral microservice configs use `openwifi.wlan.local` as a hostname, so make sure you add an entry in your hosts file (or in your local DNS solution) which points to `127.0.0.1` or the IP of the host running the SDK.
 3. Switch to the Compose project directory with `cd docker-compose/`.
 4. Default user is: tip@ucentral.com and password is: openwifi
    1. Service enforces a password change on first login
@@ -110,20 +110,20 @@ openwifi_owsec_1       /docker-entrypoint.sh /ope ...   Up      0.0.0.0:16001->1
 openwifi_rttys_1       /rttys/rttys                     Up      0.0.0.0:5912->5912/tcp,:::5912->5912/tcp, 0.0.0.0:5913->5913/tcp,:::5913->5913/tcp
 ```
 
-1. When the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required.\
+1. When the certificate for the REST API and other components is self-signed, accepting trust for the self-signed REST API certificate on your local machine is required.
    \
    Add `certs/restapi-ca.pem` to your trusted browser certificates or add certificate exceptions in your browser by visiting each of the following URLs (one per port) :\
    `https://openwifi.wlan.local:16001 and ports :16002 :16003 :16004 and :16005`\
    \
    Using the browser, accept the self-signed SSL certificate warnings (make sure to visit both and add the exceptions).
 2. Connect to your AP via SSH and add a static hosts entry in `/etc/hosts` for `openwifi.wlan.local` which points to the address of the host the SDK deployment runs on.
-3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate.\
+3. While staying in the SSH session, copy the content of `certs/restapi-ca.pem` on your local machine to your clipboard and append it to the file `/etc/ssl/cert.pem` on the AP. This way your AP will also trust the self-signed certificate.
    This step is necessary for rtty features and only required when using self-signed test deployment.
 4. Navigate in a web browser to `https://openwifi.wlan.local` to access the UI and login with default username and password. You will now be prompted to change this default password to something more secured.
 
 ![](<../.gitbook/assets/Screen Shot 2021-12-08 at 2.14.02 PM.png>)
 
-1. To use the curl test scripts which are included in the micro service repositories make sure to set the following environment variables before issuing a request:
+1. To use the curl test scripts which are included in the microservice repositories make sure to set the following environment variables before issuing a request:
 
 ```
 export UCENTRALSEC="openwifi.wlan.local:16001"
@@ -136,5 +136,5 @@ Stop the running containers with `docker-compose down`
 
 Check out the new branch by repeating _Step 1_ from _How to_ above for the given release and `docker-compose up -d`.
 
-Don’t forget to re-add the self-signed certificates to the containers with the provided script.\
+Don’t forget to re-add the self-signed certificates to the containers with the provided script.
 Also be aware that you may have to change back some file permissions. To obtain the most recent changes as the files are under version control, you may have to change the ownership to your user again before pulling changes.

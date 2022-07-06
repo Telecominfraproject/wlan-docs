@@ -5,12 +5,13 @@
 ## ABOUT
 
 * [About OpenWifi](about/about-openwifi.md)
-* [Open WiFi First](about/contribute.md)
+* [OpenWiFI First](about/contribute.md)
 * [Supported Hardware](about/supported-hardware.md)
-* [Integrations](about/integrations.md)
 * [Device Partner Information](about/device-partner-information.md)
 * [Cloud Partner Information](about/cloud-partner-information.md)
 * [Ordering OpenWiFi APs](about/ordering-open-wi-fi-aps.md)
+* [Example Partner Integrations](about/integrations.md)
+
 
 ## OPENWIFI STACK
 

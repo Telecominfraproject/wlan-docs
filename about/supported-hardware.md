@@ -6,8 +6,10 @@ For TIP OpenWiFi, a mix of ODMs deliver a diverse portfolio including CIG, Actio
 
 ![](../about-openwifi/media/image8.png)
 
-## Supported Hardware
+## Currently supported hardward
 
-The table below lists the supported hardware.
+The list of supported hardware continues to grow. TIP members can access the Confluence site that lists all currently supported hardware.
 
-![](../about-openwifi/media/image9.png)
+[Supported OpenWiFI AP Hardware](https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/112689187/OpenWiFi+AP+Hardware)
+
+To access the list of supported hardware and other important information on the member's Confluence site, [become a TIP member](https://telecominfraproject.com/apply-for-membership/).

@@ -3,7 +3,7 @@
 TIP OpenWiFi devices are available from many hardware partners. All TIP OpenWiFi devices have the same standard image of open source software.
 
 TIP OpenWiFi 1.0 devices run OpenWrt operating system with OpenSync as a management stack.   
-The use of OpenWrt is largely upstream based on OpenWrt 19.07 in Open WiFi 1.0.
+The use of OpenWrt is largely upstream based on OpenWrt 19.07 in OpenWiFI 1.0.
 
 When a TIP firmware image is created, the system will merge TIP specific patches, kernel specific patches, and build this with the target OpenWrt 19.07 operating system as one complete firmware image. From this process a TIP OpenWiFi standard firmware results with the following settings.
 

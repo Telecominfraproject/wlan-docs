@@ -42,7 +42,7 @@ For reference:  [Postman collection for Passpoint](https://github.com/Telecominf
 ```
 
 {% hint style="info" %}
-Open WiFi 1.0 SSIDs are mapped to a single RADIUS profile. All Authentication and Accounting will be forwarded to the RADIUS services defined in the Profile. Sub-release 1.1 supports realm-based forwarding and RADSec operations \(RADIUS over TLS\)
+OpenWiFI 1.0 SSIDs are mapped to a single RADIUS profile. All Authentication and Accounting will be forwarded to the RADIUS services defined in the Profile. Sub-release 1.1 supports realm-based forwarding and RADSec operations \(RADIUS over TLS\)
 {% endhint %}
 
 ### Identities

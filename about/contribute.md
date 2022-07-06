@@ -1,6 +1,8 @@
 # Open Source First
 
-TIP OpenWiFi is an Open Source project offered by the TIP Open Converged Wireless Project Group. TIP OpenWiFi ensures there are no moments of vendor lock in. Contributions to the Open Source are managed by maintainers to ensure compliance with BSD license and TIP charter, additionally the end-to-end architecture is curated to ensure an open environment.
+TIP OpenWiFi is a community-developed, disaggregated Wi-Fi software system, offered as free open-source software. Our solution includes a cloud SDK, simple and customizable APIs, and enterprise-grade Access Point (AP) firmware, designed and validated to work seamlessly together.
+
+TIP OpenWiFi ensures there is no vendor lock in. Contributions to the Open Source project are managed by the Membership to ensure compliance with Berkeley Source Distribution (BSD) license and TIP charter. In addition, the end-to-end architecture is curated to ensure an open environment.
 
 ## Contribute to the project
 
@@ -13,7 +15,9 @@ Membership to the TIP OpenWiFi project is free with the request to contribute as
 
 Meta Connectivity, is a PG champion of TIP OpenWiFi. All source code in the program is subject to BSD-3 license and in the public domain. No internal Meta tooling or IP is involved in the project.
 
-To contribute to the project, you must sign up to become a member TIP and the OCW PG.
+## Membership has it's privilege 
+
+To contribute to the project, you must become a member of TIP and the OCW PG.
 
 After you become a member, you can access the following resources:
 

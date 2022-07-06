@@ -14,7 +14,7 @@ For information about becoming an expressWIFI partner please visit their [site.]
 
 ## Configuration
 
-ExpressWiFi builds a captive portal experience using a control plane protocol called OpenFlow.\
+ExpressWiFi builds a captive portal experience using a control plane protocol called OpenFlow.
 Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstream interface and associating with an SSID and the open-flow service.
 
 {% tabs %}

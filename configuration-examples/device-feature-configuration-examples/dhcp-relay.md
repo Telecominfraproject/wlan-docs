@@ -56,4 +56,4 @@ The remote-id originates from a configured IPv4 interface address.
 	]
 ```
 
-In the above example, when the IPv4 downstream interface 192.168.1.1 has DHCP enabled for `relay-server` a DHCP relay process associates to the IP interface of the subnet. When DHCP DISCOVER packets arrive as broadcasts, they will be copied to a unicast packet from the `192.168.1.1` interface as the `relay-id` source address and unicast forwarded to the defined `relay-server` address. Additional parameters are encoded for inspection at the DHCP server as present in `circuit-id`-format and `remote-id`-format options.&#x20;
+In the above example, when the IPv4 downstream interface 192.168.1.1 has DHCP enabled for `relay-server` a DHCP relay process associates to the IP interface of the subnet. When DHCP DISCOVER packets arrive as broadcasts, they will be copied to a unicast packet from the `192.168.1.1` interface as the `relay-id` source address and unicast forwarded to the defined `relay-server` address. Additional parameters are encoded for inspection at the DHCP server as present in `circuit-id`-format and `remote-id`-format options.

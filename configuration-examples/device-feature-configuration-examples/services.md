@@ -45,9 +45,9 @@ Secure shell may optionally be enabled on OpenWiFi devices, associated to specif
 
 ### Operator Key Management
 
-For production deployments, it is recommended to assign operator SSH key from the OpenWiFi Provisioning configuration of the Venue or Entity which the device associates.&#x20;
+For production deployments, it is recommended to assign operator SSH key from the OpenWiFi Provisioning configuration of the Venue or Entity which the device associates.
 
-In this way, an operator may ensure their standard SSH key is delivered to all devices on a network operating region basis. All keys remain base64 encoded when added to the device.&#x20;
+In this way, an operator may ensure their standard SSH key is delivered to all devices on a network operating region basis. All keys remain base64 encoded when added to the device.
 
 ## NTP
 

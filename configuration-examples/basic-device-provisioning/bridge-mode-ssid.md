@@ -4,7 +4,7 @@ description: OpenWiFi 2.0
 
 # Bridge Mode SSID
 
-Creating logical bridges may be done through association to named "interfaces".\
+Creating logical bridges may be done through association to named "interfaces".
 To associate a logical SSID interface directly to the WAN, place SSID configuration within the interface have a "role" of upstream.
 
 {% tabs %}

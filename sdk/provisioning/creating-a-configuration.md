@@ -124,10 +124,10 @@ To associate the Wi-Fi with the VLAN interface define, we continue within the WA
 
 Within the "ssids" configuration block we can process an array of SSIDs. Often there may be separate "2G" and "5G" configurations. We have grouped them in this introductory example for simplicity however "2G", "5G", "5G-lower", "5G-upper", "6G" are all valid options.
 
-The "name" value is the advertised SSID clients will discover for this access point. Hidden is supported by setting the "hidden-ssid" to true.\
+The "name" value is the advertised SSID clients will discover for this access point. Hidden is supported by setting the "hidden-ssid" to true.
 Which operating mode is determined by "bss-mode". The "bss-mode" is a highly flexible operating parameter to determine "ap", "sta", mesh", "wds-ap", "wds-sta", "wds-repeater" radio modes of operation.
 
-Security of the SSID is determined using the "encryption" section. Many options are possible, in this initial example, a WPA-PSK2 shared key encryption is shown.\
+Security of the SSID is determined using the "encryption" section. Many options are possible, in this initial example, a WPA-PSK2 shared key encryption is shown.
 Lastly, for devices that support, 802.11w protected management frames are defined as optional for this SSID. This may also be disabled or required.
 
 Metrics for wifi-frames will be described next.
