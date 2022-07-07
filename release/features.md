@@ -1,57 +1,75 @@
 # Features
 
-#### Epic
+**Epic**
 
-[WIFI-7573](https://telecominfraproject.atlassian.net/browse/WIFI-7573) Single SSID MDU Solution with Personal Area Network
+[WIFI-5726](https://telecominfraproject.atlassian.net/browse/WIFI-5726) Security fixes for 2.4
 
 #### Improvement
 
-[WIFI-10040](https://telecominfraproject.atlassian.net/browse/WIFI-10040) SDK Framework Upgrade
+[WIFI-5998](https://telecominfraproject.atlassian.net/browse/WIFI-5998) Detect if an invalid channel is requested on 5G 40/80MHz
 
-[WIFI-9620](https://telecominfraproject.atlassian.net/browse/WIFI-9620) RADIUS Gateway Proxy
+[WIFI-5997](https://telecominfraproject.atlassian.net/browse/WIFI-5997) Make it possible to flash r2.4 on eap102 with older bootloaders
 
-[WIFI-7571](https://telecominfraproject.atlassian.net/browse/WIFI-7571) Wireguard Overlay Services
+[WIFI-5823](https://telecominfraproject.atlassian.net/browse/WIFI-5823) MU-MIMO setting need to be fine tuned
 
-[WIFI-7570](https://telecominfraproject.atlassian.net/browse/WIFI-7570) CSU2 QCA Update
+[WIFI-5728](https://telecominfraproject.atlassian.net/browse/WIFI-5728) APNOS CSu1 Update
 
-[WIFI-7077](https://telecominfraproject.atlassian.net/browse/WIFI-7077) Missing Feature in Radsecproxy for 1.x parity and OpenRoaming support
+[WIFI-5439](https://telecominfraproject.atlassian.net/browse/WIFI-5439) Enhance Maverick Stage - TIming
 
-[WIFI-5820](https://telecominfraproject.atlassian.net/browse/WIFI-5820) Headless devices: Data Model for Open SSID MAC Authentication configuration push to PacketFence
+[WIFI-4934](https://telecominfraproject.atlassian.net/browse/WIFI-4934) Coova Based External Captive Portal support in Bridge Mode
+
+[WIFI-3760](https://telecominfraproject.atlassian.net/browse/WIFI-3760) Last Resort Proxy Routing
 
 [WIFI-3758](https://telecominfraproject.atlassian.net/browse/WIFI-3758) Proxy Static Routing Test Functionality
 
+[WIFI-3628](https://telecominfraproject.atlassian.net/browse/WIFI-3628) Document ZTM Onboarding
+
+[WIFI-2675](https://telecominfraproject.atlassian.net/browse/WIFI-2675) QoS management
+
+[WIFI-1793](https://telecominfraproject.atlassian.net/browse/WIFI-1793) Scale 5,000 - 20,000 per OpenWiFi 2.0 Cloud Service - Stand alone
+
+[WIFI-1792](https://telecominfraproject.atlassian.net/browse/WIFI-1792) Extend OWLS to uCentral Device Types
+
 #### New Feature
 
-[WIFI-9465](https://telecominfraproject.atlassian.net/browse/WIFI-9465) APNOS: Handling CoA/DM messages
+[WIFI-5797](https://telecominfraproject.atlassian.net/browse/WIFI-5797) Add support for HFCL ion4x wifi-6 (in/outdoor) SKU
 
-[WIFI-9121](https://telecominfraproject.atlassian.net/browse/WIFI-9121) make sure vxlan interfaces become part of a bridge
+[WIFI-5723](https://telecominfraproject.atlassian.net/browse/WIFI-5723) Add DFS channel list to capabilities
 
-[WIFI-9120](https://telecominfraproject.atlassian.net/browse/WIFI-9120) add "script" command handling to the AP firmware
+[WIFI-5703](https://telecominfraproject.atlassian.net/browse/WIFI-5703) Add ATF scheduler
 
-[WIFI-7986](https://telecominfraproject.atlassian.net/browse/WIFI-7986) Add support for Radius TLV (AP Serial Number) using TIP-OWF VSA
+[WIFI-4888](https://telecominfraproject.atlassian.net/browse/WIFI-4888) Wispr AVPs for Dynamic Subscriber QoS - Traffic Shaping
 
-[WIFI-7712](https://telecominfraproject.atlassian.net/browse/WIFI-7712) add support for dual boot
+[WIFI-3322](https://telecominfraproject.atlassian.net/browse/WIFI-3322) ATF Dynamic Fair Queue
 
-[WIFI-7572](https://telecominfraproject.atlassian.net/browse/WIFI-7572) Firewall Features
+[WIFI-2064](https://telecominfraproject.atlassian.net/browse/WIFI-2064) Implementation of Social Wi-Fi
 
-[WIFI-7458](https://telecominfraproject.atlassian.net/browse/WIFI-7458) Dynamic Subscriber Access - Remote WPA2 Handshake MIC Verification
+[WIFI-368](https://telecominfraproject.atlassian.net/browse/WIFI-368) OCI Container Support in AP NOS - Testing
 
-[WIFI-3310](https://telecominfraproject.atlassian.net/browse/WIFI-3310) RADIUS Interworking OpenWiFi SDK
+#### Sub-task
+
+[WIFI-5724](https://telecominfraproject.atlassian.net/browse/WIFI-5724) IP rate limit for sensitive endpoints
+
+[WIFI-2852](https://telecominfraproject.atlassian.net/browse/WIFI-2852) Documentation PPPoE OpenWiFi 2.0
 
 #### Task
 
-[WIFI-9306](https://telecominfraproject.atlassian.net/browse/WIFI-9306) ipq807x: bring up wallytech dr6018
+[WIFI-5772](https://telecominfraproject.atlassian.net/browse/WIFI-5772) Hardcoded RTTY access configuration \[ucentral-deploy]
 
-[WIFI-8042](https://telecominfraproject.atlassian.net/browse/WIFI-8042) merge PR fixes from gli.net
+[WIFI-5767](https://telecominfraproject.atlassian.net/browse/WIFI-5767) Add support for CIG WF196 Wifi6E PCBA
 
-[WIFI-8040](https://telecominfraproject.atlassian.net/browse/WIFI-8040) Add Minim / Motorola Q14 support
+[WIFI-5727](https://telecominfraproject.atlassian.net/browse/WIFI-5727) Update UUIDGenerator to UUIDv4 \[ucentral-gw]
 
-[WIFI-7516](https://telecominfraproject.atlassian.net/browse/WIFI-7516) Support for Indio's UM-305AX AP Based on Mediatek Platform
+[WIFI-5619](https://telecominfraproject.atlassian.net/browse/WIFI-5619) Exposed certificate absolute paths \[ucentral-gw]
 
-[WIFI-7436](https://telecominfraproject.atlassian.net/browse/WIFI-7436) Switch to built-in RTTYS
+[WIFI-5618](https://telecominfraproject.atlassian.net/browse/WIFI-5618) Exposed server version \[deployment]
 
-[WIFI-7434](https://telecominfraproject.atlassian.net/browse/WIFI-7434) Two SQL injections, GetCommands and DeleteCommands
+[WIFI-5617](https://telecominfraproject.atlassian.net/browse/WIFI-5617) Exposed password hashes \[ucentral-sec]
 
-[WIFI-7433](https://telecominfraproject.atlassian.net/browse/WIFI-7433) Relative path traversal in RTTYS \[ucentral-gw:rttys]
+[WIFI-5616](https://telecominfraproject.atlassian.net/browse/WIFI-5616) Improper default username & password handling \[ucentral-sec]
 
-[WIFI-7206](https://telecominfraproject.atlassian.net/browse/WIFI-7206) Add workflow to build virtual AP firmware image
+[WIFI-5615](https://telecominfraproject.atlassian.net/browse/WIFI-5615) Unsalted hash \[ucentral-sec]
+
+[WIFI-3585](https://telecominfraproject.atlassian.net/browse/WIFI-3585) Action links should be temporary and randomly generated \[ucentral-sec]
+
+[WIFI-3487](https://telecominfraproject.atlassian.net/browse/WIFI-3487) CIG - ath11k BDF files
