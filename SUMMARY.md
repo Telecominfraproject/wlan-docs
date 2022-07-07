@@ -12,7 +12,6 @@
 * [Ordering OpenWiFi APs](about/ordering-open-wi-fi-aps.md)
 * [Example Partner Integrations](about/integrations.md)
 
-
 ## OPENWIFI STACK
 
 * [Overview](openwifi-stack/openwifi-stack.md)
@@ -99,4 +98,12 @@
   * [Provisioning Service](developer-resources/api/provisioning-service.md)
   * [Analytics Service](developer-resources/api/analytics-service.md)
   * [Postman Collection](developer-resources/api/postman-collection.md)
-* [SDK KAFKA](developer-resources/sdk-kafka.md)
+* [SDK KAFKA](developer-resources/sdk-kafka/README.md)
+  * [Connection](developer-resources/sdk-kafka/connection.md)
+  * [Device Event Queue](developer-resources/sdk-kafka/device-event-queue.md)
+  * [Device Telemetry](developer-resources/sdk-kafka/device-telemetry.md)
+  * [Healthcheck](developer-resources/sdk-kafka/healthcheck.md)
+  * [Provisioning Change](developer-resources/sdk-kafka/provisioning-change.md)
+  * [Service Events](developer-resources/sdk-kafka/service-events.md)
+  * [State](developer-resources/sdk-kafka/state.md)
+  * [WiFi Scan](developer-resources/sdk-kafka/wifi-scan.md)

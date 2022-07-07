@@ -10,12 +10,11 @@ Express Wi-Fi partners with service providers to deliver great wi-fi to people w
 
 For information about becoming an expressWIFI partner please visit their [site.](https://expresswifi.fb.com)
 
-![](<../../.gitbook/assets/image (36).png>)
+![](<../../.gitbook/assets/image (36) (1).png>)
 
 ## Configuration
 
-ExpressWiFi builds a captive portal experience using a control plane protocol called OpenFlow.
-Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstream interface and associating with an SSID and the open-flow service.
+ExpressWiFi builds a captive portal experience using a control plane protocol called OpenFlow. Configuring OpenWiFi for use with expressWiFi is as simple as defining a downstream interface and associating with an SSID and the open-flow service.
 
 {% tabs %}
 {% tab title="expressWIFI" %}

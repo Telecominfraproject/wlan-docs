@@ -10,17 +10,16 @@ Certain WAN connections may require credentials such as a username and password 
 
 OpenWiFi 2.0 supports these scenarios. When a device does not have an existing configuration and is unable to contact the cloud for provisioning it enters "Maverick" mode.
 
-For all Wi-Fi devices this means a Wi-Fi network with the SSID 'Maverick' will become available.
-Association with and logging in to the device will permit initial WAN connectivity to be entered.
+For all Wi-Fi devices this means a Wi-Fi network with the SSID 'Maverick' will become available. Association with and logging in to the device will permit initial WAN connectivity to be entered.
 
 ## Using Maverick
 
-![Maverick Login Page](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.04.23 PM.png>)
+![Maverick Login Page](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.04.23 PM (1).png>)
 
 After association to the Maverick SSID, open a web browser to `http://192.168.1.1`\
 Log into the OpenWiFi device with username: **`root`** and password: **`openwifi`**
 
-![Logged into Maverick](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.06.35 PM.png>)
+![Logged into Maverick](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.06.35 PM (1).png>)
 
 When the page above is displayed, begin to configure Uplink based on the WAN requirements of the deployment.
 
@@ -28,7 +27,7 @@ When the page above is displayed, begin to configure Uplink based on the WAN req
 
 If connection uses Point to Point over Ethernet (PPPoE) username and password credentials, enter those values and save.
 
-![PPPoE Uplink](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.09.14 PM.png>)
+![PPPoE Uplink](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.09.14 PM (1).png>)
 
 If the OpenWiFi device has a Cellular connection which is possible on device models with 4G and 5G radios, the network Access Point Name (APN) and PIN will be required. These values are supplied by your mobile network provider.
 
@@ -36,7 +35,7 @@ If the OpenWiFi device has a Cellular connection which is possible on device mod
 
 When dynamic address allocation is not available, static IP address assignment may be required. IPv4 and IPv6 are supported, enter these values with DNS address and save.
 
-![Uplink Static IP](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.12.39 PM.png>)
+![Uplink Static IP](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.12.39 PM (1).png>)
 
 Otherwise leave the Uplink configuration to DHCP or cloud defaults.
 
@@ -52,6 +51,6 @@ If under rare circumstances it is not possible to discover the OpenWiFi cloud as
 
 It is possible to reset the device to defaults, or locally update firmware using the commands available from System.
 
-![System Commands](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.17.13 PM.png>)
+![System Commands](<../../.gitbook/assets/Screen Shot 2021-07-29 at 5.17.13 PM (1).png>)
 
 \*\*\*\*

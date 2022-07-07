@@ -4,8 +4,7 @@ description: OpenWiFi 2.0 SDK
 
 # Commands
 
-Within the devices view, the Commands tile offers a number of features and administrative actions.
-Each of these represent API calls exposed on the OpenAPI northbound interface from the SDK.
+Within the devices view, the Commands tile offers a number of features and administrative actions. Each of these represent API calls exposed on the OpenAPI northbound interface from the SDK.
 
 ## Reboot
 
@@ -17,7 +16,7 @@ Selecting the Reboot action will prompt the below dialog. Options presented perm
 
 Multiple methods exist to execute a remote Firmware Upgrade of a device. When selecting Firmware Upgrade via the Commands tile, a simple dialog to upgrade immediately or at a scheduled time is presented. Alternatively using the Firmware Management Service provides a complete solution including managed access to all TIP firmware images.
 
-![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.28.44 PM.png>)
+![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.28.44 PM (1).png>)
 
 ## Wi-Fi Scan
 
@@ -29,7 +28,7 @@ OpenWiFi devices may perform channel scanning and return this neighbor and RF da
 
 Scan operations function over all channels. If 5GHz channels do not display in the returned results ( either via the UI or over API ) this indicates the device is configured in a DFS channel for which it may not return survey scans at this time.
 
-![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.33.58 PM.png>)
+![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.33.58 PM (1).png>)
 
 ## Connect
 
@@ -41,13 +40,13 @@ OpenWiFi enables remote connection to any managed device using rTTY encrypted sh
 
 To assist with remote identification of devices in the network, it is possible to turn the LED lights On, Off, of continuous blinking. This may be run on-demand or scheduled.
 
-![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.37.30 PM.png>)
+![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.37.30 PM (1).png>)
 
 ## Trace
 
 Trace feature enables a remote packet capture to occur on the managed device, over a specified period of time or amount of traffic, returning the "pcap" packet capture file locally to the OpenWiFi admin user.
 
-![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.39.24 PM.png>)
+![](<../../../.gitbook/assets/Screen Shot 2021-07-29 at 2.39.24 PM (1).png>)
 
 Once complete the user is asked to open or save the packet capture file locally.
 
