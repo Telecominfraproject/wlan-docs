@@ -8,5 +8,4 @@ The [wlan-cloud-ucentral-deploy](https://github.com/Telecominfraproject/wlan-clo
 The repository is managed using branches where:
 
 * main branch: contains references to the latest development SDK images
-* release/v\* branch: contains image references specific to the release artifacts. For example: release/v2.4.0 branch will contain references to SDK images related to 2.4.0 release candidates (RC) and GA. 
-
+* release/v_**X.Y.Z**_ branch: contains image references specific to the release artifacts. For example: release/**v2.4.0** branch will contain references to SDK images related to 2.4.0 release candidates (RC) and GA.

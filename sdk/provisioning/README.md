@@ -4,7 +4,7 @@ description: uCentral Data Model Introduction
 
 # Provisioning
 
-OpenWiFi 2.0 makes it possible for integrators of the SDK to implement commercial products leveraging OpenWiFi Gateway service with vendor supplied provisioning above OpenWiFi SDK. As a minimum, the OpenWiFi 2.0 SDK framework offers a Security service which handles all OpenAPI authentication northbound, and the Gateway service which provides all uCentral websocket interface functionality southbound.
+OpenWiFi 2.x makes it possible for integrators of the SDK to implement commercial products leveraging OpenWiFi Gateway service with vendor supplied provisioning above OpenWiFi SDK. As a minimum, the OpenWiFi 2.0 SDK framework offers a Security service which handles all OpenAPI authentication northbound, and the Gateway service which provides all uCentral websocket interface functionality southbound.
 
 ![Minimum 2.0 SDK - Assumes DB is either SQLite or PGSql](<../../.gitbook/assets/image (28).png>)
 

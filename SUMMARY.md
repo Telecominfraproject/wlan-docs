@@ -28,7 +28,7 @@
 ## SDK
 
 * [Getting Started](sdk/getting-started.md)
-* [Release 2.0 SDK](sdk/sdk.md)
+* [Release 2.x SDK](sdk/sdk.md)
 * [Provisioning](sdk/provisioning/README.md)
   * [Data Model Introduction](sdk/provisioning/data-model-introduction.md)
   * [Creating a Configuration](sdk/provisioning/creating-a-configuration.md)
@@ -87,6 +87,8 @@
 * [Features](release/features.md)
 * [Security Updates](release/security.md)
 * [Resolved Issues](release/resolved-issues.md)
+* [Outstanding Items](release/outstanding-items.md)
+* [Testing Results](release/testing-results.md)
 
 ## DEVELOPER RESOURCES
 
