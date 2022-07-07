@@ -5,7 +5,6 @@
 ## ABOUT
 
 * [About OpenWifi](about/about-openwifi.md)
-* [OpenWiFI First](about/contribute.md)
 * [Supported Hardware](about/supported-hardware.md)
 * [Device Partner Information](about/device-partner-information.md)
 * [Cloud Partner Information](about/cloud-partner-information.md)
