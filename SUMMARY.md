@@ -4,7 +4,7 @@
 
 ## ABOUT
 
-* [About OpenWifi](about/about-openwifi.md)
+* [About OpenWiFi](about/about-openwifi.md)
 * [Supported Hardware](about/supported-hardware.md)
 * [Device Partner Information](about/device-partner-information.md)
 * [Cloud Partner Information](about/cloud-partner-information.md)
