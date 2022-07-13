@@ -4,6 +4,12 @@ description: TIP OpenWiFi 2.0
 
 # Dynamic Air-Time Policy
 
+{% hint style="info" %}
+This feature has been deprecated in OpenWiFi 2.6 in order to support both Layer 3 and Layer 2 classification topologies through QoS and Dynamic Airtime Fairness.&#x20;
+{% endhint %}
+
+
+
 Dynamic Air-Time Policy is a service to influence underlying co-ordination function of the Wi-Fi MAC domain per associated UE in terms of priority to use the air interface.
 
 It is possible to govern certain application use cases such as streaming media or real time communications based on the resolution of those services through DNS.
