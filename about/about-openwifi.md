@@ -1,4 +1,4 @@
-# About OpenWifi
+# About OpenWiFi
 
 Established in Q42019, the TIP OpenWiFi solution goal has been to break vendor lock-in through disaggregation architectures, open APIs—with common embedded software and management that is both community- and commercially-supported.
 
@@ -24,7 +24,7 @@ Membership to the TIP OpenWiFi project is free with the request to contribute as
 
 Meta Connectivity, is a PG champion of TIP OpenWiFi. All source code in the program is subject to BSD-3 license and in the public domain. No internal Meta tooling or IP is involved in the project.
 
-## Membership has it's privilege
+## Membership has its privilege
 
 To contribute to the project, you must become a member of TIP and the OCW PG.
 
@@ -35,4 +35,6 @@ After you become a member, you can access the following resources:
 * Team collaboration and communication via TIP Slack
 * Team meetings
 
-The TIP OpenWiFi group holds regular meetings with Meta Connectivity Development team members with stand up calls every Monday. PG member meetings are bi-weekly on Mondays. For meeting schedules and additional information, see the [OpenWiFi Project Confluence](https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/overview%3E) wiki.
+The TIP OpenWiFi group holds regular meetings with Meta Connectivity Development team members with stand up calls every Monday. PG member meetings are monthly on first Monday.&#x20;
+
+For meeting schedules and additional information, see the [OpenWiFi Project Confluence](https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/overview%3E) wiki.

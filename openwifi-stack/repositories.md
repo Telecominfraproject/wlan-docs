@@ -1,5 +1,5 @@
 ---
-description: 2.4 Repository Information
+description: Repository Information
 ---
 
 # Code Repositories

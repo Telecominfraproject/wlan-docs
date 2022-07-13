@@ -2,50 +2,77 @@
 description: Telecom Infra Project OpenWiFi
 ---
 
-# OpenWiFi Release 2.6 In Progress
+# OpenWiFi Release 2.6 GA
 
 ## What is OpenWiFi?
 
-TIP OpenWiFi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to OpenWiFi creates an open source disaggregated technology stack without any vendor lock in. OpenWiFi offers premium managed Wi-Fi features, local break-out design, cloud native open source controller, and an open source AP firmware operating system tested nightly.
+TIP OpenWiFi is an open source community project that believes in democratizing premium Wi-Fi experiences for multiple market use cases. The TIP approach to OpenWiFi creates an open source disaggregated technology stack without any vendor lock in.&#x20;
 
-![Open Technology Stack - Many Platforms - Many Service Options](<.gitbook/assets/image (5).png>)
+Features normally only present in commercial enterprise WLAN offerings are available in TIP OpenWiFi. These premium Wi-Fi features enable a number of market solutions for developers, integrators and operators to explore.
 
-TIP OpenWiFi is the industry's first CI/CD open source Wi-Fi eco-system. Built nightly with a strong community of Wi-Fi leaders, new features are unit tested in automated RF chambers and checked from cloud to ground for Wi-Fi performance and conformance.
+TIP OpenWiFi stack enables commercial integrations via cloud native open source services for management and network visibility combined with an open source AP firmware operating system tested nightly.
 
-OpenWiFi 2.0 introduces management and telemetry based on uCentral offering expanded selection of managed devices including smaller APs and PoE access switches.
+TIP OpenWiFi Continuous Integration quality testing runs nightly exercising thousands of Wi-Fi performance, conformance and feature unit tests.&#x20;
+
+Support for a broad range of device platforms with the ability for Community to contribute additional device support and or cloud features sets TIP OpenWiFi apart from all other open projects.&#x20;
+
+Joining TIP and the OpenWiFi project is both free and easy.&#x20;
+
+Learn more here: [https://telecominfraproject.com/openwifi/](https://telecominfraproject.com/openwifi/)
+
+### Getting Started
+
+The most common use cases for TIP OpenWiFi are managed WLAN most often associated with premium enterprise Wi-Fi service offerings. TIP OpenWiFi presents these premium features over a number of deployment options.&#x20;
+
+TIP OpenWiFi devices have management and telemetry exposed via a single websocket to the OpenWiFi Gateway (OWGW) microservice. The OWGW is supported by database, message bus, and the OpenWiFi Security (OWSEC) microservice for northbound API integration. This represents the minimum to deploy TIP OpenWiFi.&#x20;
+
+This minimum set of services enables commercial vendor integration adding TIP OpenWiFi device support to existing Wi-Fi controllers.&#x20;
+
+Refer to the sections on SDK Installation and Overview for further information.&#x20;
+
+For additional value added services, TIP OpenWiFi also provides User Interface, Firmware Management, Provisioning and Analytics services. All services are independently deployed and integrated based on commercial adoption model.  &#x20;
+
+See [Developer Resources](broken-reference) for API level information and [Code Repositories](openwifi-stack/repositories.md) for source code guidance.
 
 ### High Level Features
 
 #### Each OpenWiFi AP offers:
 
 * Multiple topologies including :
-  * Bridging, Virtual LAN, VxLAN, NAT Gateway, Local Breakout, Overlay (PPPoE, L2oGRE, L2TP), Mesh, WDS
+  * Local Breakout
+  * Overlay including PPPoE, L2TP, L2oGRE&#x20;
+  * IEEE802.11s Mesh and Wireless Distribution System
+  * Bridging, Virtual LAN, VxLAN, NAT Gateway
 * Multiple authentications including WPA, WPA2, WPA3, Enterprise Radius models, M-PSK
 * Passpoint R1 and R2 Mobile Offload
 * Encrypted Zero Touch Provisioning and Cloud Discovery
 * Autonomous RRM and Channel Control
-* Captive Portal & ExpressWiFi
+* Wi-Fi Agile Multiband&#x20;
+* Multi-VAP including topology features per VAP
+* Dynamic Air Time Fairness
+* Over the air EDCH QoS, WMM QoS, 802.11-2016 Enterprise QoS
+* Captive Portal&#x20;
+* Station and Network Telemetry
 
-#### Each OpenWiFi PoE Switch offers:
 
-* IEEE802.1Q Virtual LAN
-* VxLAN
-* DHCP Snooping & Relay
-* Multicast
-* PoE
-* IEEE802.1x Access Control
 
 #### Cloud SDK in OpenWiFi offers:
 
-* Zero Touch Provisioning
-* Firmware Management
+* Zero Touch Provisioning & Discovery
 * Integration Northbound Interface (NBI) RESTful
-* Data model driven API
+* Data model driven OpenAPI design
 * Enterprise Message Bus data access
+* Cloud Native & Agnostic micro services
+  * Gateway Southbound
+  * Security Northbound
+  * Firmware Management
+  * Web User Interface
+  * Provisioning&#x20;
+  * Analytics&#x20;
 
 **OpenWiFi AP Detail List:**
 
-* Wi-Fi 4 (n) Wi-Fi 5 (ac) Wi-Fi 6 (ax)
+* Wi-Fi 5 (ac) Wi-Fi 6 (ax) Wi-Fi 6E
 * Dual Bank Bootloader
 * Multi-SSID per Radio
 * SSID Authentications: WPA/WPA2/WPA3 - Mixed, Personal, Enterprise

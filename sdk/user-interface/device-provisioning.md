@@ -1,6 +1,6 @@
-# About Device Provisioning
+# Device Provisioning
 
-![](../about-openwifi/media/image12.jpeg)
+![](../../about-openwifi/media/image12.jpeg)
 
 The OpenWiFi solution can be applied to a diverse number of use cases from enterprise networks, service provider access, and hotspots. OpenWiFi offers a variety of managed services from small to very large venues of roaming, client shared-key management, client steering, mobile offload, QoS-based services, and Layer 2 and Layer 3 breakout and overlay options. The Provisioning service provides a view into the network as a whole, and venues with entity-based control.
 
@@ -18,9 +18,9 @@ You can manage device inventory for both assigned and unassigned states. As devi
 
 Each inventory record, regardless of assignment state can be viewed in the OpenWifi dashboard.
 
-![](../about-openwifi/media/image13.png){width="6.4in" height="3.0in"}Use the SDK UI to assign a device to a venue, review device configurations, update record tags or delete a device.
+<img src="../../about-openwifi/media/image13.png" alt="" data-size="original">{width="6.4in" height="3.0in"}Use the SDK UI to assign a device to a venue, review device configurations, update record tags or delete a device.
 
-![](../about-openwifi/media/image14.png)
+![](../../about-openwifi/media/image14.png)
 
 ### Bulk Inventory API
 
@@ -52,18 +52,18 @@ Choosing to assign the device to a specific MDU location as an example can be do
 
 Devices can be assigned to the MDU—which may be an actual venue such as a building or a tenant operator with child venues.
 
-![](../about-openwifi/media/image15.jpeg)
+![](../../about-openwifi/media/image15.jpeg)
 
-![](../about-openwifi/media/image16.png)
+![](../../about-openwifi/media/image16.png)
 
 ## Provisioning Templates
 
 Use the Create Configuration window to create a configuration template for a specific venue or device.
 
-![](../about-openwifi/media/image17.png)
+![](../../about-openwifi/media/image17.png)
 
-![](../about-openwifi/media/image18.png)
+![](../../about-openwifi/media/image18.png)
 
-![](../about-openwifi/media/image19.png)
+![](../../about-openwifi/media/image19.png)
 
 For example, a configuration template for a local area network could include: address translation and local DHCP for on-premises devices, WAN interface with DHCP for IPv4/IPv6 service, and a basic Wi-Fi configuration.

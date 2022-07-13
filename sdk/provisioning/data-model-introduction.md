@@ -10,11 +10,11 @@ uCentral is set to become a leading component of OpenWrt, as such will have a di
 
 Within the model it is possible to provision or return state for all aspects of an OpenWiFi based device easily structured as a JSON payload.
 
-The complete data model may be found here : [https://ucentral.io/docs/ucentral-schema.html](https://ucentral.io/docs/ucentral-schema.html)
+The complete data model may be found here :[ ](https://github.com/Telecominfraproject/wlan-ucentral-schema)[https://github.com/Telecominfraproject/wlan-ucentral-schema](https://github.com/Telecominfraproject/wlan-ucentral-schema)
 
 ## Organization
 
-Each device has a Universally Unique Identifier (UUID). For each device, the configuration presented either manually, via the future Provisioning service from OpenWifi or via a commercial controller generation of provisioning data, the high level relationships of the schema may be understood as follows.
+Each device has a Universally Unique Identifier (UUID). For each device, the configuration presented either manually, via the future Provisioning service from OpenWiFi or via a commercial controller generation of provisioning data, the high level relationships of the schema may be understood as follows.
 
 ![uCentral Agent Schema Processing](<../../.gitbook/assets/image (32) (1).png>)
 
