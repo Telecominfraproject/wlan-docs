@@ -15,7 +15,7 @@ Traffic handling building blocks over time have layered onto Wi-Fi to handle con
 OpenWiFi WMM Supports the following class selector profiles:
 
 * Enterprise
-* RFC8325 - default
+* RFC8325
 * 3GPP
 
 
