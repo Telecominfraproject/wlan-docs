@@ -52,7 +52,7 @@
   * [Bridge Mode SSID](device-feature-configuration-examples/basic-device-provisioning/bridge-mode-ssid.md)
   * [NAT Gateway Mode SSID](device-feature-configuration-examples/basic-device-provisioning/nat-gateway-mode-ssid.md)
   * [Multi-VLAN SSID](device-feature-configuration-examples/basic-device-provisioning/multi-vlan-ssid.md)
-* [Device Feature Configuration Examples](device-feature-configuration-examples/device-feature-configuration-examples/README.md)
+* [Advanced Device Feature Configuration Examples](device-feature-configuration-examples/device-feature-configuration-examples/README.md)
   * [Zero Touch Provisioning](device-feature-configuration-examples/device-feature-configuration-examples/zero-touch-provisioning.md)
   * [DHCP Relay](device-feature-configuration-examples/device-feature-configuration-examples/dhcp-relay.md)
   * [Services](device-feature-configuration-examples/device-feature-configuration-examples/services.md)
