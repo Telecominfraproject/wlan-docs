@@ -32,7 +32,7 @@ TIP OpenWiFi enumerates defined QoS provisioning, as applications or port and pr
 OpenWiFi WMM Supports the following class selector profiles:
 
 * Enterprise
-* RFC8325
+* RFC8325 - default
 * 3GPP
 
 

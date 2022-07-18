@@ -1,16 +1,26 @@
-# OpenWiFI Stack
+# Overview
 
-The TIP OpenWiFi SDK and the AP network operating system (AP NOS) firmware serves many use cases. With TIP OpenWiFi, the entire 'stack' from the SDK to the firmware can be consumed—lowering the cost of entry and time to market of a new entrant.
+The TIP OpenWiFi SDK micro services and the AP network operating system (AP NOS) firmware enable many use cases. With TIP OpenWiFi, the entire 'stack' from the cloud to the firmware can be consumed—lowering the cost of entry and time to market of a new entrant.
 
 ![](../about-openwifi/media/image3.png)
 
-![](../about-openwifi/media/image4.png)
+TIP OpenWiFi architecture works specifically to enable choice in device and cloud. Multiple operators have indicated legacy lock in models present with enterprise WLAN systems are lowering deployment velocity, limiting innovation and introducing artificial barriers to new market use cases.&#x20;
+
+&#x20;
+
+![](<../.gitbook/assets/image (3).png>)
+
+
 
 Ensuring lock in is not present is not enough for a mass market solution. It is also necessary to provide customer choice in the cloud whether that customer is the operator or an end user.
 
-![](../about-openwifi/media/image5.png)
+![](../.gitbook/assets/image.png)
 
-## Cloud or On-prem
+TIP OpenWiFi offers choice in cloud provider of managed Wi-Fi services. Deployed OpenWiFi based APs initially connect to the internet, dynamically determine the management cloud that will control their operation. If at a later stage it is desired to change the management cloud provider to another operator, OpenWiFi base devices may be redirected to any other TIP OpenWiFi ready cloud.&#x20;
+
+This enables multi-vendor device and cloud options given TIP OpenWiFi architecture of common data model and interface for provisioning and telemetry with mutual TLS security.
+
+## Cloud or On-Premises
 
 As operators of many sizes, service and network complexities require more Open Source options in their production environments, TIP OpenWiFi presents the opportunity to deploy managed Wi-Fi services either from the cloud or on premises.
 
