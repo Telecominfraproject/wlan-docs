@@ -1,4 +1,4 @@
-# Device Provisioning
+# Gateway
 
 ![](../../about-openwifi/media/image12.jpeg)
 

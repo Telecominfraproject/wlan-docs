@@ -2,64 +2,76 @@
 description: OpenWiFi 2.0
 ---
 
-# User Interface
+# User Interface for Admins
 
-Release 2.0 uses a Single-Page Application (SPA) as an example user interface built using React to demonstrate several interactions using the northbound OpenAPI.
+Release 2.0 user interfaces (UI) are designed as a Single-Page Application (SPA). \
+The UI serves as an example user interface built using React to demonstrate several interactions using the northbound OpenAPI. \
+Release 2.0 to 2.5 had a first generation of the UI framework. This first generation UI framework is seen for the Gateway and Firmware service. With the introduction of 2.6 and the Provisioning and Analytics services, a new UI for those specific SDK services has been introduced.&#x20;
 
-## Login to OpenWiFi SDK
+All UI interactions consume the OpenAPI of the SDK services.&#x20;
 
-![Login Page](<../../.gitbook/assets/Screen Shot 2021-07-28 at 4.40.17 PM.png>)
+The following describes the likely starting point for an Administrator. Using the Provisioning service to define how the Wi-Fi networks in Entity, Venue and device provisioning terms may optionally be defined.&#x20;
+
+## Login to OpenWiFi SDK - Provisioning
+
+
+
+![Login to Provisioning](<../../.gitbook/assets/Screen Shot 2022-07-19 at 2.36.39 PM.png>)
 
 Default username is: **`tip@ucentral.com`** and password is: **`openwifi`**
 
+On first login, the default user account will prompt to change password. This behavior is also available for all admin defined accounts added to the system.&#x20;
+
 ## **Base Navigation**
 
-A left side navigation menu provides direction to major feature or service settings.
+On initial login the Provisioning service places the user on the Inventory screen.&#x20;
 
-![Left Navigation](<../../.gitbook/assets/Screen Shot 2021-07-29 at 3.21.37 PM.png>)
+![Provisioning Inventory](<../../.gitbook/assets/Screen Shot 2022-07-19 at 2.39.45 PM.png>)
 
-## Internationalization
+Inventory enables the admin to visually identify OpenWiFi devices not currently assigned to an Entity, Create a new device, execute commands per device, inspect device details and view the device active state as shown in the Gateway service.&#x20;
 
-OpenWiFi 2.0 SDK supports multiple languages. Simply select the desired language from the right drop down for pages to re-populate accordingly.
+#### Device Actions
 
-![](<../../.gitbook/assets/Screen Shot 2021-07-29 at 3.26.35 PM.png>)
+![Device Actions](<../../.gitbook/assets/Screen Shot 2022-07-19 at 2.42.29 PM.png>)
 
-## Devices
 
-Upon login the first page presented is a Devices table. This table reflects all discovered and managed devices known by the OpenWiFi SDK.
 
-![Devices Table](<../../.gitbook/assets/Screen Shot 2021-08-01 at 12.04.01 PM.png>)
+#### View Details
 
-Devices table indicates device Connected or Disconnected state in the first column with green and red respectively.
+![Device Details](<../../.gitbook/assets/Screen Shot 2022-07-19 at 2.44.19 PM.png>)
 
-Certificate column indicates invalid, valid with mismatch serial, or valid device certificate identity state as red crossed seal, yellow seal and green seal respectively.
+Within Device Details, found via the magnifying glass per Inventory row, association to an Entity Parent is possible. Additionally setting the device Firmware policy to inherit the rule assigned based on its membership to a Parent and to require Release Candidates or permit any nightly build upgrade to apply. Additionally the device may be enrolled within RRM should its Entity and Venue membership be part of RRM processing. Device Class determines if the device should be restricted to an Entity, Venue, and an end Subscriber.&#x20;
 
-Serial Number column links to the device record.
+Device-Specific Configuration will expose any overriding configuration data present for this specific device. Device specific configuration will override inherited configurations from lower priority templates.&#x20;
 
-Compatible model, Tx, Rx, and connected IP Address present basic information of the device type and its connection.
+Computed Configuration will display the enumeration of all provisioned templates the device is associated with. These templates are inherited as a result of device membership within an Entity, Child Entity, Venue and or Child Venue from which configuration templates may have been defined based on the admin deployment.&#x20;
 
-Three final columns provide Details (also obtained by selecting the serial number), Wi-Fi Analysis presenting current Wi-Fi associations and their performance and Refresh commands.
 
-## Displaying Associations
 
-From the Devices table, second from right column icon the WiFi Analysis may be accessed. This may also be accessed within the Device View page of a single record along the top right of Statistics section.
+### Bulk Inventory API
 
-![Wi-Fi Analysis](<../../.gitbook/assets/Screen Shot 2021-08-01 at 12.04.36 PM.png>)
+The service API could be used to bulk load record formats in a common .csv structure using JSON. For example
 
-Within the WiFi Analysis page, all active associations are displayed with the ability to view approximately the last 30 minutes of data reported from the Access Point.
+\`\`\`
 
-For each association the device MAC address, mode of connection and SSID are displayed. This will include end devices as well as Wi-Fi infrastructure such as WDS and Mesh associations.
+"SerialNumber",Name,Description,DeviceType,NoteText for example: d1300f7b0732,Manufacturer,Desc, edgecore\_spw2ac1200,OutdoorAP
 
-![](<../../.gitbook/assets/Screen Shot 2021-07-28 at 4.54.43 PM.png>)
+\`\`\`
 
-Associations have RSSI, Rx Rate & Bytes, Tx Rate & Bytes, MCS negotiated, Number Spatial Streams and IP Address information.
+For each inventory record, the \`\`\`deviceType\`\`\` must match a valid OpenWiFi device type. For example:
 
-## Dashboard View
+\`\`\`
 
-OpenWiFi SDK provides visual indications on the overall health of the deployed Wi-Fi network. this includes Device Status for connected and non-connected devices. Device health indicating percentage of devices failing a health check. Distribution of devices by vendor in the network and by model.
+"deviceTypes": \[ "cig\_wf160d", "cig\_wf188", "cig\_wf194c", "edgecore\_eap101", "edgecore\_eap102",
 
-![Dashboard View](<../../.gitbook/assets/Screen Shot 2021-08-01 at 12.06.15 PM.png>)
+"edgecore\_ecs4100-12ph", "edgecore\_ecw5211",
 
-Additionally, verified certificates or serial mismatch certificates, number of Command actions from all Gateways to devices and devices with greater than 75% memory utilization, greater than 50% less than 75% memory and less than 50% utilization are displayed.
+> ...]
 
-![](<../../.gitbook/assets/Screen Shot 2021-07-30 at 12.09.27 AM.png>)
+\`\`\`
+
+When inventory is assigned to a Venue, it can be allocated into a top-level parent such as the operator. Then, based on role access, operation's teams may choose to assign the device to a child entity within an operating division, or setup the device as a tenant of a managed Wi-Fi service for example.
+
+Choosing to assign the device to a specific MDU location as an example can be done in one step from above.
+
+##
