@@ -78,6 +78,7 @@
   * [RADIUS Authenticated SSID](device-feature-configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/README.md)
     * [Dynamic VLANs with RADIUS](device-feature-configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/dynamic-vlans-with-radius.md)
     * [WISPr Subscriber Bandwidth](device-feature-configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/wispr-subscriber-bandwidth.md)
+    * [Dynamic Multi PSK](device-feature-configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/dynamic-multi-psk.md)
     * [RADIUS MAC-Auth](device-feature-configuration-examples/device-feature-configuration-examples/radius-authenticated-ssid/radius-mac-auth.md)
   * [Multi-PSK (MDU Shared Key)](device-feature-configuration-examples/device-feature-configuration-examples/multi-psk-mdu-multiple-shared-key.md)
   * [Wireguard](device-feature-configuration-examples/device-feature-configuration-examples/wireguard.md)
