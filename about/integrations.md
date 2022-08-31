@@ -1,6 +1,6 @@
 # Example Partner Integrations
 
-You can extend deployment opportunities using third-party integrations with the TIP OpenWiFi SDK. For example, with third-party integrations, you can create a controller of multiple services. The services can include device provisioning, firmware management, network management, service assurance, subscriber authentication, captive portal services, IoT and amenity networks all commonly deployed across the MDU market. All of these traditional functions are supported in part by the OpenWiFi API and telemetry data from the OpenWiFi SDK.
+You can extend deployment opportunities using third-party integrations with the TIP OpenWiFi SDK. For example, with third-party integrations, you can create a controller of multiple services. The services can include device provisioning, firmware management, network management, service assurance, subscriber authentication, captive portal services, IoT and amenity networks all commonly deployed across the MDU market. All of these traditional functions are supported in part by the OpenWiFi [API ](../developer-resources/api/)and [Telemetry](../developer-resources/sdk-kafka/) data from the OpenWiFi SDK.
 
 ## Integration by Vertical
 
