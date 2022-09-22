@@ -1,0 +1,1207 @@
+openapi: 3.0.1
+info:
+  title: uCentral Security API
+  description: A process to manage security logins.
+  version: 2.0.0
+  license:
+    name: BSD3
+    url: https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/LICENSE
+  contact:
+    name: Arilia Support
+    email: ucentralsupport@arilia.com
+    url: https://www.ucentral.info/support
+
+servers:
+  - url: 'https://localhost:16001/api/v1'
+
+security:
+  - bearerAuth: []
+  - ApiKeyAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: string
+
+    Unauthorized:
+      description: The requested does not have sufficient rights to perform the operation.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+                enum:
+                  - 0     # Success
+                  - 1     # PASSWORD_CHANGE_REQUIRED,
+                  - 2     # INVALID_CREDENTIALS,
+                  - 3     # PASSWORD_ALREADY_USED,
+                  - 4     # USERNAME_PENDING_VERIFICATION,
+                  - 5     # PASSWORD_INVALID,
+                  - 6     # INTERNAL_ERROR,
+                  - 7     # ACCESS_DENIED,
+                  - 8     # INVALID_TOKEN
+                  - 9     # expired token
+                  - 10    # rate limit exceeded
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: string
+
+    Success:
+      description: The requested operation was performed.
+      content:
+        application/json:
+          schema:
+            properties:
+              Operation:
+                type: string
+              Details:
+                type: string
+              Code:
+                type: integer
+
+  schemas:
+
+    WebTokenRequest:
+      description: User Id and password.
+      type: object
+      required:
+        - userId
+        - password
+      properties:
+        userId:
+          type: string
+          default: support@example.com
+        password:
+          type: string
+          default: support
+        newPassword:
+          type: string
+          default: support
+        refreshToken:
+          type: string
+      example:
+        userId: support@example.com
+        password: support
+
+    WebTokenResult:
+      description: Login and Refresh Tokens to be used in subsequent API calls.
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+          format: int32
+        idle_timeout:
+          type: integer
+          format: int32
+        username:
+          type: string
+        created:
+          type: integer
+          format: int64
+        userMustChangePassword:
+          type: boolean
+        errorCode:
+          type: integer     # 0 = no error, 1 = passwordAlreadyUsed, 2=invalidPassword
+        aclTemplate:
+          $ref: '#/components/schemas/WebTokenAclTemplate'
+
+    WebTokenAclTemplate:
+      type: object
+      properties:
+        aclTemplate:
+          $ref: '#/components/schemas/AclTemplate'
+
+    ApiKeyCreationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        expiresOn:
+          type: integer
+          format: int64
+        rights:
+          $ref: '#/components/schemas/AclTemplate'
+
+    ApiKeyCreationAnswer:
+      type: object
+      properties:
+        UUID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        created:
+          type: integer
+          format: int64
+        expiresOn:
+          type: integer
+          format: int64
+        apiKey:
+          type: string
+        rights:
+          $ref: '#/components/schemas/AclTemplate'
+
+    AclTemplate:
+      type: object
+      properties:
+        Read:
+          type: boolean
+        ReadWrite:
+          type: boolean
+        ReadWriteCreate:
+          type: boolean
+        Delete:
+          type: boolean
+        PortalLogin:
+          type: boolean
+
+    SystemEndpoint:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: integer
+        vendor:
+          type: string
+        uri:
+          type: string
+          format: uri
+        authenticationType:
+          type: string
+
+    SystemEndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/SystemEndpoint'
+
+    MobilePhoneNumber:
+      type: object
+      properties:
+        number:
+          type: string
+        verified:
+          type: boolean
+        primary:
+          type: boolean
+
+    MfaAuthInfo:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        method:
+          type: string
+          enum:
+            - sms
+            - email
+            - voice
+
+    UserLoginLoginExtensions:
+      type: object
+      properties:
+        mobiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/MobilePhoneNumber'
+        mfa:
+          $ref: '#/components/schemas/MfaAuthInfo'
+
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        avatar:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+        validated:
+          type: boolean
+        validationEmail:
+          type: string
+          format: email
+        validationDate:
+          type: integer
+          format: int64
+        created:
+          type: integer
+          format: int64
+        validationURI:
+          type: string
+        changePassword:
+          type: boolean
+        lastLogin:
+          type: integer
+          format: int64
+        currentLoginURI:
+          type: string
+        lastPasswordChange:
+          type: integer
+          format: int64
+        lastEmailCheck:
+          type: integer
+          format: int64
+        currentPassword:
+          type: string
+        lastPasswords:
+          type: array
+          items:
+            type: string
+        waitingForEmailCheck:
+          type: boolean
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteInfo'
+        location:
+          type: string
+          format: uuid
+        owner:
+          type: string
+          format: uuid
+        suspended:
+          type: boolean
+        blackListed:
+          type: boolean
+        locale:
+          type: string
+        userRole:
+          type: string
+          enum:
+            - root
+            - admin
+            - subscriber
+            - csr
+            - system
+            - installer
+            - noc
+            - accounting
+        oauthType:
+          type: string
+          enum:
+            - internal
+            - normal
+            - gmail
+            - facebook
+            - linkedin
+            - instagram
+        oauthUserInfo:
+          type: string
+        securityPolicy:
+          type: string
+        securityPolicyChange:
+          type: integer
+          format: int64
+        userTypeProprietaryInfo:
+          $ref: '#/components/schemas/UserLoginLoginExtensions'
+
+    UserList:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInfo'
+
+    EMailInfo:
+      type: object
+      properties:
+        from:
+          type: string
+          format: email
+        subject:
+          type: string
+        recipients:
+          type: array
+          items:
+            type: string
+            format: email
+        text:
+          type: string
+
+    SMSInfo:
+      type: object
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+        text:
+          type: string
+
+    MFAChallengeRequest:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        question:
+          type: string
+        created:
+          type: integer
+          format: integer64
+        method:
+          type: string
+
+    MFAChallengeResponse:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        answer:
+          type: string
+
+    #########################################################################################
+    ##
+    ## These are endpoints that all services in the uCentral stack must provide
+    ##
+    #########################################################################################
+    AnyPayload:
+      type: object
+      properties:
+        Document:
+          type: string
+
+    StringList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    TagValuePair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+
+    TagValuePairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    NoteInfo:
+      type: object
+      properties:
+        created:
+          type: integer
+          format: int64
+        createdBy:
+          type: string
+        note:
+          type: string
+
+    SystemCommandDetails:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevels
+            - getloglevels
+            - getSubSystemNames
+            - getLogLevelNames
+            - stats
+        parameters:
+          oneOf:
+            - $ref: '#/components/schemas/StringList'
+            - $ref: '#/components/schemas/TagValuePairList'
+
+    SystemCommandResults:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/StringList'
+        - $ref: '#/components/schemas/TagValuePairList'
+
+    SystemInfoResults:
+      type: object
+      properties:
+        version:
+          type: string
+        uptime:
+          type: integer
+          format: integer64
+        start:
+          type: integer
+          format: integer64
+        os:
+          type: string
+        processors:
+          type: integer
+        hostname:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              expires:
+                type: integer
+                format: int64
+
+    ProfileAction:
+      type: object
+      properties:
+        resource:
+          type: string
+        access:
+          type: string
+          enum:
+            - NONE
+            - READ
+            - MODIFY
+            - DELETE
+            - CREATE
+            - TEST
+            - MOVE
+
+    SecurityProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        policy:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileAction'
+        role:
+          type: string
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteInfo'
+
+    SecurityProfileList:
+      type: object
+      properties:
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityProfile'
+
+    InternalServiceInfo:
+      type: object
+      properties:
+        privateURI:
+          type: string
+        publicURI:
+          type: string
+        token:
+          type: string
+
+    InternalSystemServices:
+      type: object
+      properties:
+        key:
+          type: string
+        version:
+          type: integer
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/InternalServiceInfo'
+
+    TokenValidationResult:
+      type: object
+      properties:
+        userInfo:
+          $ref: '#/components/schemas/UserInfo'
+        tokenInfo:
+          $ref: '#/components/schemas/WebTokenResult'
+
+    SystemCommandSetLogLevel:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevel
+        subsystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandReload:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - reload
+        subsystems:
+          type: array
+          items:
+            type: string
+            example: these are the SubSystems names retrieve with the GetSubSystemsNamesResult.
+
+    SystemCommandGetLogLevels:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevels
+
+    SystemGetLogLevelsResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandGetLogLevelNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevelnames
+
+    SystemCommandGetSubsystemNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getsubsystemnames
+
+    SystemCommandGetLogLevelNamesResult:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    SystemGetSubSystemNemesResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    #########################################################################################
+    ##
+    ## End of uCentral system wide values
+    ##
+    #########################################################################################
+
+paths:
+  /oauth2:
+    post:
+      tags:
+        - Authentication
+      summary: Get access token - to be used as Bearer token header for all other API requests.
+      operationId: getAccessToken
+      parameters:
+        - in: query
+          name: newPassword
+          description: used when a user is trying to change her password. This will be the new password.
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: forgotPassword
+          description: A user forgot her password. She needs to present her e-mail address in the userId and set this to true
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: requirements
+          description: A user forgot her password. She needs to present her e-mail address in the userId and set this to true
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: resendMFACode
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: completeMFAChallenge
+          schema:
+            type: boolean
+          required: false
+      requestBody:
+        description: User id and password
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/WebTokenRequest'
+                - $ref: '#/components/schemas/MFAChallengeResponse'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/WebTokenResult'
+                  - $ref: '#/components/schemas/MFAChallengeRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /oauth2/{token}:
+    delete:
+      tags:
+        - Authentication
+      summary: Revoke a token.
+      operationId: removeAccessToken
+      parameters:
+        - in: path
+          name: token
+          schema:
+            type:
+              string
+          required: true
+      responses:
+        204:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /systemEndpoints:
+    get:
+      tags:
+        - Authentication
+      summary: Retrieve the system layout.
+      operationId: getSystemInfo
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemEndpointList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /users:
+    get:
+      tags:
+        - User Management
+      summary: Retrieve a list of existing users as well as some information about them.
+      operationId: getUsers
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          description: Selecting this option means the newest record will be returned. Use limit to select how many.
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Return only the ids.
+          name: idOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Return only the ids.
+          name: select
+          schema:
+            type: string
+            example: id1,id2,id3,id4,id5
+          required: false
+      responses:
+        200:
+          $ref: '#/components/schemas/UserList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /user/{id}:
+    get:
+      tags:
+        - User Management
+      operationId: getUser
+      summary: Retrieve the information for a single user.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/UserInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - User Management
+      operationId: deleteUser
+      summary: Delete a single user.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            format: int64
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      tags:
+        - User Management
+      operationId: createUser
+      summary: Create a single user.
+      parameters:
+        - in: path
+          name: id
+          #must be set to 0 for user creation
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - in: query
+          name: email_verification
+          schema:
+            type: boolean
+          required: false
+      requestBody:
+        description: User details (some fields are ignored during creation)
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInfo'
+      responses:
+        200:
+          $ref: '#/components/schemas/UserInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - User Management
+      operationId: updateUser
+      summary: Modify a single user.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            format: int64
+          required: true
+        - in: query
+          name: email_verification
+          schema:
+            type: boolean
+          required: false
+      requestBody:
+        description: User details (some fields are ignored during update)
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInfo'
+      responses:
+        200:
+          $ref: '#/components/schemas/UserInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /avatar/{id}:
+    get:
+      tags:
+        - Avatar
+      operationId: getAvatar
+      summary: Retrieve the avatar associated with a user ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+
+      responses:
+        200:
+          description: Successfully retrieved the avatar
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/svg+xml:
+              schema:
+                type: string
+                format: binary
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Avatar
+      operationId: deleteAvatar
+      summary: Remove an avatar associated with a user ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      tags:
+        - Avatar
+      operationId: createAvatar
+      summary: Create an avatar associated with a user ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: User id and password
+        required: true
+        content:
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+          image/png:
+            schema:
+              type: string
+              format: binary
+          image/svg+xml:
+            schema:
+              type: string
+              format: binary
+
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /email:
+    post:
+      tags:
+        - Email
+      summary: Send test email with the system.
+      operationId: Send a test email
+      requestBody:
+        description: The requested message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EMailInfo'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          description: Error description
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+
+  /sms:
+    post:
+      tags:
+        - Email
+      summary: Send test email with the system.
+      operationId: Send a test SMS
+      parameters:
+        - in: query
+          name: validateNumber
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: completeValidation
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: validationCode
+          schema:
+            type: string
+          required: false
+      requestBody:
+        description: The requested message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SMSInfo'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          description: Error description
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+
+  #########################################################################################
+  ##
+  ## These are endpoints that all services in the uCentral stack must provide
+  ##
+  #########################################################################################
+  /securityProfiles:
+    get:
+      tags:
+        - Security
+      summary: Retrieve the list of security profiles for a specific service type.
+      operationId: getSecurituProfiles
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+      responses:
+        200:
+          $ref: '#/components/schemas/SecurityProfileList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  #########################################################################################
+  ##  The following calls are restricted to the private system side APIs
+  #########################################################################################
+  /systemServices:
+    get:
+      tags:
+        - Security
+      summary: Retrieve the basic system information. This information is used between services only.
+      operationId: getSystemServices
+      responses:
+        200:
+          $ref: '#/components/schemas/InternalSystemServices'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /validateToken:
+    get:
+      tags:
+        - Security
+      summary: Allows any microservice to validate a token and get security policy for a specific user.
+      operationId: validateToken
+      parameters:
+        - in: query
+          name: token
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/TokenValidationResult'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /system:
+    post:
+      tags:
+        - System Commands
+      summary: Perform some system wide commands.
+      operationId: systemCommand
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/SystemCommandSetLogLevel'
+                - $ref: '#/components/schemas/SystemCommandReload'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevels'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevelNames'
+                - $ref: '#/components/schemas/SystemCommandGetSubsystemNames'
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemGetLogLevelsResult'
+                  - $ref: '#/components/schemas/SystemCommandGetLogLevelNamesResult'
+                  - $ref: '#/components/schemas/SystemGetSubSystemNemesResult'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    get:
+      tags:
+        - System Commands
+      summary: Retrieve different values from the running service.
+      operationId: getSystemCommand
+      parameters:
+        - in: query
+          description: Get a value
+          name: command
+          schema:
+            type: string
+            enum:
+              - info
+          required: true
+
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemInfoResults'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+
+#########################################################################################
+##
+## These are endpoints that all services in the uCentral stack must provide
+##
+#########################################################################################

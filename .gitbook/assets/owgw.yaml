@@ -1,0 +1,2413 @@
+openapi: 3.0.1
+info:
+  title: uCentral gateway API
+  description: A process to manage configuration for devices.
+  version: 2.0.0
+  license:
+    name: BSD3
+    url: https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/LICENSE
+  contact:
+    name: Arilia Support
+    email: ucentralsupport@arilia.com
+    url: https://www.ucentral.info/support
+
+servers:
+  - url: 'https://localhost:16001/api/v1'
+
+security:
+  - bearerAuth: []
+  - ApiKeyAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    NotFound:
+      description: The specified resource was not found.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: string
+
+    Unauthorized:
+      description: The requested does not have sufficient rights to perform the operation.
+      content:
+        application/json:
+          schema:
+            properties:
+              ErrorCode:
+                type: integer
+                enum:
+                  - 0     # Success
+                  - 1     # PASSWORD_CHANGE_REQUIRED,
+                  - 2     # INVALID_CREDENTIALS,
+                  - 3     # PASSWORD_ALREADY_USED,
+                  - 4     # USERNAME_PENDING_VERIFICATION,
+                  - 5     # PASSWORD_INVALID,
+                  - 6     # INTERNAL_ERROR,
+                  - 7     # ACCESS_DENIED,
+                  - 8     # INVALID_TOKEN
+              ErrorDetails:
+                type: string
+              ErrorDescription:
+                type: string
+
+    Success:
+      description: The requested operation was performed.
+      content:
+        application/json:
+          schema:
+            properties:
+              Operation:
+                type: string
+              Details:
+                type: string
+              Code:
+                type: integer
+
+  schemas:
+    DeviceType:
+      type: string
+      default: AP
+      enum:
+        - AP
+        - SWITCH
+        - IOT
+        - MESH
+
+    Device:
+      type: object
+      description: Definition of uCentral device
+      required:
+        - deviceType
+      properties:
+        owner:
+          type: string
+          format: uuid
+        location:
+          type: string
+          format: uuid
+        venue:
+          type: string
+          format: uuid
+        serialNumber:
+          type: string
+        deviceType:
+          $ref: '#/components/schemas/DeviceType'
+        macAddress:
+          type: string
+        manufacturer:
+          type: string
+        UUID:
+          type: integer
+          format: int64
+        configuration:
+          type: string
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteInfo'
+        createdTimestamp:
+          type: integer
+          format: int64
+        lastConfigurationChange:
+          type: integer
+          format: int64
+        lastConfigurationDownload:
+          type: integer
+          format: int64
+        firmware:
+          type: string
+        devicePassword:
+          type: string
+
+    DeviceWithStatus:
+      type: object
+      description: Definition of uCentral device
+      required:
+        - deviceType
+      properties:
+        owner:
+          type: string
+          format: uuid
+        location:
+          type: string
+          format: uuid
+        venue:
+          type: string
+          format: uuid
+        serialNumber:
+          type: string
+        deviceType:
+          $ref: '#/components/schemas/DeviceType'
+        macAddress:
+          type: string
+        manufacturer:
+          type: string
+        UUID:
+          type: integer
+          format: int64
+        configuration:
+          type: string
+        compatible:
+          type: string
+        fwUpdatePolicy:
+          type: string
+        notes:
+          type: string
+        createdTimestamp:
+          type: integer
+          format: int64
+        lastConfigurationChange:
+          type: integer
+          format: int64
+        lastConfigurationDownload:
+          type: integer
+          format: int64
+        lastFWUpdate:
+          type: integer
+          format: int64
+        firmware:
+          type: string
+        connected:
+          type: boolean
+        ipAddress:
+          type: string
+        txBytes:
+          type: integer
+          format: int64
+        rxBytes:
+          type: integer
+          format: int64
+        associations_2G:
+          type: integer
+          format: int64
+        associations_5G:
+          type: integer
+          format: int64
+        devicePassword:
+          type: string
+        lastContact:
+          type: integer
+          format: int64
+
+    DeviceList:
+      type: object
+      description: Definition of uCentral device list
+      properties:
+        devices:
+          type: array
+          items:
+            $ref : '#/components/schemas/Device'
+
+    DeviceListWithStatus:
+      type: object
+      description: Definition of uCentral device list including device status.
+      properties:
+        devicesWithStatus:
+          type: array
+          items:
+            $ref : '#/components/schemas/DeviceWithStatus'
+
+    SerialNumberList:
+      type: object
+      description: List of serial numbers.
+      properties:
+        serialNumbers:
+          type: array
+          items:
+            type: string
+
+    DeviceCount:
+      type: object
+      description: The number of devices in the DB.
+      properties:
+        count:
+          type: integer
+          format: int64
+
+    DeviceStatus:
+      type: object
+      description: Current device status.
+      properties:
+        serialNumber:
+          type: string
+        ipAddress:
+          type: string
+        txBytes:
+          type: integer
+          format: int64
+        rxBytes:
+          type: integer
+          format: int64
+        messageCount:
+          type: integer
+          format: int64
+        UUID:
+          type: integer
+          format: int64
+        connected:
+          type: boolean
+        lastContact:
+          type: integer
+          format: int64
+        firmware:
+          type: string
+        associations_2G:
+          type: integer
+          format: int64
+        associations_5G:
+          type: integer
+          format: int64
+        verifiedCertificate:
+          type: string
+          enum:
+            - NO_CERTIFICATE,
+            - VALID_CERTIFICATE,
+            - MISMATCH_SERIAL,
+            - VERIFIED
+
+    DeviceCapabilities:
+      type: object
+      description: Describes the capabilities a device can support.
+      properties:
+        serialNumber:
+          type: string
+        capabilities:
+          type: string
+        lastUpdate:
+          type: integer
+          format: int64
+        firstUpdate:
+          type: integer
+          format: int64
+
+    StatisticsDetails:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        recorded:
+          type: integer
+          format: int64
+        UUID:
+          type: integer
+          format: int64
+        data:
+          type: string
+
+    StatisticsRecords:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatisticsDetails'
+
+    NameValuePair:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: integer
+          format: int64
+
+    InterfaceStatistics:
+      type: object
+      properties:
+        name:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+
+    LifetimeStatistics:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        interfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/InterfaceStatistics'
+
+    CommandDetails:
+      type: object
+      properties:
+        command:
+          type: string
+        payload:
+          type: string
+        when:
+          type: integer
+          format: int64
+        serialNumber:
+          type: string
+
+    CommandSubmitSuccess:
+      description: The command was submitted succesfully.
+      properties:
+        serialNumber:
+          type: string
+        UUID:
+          type: string
+          format: uuid
+
+    DeviceConfigureRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        UUID:
+          type: integer
+          format: int64
+        configuration:
+          type: string
+        when:
+          type: integer
+          format: int64
+
+    DeviceLog:
+      type: object
+      properties:
+        log:
+          type: string
+        recorded:
+          type: integer
+          format: int64
+        severity:
+          type: integer
+          format: int64
+        data:
+          type: string
+        logType:
+          type: integer
+          format: int64
+        UUID:
+          type: integer
+          format: int64
+
+    DeviceLogList:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceLog'
+
+    HealthCheck:
+      type: object
+      properties:
+        UUID:
+          type: integer
+          format: int64
+        sanity:
+          type: integer
+          format: int64
+        data:
+          type: string
+        recorded:
+          type: integer
+          format: int64
+
+    HealthCheckList:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/HealthCheck'
+
+    DefaultConfiguration:
+      type: object
+      properties:
+        name:
+          type: string
+        modelIds:
+          type: string
+        description:
+          type: string
+        configuration:
+          type: string
+        created:
+          type: integer
+          format: int64
+        lastModified:
+          type: integer
+          format: int64
+
+    DefaultConfigurationList:
+      properties:
+        configurations:
+          type: array
+          items:
+            $ref : '#/components/schemas/DefaultConfiguration'
+
+    UpgradeRequest:
+      type: object
+      properties:
+        uri:
+          type: string
+        serialNumber:
+          type: string
+        when:
+          type: integer
+          format: int64
+
+    RebootRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        when:
+          type: integer
+          format: int64
+
+    FactoryRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        when:
+          type: integer
+          format: int64
+        keepRedirector:
+          type: boolean
+
+    LEDsRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        when:
+          type: integer
+          format: int64
+        duration:
+          description: only applies to the blink pattern
+          type: integer
+          format: int64
+        pattern:
+          type: string
+          enum:
+            - on
+            - off
+            - blink
+
+    MessageRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        when:
+          type: integer
+          format: int64
+        message:
+          type: string
+          enum:
+            - state
+            - healthcheck
+
+    TraceRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        when:
+          type: integer
+          format: int64
+        duration:
+          type: integer
+          format: int64
+        numberOfPackets:
+          type: integer
+          format: int64
+        network:
+          type: string
+        interface:
+          type: string
+
+    CommandInfo:
+      type: object
+      properties:
+        UUID:
+          type: string
+          format: uuid
+        command:
+          type: string
+        details:
+          type: string
+        serialNumber:
+          type: string
+        submitted:
+          type: integer
+          format: int64
+        executed:
+          type: integer
+          format: int64
+        completed:
+          type: integer
+          format: int64
+        when:
+          type: integer
+          format: int64
+        errorText:
+          type: string
+        results:
+          type: string
+        errorCode:
+          type: integer
+          format: int64
+        submittedBy:
+          type: string
+        status:
+          type: string
+        custom:
+          type: integer
+          format: int64
+        waitingForFile:
+          type: integer
+          format: int64
+        attachFile:
+          type: integer
+          format: int64
+        attachSize:
+          type: integer
+          format: int64
+        attachType:
+          type: string
+
+    CommandInfoList:
+      type: object
+      properties:
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommandInfo'
+
+    DeviceDashboard:
+      type: object
+      properties:
+        snapshot:
+          type: integer
+          format: int64
+        numberOfDevices:
+          type: integer
+          format: int64
+        commands:
+          $ref: '#/components/schemas/TagIntPairList'
+        upTimes:
+          $ref: '#/components/schemas/TagIntPairList'
+        memoryUsed:
+          $ref: '#/components/schemas/TagIntPairList'
+        load1:
+          $ref: '#/components/schemas/TagIntPairList'
+        load5:
+          $ref: '#/components/schemas/TagIntPairList'
+        load15:
+          $ref: '#/components/schemas/TagIntPairList'
+        vendors:
+          $ref: '#/components/schemas/TagIntPairList'
+        status:
+          $ref: '#/components/schemas/TagIntPairList'
+        type:
+          $ref: '#/components/schemas/TagIntPairList'
+        deviceType:
+          $ref: '#/components/schemas/TagIntPairList'
+        healths:
+          $ref: '#/components/schemas/TagIntPairList'
+        certificates:
+          $ref: '#/components/schemas/TagIntPairList'
+        lastContact:
+          $ref: '#/components/schemas/TagIntPairList'
+        associations:
+          $ref: '#/components/schemas/TagIntPairList'
+
+    TelemetryStreamRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        interval:
+          type: integer
+          example:
+            0 - means to stop streaming, values 1-120 in seconds.
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+              - dhcp-snooping
+              - wire-frames
+              - state
+        uuid:
+          type: string
+          example:
+            only valid when terminating a stream
+
+    TelemetryStreamResponse:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        uuid:
+          type: string
+          format: uuid
+        uri:
+          type: string
+          format: uri
+          example:
+            wss://host.domain:port/endpoint
+
+    #########################################################################################
+    ##
+    ## These are endpoints that all services in the uCentral stack must provide
+    ##
+    #########################################################################################
+    AnyPayload:
+      type: object
+      properties:
+        Document:
+          type: string
+
+    StringList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    TagValuePair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+
+    TagValuePairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    TagIntPair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: integer
+          format: int64
+
+    TagIntPairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagIntPair'
+
+    SystemCommandDetails:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevels
+            - getloglevels
+            - getSubSystemNames
+            - getLogLevelNames
+            - stats
+        parameters:
+          oneOf:
+            - $ref: '#/components/schemas/StringList'
+            - $ref: '#/components/schemas/TagValuePairList'
+
+    SystemCommandResults:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/StringList'
+        - $ref: '#/components/schemas/TagValuePairList'
+
+    NoteInfo:
+      type: object
+      properties:
+        created:
+          type: integer
+          format: int64
+        createdBy:
+          type: string
+        note:
+          type: string
+
+    SystemInfoResults:
+      type: object
+      properties:
+        version:
+          type: string
+        uptime:
+          type: integer
+          format: integer64
+        start:
+          type: integer
+          format: integer64
+        os:
+          type: string
+        processors:
+          type: integer
+        hostname:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              expires:
+                type: integer
+                format: int64
+
+    SystemCommandSetLogLevel:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevel
+        subsystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandReload:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - reload
+        subsystems:
+          type: array
+          items:
+            type: string
+            example: these are the SubSystems names retrieve with the GetSubSystemsNamesResult.
+
+    SystemCommandGetLogLevels:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevels
+
+    SystemGetLogLevelsResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandGetLogLevelNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevelnames
+
+    SystemCommandGetSubsystemNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getsubsystemnames
+
+    SystemCommandGetLogLevelNamesResult:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    SystemGetSubSystemNamesResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    #########################################################################################
+    ##
+    ## End of uCentral system wide values
+    ##
+    #########################################################################################
+    BlackDeviceInfo:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        created:
+          type: integer
+          format: int64
+          readOnly: true
+        author:
+          type: string
+          readOnly: true
+        reason:
+          type: string
+
+    BlackDeviceList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlackDeviceInfo'
+
+    WifiBands:
+      type: object
+      properties:
+        bands:
+          type: array
+          items:
+            type: string
+            enum: [ "2" , "5", "5l", "5u" , "6" ]
+
+    WifiChannels:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            type: integer
+
+    WifiScanRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        verbose:
+          type: boolean
+        activeScan:
+          type: boolean
+        selector:
+          oneOf:
+            - $ref: '#/components/schemas/WifiBands'
+            - $ref: '#/components/schemas/WifiChannels'
+      required:
+        - serialNumber
+
+    EventQueueRequest:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        types:
+          type: array
+          items:
+            type: string
+            enum:
+              - dhcp
+              - rrm
+
+    EventQueueResponse:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        UUID:
+          type: string
+          format: uuid
+        result:
+          type: string
+
+    RttySessionDetails:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        server:
+          type: string
+        port:
+          type: integer
+          format: int32
+        token:
+          type: string
+        timeout:
+          type: integer
+          format: int32
+        connectionId:
+          type: string
+        started:
+          type: integer
+          format: int64
+        commandUUID:
+          type: string
+        viewport:
+          type: integer
+          format: int32
+        password:
+          type: string
+
+    CapabilitiesModel:
+      type: object
+      properties:
+        deviceType:
+          type: string
+        capabilities:
+          type: string
+
+    CapabilitiesModelList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/CapabilitiesModel'
+
+paths:
+  /devices:
+    get:
+      tags:
+        - Devices
+      summary: Returns a list of devices.
+      description: Get a list of devices.
+      operationId: getDeviceList
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of devices comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+        - in: query
+          description: only serial numbers of full device details
+          name: serialOnly
+          schema:
+            type: boolean
+        - in: query
+          description: return the number of devices
+          name: countOnly
+          schema:
+            type: boolean
+            example: countOnly=true
+        - in: query
+          description: Return extra information with the device information
+          name: deviceWithStatus
+          schema:
+            type: boolean
+      responses:
+        200:
+          description: List devices
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/DeviceList'
+                  - $ref: '#/components/schemas/DeviceListWithStatus'
+                  - $ref: '#/components/schemas/SerialNumberList'
+                  - $ref: '#/components/schemas/DeviceCount'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /commands:
+    get:
+      tags:
+        - Commands
+      summary: Returns a list of commands.
+      description: Get a list of commands.
+      operationId: getCommandList
+      parameters:
+        - in: query
+          name: serialNumber
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          description: Selecting this option means the newest record will be returned. Use limit to select how many.
+          name: newest
+          schema:
+            type: boolean
+          required: false
+
+      responses:
+        200:
+          description: List commands
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandInfoList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Commands
+      summary: Delete some commands
+      operationId: deleteCommands
+      parameters:
+        - in: query
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        204:
+          description: Successfully deleted commands for the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /command/{commandUUID}:
+    get:
+      tags:
+        - Commands
+      summary: Returns a specific command.
+      description: Returns a specific command
+      operationId: getACommandDetails
+      parameters:
+        - in: path
+          name: commandUUID
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          description: List commands
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Commands
+      summary: Delete a specific command.
+      description: Delete a specific command
+      operationId: deleteACommand
+      parameters:
+        - in: path
+          name: commandUUID
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          description: Delete command success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /default_configurations:
+    get:
+      tags:
+        - Configurations
+      summary: Retrieve the lists of all default configurations.
+      description: Retrieve the lists of all default configurations.
+      operationId: getDefaultConfigurations
+
+      responses:
+        200:
+          description: List of defautl configurations included
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultConfigurationList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /default_configuration/{name}:
+    get:
+      tags:
+        - Configurations
+      summary: Retrieve a default configuration.
+      description: Retrieve a default configuration.
+      operationId: getDefaultConfiguration
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Default configurations included
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultConfiguration'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      tags:
+        - Configurations
+      summary: Create a default configuration.
+      description: Create a default configuration.
+      operationId: createDefaultConfiguration
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Information used to create the new device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultConfiguration'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Configurations
+      summary: Delete a default default configuration
+      description: Delete a default default configuration
+      operationId: deleteDefaultConfiguration
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - Configurations
+      summary: Update a default configuration
+      description: Update a default configuration
+      operationId: updateDefaultConfiguration
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Configuration details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultConfiguration'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}:
+    get:
+      tags:
+        - Devices
+      summary: Retrieve information for a single device.
+      description: Retrieve all the inforamtion about a single device
+      operationId: getDeviceInformation
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Device information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      tags:
+        - Devices
+      summary: Create a new device.
+      operationId: createNewDevice
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: validateOnly
+          schema:
+            type: boolean
+          required: false
+      requestBody:
+        description: Information used to create the new device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+      responses:
+        200:
+          description: Successful device creation will return the device record with the proper device ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - Devices
+      summary: Update a device.
+      operationId: updateNewDevice
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Information used to create the new device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+      responses:
+        200:
+          description: Successful device creation will return the device record with the proper device ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Devices
+      summary: Delete a single device.
+      operationId: deleteDevice
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/logs:
+    get:
+      tags:
+        - Commands
+      summary: Get the latest logs for a given device
+      operationId: getDeviceLogs
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: logType
+          description: 0=any kind of logs (default) 0=normal logs only 1=crash logs only
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          description: Selecting this option means the newest record will be returned. Use limit to select how many.
+          name: newest
+          schema:
+            type: boolean
+          required: false
+
+      responses:
+        200:
+          description: Array of device logs for this device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceLogList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Commands
+      summary: Delete some device logs.
+      operationId: deleteDeviceLogs
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: logType
+          description: 0=any kind of logs (default) 1=normal logs only 2=crash logs only
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        204:
+          description: Successfully deleted logs for the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/healthchecks:
+    get:
+      tags:
+        - Commands
+      summary: Get the latest health checks for a given device.
+      operationId: getDeviceHealthChecks
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          description: Selecting this option means the newest record will be returned. Use limit to select how many.
+          name: newest
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Selecting this option means the last healthcheck will be returned. All other parameters will be ignored.
+          name: lastOnly
+          schema:
+            type: boolean
+          required: false
+
+      responses:
+        200:
+          description: Array of device health checks for this device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Commands
+      summary: Delete some device health checks.
+      operationId: deleteDeviceHealthChecks
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+
+      responses:
+        204:
+          description: Successfully deleted health checks for the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/capabilities:
+    get:
+      tags:
+        - Commands
+      summary: Get the latest capabilities for a given device.
+      operationId: getDeviceCapabilities
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: List of logs for this device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceCapabilities'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Commands
+      summary: Delete the capabilities for a given device.
+      operationId: deleteDeviceCapabilities
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        204:
+          description: List of logs for this device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/statistics:
+    get:
+      tags:
+        - Commands
+      summary: Get the latest statistics for a given device.
+      operationId: getDeviceStats
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          description: Selecting this option means the LifetimeStatistics will be returned. All other parameters will be ignored.
+          name: lifetime
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Selecting this option means the LifetimeStatistics will be returned. All other parameters will be ignored.
+          name: lastOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Selecting this option means the newest record will be returned. Use limit to select how many.
+          name: newest
+          schema:
+            type: boolean
+          required: false
+
+      responses:
+        200:
+          description: Array of statistics for this device
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/StatisticsRecords'
+                  - $ref: '#/components/schemas/LifetimeStatistics'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Commands
+      summary: Get the latest statistics for a given device.
+      operationId: deleteDeviceStats
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+        - in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+          required: false
+
+      responses:
+        204:
+          description: Array of statistics for this device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/status:
+    get:
+      tags:
+        - Commands
+      summary: Get the latest status for a given device.
+      operationId: getDeviceStatus
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Status for the given device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceStatus'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/command:
+    post:
+      tags:
+        - Commands
+      summary: Post a command to a device
+      operationId: executeCommand
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandDetails'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/configure:
+    post:
+      tags:
+        - Commands
+      summary: Configure a device.
+      operationId: updateConfigurationForADevice
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfigureRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/upgrade:
+    post:
+      tags:
+        - Commands
+      summary: Upgrade a device.
+      operationId: UpgradeDeviceFirmware
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpgradeRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/reboot:
+    post:
+      tags:
+        - Commands
+      summary: Reboot a device.
+      operationId: rebootDevice
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RebootRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/factory:
+    post:
+      tags:
+        - Commands
+      summary: Factory reset a device.
+      operationId: factoryReset
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FactoryRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/leds:
+    post:
+      tags:
+        - Commands
+      summary: Blink the LEDs on a device.
+      operationId: ledsRequest
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LEDsRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/trace:
+    post:
+      tags:
+        - Commands
+      summary: Launch a trace for a device.
+      operationId: traceRequest
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TraceRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/wifiscan:
+    post:
+      tags:
+        - Commands
+      summary: Launch a wifi scan for a device.
+      operationId: wifiscanRequest
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Scan details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WifiScanRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/request:
+    post:
+      tags:
+        - Commands
+      summary: Request a specific message
+      operationId: messageRequest
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Message request details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/CommandSubmitSuccess'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/eventqueue:
+    post:
+      tags:
+        - Commands
+      summary: Request a list of queued events.
+      operationId: eventQueueRequest
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Message request details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventQueueRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/EventQueueResponse'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/telemetry:
+    post:
+      tags:
+        - Commands
+      summary: Request a telemetry stream.
+      operationId: eventTelemetryStreamRequest
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Message request details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelemetryStreamRequest'
+      responses:
+        200:
+          $ref: '#/components/schemas/TelemetryStreamResponse'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /ouis:
+    get:
+      tags:
+        - OUIs
+      operationId: getOUIs
+      summary: Get a list of OUIs.
+      parameters:
+        - in: query
+          name: macList
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/TagValuePairList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /device/{serialNumber}/rtty:
+    get:
+      tags:
+        - Commands
+      summary: Get the rtty parameters to initiate a session.
+      operationId: getRttySessionInfo
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Session information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RttySessionDetails'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /file/{uuid}:
+    get:
+      tags:
+        - Files
+      summary: Get a file from the upload directory.
+      operationId: getUploadFile
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Succesfull file retrieval
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Files
+      summary: Delete a file from the upload directory.
+      operationId: deleteUploadFidelete
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /blacklist:
+    get:
+      tags:
+        - Blacklist
+      summary: Returns a list blacklisted devices.
+      description: Get a list of blacklisted devices.
+      operationId: getBlacklistDeviceList
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+      responses:
+        200:
+          description: List blacklisted devices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlackDeviceList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /blacklist/{serialNumber}:
+    get:
+      tags:
+        - Blacklist
+      summary: Returns a blacklist entry.
+      description: Get a list of blacklisted devices.
+      operationId: getBlacklistDevice
+      parameters:
+        - in: path
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: List blacklisted devices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlackDeviceInfo'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      tags:
+        - Blacklist
+      summary: Create to the blacklist.
+      operationId: createBlackListDevice
+      parameters:
+        - in: path
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Add blacklisted device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlackDeviceInfo'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - Blacklist
+      summary: Modify to the blacklist.
+      operationId: modifyBlackList
+      parameters:
+        - in: path
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Add blacklisted devices
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlackDeviceInfo'
+      responses:
+        200:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Blacklist
+      summary: Delete from the blacklist.
+      operationId: deleteFromBlackList
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /capabilities:
+    get:
+      tags:
+        - Devices
+      summary: Get the list of device types and capabilities.
+      operationId: getCapabilitiesList
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapabilitiesModelList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /deviceDashboard:
+    get:
+      tags:
+        - Dashboards
+      summary: Get the last version of the dashboard.
+      operationId: getDeviceDashboard
+      responses:
+        200:
+          $ref: '#/components/schemas/DeviceDashboard'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  #########################################################################################
+  ##
+  ## These are endpoints that all services in the uCentral stack must provide
+  ##
+  #########################################################################################
+  /system:
+    post:
+      tags:
+        - System Commands
+      summary: Perform some system wide commands.
+      operationId: systemCommand
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/SystemCommandSetLogLevel'
+                - $ref: '#/components/schemas/SystemCommandReload'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevels'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevelNames'
+                - $ref: '#/components/schemas/SystemCommandGetSubsystemNames'
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemGetLogLevelsResult'
+                  - $ref: '#/components/schemas/SystemCommandGetLogLevelNamesResult'
+                  - $ref: '#/components/schemas/SystemGetSubSystemNamesResult'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    get:
+      tags:
+        - System Commands
+      summary: Retrieve different values from the running service.
+      operationId: getSystemCommand
+      parameters:
+        - in: query
+          description: Get a value
+          name: command
+          schema:
+            type: string
+            enum:
+              - info
+          required: true
+
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemInfoResults'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
