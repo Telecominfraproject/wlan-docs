@@ -4,7 +4,7 @@ TIP OpenWiFi supports Wi-Fi 5 (802.11ac), Wi-Fi 6 (802.11ax) and Wi-Fi 6E (6GHz 
 
 For TIP OpenWiFi, a mix of ODMs deliver a diverse portfolio including CIG, Actiontech, EdgeCore, Cybertan, Arcadyan, Wallys, Lindsay, HFCL and Inventum.
 
-![](../.gitbook/assets/image8.png)
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 ## Currently supported hardware
 

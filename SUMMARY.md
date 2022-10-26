@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi Release 2.7 - In Progress](README.md)
+* [OpenWiFi Release 2.7](README.md)
 
 ## ABOUT
 
