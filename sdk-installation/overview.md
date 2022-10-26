@@ -9,3 +9,14 @@ The repository is managed using branches where:
 
 * main branch: contains references to the latest development SDK images
 * release/v_**X.Y.Z**_ branch: contains image references specific to the release artifacts. For example: release/**v2.4.0** branch will contain references to SDK images related to 2.4.0 release candidates (RC) and GA.
+
+```
+// Clone the repo (if not already done so)
+// The default branch is main.
+git clone git@github.com:Telecominfraproject/wlan-cloud-ucentral-deploy.git
+
+// Use either main or release branch. Recommend to use release branch once a release is
+// GAed.
+git checkout -b v2.7.0 origin/release/v2.7.0
+
+```

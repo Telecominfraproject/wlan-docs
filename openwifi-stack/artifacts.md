@@ -17,4 +17,8 @@ These images are then pushed to jfrog in each device specific target directory:
 
 The SDK micro-services are built on every pull request on their respective repositories. These images are then containerized and pushed to jfrog here:
 
-[https://tip.jfrog.io/ui/repos/tree/General/tip-wlan-cloud-ucentral](https://tip.jfrog.io/ui/repos/tree/General/tip-wlan-cloud-ucentral)\
+[https://tip.jfrog.io/ui/repos/tree/General/tip-wlan-cloud-ucentral](https://tip.jfrog.io/ui/repos/tree/General/tip-wlan-cloud-ucentral)
+
+
+
+**NOTE**: For additional details on CI\&CD and Testing pipelines please click [here](https://telecominfraproject.atlassian.net/l/cp/1UU780gd).\

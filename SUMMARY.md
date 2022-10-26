@@ -15,17 +15,17 @@
 
 * [Overview](openwifi-stack/openwifi-stack.md)
 * [SDK](openwifi-stack/about-the-sdk.md)
-* [Cloud Discovery](openwifi-stack/cloud-discovery/README.md)
-  * [Discovery without Cloud](openwifi-stack/cloud-discovery/discovery-without-cloud.md)
 * [Access Points](openwifi-stack/access-points/README.md)
   * [Local Device Settings](openwifi-stack/access-points/local-device-settings.md)
+* [Cloud Discovery](openwifi-stack/cloud-discovery/README.md)
+  * [Discovery without Cloud](openwifi-stack/cloud-discovery/discovery-without-cloud.md)
 * [Code Repositories](openwifi-stack/repositories.md)
 * [Artifacts](openwifi-stack/artifacts.md)
 
 ## SDK
 
 * [Getting Started](sdk/getting-started.md)
-* [Release 2.6 SDK](sdk/sdk.md)
+* [Architecture](sdk/sdk.md)
 * [Provisioning for Integrators](sdk/provisioning/README.md)
   * [Data Model Introduction](sdk/provisioning/data-model-introduction.md)
   * [Creating a Configuration](sdk/provisioning/creating-a-configuration.md)

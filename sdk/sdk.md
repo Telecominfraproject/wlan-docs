@@ -1,10 +1,10 @@
 ---
-description: TIP OpenWiFi 2.6
+description: TIP OpenWiFi 2.x Architecture
 ---
 
-# Release 2.6 SDK
+# Architecture
 
-Release 2.6 SDK offers a number of ways to consume OpenWiFi. Available as a single Docker for just the uCentralGW or as a set of microservices offering increasing value to consume helps multiple eco-system partners use as much or as little as desired to integrate with or build a commercial product on the TIP OpenWiFi SDK.
+Release 2.x SDK offers a number of ways to consume OpenWiFi. Available as a single Docker for just the uCentralGW or as a set of microservices offering increasing value to consume helps multiple eco-system partners use as much or as little as desired to integrate with or build a commercial product on the TIP OpenWiFi SDK.
 
 Initial features of the 2.0 SDK at  MVP include:
 

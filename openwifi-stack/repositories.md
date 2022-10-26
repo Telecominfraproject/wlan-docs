@@ -9,6 +9,8 @@ description: Repository Information
 License: BSD-3-Clause
 
 * Openwrt based APNOS: [https://github.com/Telecominfraproject/wlan-ap](https://github.com/Telecominfraproject/wlan-ap)
+* ucentral schema: [https://github.com/Telecominfraproject/wlan-ucentral-schema](https://github.com/Telecominfraproject/wlan-ucentral-schema)
+* ucentral client: [https://github.com/Telecominfraproject/wlan-ucentral-client](https://github.com/Telecominfraproject/wlan-ucentral-client)
 
 **Controller SDK**
 
@@ -22,6 +24,7 @@ License: BSD-3-Clause
 * Provisioning UI: [https://github.com/Telecominfraproject/wlan-cloud-owprov-ui](https://github.com/Telecominfraproject/wlan-cloud-owprov-ui)
 * Analytics Service: [https://github.com/Telecominfraproject/wlan-cloud-analytics](https://github.com/Telecominfraproject/wlan-cloud-analytics)
 * Subscriber Service: [https://github.com/Telecominfraproject/wlan-cloud-userportal](https://github.com/Telecominfraproject/wlan-cloud-userportal)
+* RRM Service: [https://github.com/Telecominfraproject/wlan-cloud-rrm](https://github.com/Telecominfraproject/wlan-cloud-rrm)
 
 **Testing**
 
