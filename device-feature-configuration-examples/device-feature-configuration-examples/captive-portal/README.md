@@ -54,3 +54,5 @@ Creating a local captive portal involves associating the "captive" service with 
 ```
 
 Local captive portal will redirect to a default landing page and display the name as configured in "gateway-name". Per associated user bandwidth and usage quota limits and total association limits may all be defined.
+
+NOTE: Coova support as for release 2.7.2 has been deprecated.
