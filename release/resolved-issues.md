@@ -2,240 +2,294 @@
 
 #### Bug
 
-[WIFI-10070](https://telecominfraproject.atlassian.net/browse/WIFI-10070) Provision Service: Owprov getting restarted after performing firmware upgrade from venue actions
+[WIFI-10939](https://telecominfraproject.atlassian.net/browse/WIFI-10939) MAC Address getting changed for cig\_196 APs in Scale Test Bed when firmware image upgraded.
 
-[WIFI-10053](https://telecominfraproject.atlassian.net/browse/WIFI-10053) Prov service: Unable to fetch the venue analytics data
+[WIFI-11259](https://telecominfraproject.atlassian.net/browse/WIFI-11259) The Gateway logs are pointing to old Radius server even after pushing new RADSEC configuration multiple times
 
-[WIFI-10019](https://telecominfraproject.atlassian.net/browse/WIFI-10019) Prov Service: Some blanks entities seen with 404 error
+[WIFI-11264](https://telecominfraproject.atlassian.net/browse/WIFI-11264) Possible race condition on Telemetry Socket shutdown
 
-[WIFI-10017](https://telecominfraproject.atlassian.net/browse/WIFI-10017) Prov Service: Unable to fetch maps
+[WIFI-11270](https://telecominfraproject.atlassian.net/browse/WIFI-11270) Blacklisting a device does not work.
 
-[WIFI-10005](https://telecominfraproject.atlassian.net/browse/WIFI-10005) prov service : Averaging of memory utilization under venue analytics involves wrong mathematics
+[WIFI-11272](https://telecominfraproject.atlassian.net/browse/WIFI-11272) Captive Portal is not working with multiple SSIDs
 
-[WIFI-10004](https://telecominfraproject.atlassian.net/browse/WIFI-10004) Prov service: unable to fetch the data while accessing root entity
+[WIFI-11863](https://telecominfraproject.atlassian.net/browse/WIFI-11863) Final redirect URL parameter in captive portal prevents configuration on the AP
 
-[WIFI-9977](https://telecominfraproject.atlassian.net/browse/WIFI-9977) Starting RTTYS session may cause GW to crash
+[WIFI-12188](https://telecominfraproject.atlassian.net/browse/WIFI-12188) EAP101: "Failed to add station" and "Failed to add peer" messages in dmesg output
 
-[WIFI-9966](https://telecominfraproject.atlassian.net/browse/WIFI-9966) Delete button in Venue page missing for configuration
+[WIFI-10190](https://telecominfraproject.atlassian.net/browse/WIFI-10190) Rate limiting and Rate limiting with radius are not working as expected for multiple clients
 
-[WIFI-9959](https://telecominfraproject.atlassian.net/browse/WIFI-9959) Adding default configuration malfunction
+[WIFI-10194](https://telecominfraproject.atlassian.net/browse/WIFI-10194) Rate-Limiting is not working - Firmware TIP-v2.6.0-4c21f5c
 
-[WIFI-9952](https://telecominfraproject.atlassian.net/browse/WIFI-9952) Gateway restarting issue
+[WIFI-10916](https://telecominfraproject.atlassian.net/browse/WIFI-10916) Option "Icons" is missing in passpoint section in Prov UI
 
-[WIFI-9930](https://telecominfraproject.atlassian.net/browse/WIFI-9930) Self Hosted Runners are not picking up properly
+[WIFI-10940](https://telecominfraproject.atlassian.net/browse/WIFI-10940) One Time local provisioning DNS problems
 
-[WIFI-9927](https://telecominfraproject.atlassian.net/browse/WIFI-9927) Prov Service: We have 2 create tabs in Main Entity and Venue pages for creating child Entity and child venue.
+[WIFI-10944](https://telecominfraproject.atlassian.net/browse/WIFI-10944) EAP101: bssid assignment has changed between v2.6.0 to v2.7.0-rc2
 
-[WIFI-9925](https://telecominfraproject.atlassian.net/browse/WIFI-9925) Prov Service: Unable to create a new map when map page is in any customized map( Root node is in blocked state)
+[WIFI-11012](https://telecominfraproject.atlassian.net/browse/WIFI-11012) The RADIUS Requests by the gateway are directed towards wrong RADIUS Server, when IP is configured is valid in the AP config but does not match the pool
 
-[WIFI-9924](https://telecominfraproject.atlassian.net/browse/WIFI-9924) Prov Service: Unable to load Provising UI \[page in qa01 instance.
+[WIFI-11162](https://telecominfraproject.atlassian.net/browse/WIFI-11162) Unable to push the RADSEC config in the gateway through Open API
 
-[WIFI-9921](https://telecominfraproject.atlassian.net/browse/WIFI-9921) Gateway Service: Telemetry fetching all the data when type is only selected to Wifi-frames/State/DHCP-Snooping
+[WIFI-11163](https://telecominfraproject.atlassian.net/browse/WIFI-11163) In Advanced Captive radius user/pass mode, an error is seen when the credentials are given in the Captive Portal
 
-[WIFI-9920](https://telecominfraproject.atlassian.net/browse/WIFI-9920) RTTYS does not work after upgrade to v2.6.0-RC5
+[WIFI-11168](https://telecominfraproject.atlassian.net/browse/WIFI-11168) Gateway Service: Devices and device status in dashboard are showing inaccurate data
 
-[WIFI-9839](https://telecominfraproject.atlassian.net/browse/WIFI-9839) prov service: clicking on the contacts throwing an error
+[WIFI-11169](https://telecominfraproject.atlassian.net/browse/WIFI-11169) owgw randomly crashed
 
-[WIFI-9838](https://telecominfraproject.atlassian.net/browse/WIFI-9838) prov service: clicking on the AP mac address under raw data is throwing an error.
+[WIFI-11200](https://telecominfraproject.atlassian.net/browse/WIFI-11200) Interop:Unable to get Reports of interop sanity due to "Error:Can't upload artifacts"
 
-[WIFI-9837](https://telecominfraproject.atlassian.net/browse/WIFI-9837) prov service: navigating from venues to sub venues opening the operators tab
+[WIFI-11204](https://telecominfraproject.atlassian.net/browse/WIFI-11204) MAC format field is affecting the Captive Portal page
 
-[WIFI-9836](https://telecominfraproject.atlassian.net/browse/WIFI-9836) prov service: under dash board firmware is showing unknown
+[WIFI-11211](https://telecominfraproject.atlassian.net/browse/WIFI-11211) External captive portal session timeout issue (Getting internet even after completion of time)
 
-[WIFI-9835](https://telecominfraproject.atlassian.net/browse/WIFI-9835) prov service: under dash board average device type is showing unknown
+[WIFI-11225](https://telecominfraproject.atlassian.net/browse/WIFI-11225) rtty quits if a long data block is returned during a command
 
-[WIFI-9834](https://telecominfraproject.atlassian.net/browse/WIFI-9834) prov service: under dash board average uptime of an AP is not updating
+[WIFI-11226](https://telecominfraproject.atlassian.net/browse/WIFI-11226) LastFWUpdate value not updated on devices
 
-[WIFI-9833](https://telecominfraproject.atlassian.net/browse/WIFI-9833) prov service: under dash board memory of an AP is not updating
+[WIFI-11241](https://telecominfraproject.atlassian.net/browse/WIFI-11241) ucentral "perform" command not working
 
-[WIFI-9832](https://telecominfraproject.atlassian.net/browse/WIFI-9832) prov service: under dash board health of an AP is not updating
+[WIFI-11280](https://telecominfraproject.atlassian.net/browse/WIFI-11280) Memory leak when connecting the UI to the GW. WebSocket memory not being freed.
 
-[WIFI-9828](https://telecominfraproject.atlassian.net/browse/WIFI-9828) APs suddenly getting disconnected from gateway side
+[WIFI-6457](https://telecominfraproject.atlassian.net/browse/WIFI-6457) GRE Tunnel goes down after applying the configuration
 
-[WIFI-9790](https://telecominfraproject.atlassian.net/browse/WIFI-9790) prov service : the Live View not showing all the AP's in graph
+[WIFI-7208](https://telecominfraproject.atlassian.net/browse/WIFI-7208) QoS mapping doesn't happen between wired and wireless captures
 
-[WIFI-9787](https://telecominfraproject.atlassian.net/browse/WIFI-9787) prov service : rounding off the averaged values are not even.
+[WIFI-7517](https://telecominfraproject.atlassian.net/browse/WIFI-7517) HFCL\_ion4xi does not connect on 5GHz radio with iPhone12 in open air
 
-[WIFI-9773](https://telecominfraproject.atlassian.net/browse/WIFI-9773) WiFi Scan is not working as there is no request going when user click on Wifi Scan
+[WIFI-7687](https://telecominfraproject.atlassian.net/browse/WIFI-7687) Station data mis-alignment between ucentral-schema/renderer/wifi/station.uc and ucentral-schema/state/interface.ssid.association.yaml
 
-[WIFI-9744](https://telecominfraproject.atlassian.net/browse/WIFI-9744) PROV-UI: OWSEC is not showing on the System page
+[WIFI-7723](https://telecominfraproject.atlassian.net/browse/WIFI-7723) Multicast traffic is not appearing on the wireless side
 
-[WIFI-9660](https://telecominfraproject.atlassian.net/browse/WIFI-9660) If we give invalid IP address, It is not throwing any error
-
-[WIFI-9654](https://telecominfraproject.atlassian.net/browse/WIFI-9654) \[MPSK Remote]The request to Packet Fence is getting rejected due to duplicate VSA attribute send from AP
-
-[WIFI-9643](https://telecominfraproject.atlassian.net/browse/WIFI-9643) Prov UI: Port forwarding is not throwing up error when given invalid IP and when same external port and different internal port.
-
-[WIFI-9635](https://telecominfraproject.atlassian.net/browse/WIFI-9635) Radius Proxy Config not accepted by AP
-
-[WIFI-9632](https://telecominfraproject.atlassian.net/browse/WIFI-9632) Analytics may lock.
-
-[WIFI-9621](https://telecominfraproject.atlassian.net/browse/WIFI-9621) The Error is showing up when password authentication is disabled (when modified from disable-->enable--->disable)
-
-[WIFI-9619](https://telecominfraproject.atlassian.net/browse/WIFI-9619) Prov Service: client life cycle tab showing no results
-
-[WIFI-9616](https://telecominfraproject.atlassian.net/browse/WIFI-9616) Provisioning Service restarted while performing configuration push testing altering Weight parameter
-
-[WIFI-9615](https://telecominfraproject.atlassian.net/browse/WIFI-9615) Prov Service: Interval in Analytics is taking the negative values for Seconds.
-
-[WIFI-9614](https://telecominfraproject.atlassian.net/browse/WIFI-9614) Prov Service: Retention in Analytics is taking the negative values for Days.
-
-[WIFI-9601](https://telecominfraproject.atlassian.net/browse/WIFI-9601) Prov Service: Analytics is not checking the mandatory tabs.
-
-[WIFI-9600](https://telecominfraproject.atlassian.net/browse/WIFI-9600) Prov Service: Search button under inventory is getting blocked randomly
-
-[WIFI-9598](https://telecominfraproject.atlassian.net/browse/WIFI-9598) Prov Service: Venue Dash board is unable to fetch showing an error
-
-[WIFI-9596](https://telecominfraproject.atlassian.net/browse/WIFI-9596) Prov Service: mini map is removed under the map in the latest version.
-
-[WIFI-9595](https://telecominfraproject.atlassian.net/browse/WIFI-9595) Prov Service: color indications are removed under the map in the latest version.
-
-[WIFI-9564](https://telecominfraproject.atlassian.net/browse/WIFI-9564) unable to give contact no in my account
-
-[WIFI-9563](https://telecominfraproject.atlassian.net/browse/WIFI-9563) Significance of State in device details, it not showing any data regarding connected/disconnected state of AP
-
-[WIFI-9562](https://telecominfraproject.atlassian.net/browse/WIFI-9562) System tab is showing no info in OWSUB and throwing an error after refreshing.
-
-[WIFI-9561](https://telecominfraproject.atlassian.net/browse/WIFI-9561) Config page is not staying back after the device specific configuration is saved to push the configuration
-
-[WIFI-9558](https://telecominfraproject.atlassian.net/browse/WIFI-9558) Prov service: importing the APs from csv file format is throwing error
-
-[WIFI-9555](https://telecominfraproject.atlassian.net/browse/WIFI-9555) Prov UI: Zoom in, Zoom out options are not visible as they were seen in previous versions
-
-[WIFI-9553](https://telecominfraproject.atlassian.net/browse/WIFI-9553) Prov UI: Sub-Venues analytics is not seen in the main venue
-
-[WIFI-9552](https://telecominfraproject.atlassian.net/browse/WIFI-9552) Prov UI: Health in Prov UI dashboard is not not matching with health in gateway
-
-[WIFI-9551](https://telecominfraproject.atlassian.net/browse/WIFI-9551) Prov UI: Analytics not getting saved and taking long time to load dashboard, Live view and Client Lifecycle
-
-[WIFI-9538](https://telecominfraproject.atlassian.net/browse/WIFI-9538) Prov UI: Random Selection of config in Entity level
-
-[WIFI-9537](https://telecominfraproject.atlassian.net/browse/WIFI-9537) Gateway went down unexpectedly and required manual restart
-
-[WIFI-9472](https://telecominfraproject.atlassian.net/browse/WIFI-9472) Provisoning: "Error Fetching Analytics" error message appears when we navigate to each entity
-
-[WIFI-9471](https://telecominfraproject.atlassian.net/browse/WIFI-9471) Prov UI: QR code Error while doing Multi factor Authentication in Google Authenticator
-
-[WIFI-9470](https://telecominfraproject.atlassian.net/browse/WIFI-9470) Prov UI: Status in columns is un-ticked but still visible in Raw Data
-
-[WIFI-9469](https://telecominfraproject.atlassian.net/browse/WIFI-9469) Prov UI: Deleted Configuration still shown even after deleting it without getting it saved
-
-[WIFI-9467](https://telecominfraproject.atlassian.net/browse/WIFI-9467) Prov UI: While Creating a location, Country is not marked as required and US is default chosen
-
-[WIFI-9466](https://telecominfraproject.atlassian.net/browse/WIFI-9466) Prov UI: Unable to add a device and contact in a Root Entity
-
-[WIFI-9461](https://telecominfraproject.atlassian.net/browse/WIFI-9461) RADIUS information configuring differently in AP
-
-[WIFI-9362](https://telecominfraproject.atlassian.net/browse/WIFI-9362) Provisioning UI: Live View noise display not accurate and not labelled properly
-
-[WIFI-9305](https://telecominfraproject.atlassian.net/browse/WIFI-9305) ath11k: WDS not working in station mode
-
-[WIFI-9235](https://telecominfraproject.atlassian.net/browse/WIFI-9235) Provisioning Service UI: Client LIfecycle table not refreshing
-
-[WIFI-9234](https://telecominfraproject.atlassian.net/browse/WIFI-9234) Gateway UI refresh not working
-
-[WIFI-9162](https://telecominfraproject.atlassian.net/browse/WIFI-9162) Prov UI: Error while editing and saving a configuration
-
-[WIFI-9158](https://telecominfraproject.atlassian.net/browse/WIFI-9158) CIG-194C4 is broken after upgrade to images post 5/17
-
-[WIFI-8096](https://telecominfraproject.atlassian.net/browse/WIFI-8096) API error is showing while pushing any configuration on AP
-
-[WIFI-8057](https://telecominfraproject.atlassian.net/browse/WIFI-8057) Basic 3: Ec420 testbed is crashed and we are not able to access it.
-
-[WIFI-8054](https://telecominfraproject.atlassian.net/browse/WIFI-8054) UI page pointing wrong Image even if we able to upgrade the AP
-
-[WIFI-8053](https://telecominfraproject.atlassian.net/browse/WIFI-8053) WPA security feature is not working on few APs
-
-[WIFI-8049](https://telecominfraproject.atlassian.net/browse/WIFI-8049) TLS security feature is not working on any testbeds
-
-[WIFI-8037](https://telecominfraproject.atlassian.net/browse/WIFI-8037) The Ap is automatically after some time getting offline but connected clients are shown in udaya ap
-
-[WIFI-8012](https://telecominfraproject.atlassian.net/browse/WIFI-8012) In bridge-mode clients associated to AP can not ping each other.
-
-[WIFI-8004](https://telecominfraproject.atlassian.net/browse/WIFI-8004) Provision UI: Root/Admin Users don't have access to delete other maps
-
-[WIFI-7997](https://telecominfraproject.atlassian.net/browse/WIFI-7997) AP is pointing to new serial number with newer Firmware image
-
-[WIFI-7992](https://telecominfraproject.atlassian.net/browse/WIFI-7992) Provision UI: The Entities, Venues and Devices are not aligned properly after creating new map
-
-[WIFI-7974](https://telecominfraproject.atlassian.net/browse/WIFI-7974) Provision UI: unable to edit and save configuration while doing device specific configuration
-
-[WIFI-7972](https://telecominfraproject.atlassian.net/browse/WIFI-7972) Provision UI: Setting default map is not persisting
-
-[WIFI-7955](https://telecominfraproject.atlassian.net/browse/WIFI-7955) Public IP visibility on AP
-
-[WIFI-7948](https://telecominfraproject.atlassian.net/browse/WIFI-7948) Not able to get the client-ip (for connected users) in kafka stream
-
-[WIFI-7909](https://telecominfraproject.atlassian.net/browse/WIFI-7909) Streaming telemetry to Kafka does not stop after lifetime
-
-[WIFI-7891](https://telecominfraproject.atlassian.net/browse/WIFI-7891) Prov-UI: trying to add interface config and update is failing through Prov ui.
-
-[WIFI-7880](https://telecominfraproject.atlassian.net/browse/WIFI-7880) Multiple BSSID configuration tab for 6g client is not present in tagged parameters
-
-[WIFI-7876](https://telecominfraproject.atlassian.net/browse/WIFI-7876) Provision UI: Serial number column is by default in Increasing order sorting
-
-[WIFI-7875](https://telecominfraproject.atlassian.net/browse/WIFI-7875) Provision UI: All Special Characters are not accepted in Password
-
-[WIFI-7867](https://telecominfraproject.atlassian.net/browse/WIFI-7867) Add Content-Type header to CLI script commands where it is required
-
-[WIFI-7855](https://telecominfraproject.atlassian.net/browse/WIFI-7855) 6g Channel number fixed in the configuration file not reflecting in iwinfo.
-
-[WIFI-7851](https://telecominfraproject.atlassian.net/browse/WIFI-7851) Rtty on the latest 2.6 is broken
-
-[WIFI-7841](https://telecominfraproject.atlassian.net/browse/WIFI-7841) Provision UI : Configuratons are lost after UI upgraded to Version 2.6.189
+[WIFI-7786](https://telecominfraproject.atlassian.net/browse/WIFI-7786) Requesting improved & more accurate wlan-cloud-ucentralgw compilation instructions
 
 [WIFI-7838](https://telecominfraproject.atlassian.net/browse/WIFI-7838) Client IP Address not available
 
-[WIFI-7830](https://telecominfraproject.atlassian.net/browse/WIFI-7830) ip-collide / routing metric not mitigating
+[WIFI-9118](https://telecominfraproject.atlassian.net/browse/WIFI-9118) WF196: Clients wont get connected to 5G radio randomly.
 
-[WIFI-7828](https://telecominfraproject.atlassian.net/browse/WIFI-7828) owsec service: 403 response code while logout the token during sanity runs
+[WIFI-9159](https://telecominfraproject.atlassian.net/browse/WIFI-9159) Client details not available for MPSK with VLAN
 
-[WIFI-7810](https://telecominfraproject.atlassian.net/browse/WIFI-7810) Not seeing any FILS in the 6g broadcast information
+[WIFI-9697](https://telecominfraproject.atlassian.net/browse/WIFI-9697) Remote MPSK - AP Sends Access-Request indefinitely when receiving Access-Accept that does not contain the Tunneled-Password attribute
 
-[WIFI-7779](https://telecominfraproject.atlassian.net/browse/WIFI-7779) Provision UI: Emails ID's are not verifying while users creating their Account
+[WIFI-9796](https://telecominfraproject.atlassian.net/browse/WIFI-9796) Prov UI: In quality of service required configuration fields are not specified
 
-[WIFI-7674](https://telecominfraproject.atlassian.net/browse/WIFI-7674) FMS: FIRMWARE Version JSON is missing Image
+[WIFI-9954](https://telecominfraproject.atlassian.net/browse/WIFI-9954) hfcl ion xe is failing on multipsk as vlans are not seen tagged for the clients
 
-[WIFI-7616](https://telecominfraproject.atlassian.net/browse/WIFI-7616) qa01 gateway with 2.6 release has sluggishness/slowness on output when commands executed on rtty session. eg: iwinfo, logread etc.
+[WIFI-9962](https://telecominfraproject.atlassian.net/browse/WIFI-9962) bind-dig Utility needed to execute the /usr/libexec/naptr\_lookup.sh script for Radsecproxy dynamic discovery
 
-[WIFI-7611](https://telecominfraproject.atlassian.net/browse/WIFI-7611) Laptop fails to connect to Indio's UM-305AX AP
+[WIFI-9963](https://telecominfraproject.atlassian.net/browse/WIFI-9963) Hostapd radius\_das\_client parameter set via SSID "hostapd-bss-raw" is not set properly in hostapd-phyx.conf
 
-[WIFI-7586](https://telecominfraproject.atlassian.net/browse/WIFI-7586) Prov-UI: User creation enforces password rule. but rule is not defined.
+[WIFI-9976](https://telecominfraproject.atlassian.net/browse/WIFI-9976) HE informations and other IE information for Tag id (255) are missing in the Scan output for neighbor AP's
 
-[WIFI-7585](https://telecominfraproject.atlassian.net/browse/WIFI-7585) Prov-UI:Configuration pushed from Prov-UI gets pushed and reflects timestamp on Gw, but not in config/ or on command history
+[WIFI-9977](https://telecominfraproject.atlassian.net/browse/WIFI-9977) Starting RTTYS session may cause GW to crash
 
-[WIFI-7584](https://telecominfraproject.atlassian.net/browse/WIFI-7584) Prov-UI:when I connect to device using"connect" tab on Gateway, and login, logread command is not returning..its stuck.
+[WIFI-10072](https://telecominfraproject.atlassian.net/browse/WIFI-10072) Gateway service: Failed to fetch the data on WIFI-Scan
 
-[WIFI-7564](https://telecominfraproject.atlassian.net/browse/WIFI-7564) The qa01 gateway service going down frequently after 2.6 upgrade
+[WIFI-10074](https://telecominfraproject.atlassian.net/browse/WIFI-10074) Wifi-6E SSID are not getting applied unless same code is pushed multiple times
 
-[WIFI-7554](https://telecominfraproject.atlassian.net/browse/WIFI-7554) Actiontec WEB7200 APs factory partition corrupted on sysupgrade
+[WIFI-10077](https://telecominfraproject.atlassian.net/browse/WIFI-10077) Kafka topics should be created during initialization
 
-[WIFI-7553](https://telecominfraproject.atlassian.net/browse/WIFI-7553) WF610D upgrade fails from 2.4.1 to 2.5.0 build
+[WIFI-10080](https://telecominfraproject.atlassian.net/browse/WIFI-10080) Unable to open RTTY session when user clicks on "Connect" button
 
-[WIFI-7515](https://telecominfraproject.atlassian.net/browse/WIFI-7515) Assertion violation when starting RTTYS session
+[WIFI-10158](https://telecominfraproject.atlassian.net/browse/WIFI-10158) Gateway Restart due to memory increase.
 
-[WIFI-7442](https://telecominfraproject.atlassian.net/browse/WIFI-7442) Wifi-6E AP does not connect to 5G clients
+[WIFI-10193](https://telecominfraproject.atlassian.net/browse/WIFI-10193) Wallys AP gone to continuous reboot state during sanity execution
 
-[WIFI-7265](https://telecominfraproject.atlassian.net/browse/WIFI-7265) Ath11k DFS not performing as expected
+[WIFI-10233](https://telecominfraproject.atlassian.net/browse/WIFI-10233) OWE:In Packect captures, for OWE Transittion mode two SSID's are being displayed with same SSID name.
 
-[WIFI-7189](https://telecominfraproject.atlassian.net/browse/WIFI-7189) Throughput significantly decreases while running L3 traffic with QoS config
+[WIFI-10235](https://telecominfraproject.atlassian.net/browse/WIFI-10235) In the OWE Transition mode, the OWE SSID is not hidden as per expectation
 
-[WIFI-7188](https://telecominfraproject.atlassian.net/browse/WIFI-7188) Clients are unable to scan 2G SSID in sanity
+[WIFI-10248](https://telecominfraproject.atlassian.net/browse/WIFI-10248) Prov UI: Error is shown when any radius based configuration is pushed with secret key less than 8 characters
 
-[WIFI-6854](https://telecominfraproject.atlassian.net/browse/WIFI-6854) Rate limiting feature is not working with multiple SSIDs
+[WIFI-10258](https://telecominfraproject.atlassian.net/browse/WIFI-10258) Gate way service: Telemetry is not seen in command history
 
-[WIFI-6392](https://telecominfraproject.atlassian.net/browse/WIFI-6392) uCentral client does not reconnect automatically
+[WIFI-10259](https://telecominfraproject.atlassian.net/browse/WIFI-10259) Gate way service: filter is not functioning in Wifi-Scan
 
-[WIFI-6343](https://telecominfraproject.atlassian.net/browse/WIFI-6343) AP deleted from CloudSDK GUI is not listed in under Tables after re-registering
+[WIFI-10270](https://telecominfraproject.atlassian.net/browse/WIFI-10270) Prov UI: account page avatar deletion is not working
 
-[WIFI-6342](https://telecominfraproject.atlassian.net/browse/WIFI-6342) User accounts not displayed
+[WIFI-10271](https://telecominfraproject.atlassian.net/browse/WIFI-10271) rtty does not work
 
-[WIFI-6325](https://telecominfraproject.atlassian.net/browse/WIFI-6325) Copy to clipboard option isn't working
+[WIFI-10287](https://telecominfraproject.atlassian.net/browse/WIFI-10287) Prov UI: Error showing up when pushing Uchannel config
 
-[WIFI-6171](https://telecominfraproject.atlassian.net/browse/WIFI-6171) Wi-scan feature in UI failure with 5Ghz SSID's
+[WIFI-10290](https://telecominfraproject.atlassian.net/browse/WIFI-10290) Gate way service: Unable to see packet captures for Trace command in Packets type.
 
-[WIFI-6159](https://telecominfraproject.atlassian.net/browse/WIFI-6159) UI: Device status are showing incorrect values across different graphs
+[WIFI-10362](https://telecominfraproject.atlassian.net/browse/WIFI-10362) AP is delaying to send FT response(Action frame) over the DS
 
-[WIFI-1834](https://telecominfraproject.atlassian.net/browse/WIFI-1834) ecw5410: WiFi to LAN connectivity broken in bridge setup.
+[WIFI-10426](https://telecominfraproject.atlassian.net/browse/WIFI-10426) OWE is not working for 6g configuration
 
-[WIFI-1699](https://telecominfraproject.atlassian.net/browse/WIFI-1699) ecw5410: dnsmasq was not running.
+[WIFI-10430](https://telecominfraproject.atlassian.net/browse/WIFI-10430) Multicast traffic is converted to unicast by AP though multicast to unicast option is disabled
+
+[WIFI-10433](https://telecominfraproject.atlassian.net/browse/WIFI-10433) Unable to see any Info under owrrm in Prov UI
+
+[WIFI-10436](https://telecominfraproject.atlassian.net/browse/WIFI-10436) Prov UI: "Error Fetching Analytics Board" error is showing up when we navigate to Venue
+
+[WIFI-10437](https://telecominfraproject.atlassian.net/browse/WIFI-10437) Prov UI: "Error Fetching System" error is showing up when we navigate to system
+
+[WIFI-10497](https://telecominfraproject.atlassian.net/browse/WIFI-10497) Hfcl\_ion4: AP is getting into disconnected state frequently
+
+[WIFI-10506](https://telecominfraproject.atlassian.net/browse/WIFI-10506) No error is shown for Multi-PSK configuration with WPA3 security
+
+[WIFI-10515](https://telecominfraproject.atlassian.net/browse/WIFI-10515) GW UI: better error catching/displaying when receiving corrupted device statistics
+
+[WIFI-10535](https://telecominfraproject.atlassian.net/browse/WIFI-10535) Prov UI: configuration JSON shown on configuration page should not contain PROV specific information
+
+[WIFI-10537](https://telecominfraproject.atlassian.net/browse/WIFI-10537) Port Forwarding is not valid option on any upstream role - Prov is setting an empty array as default
+
+[WIFI-10547](https://telecominfraproject.atlassian.net/browse/WIFI-10547) Analytics may not update the device list if the venue is modified
+
+[WIFI-10548](https://telecominfraproject.atlassian.net/browse/WIFI-10548) GW UI: wifi analysis network diagram not showing all associations
+
+[WIFI-10549](https://telecominfraproject.atlassian.net/browse/WIFI-10549) AP is switching to 20Mhz on 2.4Ghz when we push a config with channel mode HE
+
+[WIFI-10550](https://telecominfraproject.atlassian.net/browse/WIFI-10550) hfcl ion 4xi : SSID on 5Ghz is not getting broadcasted sometimes when we apply config
+
+[WIFI-10551](https://telecominfraproject.atlassian.net/browse/WIFI-10551) GW seems to become increasingly unresponsive under multiple simultaneous WIFI Scans.
+
+[WIFI-10552](https://telecominfraproject.atlassian.net/browse/WIFI-10552) Client Internet Issue with proxy\_arp (from /etc/config/wireless)
+
+[WIFI-10553](https://telecominfraproject.atlassian.net/browse/WIFI-10553) 6g SSID is not able to scan in the Wifi 6E (cig\_196) AP
+
+[WIFI-10555](https://telecominfraproject.atlassian.net/browse/WIFI-10555) Hfcl\_ion4xi: AP doesn't responding the authentication response as well association response
+
+[WIFI-10561](https://telecominfraproject.atlassian.net/browse/WIFI-10561) Add support for MeshPlusPlus Devices
+
+[WIFI-10570](https://telecominfraproject.atlassian.net/browse/WIFI-10570) 802.11r roaming fails due to Invalid PMKID auth frame from AP for WPA3 SAE
+
+[WIFI-10571](https://telecominfraproject.atlassian.net/browse/WIFI-10571) Gateway showing wrong APs Status
+
+[WIFI-10575](https://telecominfraproject.atlassian.net/browse/WIFI-10575) ANQP ID is not present in the Beacon frame and Probe response.
+
+[WIFI-10576](https://telecominfraproject.atlassian.net/browse/WIFI-10576) Captive Config prevents broader config update to a device fails
+
+[WIFI-10577](https://telecominfraproject.atlassian.net/browse/WIFI-10577) Provisioning rejects "third-party" section in config
+
+[WIFI-10579](https://telecominfraproject.atlassian.net/browse/WIFI-10579) Prov UI: "could not retreive owrrm system information" error is showing up when we navigate to system
+
+[WIFI-10580](https://telecominfraproject.atlassian.net/browse/WIFI-10580) If no other APs are on the same channel as the OWF AP, then the algorithm is not keeping the OWF AP on the same channel.
+
+[WIFI-10583](https://telecominfraproject.atlassian.net/browse/WIFI-10583) ucentralgw-ui does not handle expired oauth tokens
+
+[WIFI-10593](https://telecominfraproject.atlassian.net/browse/WIFI-10593) Even though there are free non over lapping channels available in 2G AP is choosing overlapping channels in random Optimization
+
+[WIFI-10594](https://telecominfraproject.atlassian.net/browse/WIFI-10594) When we are considering 3 OWF APs in same venue and running with any of the optimization one AP 5G channel info is missing
+
+[WIFI-10596](https://telecominfraproject.atlassian.net/browse/WIFI-10596) Stations are not able to connect for multiple 6G SSIDs other than the first Transmission SSID
+
+[WIFI-10597](https://telecominfraproject.atlassian.net/browse/WIFI-10597) Unable to disable the Multiple BSSID for 6g.
+
+[WIFI-10598](https://telecominfraproject.atlassian.net/browse/WIFI-10598) Max BSSID Indicator in Multiple BSSID is showing wrong value.
+
+[WIFI-10599](https://telecominfraproject.atlassian.net/browse/WIFI-10599) DTIM count is high for the Non-Transmitted BSSIDs in the Multiple BSSIDs
+
+[WIFI-10600](https://telecominfraproject.atlassian.net/browse/WIFI-10600) Wifi scan report is going into pending state after running Open RRM API for (903cb3bd732d) edgecore\_eap102
+
+[WIFI-10628](https://telecominfraproject.atlassian.net/browse/WIFI-10628) After upgrading the AP to latest Firmware image, the configuration is not applying on the Ap.
+
+[WIFI-10655](https://telecominfraproject.atlassian.net/browse/WIFI-10655) Missing RRM service in the system info tab of prov UI
+
+[WIFI-10667](https://telecominfraproject.atlassian.net/browse/WIFI-10667) Captive Portal is not working on latest firmware images.
+
+[WIFI-10668](https://telecominfraproject.atlassian.net/browse/WIFI-10668) Gateway is getting restarted after pushing radius gateway proxy configuration on any AP
+
+[WIFI-10670](https://telecominfraproject.atlassian.net/browse/WIFI-10670) Provision entity not exist.
+
+[WIFI-10673](https://telecominfraproject.atlassian.net/browse/WIFI-10673) Unable to fetch the devices in gateway- qa01
+
+[WIFI-10681](https://telecominfraproject.atlassian.net/browse/WIFI-10681) EAP101: Fail to upgrade FW from 2.6 to other version
+
+[WIFI-10682](https://telecominfraproject.atlassian.net/browse/WIFI-10682) Wifi-6E (Cig\_196) AP is switching to 80Mhz on 6Ghz band when we are pushing a config with channel mode HE
+
+[WIFI-10691](https://telecominfraproject.atlassian.net/browse/WIFI-10691) Firmware upgrade is not happening due to multiple wifi scans are in pending state in AP
+
+[WIFI-10710](https://telecominfraproject.atlassian.net/browse/WIFI-10710) FILS Discovery Interval option is not giving the expected results
+
+[WIFI-10713](https://telecominfraproject.atlassian.net/browse/WIFI-10713) OWLS: health and stats timers are not consistant
+
+[WIFI-10714](https://telecominfraproject.atlassian.net/browse/WIFI-10714) RRM Service in webui does not show details
+
+[WIFI-10738](https://telecominfraproject.atlassian.net/browse/WIFI-10738) Missing radio info in WIFI scan which effecting RRM testing
+
+[WIFI-10742](https://telecominfraproject.atlassian.net/browse/WIFI-10742) When we are pushing WPA3 .1x config but we are getting WPA2 .1x as output
+
+[WIFI-10746](https://telecominfraproject.atlassian.net/browse/WIFI-10746) Wally\_dr40x9 AP is unable to come out of U-Boot
+
+[WIFI-10752](https://telecominfraproject.atlassian.net/browse/WIFI-10752) Prov UI: Device MAC / Serial ID should not be case sensitive
+
+[WIFI-10766](https://telecominfraproject.atlassian.net/browse/WIFI-10766) Unable to run station to station traffic on CIG 188n and EAP 102 on latest firmwares, working on images below TIP-devel-6693127
+
+[WIFI-10768](https://telecominfraproject.atlassian.net/browse/WIFI-10768) Unable to trigger commands(Firmware, wifiscan and reboot) from gateway
+
+[WIFI-10769](https://telecominfraproject.atlassian.net/browse/WIFI-10769) Unable to Upgrade the Firmware on Hfcl\_ion4xi (Basic-04) AP
+
+[WIFI-10772](https://telecominfraproject.atlassian.net/browse/WIFI-10772) After Client getting connected to the SSID, the correct value of station count is reflected after many beacons
+
+[WIFI-10773](https://telecominfraproject.atlassian.net/browse/WIFI-10773) Udaya\_a5\_id2 AP went Bad State during Sanity
+
+[WIFI-10774](https://telecominfraproject.atlassian.net/browse/WIFI-10774) Hfcl\_ion4xe: AP not have redirector.json file
+
+[WIFI-10778](https://telecominfraproject.atlassian.net/browse/WIFI-10778) Gateway service: Unable to push the default config to the selected APs from the gateway
+
+[WIFI-10796](https://telecominfraproject.atlassian.net/browse/WIFI-10796) Unable to see channel change reflects on AP after channel Optimizer run
+
+[WIFI-10797](https://telecominfraproject.atlassian.net/browse/WIFI-10797) Gateway is getting unresponsive: WebSocket hang-up error
+
+[WIFI-10798](https://telecominfraproject.atlassian.net/browse/WIFI-10798) prov service: unable to create venues or sub venues under the entities
+
+[WIFI-10805](https://telecominfraproject.atlassian.net/browse/WIFI-10805) Unable to see any date after running TCP measure\_ap\_ap Algorithm
+
+[WIFI-10809](https://telecominfraproject.atlassian.net/browse/WIFI-10809) Unable to access the Advanced-03 Testbed
+
+[WIFI-10818](https://telecominfraproject.atlassian.net/browse/WIFI-10818) Client IPv4 addresses not available for non MPSK and MPSK clients
+
+[WIFI-10821](https://telecominfraproject.atlassian.net/browse/WIFI-10821) Filters are not working in multiple API GET requests
+
+[WIFI-10822](https://telecominfraproject.atlassian.net/browse/WIFI-10822) IPv4\_addr not available in associations section of the state packet
+
+[WIFI-10832](https://telecominfraproject.atlassian.net/browse/WIFI-10832) In GW showing ui of AP for any random msg instead of particular mac address
+
+[WIFI-10835](https://telecominfraproject.atlassian.net/browse/WIFI-10835) Prov UI: custom RRM should allow for more than one algorithm
+
+[WIFI-10836](https://telecominfraproject.atlassian.net/browse/WIFI-10836) Observed similar RSSI values are populated for an AP with and without TPC algorithm
+
+[WIFI-10837](https://telecominfraproject.atlassian.net/browse/WIFI-10837) There is no change in TX power observed from 2G radio in TCP algorithm scenario
+
+[WIFI-10839](https://telecominfraproject.atlassian.net/browse/WIFI-10839) Provision service : IPv4 Address is not displayed in client life cycle
+
+[WIFI-10840](https://telecominfraproject.atlassian.net/browse/WIFI-10840) Provision UI: DHCP snooping is not available in the services under interfaces
+
+[WIFI-10841](https://telecominfraproject.atlassian.net/browse/WIFI-10841) No error is shown for Multi-PSK configuration with WPA3 Enterprise and OWE security
+
+[WIFI-10843](https://telecominfraproject.atlassian.net/browse/WIFI-10843) OWLS does not populate the clients state message
+
+[WIFI-10846](https://telecominfraproject.atlassian.net/browse/WIFI-10846) GW Must block simultaneous command execution for same device
+
+[WIFI-10847](https://telecominfraproject.atlassian.net/browse/WIFI-10847) Station gets the IP in a VLAN subnet though the user credentials are not defined for that VLAN in Radius - Dynamic VLAN
+
+[WIFI-10849](https://telecominfraproject.atlassian.net/browse/WIFI-10849) Prov UI: not all wifi client MACs are available
+
+[WIFI-10850](https://telecominfraproject.atlassian.net/browse/WIFI-10850) GW UI: not all commands notifying users with API responses
+
+[WIFI-10854](https://telecominfraproject.atlassian.net/browse/WIFI-10854) Unable to see extra Roaming consortiums in ANQP response
+
+[WIFI-10855](https://telecominfraproject.atlassian.net/browse/WIFI-10855) Gateway is reflecting Incorrect APs Status (AP is in Disconnected state but gw shows as connected)
+
+[WIFI-10857](https://telecominfraproject.atlassian.net/browse/WIFI-10857) GW UI: device statistics is showing error when there are no statistics available
+
+[WIFI-10858](https://telecominfraproject.atlassian.net/browse/WIFI-10858) Cig\_wf194c4 (Basic-08) AP is unable to respond through gateway
+
+[WIFI-10881](https://telecominfraproject.atlassian.net/browse/WIFI-10881) Gateway service: GW gets restart when the timeline of statistics is modified
+
+[WIFI-10884](https://telecominfraproject.atlassian.net/browse/WIFI-10884) Observed SSL Error followed by Multiple GW restarts
+
+[WIFI-10900](https://telecominfraproject.atlassian.net/browse/WIFI-10900) FMS Does not start after fix
+
+[WIFI-10913](https://telecominfraproject.atlassian.net/browse/WIFI-10913) No response for wifiscan
+
+[WIFI-10914](https://telecominfraproject.atlassian.net/browse/WIFI-10914) Unable to push Open roaming configuration as Radius auth and accounting ports are greater than 4050
+
+[WIFI-10927](https://telecominfraproject.atlassian.net/browse/WIFI-10927) Prov UI: Unable to configue hessid through Prov UI
+
+[WIFI-10928](https://telecominfraproject.atlassian.net/browse/WIFI-10928) When we import the configuration with wpa3-mixed security mode, the proto is showing none in Prov UI
+
+[WIFI-10942](https://telecominfraproject.atlassian.net/browse/WIFI-10942) 2.7.0RC2 Micro services may restart
+
+[WIFI-10943](https://telecominfraproject.atlassian.net/browse/WIFI-10943) RRM service is getting restarted frequently

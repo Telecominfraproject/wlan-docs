@@ -1,14 +1,3 @@
 # Security Updates
 
-The following list of major security enhancements have been implemented within the 2.6 release:
-
-[https://telecominfraproject.atlassian.net/browse/WIFI-7337](https://telecominfraproject.atlassian.net/browse/WIFI-7337)
-
-| **Issue**                                                               | **Description**                                       | **Resolution**                                       |
-| ----------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------- |
-| [WIFI-7433](https://telecominfraproject.atlassian.net/browse/WIFI-7433) | Path traversal in RTTYS                               | Implemented path validation within requests handling |
-| [WIFI-7434](https://telecominfraproject.atlassian.net/browse/WIFI-7434) | SQLi in GetCommands and DeleteCommands REST endpoints | Implemented input validation for commandUUID         |
-
-### Known security issues <a href="#major-known-security-issues" id="major-known-security-issues"></a>
-
-* None
+[Here](https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/1703182344/v2.7+Security+Changelog) are the security details for v2.7 release.
