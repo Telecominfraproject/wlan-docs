@@ -83,6 +83,7 @@
   * [Multi-PSK (MDU Shared Key)](device-feature-configuration-examples/device-feature-configuration-examples/multi-psk-mdu-multiple-shared-key.md)
   * [Wireguard](device-feature-configuration-examples/device-feature-configuration-examples/wireguard.md)
   * [Dynamic Air-Time Policy](device-feature-configuration-examples/device-feature-configuration-examples/dynamic-air-time-policy.md)
+  * [Opportunistic Wireless Encryption (OWE)](device-feature-configuration-examples/device-feature-configuration-examples/opportunistic-wireless-encryption-owe.md)
   * [Passpoint®](device-feature-configuration-examples/device-feature-configuration-examples/passpoint-r1/README.md)
     * [Configuration Introduction](device-feature-configuration-examples/device-feature-configuration-examples/passpoint-r1/configuration-introduction.md)
     * [Advertising Services](device-feature-configuration-examples/device-feature-configuration-examples/passpoint-r1/advertising-services.md)
