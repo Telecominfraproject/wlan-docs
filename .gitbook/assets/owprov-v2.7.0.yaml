@@ -1,0 +1,4288 @@
+openapi: 3.0.1
+info:
+  title: OpenWiFi Provisioning Model
+  description: Definitions and APIs to manages an OpenWiFi network.
+  version: 2.5.0
+  license:
+    name: BSD3
+    url: https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/LICENSE
+
+servers:
+  - url: 'https://localhost:16005/api/v1'
+
+security:
+  - bearerAuth: []
+  - ApiKeyAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    NotFound:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/NotFound'
+    Unauthorized:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/Unauthorized'
+    Success:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/Success'
+    BadRequest:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/BadRequest'
+
+  schemas:
+
+    ObjectInfo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteInfo'
+        created:
+          type: integer
+          format: int64
+        modified:
+          type: integer
+          format: int64
+        tags:
+          type: array
+          items:
+            type: integer
+            format: int64
+
+    # uuids: mpe:<uuid>
+    ManagementPolicyEntry:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: string
+        resources:
+          description: this is a list of UUID and UUID Patterns to control by this policy
+          type: array
+          items:
+            type: string
+        access:
+          type: array
+          items:
+            type: string
+            enum:
+              - NOACCESS
+              - READ
+              - MODIFY
+              - DELETE
+              - LIST
+              - CREATE
+              - FULL
+        policy:
+          description: A JSON document describing the policy
+          type: string
+
+    # uuids: mpp:<uuid>
+    ManagementPolicy:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagementPolicyEntry'
+        inUse:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: each uuid is preceded by ent, or ven to say that the elemenet is entity or venue
+        entity:
+          type: string
+          format: uuid
+        venue:
+          type: string
+          format: uuid
+
+    ManagementPolicyList:
+      type: object
+      properties:
+        policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagementPolicy'
+
+    DeviceRules:
+      type: object
+      properties:
+        rcOnly:
+          type: string
+          enum:
+            - yes
+            - no
+            - inherit
+        rrm:
+          type: string
+          enum:
+            - yes
+            - no
+            - inherit
+        firmwareUpgrade:
+          type: string
+          enum:
+            - yes
+            - no
+            - inherit
+
+    # uuids: ent:<uuid>
+    Entity:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        parent:
+          description: If empty, then this is the root entity, otherwise this points to a parent entity
+          type: string
+          format: uuid
+        children:
+          type: array
+          items:
+            type: string
+            format: uuid
+        venues:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        contacts:
+          description: The list of UUID of the contacts for the entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        locations:
+          description: The list of UUID of the locations associated with thit entiry
+          type: array
+          items:
+            type: string
+            format: uuid
+        managementPolicy:
+          type: string
+          format: uuid
+        deviceConfiguration:
+          type: string
+          format: uuid
+        devices:
+          type: array
+          items:
+            type: string
+            format: uuid
+        managementPolicies:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        variables:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        managementRoles:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        maps:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        configurations:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        deviceRules:
+          $ref: '#/components/schemas/DeviceRules'
+        sourceIP:
+          $ref: '#/components/schemas/StringList'
+        defaultEntity:
+          type: boolean
+          default: false
+        type:
+          type: string
+          enum:
+            - normal
+            - subscriber
+          default: normal
+
+    EntityList:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+
+    DiGraphEntry:
+      type: object
+      properties:
+        parent:
+          type: string
+          format: uuid
+        child:
+          type: string
+          format: uuid
+
+    DiGraph:
+      type: array
+      items:
+        $ref: '#/components/schemas/DiGraphEntry'
+
+    # uuids: ven:<uuid>
+    Venue:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        entity:
+          type: string
+          format: uuid
+        parent:
+          type: string
+          format: uuid
+        children:
+          type: array
+          items:
+            type: string
+            format: uuid
+        managementPolicy:
+          type: string
+          format: uuid
+        devices:
+          type: array
+          items:
+            type: string
+            format: uuid
+        topology:
+          $ref: '#/components/schemas/DiGraph'
+        design:
+          type: string
+        deviceConfiguration:
+          type: string
+          format: uuid
+        contacts:
+          type: array
+          items:
+            type: string
+            format: uuid
+        location:
+          type: string
+          format: uuid
+        deviceRules:
+          $ref: '#/components/schemas/DeviceRules'
+        sourceIP:
+          $ref: '#/components/schemas/StringList'
+        managementPolicies:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        managementRoles:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        variables:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        maps:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        configurations:
+          description: The list of UUID of the venues for this entity
+          type: array
+          items:
+            type: string
+            format: uuid
+        boards:
+          description: The list of OWAnalytics Boards created for this venue
+          type: array
+          items:
+            type: string
+            format: uuid
+
+    VenueList:
+      type: object
+      properties:
+        venues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Venue'
+
+    UserInfoDigest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        loginId:
+          type: string
+        type:
+          type: string
+
+    # uuids: mgg:<uuid>
+    ManagementRole:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        managementPolicy:
+          type: string
+          format: uuid
+        users:
+          type: array
+          items:
+            type: string
+            format: uuid
+        inUse:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: each uuid is preceded by ent, or ven to say that the elemenet is entity or venue
+        entity:
+          type: string
+          format: uuid
+        venue:
+          type: string
+          format: uuid
+
+    ManagementRoleList:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagementRole'
+
+    # uuids: loc:<uuid>
+    Location:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        type:
+          type: string
+          enum:
+            - SERVICE
+            - EQUIPMENT
+            - AUTO
+            - MANUAL
+            - SPECIAL
+            - UNKNOWN
+            - CORPORATE
+        buildingName:
+          type: string
+        addressLines:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal:
+          type: string
+        country:
+          type: string
+        phones:
+          type: array
+          items:
+            type: string
+        mobiles:
+          type: array
+          items:
+            type: string
+        inUse:
+          type: array
+          items:
+            type: string
+            format: uuid
+            example: each uuid is preceded by ent, or ven to say that the elemenet is entity or venue
+        entity:
+          type: string
+          format: uuid
+        managementPolicy:
+          type: string
+          format: uuid
+        geoCode:
+          type: string
+
+    LocationList:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+
+    OperatorLocation:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        type:
+          type: string
+          enum:
+            - SERVICE
+            - EQUIPMENT
+            - AUTO
+            - MANUAL
+            - SPECIAL
+            - UNKNOWN
+            - CORPORATE
+        buildingName:
+          type: string
+        addressLines:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal:
+          type: string
+        country:
+          type: string
+        phones:
+          type: array
+          items:
+            type: string
+        mobiles:
+          type: array
+          items:
+            type: string
+        operatorId:
+          type: string
+          format: uuid
+        subscriberDeviceId:
+          type: string
+          format: uuid
+        geoCode:
+          type: string
+
+    OperatorLocationList:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatorLocation'
+
+    SubLocation:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - SERVICE
+            - EQUIPMENT
+            - AUTO
+            - MANUAL
+            - SPECIAL
+            - UNKNOWN
+            - CORPORATE
+        buildingName:
+          type: string
+        addressLines:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal:
+          type: string
+        country:
+          type: string
+        phones:
+          type: array
+          items:
+            type: string
+        mobiles:
+          type: array
+          items:
+            type: string
+        geoCode:
+          type: string
+
+    # uuids: con:<uuid>
+    Contact:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        type:
+          type: string
+          enum:
+            - SUBSCRIBER
+            - USER
+            - INSTALLER
+            - CSR
+            - MANAGER
+            - BUSINESSOWNER
+            - TECHNICIAN
+            - CORPORATE
+        title:
+          type: string
+        salutation:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        initials:
+          type: string
+        visual:
+          type: string
+        phones:
+          type: array
+          items:
+            type: string
+        mobiles:
+          type: array
+          items:
+            type: string
+        primaryEmail:
+          type: string
+        secondaryEmail:
+          type: string
+        accessPIN:
+          type: string
+        inUse:
+          type: array
+          items:
+            type: string
+            format: uuid
+        entity:
+          type: string
+          format: uuid
+        managementPolicy:
+          type: string
+          format: uuid
+
+    ContactList:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+
+    OperatorContact:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        type:
+          type: string
+          enum:
+            - SUBSCRIBER
+            - USER
+            - INSTALLER
+            - CSR
+            - MANAGER
+            - BUSINESSOWNER
+            - TECHNICIAN
+            - CORPORATE
+        title:
+          type: string
+        salutation:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        initials:
+          type: string
+        visual:
+          type: string
+        phones:
+          type: array
+          items:
+            type: string
+        mobiles:
+          type: array
+          items:
+            type: string
+        primaryEmail:
+          type: string
+        secondaryEmail:
+          type: string
+        accessPIN:
+          type: string
+        operatorId:
+          type: string
+          format: uuid
+        subscriberDeviceId:
+          type: string
+          format: uuid
+
+    OperatorContactList:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatorContact'
+
+    SubContact:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - SUBSCRIBER
+            - USER
+            - INSTALLER
+            - CSR
+            - MANAGER
+            - BUSINESSOWNER
+            - TECHNICIAN
+            - CORPORATE
+        title:
+          type: string
+        salutation:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        initials:
+          type: string
+        visual:
+          type: string
+        phones:
+          type: array
+          items:
+            type: string
+        mobiles:
+          type: array
+          items:
+            type: string
+        primaryEmail:
+          type: string
+        secondaryEmail:
+          type: string
+        accessPIN:
+          type: string
+
+    DeviceConfigurationElement:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        weight:
+          type: integer
+        configuration:
+          type: string
+
+    DeviceConfiguration:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        managementPolicy:
+          type: string
+          format: uuid
+        deviceTypes:
+          type: array
+          items:
+            type: string
+        configuration:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceConfigurationElement'
+        variables:
+          type: array
+          items:
+            type: string
+            format: uuid
+        inUse:
+          type: array
+          items:
+            type: string
+            format: uuid
+        subscriberOnly:
+          type: boolean
+          default: false
+        deviceRules:
+          $ref: '#/components/schemas/DeviceRules'
+        venue:
+          type: string
+          format: uuid
+        entity:
+          type: string
+          format: uuid
+        subscriber:
+          type: string
+          format: uuid
+
+    DeviceConfigurationList:
+      type: object
+      properties:
+        configurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceConfiguration'
+
+    InventoryTag:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        serialNumber:
+          type: string
+        deviceType:
+          type: string
+        venue:
+          type: string
+          format: uuid
+        entity:
+          type: string
+          format: uuid
+        subscriber:
+          type: string
+          format: uuid
+        qrCode:
+          type: string
+        geoCode:
+          type: string
+        location:
+          type: string
+          format: uuid
+        contact:
+          type: string
+          format: uuid
+        deviceConfiguration:
+          type: string
+          format: uuid
+        deviceRules:
+          $ref: '#/components/schemas/DeviceRules'
+        managementPolicy:
+          type: string
+          format: uuid
+        state:
+          type: string
+        devClass:
+          type: string
+          enum:
+            - any
+            - venue
+            - entity
+            - subscriber
+        locale:
+          type: string
+          minLength: 2
+          maxLength: 2
+
+    VenueDeviceList:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        devices:
+          type: array
+          items:
+            type: string
+
+    InventoryTagList:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryTag'
+
+    SerialNumberList:
+      type: object
+      properties:
+        serialNumbers:
+          type: array
+          items:
+            type: string
+
+    CountAnswer:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+
+    ExpandedUseEntry:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+
+    ExpandedUseEntryMap:
+      type: object
+      properties:
+        type:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedUseEntry'
+
+    ExpandedUseEntryMapList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExpandedUseEntryMap'
+
+    FirmwareOptions:
+      type: object
+      properties:
+        firmwareUpgrade:
+          type: string
+          example: auto or a time string of the format DOW-HH:MM
+        firmwareRCOnly:
+          type: boolean
+        from:
+          type: string
+
+    InventoryConfigApplyResult:
+      type: object
+      properties:
+        appliedConfiguration:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+        warnings:
+          type: array
+          items:
+            type: string
+        errorCode:
+          type: integer
+
+    uuidList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+            format: uuid
+
+    ObjectACL:
+      type: object
+      properties:
+        users:
+          $ref: '#/components/schemas/uuidList'
+        roles:
+          $ref: '#/components/schemas/uuidList'
+        access:
+          type: string
+          enum:
+            - none
+            - read
+            - modify
+            - delete
+            - create
+
+    ObjectACLList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectACL'
+
+    Map:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        entity:
+          type: string
+          format: uuid
+        venue:
+          type: string
+          format: uuid
+        managementPolicy:
+          type: string
+          format: uuid
+        data:
+          type: string
+        visibility:
+          type: string
+          enum:
+            - private
+            - public
+            - select
+        creator:
+          type: string
+          format: uuid
+        access:
+          $ref: '#/components/schemas/ObjectACLList'
+
+    MapList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/Map'
+
+
+    SignupEntry:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        email:
+          type: string
+          format: email
+        userId:
+          type: string
+          format: uuid
+        operatorId:
+          type: string
+          format: uuid
+        macAddress:
+          type: string
+        serialNumber:
+          type: string
+        created:
+          type: integer
+          format: int64
+        completed:
+          type: integer
+          format: int64
+        error:
+          type: integer
+          format: int64
+        status:
+          type: string
+        statusCode:
+          type: integer
+          format: int64
+        registrationId:
+          type: string
+          minLength: 4
+          maxLength: 16
+
+    Variable:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - integer
+            - string
+            - float
+            - boolean
+            - variable
+            - json
+        weight:
+          type: integer
+          format: int64
+        prefix:
+          type: string
+        value:
+          type: string
+
+    VariableList:
+      type: object
+      properties:
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variable'
+
+    VariableBlock:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variable'
+        entity:
+          type: string
+          format: uuid
+        venue:
+          type: string
+          format: uuid
+        subscriber:
+          type: string
+          format: uuid
+        inventory:
+          type: string
+          format: uuid
+        inUse:
+          type: array
+          items:
+            type: string
+            format: uuid
+
+    VariableBlockList:
+      type: object
+      properties:
+        variableBlocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariableBlock'
+
+    ServiceClass:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        operatorId:
+          type: string
+          format: uuid
+        cost:
+          type: number
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+        managementPolicy:
+          type: string
+          format: uuid
+        period:
+          type: string
+          enum:
+            - hourly
+            - daily
+            - monthly
+            - yearly
+            - quarterly
+            - lifetime
+            - custom1
+            - custom2
+            - custom3
+            - custom4
+          default: monthly
+        billingCode:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variable'
+        defaultService:
+          type: boolean
+          default: false
+
+    ServiceClassList:
+      type: object
+      properties:
+        serviceClasses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceClass'
+
+    Operator:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variable'
+        defaultOperator:
+          type: boolean
+          default: false
+        deviceRules:
+          $ref: '#/components/schemas/DeviceRules'
+        managementPolicy:
+          type: string
+          format: uuid
+        managementRoles:
+          $ref: '#/components/schemas/ManagementRoleList'
+        sourceIP:
+          $ref: '#/components/schemas/StringList'
+        registrationId:
+          type: string
+          minLength: 4
+          maxLength: 16
+
+    OperatorList:
+      type: object
+      properties:
+        operators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Operator'
+
+    SubscriberDevice:
+      type: object
+      properties:
+        allOf:
+          $ref: '#/components/schemas/ObjectInfo'
+        serialNumber:
+          type: string
+        realMacAddress:
+          type: string
+        operatorId:
+          type: string
+          format: uuid
+        deviceType:
+          type: string
+        subscriberId:
+          type: string
+          format: uuid
+        qrCode:
+          type: string
+        geoCode:
+          type: string
+        location:
+          $ref: '#/components/schemas/SubLocation'
+        contact:
+          $ref: '#/components/schemas/SubContact'
+        deviceRules:
+          $ref: '#/components/schemas/DeviceRules'
+        state:
+          type: string
+        locale:
+          type: string
+          minLength: 2
+          maxLength: 2
+        managementPolicy:
+          type: string
+          format: uuid
+        suspended:
+          type: boolean
+          default: false
+        configuration:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceConfigurationElement'
+        serviceClass:
+          type: string
+          format: uuid
+        billingCode:
+          type: string
+
+    SubscriberDeviceList:
+      type: object
+      properties:
+        subscriberDevices:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriberDevice'
+
+    #########################################################################################
+    ##
+    ## These are endpoints that all services in the OPenWiFI stack must provide
+    ##
+    #########################################################################################
+    AnyPayload:
+      type: object
+      properties:
+        Document:
+          type: string
+
+    StringList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    TagValuePair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+
+    TagValuePairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    TagIntPair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: integer
+          format: int64
+
+    TagIntPairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagIntPair'
+
+    SystemCommandDetails:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevels
+            - getloglevels
+            - getSubSystemNames
+            - getLogLevelNames
+            - stats
+        parameters:
+          oneOf:
+            - $ref: '#/components/schemas/StringList'
+            - $ref: '#/components/schemas/TagValuePairList'
+
+    SystemCommandResults:
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/StringList'
+        - $ref: '#/components/schemas/TagValuePairList'
+
+    NoteInfo:
+      type: object
+      properties:
+        created:
+          type: integer
+          format: int64
+        createdBy:
+          type: string
+        note:
+          type: string
+
+    SystemInfoResults:
+      type: object
+      properties:
+        version:
+          type: string
+        uptime:
+          type: integer
+          format: integer64
+        start:
+          type: integer
+          format: integer64
+        os:
+          type: string
+        processors:
+          type: integer
+        hostname:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              expires:
+                type: integer
+                format: int64
+
+    Dashboard:
+      type: object
+      properties:
+        snapshot:
+          type: integer
+          format: int64
+        tenants:
+          $ref: '#/components/schemas/TagIntPairList'
+
+    SystemCommandSetLogLevel:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevel
+        subsystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandReload:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - reload
+        subsystems:
+          type: array
+          items:
+            type: string
+            example: these are the SubSystems names retrieve with the GetSubSystemsNamesResult.
+
+    SystemCommandGetLogLevels:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevels
+
+    SystemGetLogLevelsResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandGetLogLevelNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevelnames
+
+    SystemCommandGetSubsystemNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getsubsystemnames
+
+    SystemCommandGetLogLevelNamesResult:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    SystemGetSubSystemNamesResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+paths:
+  /entity:
+    get:
+      tags:
+        - Entities
+      operationId: getEntities
+      summary: Retrieve a list of entities.
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of devices comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of devices
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+
+      responses:
+        200:
+          description: Return a list of elements
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/EntityList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /entity/{uuid}:
+    get:
+      tags:
+        - Entities
+      operationId: getEntity
+      summary: Retrieve a specific entity.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: When looking for the root entity, the uuid 0000-0000-0000 must be entered.
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/Entity'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Entities
+      operationId: createEntity
+      summary: Create a specific entity.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: When creating the root entity, the uuid 0000-0000-0000 must be entered. When creating a non-root entity, uuid must be 1
+          required: true
+      requestBody:
+        description: Information used to create the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Entity'
+      responses:
+        200:
+          $ref: '#/components/schemas/Entity'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Entities
+      operationId: modifyEntity
+      summary: Modify a specific entity.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: When modifying the root entity, the uuid 0000-0000-0000 must be entered.
+          required: true
+      requestBody:
+        description: Information used to modify the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Entity'
+      responses:
+        200:
+          $ref: '#/components/schemas/Entity'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Entities
+      operationId: deleteEntity
+      summary: Delete a specific entity.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: The root entity cannot be deleted.
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /contact:
+    get:
+      tags:
+        - Contacts
+      operationId: getContacts
+      summary: Retrieve a list of contacts.
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of contacts comma separated
+          name: select
+          schema:
+            type: string
+            example: uuid1,uuid2,uuid3
+          required: false
+        - in: query
+          description: return the number of contacts
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return only the UUIDs of contacts
+          name: uuidOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+      responses:
+        200:
+          description: Return a list of contacts
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ContactList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /contact/{uuid}:
+    get:
+      tags:
+        - Contacts
+      operationId: getContact
+      summary: Retrieve a specific contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: expandInUse
+          schema:
+            type: boolean
+          required: false
+
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Contact'
+                  - $ref: '#/components/schemas/ExpandedUseEntryMapList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Contacts
+      operationId: createContact
+      summary: Create a specific entity.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        200:
+          $ref: '#/components/schemas/Contact'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Contacts
+      operationId: modifyContact
+      summary: Modify a specific contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to modify the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        200:
+          $ref: '#/components/schemas/Contact'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Contacts
+      operationId: deleteContact
+      summary: Delete a specific contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: force
+          schema:
+            type: boolean
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /location:
+    get:
+      tags:
+        - Locations
+      operationId: getLocations
+      summary: Retrieve a list of locations.
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of Locations comma separated
+          name: select
+          schema:
+            type: string
+            example: uuid1,uuid2,uuid3
+          required: false
+        - in: query
+          description: return the number of Locations
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return only the UUIDs of Locations
+          name: uuidOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Return a list of Locations
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/LocationList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /location/{uuid}:
+    get:
+      tags:
+        - Locations
+      operationId: getLocation
+      summary: Retrieve a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: expandInUse
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Location'
+                  - $ref: '#/components/schemas/ExpandedUseEntryMapList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Locations
+      operationId: createLocation
+      summary: Create a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new location
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        200:
+          $ref: '#/components/schemas/Location'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Locations
+      operationId: modifyLocation
+      summary: Modify a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to modify the new location
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        200:
+          $ref: '#/components/schemas/Location'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Locations
+      operationId: deleteLocation
+      summary: Delete a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: force
+          schema:
+            type: boolean
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /inventory:
+    get:
+      tags:
+        - Inventory
+      operationId: getInventoryTags
+      summary: Retrieve a list of inventory.
+      parameters:
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: unassigned
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of devices comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: only serial numbers of full device details
+          name: serialOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return the number of devices
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return extended information
+          name: withExtendedInfo
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return extended information
+          name: orderBy
+          schema:
+            type: string
+            example: serialNumber:a,created:d
+          required: false
+        - in: query
+          description: return extended information
+          name: orderSpec
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          description: return the list of devices under RRM
+          name: rrmOnly
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          description: return the list of devices under RRM
+          name: subscriber
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          description: return RRM settings for a specific device
+          name: rrmSettings
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          description: return the resolved configuration for a specific device
+          name:   resolveConfig
+          schema:
+            type: boolean
+            default: false
+          required: false
+
+      responses:
+        200:
+          description: Return a list of elements
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SerialNumberList'
+                  - $ref: '#/components/schemas/InventoryTagList'
+                  - $ref: '#/components/schemas/CountAnswer'
+                  - $ref: '#/components/schemas/StringList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /inventory/{serialNumber}:
+    get:
+      tags:
+        - Inventory
+      operationId: getInventory
+      summary: Retrieve a specific inventory tag.
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: config
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: explain
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: firmwareOptions
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: applyConfiguration
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: subscriberEntity
+          schema:
+            type: string
+            format: uuid
+          required: false
+      responses:
+        200:
+          description: Succesful retrieve configuratiopn or part of the configuration
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/InventoryTag'
+                  - $ref: '#/components/schemas/FirmwareOptions'
+                  - $ref: '#/components/schemas/InventoryConfigApplyResult'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Inventory
+      operationId: createInventory
+      summary: Create a specific Inventory.
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryTag'
+      responses:
+        200:
+          $ref: '#/components/schemas/InventoryTag'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Inventory
+      operationId: modifyInventory
+      summary: Modify a specific inventory.
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: unassign
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: removeSubscriber
+          schema:
+            type: string
+            format: uuid
+          required: true
+
+      requestBody:
+        description: Information used to modify the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryTag'
+
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryTag'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Inventory
+      operationId: deleteInventory
+      summary: Delete a specific inventory.
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+            format: uuid
+          required: true
+
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /venue:
+    get:
+      tags:
+        - Venues
+      operationId: getVenues
+      summary: Retrieve a list of venues.
+      parameters:
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: unassigned
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: deviceType
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of Venues comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of devices
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return the devices under a venue
+          name: getDevices
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          description: return the devices under a venue and its children. Must select getDevices=true as well.
+          name: getChildren
+          schema:
+            type: boolean
+            default: false
+          required: false
+      responses:
+        200:
+          description: Return a list of venues.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/VenueList'
+                  - $ref: '#/components/schemas/CountAnswer'
+                  - $ref: '#/components/schemas/VenueDeviceList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /venue/{uuid}:
+    get:
+      tags:
+        - Venues
+      operationId: getVenue
+      summary: Retrieve a specific venue.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+
+      responses:
+        200:
+          $ref: '#/components/schemas/Venue'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Venues
+      operationId: createVenue
+      summary: Create a specific venue.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: createObjects
+          schema:
+            type: object
+            properties:
+              objects:
+                type: array
+                items:
+                  oneOf:
+                    - type: object
+                      properties:
+                        location:
+                          $ref: '#/components/schemas/Location'
+                    - type: object
+                      properties:
+                        contact:
+                          $ref: '#/components/schemas/Contact'
+          required: false
+      requestBody:
+        description: Information used to create the new venue
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Venue'
+
+      responses:
+        200:
+          $ref: '#/components/schemas/Venue'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Venues
+      operationId: modifyVenue
+      summary: Modify a specific venue.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: updateAllDevices
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: rebootAllDevices
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: testUpdateOnly
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: upgradeAllDevices
+          schema:
+            type: boolean
+            default: false
+          required: false
+      requestBody:
+        description: Information used to modify the new venue
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Venue'
+
+      responses:
+        200:
+          description: Return venue information or list of serial number updated
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Venue'
+                  - $ref: '#/components/schemas/SerialNumberList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Venues
+      operationId: deleteVenue
+      summary: Delete a specific venue.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: The root entity cannot be deleted.
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /map:
+    get:
+      tags:
+        - Maps
+      operationId: getMapList
+      summary: Retrieve the list of maps
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Return only maps I created
+          name: myMaps
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Return only maps shared with Me
+          name: sharedWithMe
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Return a list of Venues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MapList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /map/{uuid}:
+    get:
+      tags:
+        - Maps
+      operationId: getMap
+      summary: Retrieve a specific map.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          description: Successfull retrieval of a map
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Map'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Maps
+      operationId: createMap
+      summary: Create a specific map.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new policy
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Map'
+      responses:
+        200:
+          $ref: '#/components/schemas/Map'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Maps
+      operationId: modifyMap
+      summary: Modify a specific map.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to modify a map
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Map'
+      responses:
+        200:
+          $ref: '#/components/schemas/ManagementPolicy'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Maps
+      operationId: deleteMap
+      summary: Delete a specific map.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /managementPolicy:
+    get:
+      tags:
+        - Management Policies
+      operationId: getPolicies
+      summary: Get a list of policies.
+      parameters:
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: unassigned
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of policies comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of policies
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Return a list of Venues
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ManagementPolicyList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /managementPolicy/{uuid}:
+    get:
+      tags:
+        - Management Policies
+      operationId: getManagementPolicy
+      summary: Retrieve a specific policy.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: expandInUse
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Succesful retrieve a management policy
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ManagementPolicy'
+                  - $ref: '#/components/schemas/ExpandedUseEntryMapList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Management Policies
+      operationId: createManagementPolicy
+      summary: Create a specific policy.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new policy
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagementPolicy'
+      responses:
+        200:
+          $ref: '#/components/schemas/ManagementPolicy'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Management Policies
+      operationId: modifyManagementPolicy
+      summary: Modify a specific policy.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to modify the new policy.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagementPolicy'
+      responses:
+        200:
+          $ref: '#/components/schemas/ManagementPolicy'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Management Policies
+      operationId: deleteManagementPolicy
+      summary: Delete a specific policy.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: The root entity cannot be deleted.
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /managementRole:
+    get:
+      tags:
+        - Management Roles
+      operationId: getManagementRoles
+      summary: Retrieve a list of management roles.
+      parameters:
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of devices comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of roles
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Return a list of elements
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ManagementRoleList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /managementRole/{uuid}:
+    get:
+      tags:
+        - Management Roles
+      operationId: getManagementRole
+      summary: Retrieve a specific management role.
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: expandInUse
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ManagementRole'
+                  - $ref: '#/components/schemas/ExpandedUseEntryMapList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Management Roles
+      operationId: createManagementRole
+      summary: Create a specific management role.
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: during creation, must be set to 1. The real uuid will be returned in the created object
+      requestBody:
+        description: Information used to create management role
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagementRole'
+
+      responses:
+        200:
+          $ref: '#/components/schemas/ManagementRole'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Management Roles
+      operationId: modifyManagementRole
+      summary: Modify a specific management role.
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: Information used to modify management role
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagementRole'
+      responses:
+        200:
+          $ref: '#/components/schemas/ManagementRole'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Management Roles
+      operationId: deleteManagementRole
+      summary: Delete a specific management role.
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /configuration:
+    get:
+      tags:
+        - Configurations
+      operationId: getConfigurations
+      summary: Retrieve a list of configurations.
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of devices comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of devices
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+      responses:
+        200:
+          description: Return a list of elements
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/DeviceConfigurationList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /configuration/{uuid}:
+    get:
+      tags:
+        - Configurations
+      operationId: geConfiguration
+      summary: Retrieve a specific configuration.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: When looking for the root entity, the uuid 0000-0000-0000 must be entered.
+          required: true
+        - in: query
+          name: expandInUse
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/DeviceConfiguration'
+                  - $ref: '#/components/schemas/ExpandedUseEntryMapList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Configurations
+      operationId: createConfiguration
+      summary: Create a specific configuration.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: When creating the root entity, the uuid 0000-0000-0000 must be entered. When creating a non-root entity, uuid must be 1
+          required: true
+        - in: query
+          name: validateOnly
+          schema:
+            type: boolean
+          required: false
+      requestBody:
+        description: Information used to create the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfiguration'
+      responses:
+        200:
+          $ref: '#/components/schemas/DeviceConfiguration'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Configurations
+      operationId: modifyConfiguration
+      summary: Modify a specific configuration.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: When modifying the root entity, the uuid 0000-0000-0000 must be entered.
+          required: true
+      requestBody:
+        description: Information used to modify the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConfiguration'
+      responses:
+        200:
+          $ref: '#/components/schemas/DeviceConfiguration'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Configurations
+      operationId: deleteConfiguration
+      summary: Delete a specific configuration.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example: The root entity cannot be deleted.
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /iptocountry:
+    get:
+      tags:
+        - Utility
+      summary: Get the country code for an IP address
+      operationId: getIpToCountry
+      parameters:
+        - in: query
+          name: iplist
+          schema:
+            type: string
+            example:
+              10.2.2.2,10.3.4.3
+          required: true
+      responses:
+        200:
+          description: List of country codes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                  countryCodes:
+                    type: array
+                    items:
+                      type: string
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /signup:
+    get:
+      tags:
+        - Subscriber Registration
+      summary: This call allows someone to get the status of a signup.
+      operationId: getSignup
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: string
+            format: email
+          required: false
+        - in: query
+          name: macAddress
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: signupUUID
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: dashboard
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: deviceID
+          schema:
+            type: string
+          required: false
+      responses:
+        200:
+          description: Successfull completion
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SignupEntry'
+                  - $ref: '#/components/schemas/Dashboard'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Subscriber Registration
+      summary: This call allows someone to delete a specific signUp or all signups according to serialNumber of email address
+      operationId: deleteSignup
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: string
+            format: email
+          required: false
+        - in: query
+          name: macAddress
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: signupUUID
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: deviceID
+          schema:
+            type: string
+          required: false
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Subscriber Registration
+      summary: This call allows a new subscriber to register themselves and their devices.
+      operationId: postSignup
+      parameters:
+        - in: query
+          name: email
+          schema:
+            type: string
+            format: email
+          required: true
+        - in: query
+          name: macAddress
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: deviceID
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: registrationId
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/SignupEntry'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Subscriber Registration
+      summary: modify the signup command in play
+      operationId: modifySignup
+      parameters:
+        - in: query
+          name: signupUUID
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: operation
+          schema:
+            type: string
+            enum:
+              - cancel
+              - emailVerified
+              - deviceVerified
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                time:
+                  type: integer
+                  format: int64
+                errorCode:
+                  type: integer
+                  format: int32
+                status:
+                  type: string
+        required: false
+      responses:
+        200:
+          $ref: '#/components/schemas/SignupEntry'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /variable:
+    get:
+      tags:
+        - Variable Configuration Blocks
+      summary: Retrieve lists of control blocks
+      operationId: getVariableList
+      parameters:
+        - in: query
+          name: venue
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          name: entity
+          schema:
+            type: string
+            format: uuid
+          required: false
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of devices comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of devices
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          $ref: '#/components/schemas/VariableBlockList'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /operator:
+    get:
+      operationId: getOperators
+      tags:
+        - Operators
+      summary: Retrieve the list of currently configured operators
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of operators comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of operators
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Successfully retrieved operator list
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/OperatorList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /operator/{uuid}:
+    get:
+      operationId: getOperator
+      tags:
+        - Operators
+      summary: Retrieve an operator
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/Operator'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteOperator
+      tags:
+        - Operators
+      summary: Delete an operator
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      summary: Create a new operator
+      operationId: createOperator
+      tags:
+        - Operators
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example:
+              should be set to 0 when creating a new operator
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operator'
+      responses:
+        200:
+          $ref: '#/components/schemas/Operator'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update an existing operator
+      operationId: updateOperator
+      tags:
+        - Operators
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operator'
+      responses:
+        200:
+          $ref: '#/components/schemas/Operator'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /serviceClass:
+    get:
+      operationId: getServiceClasses
+      tags:
+        - ServiceClass
+      summary: Retrieve the list of currently configured service class
+      parameters:
+        - in: query
+          description: The operator
+          name: operatorId
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of operators comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of operators
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Successfully retrieved operator list
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ServiceClassList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /serviceClass/{uuid}:
+    get:
+      operationId: getServiceClass
+      tags:
+        - ServiceClass
+      summary: Retrieve a service class
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/ServiceClass'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteServiceClass
+      tags:
+        - ServiceClass
+      summary: Delete a service class
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      summary: Create a service class
+      tags:
+        - ServiceClass
+      operationId: createServiceClass
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example:
+              should be set to 0 when creating a new operator
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceClass'
+      responses:
+        200:
+          $ref: '#/components/schemas/ServiceClass'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a service class
+      tags:
+        - ServiceClass
+      operationId: updateServiceClass
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceClass'
+      responses:
+        200:
+          $ref: '#/components/schemas/ServiceClass'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /subscriberDevice:
+    get:
+      operationId: getsubscriberDevices
+      tags:
+        - Subscriber Devices
+      summary: Retrieve the list of subscriber devices
+      parameters:
+        - in: query
+          description: The operator
+          name: operatorId
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of operators comma separated
+          name: select
+          schema:
+            type: string
+            example: serial1,serial2,serial3
+          required: false
+        - in: query
+          description: return the number of operators
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: list of subscriber devices
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SubscriberDeviceList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /subscriberDevice/{uuid}:
+    get:
+      operationId: getSubscriberDevice
+      tags:
+        - Subscriber Devices
+      summary: Retrieve a subscriber device
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/SubscriberDevice'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSubscriberDevice
+      tags:
+        - Subscriber Devices
+      summary: Delete a subscriber device
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      summary: Create a subscriber device
+      tags:
+        - Subscriber Devices
+      operationId: createSubscriberDevice
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+            example:
+              should be set to 0 when creating a new operator
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriberDevice'
+      responses:
+        200:
+          $ref: '#/components/schemas/SubscriberDevice'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a subscriber device
+      tags:
+        - Subscriber Devices
+      operationId: updateSubscriberDevice
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriberDevice'
+      responses:
+        200:
+          $ref: '#/components/schemas/SubscriberDevice'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /operatorLocation:
+    get:
+      tags:
+        - Operator Locations
+      operationId: getOperatorLocations
+      summary: Retrieve a list of locations.
+      parameters:
+        - in: query
+          name: operatorId
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of Locations comma separated
+          name: select
+          schema:
+            type: string
+            example: uuid1,uuid2,uuid3
+          required: false
+        - in: query
+          description: return the number of Locations
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return only the UUIDs of Locations
+          name: uuidOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Return a list of Locations
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/OperatorLocationList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /operatorLocation/{uuid}:
+    get:
+      tags:
+        - Operator Locations
+      operationId: getOperatorLocation
+      summary: Retrieve a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/OperatorLocation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Operator Locations
+      operationId: createOperatorLocation
+      summary: Create a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new location
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperatorLocation'
+      responses:
+        200:
+          $ref: '#/components/schemas/OperatorLocation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Operator Locations
+      operationId: modifyOperatorLocation
+      summary: Modify a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to modify the new location
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperatorLocation'
+      responses:
+        200:
+          $ref: '#/components/schemas/OperatorLocation'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Operator Locations
+      operationId: deleteOperatorLocation
+      summary: Delete a specific location.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: force
+          schema:
+            type: boolean
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /operatorContact:
+    get:
+      tags:
+        - Operator Contacts
+      operationId: getOperatorContacts
+      summary: Retrieve a list of operator contacts.
+      parameters:
+        - in: query
+          name: operatorId
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Supply a list of operator contacts comma separated
+          name: select
+          schema:
+            type: string
+            example: uuid1,uuid2,uuid3
+          required: false
+        - in: query
+          description: return the number of operator contacts
+          name: countOnly
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          description: return only the UUIDs of operator contacts
+          name: uuidOnly
+          schema:
+            type: boolean
+          required: false
+      responses:
+        200:
+          description: Return a list of operator contacts
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/OperatorContactList'
+                  - $ref: '#/components/schemas/CountAnswer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /operatorContact/{uuid}:
+    get:
+      tags:
+        - Operator Contacts
+      operationId: getOperatorContact
+      summary: Retrieve a specific operator contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/OperatorContact'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Operator Contacts
+      operationId: createOperatorContact
+      summary: Create a specific operator contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to create the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperatorContact'
+      responses:
+        200:
+          $ref: '#/components/schemas/OperatorContact'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Operator Contacts
+      operationId: modifyOperatorContact
+      summary: Modify a specific operator contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Information used to modify the new entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperatorContact'
+      responses:
+        200:
+          $ref: '#/components/schemas/OperatorContact'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Operator Contacts
+      operationId: deleteOperatorContact
+      summary: Delete a specific operator contact.
+      parameters:
+        - in: path
+          name: uuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: query
+          name: force
+          schema:
+            type: boolean
+          required: true
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+
+  #########################################################################################
+  ##
+  ## These are endpoints that all services in the OpenWiFi stack must provide
+  ##
+  #########################################################################################
+  /dashboard:
+    get:
+      tags:
+        - Dashboards
+      summary: Get the last version of the dashboard.
+      operationId: getDeviceDashboard
+      responses:
+        200:
+          $ref: '#/components/schemas/Dashboard'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /system:
+    post:
+      tags:
+        - System Commands
+      summary: Perform some system wide commands.
+      operationId: systemCommand
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/SystemCommandSetLogLevel'
+                - $ref: '#/components/schemas/SystemCommandReload'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevels'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevelNames'
+                - $ref: '#/components/schemas/SystemCommandGetSubsystemNames'
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemGetLogLevelsResult'
+                  - $ref: '#/components/schemas/SystemCommandGetLogLevelNamesResult'
+                  - $ref: '#/components/schemas/SystemGetSubSystemNamesResult'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    get:
+      tags:
+        - System Commands
+      summary: Retrieve different values from the running service.
+      operationId: getSystemCommand
+      parameters:
+        - in: query
+          description: Get a value
+          name: command
+          schema:
+            type: string
+            enum:
+              - info
+          required: true
+      responses:
+        200:
+          description: Successful command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemInfoResults'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
