@@ -22,6 +22,6 @@ RF Testing: [http://openwifi-allure-reports.s3-website-us-east-1.amazonaws.com/a
 
 
 
-**Here are the** [**results**](https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/1610973185/2.6+Release+Status+-+In+Progress#AP-Models-Under-Test) **of our testing results for our current release.**
+**Here are the** [**results**](https://telecominfraproject.atlassian.net/wiki/spaces/WIFI/pages/1742864385/2.7.2+Release+Status+-+Released) **of our testing results for our current release.**
 
 ****
