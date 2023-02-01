@@ -2,165 +2,147 @@
 
 #### Improvement
 
-[WIFI-4864](https://telecominfraproject.atlassian.net/browse/WIFI-4864) Allow DNSMASQ based DNS service to include CPE ID and add-mac option
+[WIFI-9530](https://telecominfraproject.atlassian.net/browse/WIFI-9530) Prov UI: When we create a child venue/entity it is showing as only Venue/entity.
 
-[WIFI-7329](https://telecominfraproject.atlassian.net/browse/WIFI-7329) SDK microservice to support RadSec proxy tunnel mode from Open Wi-FI APs
+[WIFI-9560](https://telecominfraproject.atlassian.net/browse/WIFI-9560) Prov UI: No back button to navigate between Entities, child Entities, venue and its sub-venues
 
-[WIFI-10346](https://telecominfraproject.atlassian.net/browse/WIFI-10346) Configuration of CoA/DM on both 2.4/5 Gig - doesn't bring up one band
+[WIFI-9985](https://telecominfraproject.atlassian.net/browse/WIFI-9985) OpenAPIs for the RRM service
 
-[WIFI-10554](https://telecominfraproject.atlassian.net/browse/WIFI-10554) Prov UI Analytics: improve display of unrecognized device software
+[WIFI-9986](https://telecominfraproject.atlassian.net/browse/WIFI-9986) Measurement-based AP-AP TPC algorithm
 
-[WIFI-10558](https://telecominfraproject.atlassian.net/browse/WIFI-10558) Add 6G radio support in GW.
+[WIFI-9987](https://telecominfraproject.atlassian.net/browse/WIFI-9987) RRM service authentication
 
-[WIFI-10559](https://telecominfraproject.atlassian.net/browse/WIFI-10559) Add 6G radio support in Analytics
+[WIFI-9988](https://telecominfraproject.atlassian.net/browse/WIFI-9988) owProvUI to include the scheduling period field
 
-[WIFI-10736](https://telecominfraproject.atlassian.net/browse/WIFI-10736) Internal/external endpoints for owrrm
+[WIFI-10242](https://telecominfraproject.atlassian.net/browse/WIFI-10242) Prov UI: add missing detailed notifications for full venue reboot and venue upgrade
 
-[WIFI-10810](https://telecominfraproject.atlassian.net/browse/WIFI-10810) Prov UI: migrating to React 18 and Vite
+[WIFI-10244](https://telecominfraproject.atlassian.net/browse/WIFI-10244) Fetch AP Password when set using "random-password" : true
 
-[WIFI-10863](https://telecominfraproject.atlassian.net/browse/WIFI-10863) Gateway UI: Display device certificate expiry date
+[WIFI-10252](https://telecominfraproject.atlassian.net/browse/WIFI-10252) Prov UI: system page should use the endpoints coming from the ucentralsec API
 
-[WIFI-10887](https://telecominfraproject.atlassian.net/browse/WIFI-10887) EOGRE tunnel feature over IPv6 network
+[WIFI-10338](https://telecominfraproject.atlassian.net/browse/WIFI-10338) Refactor GW to limit the number of device reconnections
 
-[WIFI-10910](https://telecominfraproject.atlassian.net/browse/WIFI-10910) Enable internal port in RRM deployment
+[WIFI-10341](https://telecominfraproject.atlassian.net/browse/WIFI-10341) Add Generic RRM parameter and API support in Provisioning: UI and Service.
 
-[WIFI-10959](https://telecominfraproject.atlassian.net/browse/WIFI-10959) Switch fmtlib and aws to prebuilt packages in Dockerfiles
+[WIFI-10359](https://telecominfraproject.atlassian.net/browse/WIFI-10359) Config option to limit the number of RTTY sessions
 
-[WIFI-11223](https://telecominfraproject.atlassian.net/browse/WIFI-11223) GW UI: migrating to the PROV UI look and feel
+[WIFI-10472](https://telecominfraproject.atlassian.net/browse/WIFI-10472) Prov UI: In the Wifi Bands field, the 6G option is not present
 
-[WIFI-11224](https://telecominfraproject.atlassian.net/browse/WIFI-11224) delete pcap files on an AP after uploading them
+[WIFI-10513](https://telecominfraproject.atlassian.net/browse/WIFI-10513) OWLS-UI: infinity should be an option when choosing length
 
-[WIFI-11234](https://telecominfraproject.atlassian.net/browse/WIFI-11234) SSID counters and Client counters don't exist in statistics.
+[WIFI-10538](https://telecominfraproject.atlassian.net/browse/WIFI-10538) Healthcheck for softGRE
 
-[WIFI-11262](https://telecominfraproject.atlassian.net/browse/WIFI-11262) AP Health check changes for DNS/DHCP and Radius
+[WIFI-10556](https://telecominfraproject.atlassian.net/browse/WIFI-10556) Data model addition MTU on all Tunnel and Ethernet Interfaces
 
-[WIFI-11273](https://telecominfraproject.atlassian.net/browse/WIFI-11273) Prov UI: In the Services field, under Subsections the captive option is not present
+[WIFI-10672](https://telecominfraproject.atlassian.net/browse/WIFI-10672) Prov UI: add RRM option using new RRM service
 
-[WIFI-11303](https://telecominfraproject.atlassian.net/browse/WIFI-11303) Update framework for 2.8
+[WIFI-10711](https://telecominfraproject.atlassian.net/browse/WIFI-10711) Prov UI: FILS Discovery Interval Option is not present
 
-[WIFI-11391](https://telecominfraproject.atlassian.net/browse/WIFI-11391) Prov UI - Add new metrics.health values
+[WIFI-10815](https://telecominfraproject.atlassian.net/browse/WIFI-10815) Prov UI: Captive Portal resource
 
-[WIFI-11432](https://telecominfraproject.atlassian.net/browse/WIFI-11432) Add FW signature field
+[WIFI-10816](https://telecominfraproject.atlassian.net/browse/WIFI-10816) Prov UI: interface tunnel resource
 
-[WIFI-11433](https://telecominfraproject.atlassian.net/browse/WIFI-11433) Add visibility into device certificate expiration
+[WIFI-10817](https://telecominfraproject.atlassian.net/browse/WIFI-10817) Prov UI: ipv4 resource
 
-[WIFI-11434](https://telecominfraproject.atlassian.net/browse/WIFI-11434) Update SCRIPT command to supported restricted devices
+[WIFI-10894](https://telecominfraproject.atlassian.net/browse/WIFI-10894) GW UI: now displaying 'Status' column in device command history
 
-[WIFI-11451](https://telecominfraproject.atlassian.net/browse/WIFI-11451) GW UI: current build actions are failing on GitHub
+[WIFI-10904](https://telecominfraproject.atlassian.net/browse/WIFI-10904) GW UI: displaying connection statistics in the sidebar
 
-[WIFI-11454](https://telecominfraproject.atlassian.net/browse/WIFI-11454) GW UI: certificate expiry date and restrict levels should be displayed
+[WIFI-4237](https://telecominfraproject.atlassian.net/browse/WIFI-4237) RADIUS Attribute OpenRoaming Compliance
 
-[WIFI-11455](https://telecominfraproject.atlassian.net/browse/WIFI-11455) PROV UI: env variables not being loaded
+[WIFI-10819](https://telecominfraproject.atlassian.net/browse/WIFI-10819) RRM cannot parse valid cron
 
-[WIFI-11461](https://telecominfraproject.atlassian.net/browse/WIFI-11461) OWLS UI: migrating to PROV-UI look and feel
+[WIFI-10945](https://telecominfraproject.atlassian.net/browse/WIFI-10945) Add information to logging messages
 
-[WIFI-11477](https://telecominfraproject.atlassian.net/browse/WIFI-11477) Add Configuration Override necessary for RRM
+[WIFI-11260](https://telecominfraproject.atlassian.net/browse/WIFI-11260) Advanced Captive - add support for "userurl"
 
-[WIFI-11478](https://telecominfraproject.atlassian.net/browse/WIFI-11478) Prov UI: support for configuration override
+[WIFI-11004](https://telecominfraproject.atlassian.net/browse/WIFI-11004) In ath11k, there are PTK rekeying failure issue causes connection issue
 
-[WIFI-11541](https://telecominfraproject.atlassian.net/browse/WIFI-11541) Not responding probe request if maximum UEs association is reached on the AP
-
-[WIFI-11542](https://telecominfraproject.atlassian.net/browse/WIFI-11542) GW: Script Management
-
-[WIFI-11543](https://telecominfraproject.atlassian.net/browse/WIFI-11543) GW & Prov UI: add API keys management support
-
-[WIFI-11564](https://telecominfraproject.atlassian.net/browse/WIFI-11564) GW UI: add access to API logs
-
-[WIFI-11565](https://telecominfraproject.atlassian.net/browse/WIFI-11565) Prov UI: logs page
-
-[WIFI-11620](https://telecominfraproject.atlassian.net/browse/WIFI-11620) Add support for restricted devices according to factory restrictions.json in GW
-
-[WIFI-11623](https://telecominfraproject.atlassian.net/browse/WIFI-11623) Add support to read restriction.json file from certificate partition
-
-[WIFI-11624](https://telecominfraproject.atlassian.net/browse/WIFI-11624) AP to include restriction as part of the capabilities
-
-[WIFI-11625](https://telecominfraproject.atlassian.net/browse/WIFI-11625) Allow for developer override
-
-[WIFI-11626](https://telecominfraproject.atlassian.net/browse/WIFI-11626) Add a public key to the certificate directory at time of factory
-
-[WIFI-11627](https://telecominfraproject.atlassian.net/browse/WIFI-11627) Add a restriction.json to the certificate directory at time of factory
-
-[WIFI-11628](https://telecominfraproject.atlassian.net/browse/WIFI-11628) Restrict ability to run scripts (ASB) on the AP
-
-[WIFI-11630](https://telecominfraproject.atlassian.net/browse/WIFI-11630) Restrict Country Codes for the unit
-
-[WIFI-11631](https://telecominfraproject.atlassian.net/browse/WIFI-11631) Restrict DFS
-
-[WIFI-11706](https://telecominfraproject.atlassian.net/browse/WIFI-11706) Prov UI: infinite loading spinner in 'Dashboard' and 'Live View' venue tabs
-
-[WIFI-11709](https://telecominfraproject.atlassian.net/browse/WIFI-11709) EAP104: Make EAP104 switch ports configurable
-
-[WIFI-11728](https://telecominfraproject.atlassian.net/browse/WIFI-11728) GW UI: 6G associations should be showed in the Devices table
-
-[WIFI-11742](https://telecominfraproject.atlassian.net/browse/WIFI-11742) GW UI: wifi analysis should display bands when available
-
-[WIFI-11746](https://telecominfraproject.atlassian.net/browse/WIFI-11746) Support signature for upgrade and script execution
-
-[WIFI-11747](https://telecominfraproject.atlassian.net/browse/WIFI-11747) Support automatic signing of firmware and scripts
-
-[WIFI-11753](https://telecominfraproject.atlassian.net/browse/WIFI-11753) Gateway Service: Need better viewing experience while displaying error message
-
-[WIFI-11780](https://telecominfraproject.atlassian.net/browse/WIFI-11780) I am getting indexOf page if i am using any dns ip (1.1.1.1) for captive.
-
-[WIFI-11781](https://telecominfraproject.atlassian.net/browse/WIFI-11781) /logoff response should be 302 redirect url with "res: 'logoff'"
-
-[WIFI-11782](https://telecominfraproject.atlassian.net/browse/WIFI-11782) not getting stop packet in accounting after logoff
-
-[WIFI-11855](https://telecominfraproject.atlassian.net/browse/WIFI-11855) Ensure that the output of the default ASB script is compatible with future updates
-
-[WIFI-11858](https://telecominfraproject.atlassian.net/browse/WIFI-11858) GW UI: sticky device command bar on larger screens
-
-[WIFI-11869](https://telecominfraproject.atlassian.net/browse/WIFI-11869) Add support for self-signed Radsec
-
-[WIFI-11896](https://telecominfraproject.atlassian.net/browse/WIFI-11896) Advance Captive Portal: Username of captive portal authenticated users are missing in the telemetry data
-
-[WIFI-11909](https://telecominfraproject.atlassian.net/browse/WIFI-11909) Update to 2.8 default data model & proper URL
-
-[WIFI-11928](https://telecominfraproject.atlassian.net/browse/WIFI-11928) Remove tid and survey data from state message
-
-[WIFI-11932](https://telecominfraproject.atlassian.net/browse/WIFI-11932) Setting up appropriate terminate cause
-
-[WIFI-11957](https://telecominfraproject.atlassian.net/browse/WIFI-11957) GW UI: device search bar should be present on device screen
-
-[WIFI-11958](https://telecominfraproject.atlassian.net/browse/WIFI-11958) GW UI: displaying restriction details on device page
-
-[WIFI-11959](https://telecominfraproject.atlassian.net/browse/WIFI-11959) GW UI: adding 3 yuncore model images
-
-[WIFI-11967](https://telecominfraproject.atlassian.net/browse/WIFI-11967) Expand State Link-state to include linux interface statistics
-
-[WIFI-11972](https://telecominfraproject.atlassian.net/browse/WIFI-11972) Bring up for yuncore ax480
-
-#### &#x20;Task
-
-[WIFI-10419](https://telecominfraproject.atlassian.net/browse/WIFI-10419) Enable CN check on SSL level \[wlan-ucentral-client]
-
-[WIFI-10964](https://telecominfraproject.atlassian.net/browse/WIFI-10964) Missing length validation for forwarding/delivering frames \[wlan-ap]
-
-[WIFI-10967](https://telecominfraproject.atlassian.net/browse/WIFI-10967) AP Scripting Framework
-
-[WIFI-10968](https://telecominfraproject.atlassian.net/browse/WIFI-10968) Develop ASB Script to invoke through GW API
-
-[WIFI-11430](https://telecominfraproject.atlassian.net/browse/WIFI-11430) ASB support on GW
-
-[WIFI-11576](https://telecominfraproject.atlassian.net/browse/WIFI-11576) HFCL WiFi6 new Target Addition - ION4x and ION4x\_2
-
-[WIFI-11602](https://telecominfraproject.atlassian.net/browse/WIFI-11602) Script location
-
-[WIFI-12008](https://telecominfraproject.atlassian.net/browse/WIFI-12008) Update version 1 of State Schema
-
-#### Epic
-
-[WIFI-10918](https://telecominfraproject.atlassian.net/browse/WIFI-10918) Support API Key creation and use in SDK
+[WIFI-11235](https://telecominfraproject.atlassian.net/browse/WIFI-11235) Statistics counters report negative values
 
 #### New Feature
 
-[WIFI-7266](https://telecominfraproject.atlassian.net/browse/WIFI-7266) \[ZTP] Zero touch provisioning when AP cannot access Internet
+[WIFI-7327](https://telecominfraproject.atlassian.net/browse/WIFI-7327) Send AP serial number in CoA/DM message to proxy/ ow gateway SDK service
 
-[WIFI-10396](https://telecominfraproject.atlassian.net/browse/WIFI-10396) MAC ACL feature on the wireless side
+[WIFI-9811](https://telecominfraproject.atlassian.net/browse/WIFI-9811) add wifi owe encryption
 
-[WIFI-10920](https://telecominfraproject.atlassian.net/browse/WIFI-10920) Ability to set the STA MAC address format in redirect URL and in RADIUS Auth+Acct messages
+[WIFI-9978](https://telecominfraproject.atlassian.net/browse/WIFI-9978) Periodic Data Collector from Kafka and uCentral
 
-[WIFI-11196](https://telecominfraproject.atlassian.net/browse/WIFI-11196) Restructure repository into multimodule project
+[WIFI-9979](https://telecominfraproject.atlassian.net/browse/WIFI-9979) Venue info from the owProv service
+
+[WIFI-9980](https://telecominfraproject.atlassian.net/browse/WIFI-9980) Periodic optimization runner
+
+[WIFI-9981](https://telecominfraproject.atlassian.net/browse/WIFI-9981) Bandwidth-agnostic channel optimization
+
+[WIFI-9982](https://telecominfraproject.atlassian.net/browse/WIFI-9982) Bandwidth-aware channel optimization
+
+[WIFI-9983](https://telecominfraproject.atlassian.net/browse/WIFI-9983) Manual optimization trigger
+
+[WIFI-9984](https://telecominfraproject.atlassian.net/browse/WIFI-9984) Push config changes to uCentral
+
+[WIFI-10243](https://telecominfraproject.atlassian.net/browse/WIFI-10243) Prov UI: adding RTTY/Connect command
+
+[WIFI-10735](https://telecominfraproject.atlassian.net/browse/WIFI-10735) Prov APIs/schemas for RRM config (schedule, algorithms+parameters)
+
+[WIFI-10750](https://telecominfraproject.atlassian.net/browse/WIFI-10750) RRM: Use Prov APIs/schemas for RRM config (schedule, algorithms+parameters)
+
+[WIFI-10801](https://telecominfraproject.atlassian.net/browse/WIFI-10801) Provisioning UI: add passpoint configuration
+
+[WIFI-10811](https://telecominfraproject.atlassian.net/browse/WIFI-10811) Prov UI: single radio resource
+
+[WIFI-10340](https://telecominfraproject.atlassian.net/browse/WIFI-10340) Add RADSEC proxy for GW
+
+[WIFI-10664](https://telecominfraproject.atlassian.net/browse/WIFI-10664) adv captive - implement local authentication
+
+[WIFI-10665](https://telecominfraproject.atlassian.net/browse/WIFI-10665) adv captive - implement UAM authentication
+
+#### Task
+
+[WIFI-10905](https://telecominfraproject.atlassian.net/browse/WIFI-10905) Enforce a specific country code specified on a unit level
+
+[WIFI-11316](https://telecominfraproject.atlassian.net/browse/WIFI-11316) Radius Gateway Proxy and MAC-Authentication
+
+[WIFI-11268](https://telecominfraproject.atlassian.net/browse/WIFI-11268) RTTYS Double Free \[wlan-cloud-ucentralgw]
+
+[WIFI-11269](https://telecominfraproject.atlassian.net/browse/WIFI-11269) Exposed RTTYS Server Functions \[wlan-cloud-ucentralgw]\
+\
+[WIFI-9928](https://telecominfraproject.atlassian.net/browse/WIFI-9928) Ensure all services are using PG DB.
+
+[WIFI-10095](https://telecominfraproject.atlassian.net/browse/WIFI-10095) xtables mismatch for linux-kernel version is linux 4.4.60
+
+[WIFI-10339](https://telecominfraproject.atlassian.net/browse/WIFI-10339) Pocco Framework Upgrade for microservices
+
+[WIFI-10345](https://telecominfraproject.atlassian.net/browse/WIFI-10345) Move to new framework and version 2.7
+
+[WIFI-10390](https://telecominfraproject.atlassian.net/browse/WIFI-10390) Vulnerable OpenWrt Version \[wlan-ap]
+
+[WIFI-10407](https://telecominfraproject.atlassian.net/browse/WIFI-10407) Provide iptocountry feature documentation
+
+[WIFI-10409](https://telecominfraproject.atlassian.net/browse/WIFI-10409) Out-of-Bounds Memory Access in ucentralGW
+
+[WIFI-10410](https://telecominfraproject.atlassian.net/browse/WIFI-10410) Vulnerable OpenvSwitch Version \[wlan-ap]
+
+[WIFI-10411](https://telecominfraproject.atlassian.net/browse/WIFI-10411) Vulnerable bluez version \[wlan-ap]
+
+[WIFI-10412](https://telecominfraproject.atlassian.net/browse/WIFI-10412) Vulnerable hostapd version \[wlan-ap]
+
+[WIFI-10413](https://telecominfraproject.atlassian.net/browse/WIFI-10413) Vulnerable Alpine Docker Image \[Multiple Services]
+
+[WIFI-10414](https://telecominfraproject.atlassian.net/browse/WIFI-10414) Vulnerable NodeJS Docker Image \[wlan-cloud-ucentralgw-ui]
+
+[WIFI-10415](https://telecominfraproject.atlassian.net/browse/WIFI-10415) Vulnerable NGINX Docker Image \[wlan-cloud-ucentralgw-ui]
+
+[WIFI-10416](https://telecominfraproject.atlassian.net/browse/WIFI-10416) Vulnerable NGINX Docker Image \[wlan-cloud-owprov-ui]
+
+[WIFI-10417](https://telecominfraproject.atlassian.net/browse/WIFI-10417) Vulnerable NodeJS Docker Image \[wlan-cloud-owprov-ui]
+
+[WIFI-10435](https://telecominfraproject.atlassian.net/browse/WIFI-10435) Update to 2.7 framework
+
+[WIFI-10751](https://telecominfraproject.atlassian.net/browse/WIFI-10751) cig wf188n - update BDF
+
+[WIFI-10802](https://telecominfraproject.atlassian.net/browse/WIFI-10802) Support for Indio WiFi6 AP -indoor and outdoor models based on IPQ6000
+
+[WIFI-10973](https://telecominfraproject.atlassian.net/browse/WIFI-10973) Add userRole argument to OWSEC createuser CLI function
 
 \
 

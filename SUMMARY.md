@@ -48,6 +48,15 @@
 * [Monitoring](sdk/monitoring/README.md)
   * [ELK Integration](sdk/monitoring/elk-integration.md)
 
+## RELEASE
+
+* [What's New](release/whats-new.md)
+* [Features](release/features.md)
+* [Security Updates](release/security.md)
+* [Resolved Issues](release/resolved-issues.md)
+* [Outstanding Items](release/outstanding-items.md)
+* [Testing Results](release/testing-results.md)
+
 ## SDK Installation
 
 * [Overview](sdk-installation/overview.md)
@@ -88,15 +97,7 @@
     * [Configuration Introduction](device-feature-configuration-examples/device-feature-configuration-examples/passpoint-r1/configuration-introduction.md)
     * [Advertising Services](device-feature-configuration-examples/device-feature-configuration-examples/passpoint-r1/advertising-services.md)
     * [Passpoint® Configuration](device-feature-configuration-examples/device-feature-configuration-examples/passpoint-r1/passpoint-r-configuration.md)
-
-## RELEASE
-
-* [What's New](release/whats-new.md)
-* [Features](release/features.md)
-* [Security Updates](release/security.md)
-* [Resolved Issues](release/resolved-issues.md)
-* [Outstanding Items](release/outstanding-items.md)
-* [Testing Results](release/testing-results.md)
+  * [Restricted Unit Support](device-feature-configuration-examples/device-feature-configuration-examples/restricted-unit-support.md)
 
 ## DEVELOPER RESOURCES
 

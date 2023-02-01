@@ -4,17 +4,16 @@ The latest release includes the following new features.
 
 ## APNOS
 
-* Generic restricted support
-* AP Support Bundle
-* EOGRE IPV6 Tunnel Support&#x20;
-* uSteer v2 : experimental with policy support
+* OWE Support
+* CoA/DM Message handling support
+* Advanced Captive Internal/External&#x20;
 
 ## SDK
 
-* Generic restricted support
-* AP Support Bundle
-* Microservices Logging
-* Gateway UI refresh
+* Radius/RadSec Proxy Support
+* Security and maintenance support
+* RRM Support
+* RTTY refactoring
 
 
 
