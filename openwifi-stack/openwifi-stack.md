@@ -8,7 +8,7 @@ TIP OpenWiFi architecture works specifically to enable choice in device and clou
 
 &#x20;
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (1).png>)
 
 
 

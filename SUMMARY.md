@@ -10,6 +10,7 @@
 * [Cloud Partner Information](about/cloud-partner-information.md)
 * [Ordering OpenWiFi APs](about/ordering-open-wi-fi-aps.md)
 * [Example Partner Integrations](about/integrations.md)
+* [Contributing](about/contributing.md)
 
 ## OPENWIFI STACK
 
