@@ -1,6 +1,6 @@
 # Table of contents
 
-* [OpenWiFi Release 2.8](README.md)
+* [OpenWiFi Release 2.9](README.md)
 
 ## ABOUT
 

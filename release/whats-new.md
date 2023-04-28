@@ -2,20 +2,26 @@
 
 The latest release includes the following new features.
 
-## APNOS
+**Version: v2.9.0**
 
-* Generic restricted support
-* AP Support Bundle
-* EOGRE IPV6 Tunnel Support&#x20;
-* uSteer v2 : experimental with policy support
+**Date: March 31, 2023**
 
-## SDK
+What’s New:
 
-* Generic restricted support
-* AP Support Bundle
-* Microservices Logging
-* Gateway UI refresh
+* AP Event Handling
+* Primary/Secondary Radius support (APNOS)
+* GPS Enhancements
+* Radius Proxy Improvements
+* Advanced Captive Improvements
 
 
+
+**Version: v2.9.1**
+
+**Date: April 11, 2023**
+
+Resolution(s):
+
+* Dynamic VLAN with wan ports other than “eth0”
 
 ###
