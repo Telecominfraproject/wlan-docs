@@ -13,18 +13,18 @@ The following two modes are currently supported by docker-compose:
 *   **Deployments without a Load Balancer**
 
     This model contains single instances of SDK micro-services. Non-Load Balancer is suitable for scenarios where load given number of APs is below 10,000 or design for network availability is not required.\
-    A single local docker-compose deployment performance is listed [here](https://github.com/Telecominfraproject/wlan-docs/blob/2.6.0/sdk-installation/broken-reference/README.md). Additionally this deployment includes options to use either self-signed certificates or user provided certificates:
+    Additionally this deployment includes options to use either self-signed certificates or user provided certificates:
 
-    * Non-LB deployment with self-signed certificates
-    * [Non-LB deployment with own certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#non-lb-deployment-with-own-certificates)
+    * [Non-LB deployment with self-signed certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.9.0/docker-compose#non-lb-deployment-with-self-signed-certificates)
+    * [Non-LB deployment with own certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.9.0/docker-compose#non-lb-deployment-with-own-certificates)
 *   **Deployments with a Load Balancer**
 
     This model is suitable for deployments where there is a need to scale performance and/or use Letsencrypt certificates for northbound service interactions.\
-    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed [here](https://github.com/Telecominfraproject/wlan-docs/blob/2.6.0/sdk-installation/broken-reference/README.md).\
+    This deployment allows the user to scale up number of instances of micro-services to handle a larger load than listed here.\
     The repository contains the instructions here:
 
-    * [LB deployment with self-signed certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#lb-deployment-with-self-signed-certificates)
-    * [LB deployment with Letsencrypt certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.4.0/docker-compose#lb-deployment-with-letsencrypt-certificates)
+    * [LB deployment with self-signed certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.9.0/docker-compose#lb-deployment-with-self-signed-certificates)
+    * [LB deployment with Letsencrypt certificates](https://github.com/Telecominfraproject/wlan-cloud-ucentral-deploy/tree/release/v2.9.0/docker-compose#lb-deployment-with-lets-encrypt-certificates)
 
 The docker-compose yaml files are related as follows to the modes above:
 
