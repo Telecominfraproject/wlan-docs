@@ -1,0 +1,5106 @@
+{
+	"info": {
+		"_postman_id": "74fcdca5-836c-4091-bee7-590803c507ba",
+		"name": "TIP OpenWiFi 2.x",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20476771"
+	},
+	"item": [
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "OAuth-Authorize",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"console.log(jsonData)",
+									"pm.collectionVariables.set(\"ACCESS_TOKEN\", jsonData.access_token);",
+									"// postman.setEnvironmentVariable(\"AuthToken\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false,
+						"followRedirects": false,
+						"disableUrlEncoding": true,
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3a9dafeac8d711e4d497253d1d0a93e91fade96fc99fe310ed258bf0d4248fef",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"tip@ucentral.com\",\n  \"password\": \"OpenWifi%123\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/oauth2",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"oauth2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubOAuth2-Authorize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "05fecd78bbb08b9dbac3e145b2110a720cff6c5f8afe55e940333d081900800c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"tip@ucentral.com\",\n  \"password\": \"OpenWifi%123\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/suboauth2",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"suboauth2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth-Logout",
+					"protocolProfileBehavior": {
+						"strictSSL": false,
+						"followRedirects": true,
+						"disableUrlEncoding": true,
+						"disabledSystemHeaders": {
+							"connection": true,
+							"content-type": true,
+							"accept": true,
+							"content-length": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "721adcf6f04f044ce190ae11baf93c0d14d8c2cb4623b536b1acd16f5c7f9754",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"tip@ucentral.com\",\n  \"password\": \"OpenWifi%123\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/oauth2/721adcf6f04f044ce190ae11baf93c0d14d8c2cb4623b536b1acd16f5c7f9754",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"oauth2",
+								"721adcf6f04f044ce190ae11baf93c0d14d8c2cb4623b536b1acd16f5c7f9754"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubOAuth-Logout",
+					"protocolProfileBehavior": {
+						"strictSSL": false,
+						"followRedirects": false,
+						"disableUrlEncoding": true,
+						"disabledSystemHeaders": {
+							"connection": true,
+							"content-type": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/suboauth2",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"suboauth2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OAuth-Authorize",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false,
+						"followRedirects": false,
+						"disableUrlEncoding": true,
+						"disabledSystemHeaders": {
+							"connection": true,
+							"content-type": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3a9dafeac8d711e4d497253d1d0a93e91fade96fc99fe310ed258bf0d4248fef",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"tip@ucentral.com\",\n  \"password\": \"OpenWifi%123\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/oauth2",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"oauth2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Endpoints",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/systemEndpoints",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"systemEndpoints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3a9dafeac8d711e4d497253d1d0a93e91fade96fc99fe310ed258bf0d4248fef",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"tip@ucentral.com\",\n  \"password\": \"OpenWifi%123\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/users",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3a9dafeac8d711e4d497253d1d0a93e91fade96fc99fe310ed258bf0d4248fef",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"avatar\": \"string\",\n  \"email\": \"user@example.com\",\n  \"validated\": true,\n  \"validationEmail\": \"user@example.com\",\n  \"validationDate\": 0,\n  \"created\": 0,\n  \"validationURI\": \"string\",\n  \"changePassword\": true,\n  \"lastLogin\": 0,\n  \"currentLoginURI\": \"string\",\n  \"lastPasswordChange\": 0,\n  \"lastEmailCheck\": 0,\n  \"currentPassword\": \"OpenWifi%123\",\n  \"lastPasswords\": [\n    \"string\"\n  ],\n  \"waitingForEmailCheck\": true,\n  \"notes\": [\n    {\n      \"created\": 0,\n      \"createdBy\": \"string\",\n      \"note\": \"string\"\n    }\n  ],\n  \"location\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"owner\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"suspended\": true,\n  \"blackListed\": true,\n  \"locale\": \"string\",\n  \"userRole\": \"root\",\n  \"oauthType\": \"internal\",\n  \"oauthUserInfo\": \"string\",\n  \"securityPolicy\": \"string\",\n  \"securityPolicyChange\": 0,\n  \"modified\": 0,\n  \"userTypeProprietaryInfo\": {\n    \"mobiles\": [\n      {\n        \"number\": \"string\",\n        \"verified\": true,\n        \"primary\": true\n      }\n    ],\n    \"authenticatorSecret\": \"string\",\n    \"mfa\": {\n      \"enabled\": true,\n      \"method\": \"sms\"\n    }\n  },\n  \"signupUUID\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/user/0",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/user/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"3fa85f64-5717-4562-b3fc-2c963f66afa6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"avatar\": \"string\",\n  \"email\": \"user@example.com\",\n  \"validated\": true,\n  \"validationEmail\": \"user@example.com\",\n  \"validationDate\": 0,\n  \"created\": 0,\n  \"validationURI\": \"string\",\n  \"changePassword\": true,\n  \"lastLogin\": 0,\n  \"currentLoginURI\": \"string\",\n  \"lastPasswordChange\": 0,\n  \"lastEmailCheck\": 0,\n  \"currentPassword\": \"OpenWifi%321\",\n  \"lastPasswords\": [\n    \"OpenWifi%123\"\n  ],\n  \"waitingForEmailCheck\": true,\n  \"notes\": [\n    {\n      \"created\": 0,\n      \"createdBy\": \"string\",\n      \"note\": \"string\"\n    }\n  ],\n  \"location\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"owner\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"suspended\": true,\n  \"blackListed\": true,\n  \"locale\": \"string\",\n  \"userRole\": \"root\",\n  \"oauthType\": \"internal\",\n  \"oauthUserInfo\": \"string\",\n  \"securityPolicy\": \"string\",\n  \"securityPolicyChange\": 0,\n  \"modified\": 0,\n  \"userTypeProprietaryInfo\": {\n    \"mobiles\": [\n      {\n        \"number\": \"string\",\n        \"verified\": true,\n        \"primary\": true\n      }\n    ],\n    \"authenticatorSecret\": \"string\",\n    \"mfa\": {\n      \"enabled\": true,\n      \"method\": \"sms\"\n    }\n  },\n  \"signupUUID\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n}"
+						},
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/user/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"3fa85f64-5717-4562-b3fc-2c963f66afa6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "System",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5785b2e5d21c4d6236bb8a0319e252d98034f8e36a72871b4673bf02d7c24c6c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/system?command=info",
+							"protocol": "https",
+							"host": [
+								"{{SECURITY_HOSTNAME}}"
+							],
+							"port": "{{SECURITY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"system"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "info"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Get Devices",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/devices",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Capabilities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/capabilities",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"capabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Default Configurations",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/default_configurations/",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"default_configurations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Systeminfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/system?command=info",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"system"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "info"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Dashboard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/deviceDashboard",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"deviceDashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "serial",
+								"value": "00037f941710",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/{{SERIAL}}",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"{{SERIAL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "commands",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/commands",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"commands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Device",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Post configuration to device",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"when\": 0,\n  \"UUID\": 1,\n  \"configuration\": {\n    \"uuid\": 1,\n    \"radios\": [\n      {\n        \"band\": \"2G\",\n        \"country\": \"US\",\n        \"channel-width\": 20\n      },\n      {\n        \"band\": \"5G\",\n        \"country\": \"US\",\n        \"channel-width\": 80\n      }\n    ],\n    \"interfaces\": [\n      {\n        \"name\": \"WAN\",\n        \"role\": \"upstream\",\n        \"services\": [\n          \"ssh\",\n          \"lldp\",\n          \"dhcp-snooping\"\n        ],\n        \"ethernet\": [\n          {\n            \"select-ports\": [\n              \"WAN*\"\n            ]\n          }\n        ],\n        \"ipv4\": {\n          \"addressing\": \"dynamic\"\n        },\n        \"ssids\": [\n          {\n            \"name\": \"ssid_wpa_eap_2g\",\n            \"bss-mode\": \"ap\",\n            \"wifi-bands\": [\n              \"2G\"\n            ],\n            \"services\": [\n              \"wifi-frames\"\n            ],\n            \"encryption\": {\n              \"proto\": \"wpa\",\n              \"ieee80211w\": \"optional\"\n            },\n            \"radius\": {\n              \"authentication\": {\n                \"host\": \"10.10.1.221\",\n                \"port\": 1812,\n                \"secret\": \"testing123\"\n              },\n              \"accounting\": {\n                \"host\": \"10.10.1.221\",\n                \"port\": 1813,\n                \"secret\": \"testing123\"\n              }\n            }\n          },\n          {\n            \"name\": \"ssid_wpa_eap_5g\",\n            \"bss-mode\": \"ap\",\n            \"wifi-bands\": [\n              \"5G\"\n            ],\n            \"services\": [\n              \"wifi-frames\"\n            ],\n            \"encryption\": {\n              \"proto\": \"wpa\",\n              \"ieee80211w\": \"optional\"\n            },\n            \"radius\": {\n              \"authentication\": {\n                \"host\": \"10.10.1.221\",\n                \"port\": 1812,\n                \"secret\": \"testing123\"\n              },\n              \"accounting\": {\n                \"host\": \"10.10.1.221\",\n                \"port\": 1813,\n                \"secret\": \"testing123\"\n              }\n            }\n          }\n        ]\n      },\n      {\n        \"name\": \"LAN\",\n        \"role\": \"downstream\",\n        \"services\": [\n          \"ssh\",\n          \"lldp\",\n          \"dhcp-snooping\"\n        ],\n        \"ethernet\": [\n          {\n            \"select-ports\": [\n              \"LAN*\"\n            ]\n          }\n        ],\n        \"ipv4\": {\n          \"addressing\": \"static\",\n          \"subnet\": \"192.168.1.1/16\",\n          \"dhcp\": {\n            \"lease-first\": 10,\n            \"lease-count\": 10000,\n            \"lease-time\": \"6h\"\n          }\n        }\n      }\n    ],\n    \"metrics\": {\n      \"statistics\": {\n        \"interval\": 60,\n        \"types\": [\n          \"ssids\",\n          \"lldp\",\n          \"clients\"\n        ]\n      },\n      \"health\": {\n        \"interval\": 120\n      },\n      \"wifi-frames\": {\n        \"filters\": [\n          \"probe\",\n          \"auth\",\n          \"assoc\",\n          \"disassoc\",\n          \"deauth\",\n          \"local-deauth\",\n          \"inactive-deauth\",\n          \"key-mismatch\",\n          \"beacon-report\",\n          \"radar-detected\"\n        ]\n      },\n      \"dhcp-snooping\": {\n        \"filters\": [\n          \"ack\",\n          \"discover\",\n          \"offer\",\n          \"request\",\n          \"solicit\",\n          \"reply\",\n          \"renew\"\n        ]\n      }\n    },\n    \"services\": {\n      \"lldp\": {\n        \"describe\": \"TIP OpenWiFi\",\n        \"location\": \"QA\"\n      },\n      \"ssh\": {\n        \"port\": 22\n      }\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/configure",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"configure"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ping device",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\"\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/ping",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reboot ap",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"when\": 0\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/reboot",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"reboot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Factory reset AP",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"when\": 0,\n  \"keepRedirector\": true\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/factory",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"factory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blink LED on device",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"when\": 0,\n  \"duration\": 1,\n  \"pattern\": \"on\"\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/leds",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"leds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trace on device",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"when\": 0,\n  \"duration\": 1,\n  \"numberOfPackets\": 0,\n  \"network\": \"string\",\n  \"interface\": \"string\"\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/trace",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"trace"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wifi scan",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"verbose\": true,\n  \"activeScan\": true,\n  \"selector\": {\n    \"bands\": [\n      \"2\"\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/wifiscan",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"wifiscan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request a specific message",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"when\": 0,\n  \"message\": \"state\"\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/request",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Queued Events",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"types\": [\n    \"dhcp\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/eventqueue",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"eventqueue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Telemetry",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serialNumber\": \"903cb36ae255\",\n  \"interval\": 0,\n  \"lifetime\": 0,\n  \"kafka\": false,\n  \"types\": [\n    \"dhcp-snooping\"\n  ],\n  \"uuid\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n}"
+						},
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/telemetry",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"telemetry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RTTY parameters",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{GATEWAY_HOSTNAME}}:{{GATEWAY_PORTNUMBER}}/api/v1/device/903cb36ae255/rtty",
+							"protocol": "https",
+							"host": [
+								"{{GATEWAY_HOSTNAME}}"
+							],
+							"port": "{{GATEWAY_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"903cb36ae255",
+								"rtty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit device",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "FMS",
+			"item": [
+				{
+					"name": "FMS",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{FIRMWARE_HOSTNAME}}:{{FIRMWARE_PORTNUMBER}}/api/v1/firmwares?latestOnly=true&deviceType=edgecore_eap101",
+							"protocol": "https",
+							"host": [
+								"{{FIRMWARE_HOSTNAME}}"
+							],
+							"port": "{{FIRMWARE_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"firmwares"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "rc",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "latestOnly",
+									"value": "true"
+								},
+								{
+									"key": "deviceType",
+									"value": "edgecore_eap101"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Firmware age",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{FIRMWARE_HOSTNAME}}:{{FIRMWARE_PORTNUMBER}}/api/v1/firmwares?deviceType=cig_wf194c&latestOnly=true",
+							"protocol": "https",
+							"host": [
+								"{{FIRMWARE_HOSTNAME}}"
+							],
+							"port": "{{FIRMWARE_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"firmwares"
+							],
+							"query": [
+								{
+									"key": "deviceType",
+									"value": "cig_wf194c"
+								},
+								{
+									"key": "filter",
+									"value": "rc",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "latestOnly",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Provisioning",
+			"item": [
+				{
+					"name": "Prov-location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/location",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.globals.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/inventory",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Venue",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/venue/",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"venue",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Map",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/map",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"map"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "managementPolicy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "configurations",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/configuration/",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"configuration",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ip-to-Country",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/iptocountry/?iplist=190.10.11.147",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"iptocountry",
+								""
+							],
+							"query": [
+								{
+									"key": "iplist",
+									"value": "190.10.11.147"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configuration",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"VLAN\",\n  \"deviceRules\": {\n    \"rrm\": \"inherit\",\n    \"rcOnly\": \"inherit\",\n    \"firmwareUpgrade\": \"inherit\"\n  },\n  \"deviceTypes\": [\n    \"cig_wf188n\",\n    \"edgecore_ssw2ac2600\",\n    \"indio_um-305ax\",\n    \"hfcl_ion4xe\",\n    \"wallys_dr40x9\",\n    \"udaya_a5-id2\",\n    \"x64_vm\"\n  ],\n  \"entity\": \"e6223c6a-c150-43ea-8286-f2d6395e6d65\",\n  \"venue\": \"\",\n  \"configuration\": [\n    {\n      \"name\": \"Radios\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"radios\": [\n          {\n            \"band\": \"5G\",\n            \"channel\": 52,\n            \"channel-mode\": \"HE\",\n            \"channel-width\": 80,\n            \"country\": \"CA\"\n          },\n          {\n            \"band\": \"2G\",\n            \"channel\": 11,\n            \"channel-mode\": \"HE\",\n            \"channel-width\": 20,\n            \"country\": \"CA\"\n          }\n        ]\n      }\n    },\n    {\n      \"name\": \"Interfaces\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"interfaces\": [\n          {\n            \"name\": \"WAN\",\n            \"role\": \"upstream\",\n            \"services\": [\n              \"lldp\"\n            ],\n            \"ethernet\": [\n              {\n                \"select-ports\": [\n                  \"WAN*\"\n                ]\n              }\n            ],\n            \"ipv4\": {\n              \"addressing\": \"dynamic\"\n            },\n            \"ssids\": [\n              {\n                \"name\": \"OpenWifi\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ],\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"proto\": \"none\",\n                  \"ieee80211w\": \"optional\"\n                }\n              },\n              {\n                \"name\": \"OpenWifi_wpa\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ],\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"proto\": \"psk\",\n                  \"key\": \"OpenWifi\",\n                  \"ieee80211w\": \"optional\"\n                }\n              },\n              {\n                \"name\": \"OpenWifi_wpa2\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ],\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"proto\": \"psk2\",\n                  \"key\": \"OpenWifi\",\n                  \"ieee80211w\": \"optional\"\n                }\n              },\n              {\n                \"name\": \"OpenWifi_wpa3\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ],\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"proto\": \"sae\",\n                  \"key\": \"OpenWifi\",\n                  \"ieee80211w\": \"optional\"\n                }\n              }\n            ]\n          },\n          {\n            \"name\": \"LAN\",\n            \"role\": \"downstream\",\n            \"services\": [\n              \"ssh\",\n              \"lldp\"\n            ],\n            \"ethernet\": [\n              {\n                \"select-ports\": [\n                  \"LAN*\"\n                ]\n              }\n            ],\n            \"ipv4\": {\n              \"addressing\": \"static\",\n              \"subnet\": \"192.168.1.1/24\",\n              \"dhcp\": {\n                \"lease-first\": 10,\n                \"lease-count\": 100,\n                \"lease-time\": \"6h\"\n              }\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"name\": \"Metrics\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"metrics\": {\n          \"statistics\": {\n            \"interval\": 120,\n            \"types\": [\n              \"ssids\",\n              \"lldp\",\n              \"clients\"\n            ]\n          },\n          \"health\": {\n            \"interval\": 120\n          },\n          \"wifi-frames\": {\n            \"filters\": [\n              \"probe\",\n              \"auth\"\n            ]\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"Services\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"services\": {\n          \"lldp\": {\n            \"describe\": \"uCentral\",\n            \"location\": \"universe\"\n          },\n          \"ssh\": {\n            \"port\": 22\n          }\n        }\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/configuration/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"configuration",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Systeminfo",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/system?command=info",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"system"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "info"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"ACCESS_TOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/inventory/",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add device in Inventory",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"serialNumber\":\"deadbeaf0038\",\n    \"name\":\"Testing_to_add_device_through_postman\",\n    \"rrm\":\"inherit\",\n    \"deviceType\":\"edgecore_eap101\",\n    \"devClass\":\"any\",\n    \"description\":\"For testing API through postman\",\n    \"entity\":\"\",\n    \"venue\":\"\",\n    \"subscriber\":\"\",\n    \"__newConfig\":{\n        \"rrm\":\"inherit\",\n        \"firmwareUpgrade\":\"no\",\n        \"firmwareRCOnly\":false,\n        \"configuration\":[],\n        \"name\":\"device:deadbeaf0038\"\n        ,\"description\":\"Created from the Edit Tag menu\",\n        \"deviceTypes\":[\"edgecore_eap101\"]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/inventory/deadbeaf0038",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								"deadbeaf0038"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the device in Inventory",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/inventory/deadbeaf0038",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								"deadbeaf0038"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// pm.globals.get(\"BEARERTOKEN\");",
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/entity",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"entity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"For Testing through postman \",\n    \"description\":\"Testing through postman\",\n    \"rrm\":\"inherit\",\n    \"parent\":\"0000-0000-0000\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/entity/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"entity",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/entity/3b7573b6-e975-4f71-b342-cbd91e6ee701",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"entity",
+								"3b7573b6-e975-4f71-b342-cbd91e6ee701"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contacts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/contact",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Contact",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Prov-Testing-postman\",\n    \"type\":\"USER\",\n    \"title\":\"Testing_contact\",\n    \"salutation\":\"\",\n    \"firstname\":\"ProvTesting\",\n    \"lastname\":\"Through Postman\",\n    \"initials\":\"\",\n    \"visual\":\"\",\n    \"phones\":[],\n    \"mobiles\":[]\n    ,\"primaryEmail\":\"tip@ucentral.com\",\n    \"secondaryEmail\":\"\",\n    \"accessPIN\":\"\",\n    \"description\":\"\",\n    \"initialNote\":\"\",\n    \"entity\":\"0000-0000-0000\",\n    \"notes\":[{\"note\":\"\"}]\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/contact/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"contact",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete contact",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/contact/46c7d377-72dd-4292-8d1b-ff8031fa28e1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"contact",
+								"46c7d377-72dd-4292-8d1b-ff8031fa28e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/location",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"TIP\",\n    \"type\":\"AUTO\",\n    \"buildingName\":\"\",\n    \"addressLines\":[\"Pedda Rushikonda\"],\n    \"city\":\"Visakhapatnam\",\n    \"state\":\"Andhra pradesh\",\n    \"postal\":\"530045\",\n    \"country\":\"IN\",\n    \"phones\":[],\n    \"mobiles\":[],\n    \"geoCode\":\"\",\n    \"description\":\"For Testing through Postman\",\n    \"initialNote\":\"Testing purposes through Postman\",\n    \"entity\":\"0000-0000-0000\",\n    \"notes\":[{\"note\":\"Testing purposes\"}]\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/location/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"location",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/location/62dc658c-029a-4118-84b0-a873a704f880",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"location",
+								"62dc658c-029a-4118-84b0-a873a704f880"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Venue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Prov_testing\",\n    \"rrm\":\"on\",\n    \"description\":\"For Testing Purposes\",\n    \"notes\":[{\"note\":\"For Testing Purposes\"}],\n    \"parent\":\"\",\n    \"entity\":\"3646302f-5e46-4c98-ad01-f6aebacc26a7\",\n    \"location\":\"\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/venue/0",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"venue",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Venue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/venue/ec8ef153-b94c-4ea1-a191-48fd26a23ff1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"venue",
+								"ec8ef153-b94c-4ea1-a191-48fd26a23ff1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Operator",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/operator",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"operator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Inventory",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"For testing API through automation after editing\",\n    \"devClass\": \"any\",\n    \"deviceType\": \"edgecore_eap101\",\n    \"entity\": \"\",\n    \"name\": \"Testing_to_add_device_through_automation\",\n    \"notes\": [],\n    \"rrm\": \"inherit\",\n    \"venue\": \"\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/inventory/deadbeaf0038",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								"deadbeaf0038"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Entity",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Testing through postman\",\n  \"name\": \"For Testing through postman API's\",\n  \"notes\": [],\n  \"rrm\": \"inherit\",\n  \"sourceIP\": []\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/entity/3b7573b6-e975-4f71-b342-cbd91e6ee701",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"entity",
+								"3b7573b6-e975-4f71-b342-cbd91e6ee701"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Contact",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"accessPIN\": \"\",\n  \"description\": \"\",\n  \"entity\": \"0000-0000-0000\",\n  \"firstname\": \"ProvTesting\",\n  \"initials\": \"\",\n  \"lastname\": \"Through Postman\",\n  \"mobiles\": [],\n  \"name\": \"Prov-Testing-postman API's\",\n  \"notes\": [],\n  \"phones\": [],\n  \"primaryEmail\": \"tip@ucentral.com\",\n  \"salutation\": \"\",\n  \"secondaryEmail\": \"\",\n  \"title\": \"Testing_contact\",\n  \"type\": \"USER\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/contact/46c7d377-72dd-4292-8d1b-ff8031fa28e1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"contact",
+								"46c7d377-72dd-4292-8d1b-ff8031fa28e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(pm.collectionVariables.get(\"BEARERTOKEN\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"addressLines\": [\n        \"Pedda Rushikonda\"\n    ],\n    \"buildingName\": \"\",\n    \"city\": \"Visakhapatnam\",\n    \"country\": \"IN\",\n    \"created\": 1654754601,\n    \"description\": \"For Testing through Postman after EDiting\",\n    \"entity\": \"0000-0000-0000\",\n    \"geoCode\": \"\",\n    \"id\": \"b415f8ea-ee1f-4572-be26-3370a07b27c6\",\n    \"inUse\": [],\n    \"managementPolicy\": \"\",\n    \"mobiles\": [],\n    \"modified\": 1654754601,\n    \"name\": \"TIP\",\n    \"phones\": [],\n    \"postal\": \"530045\",\n    \"state\": \"Andhra pradesh\",\n    \"tags\": [],\n    \"type\": \"AUTO\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/location/b415f8ea-ee1f-4572-be26-3370a07b27c6",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"location",
+								"b415f8ea-ee1f-4572-be26-3370a07b27c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Venue",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"For testing Purposes through Automation\",\n  \"location\": \"\",\n  \"name\": \"Testing Prov\",\n  \"notes\": [],\n  \"rrm\": \"inherit\",\n  \"sourceIP\": []\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/venue/ec8ef153-b94c-4ea1-a191-48fd26a23ff1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"venue",
+								"ec8ef153-b94c-4ea1-a191-48fd26a23ff1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add device with config",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n                  \"serialNumber\": \"deadbeef1038\",\n                  \"name\": \"Testing AP\",\n                  \"rrm\": \"inherit\",\n                  \"deviceType\": \"cig_wf194c\",\n                  \"devClass\": \"any\",\n                  \"description\": \"Testing AP\",\n                  \"entity\": \"\",\n                  \"venue\": \"\",\n                  \"subscriber\": \"\",\n                  \"__newConfig\": {\n                    \"rrm\": \"inherit\",\n                    \"firmwareUpgrade\": \"no\",\n                    \"firmwareRCOnly\": false,\n                    \"configuration\": [\n                      {\n                        \"name\": \"Radios\",\n                        \"description\": \"\",\n                        \"weight\": 1,\n                        \"configuration\": {\n                          \"radios\": [\n                            {\n                              \"band\": \"2G\",\n                              \"country\": \"US\",\n                              \"channel-width\": 20,\n                              \"channel\": 1\n                            },\n                            {\n                              \"band\": \"5G\",\n                              \"country\": \"US\",\n                              \"channel-width\": 80,\n                              \"channel\": 36\n                            }\n                          ]\n                        }\n                      },\n                      {\n                        \"name\": \"Interfaces\",\n                        \"description\": \"\",\n                        \"weight\": 1,\n                        \"configuration\": {\n                          \"interfaces\": [\n                            {\n                              \"name\": \"WAN\",\n                              \"role\": \"upstream\",\n                              \"services\": [\n                                \"ssh\",\n                                \"lldp\",\n                                \"dhcp-snooping\"\n                              ],\n                              \"ethernet\": [\n                                {\n                                  \"select-ports\": [\n                                    \"WAN*\"\n                                  ]\n                                }\n                              ],\n                              \"ipv4\": {\n                                \"addressing\": \"dynamic\"\n                              },\n                              \"ssids\": [\n                                {\n                                  \"name\": \"ssid_wpa_eap_2g\",\n                                  \"bss-mode\": \"ap\",\n                                  \"wifi-bands\": [\n                                    \"2G\"\n                                  ],\n                                  \"services\": [\n                                    \"wifi-frames\"\n                                  ],\n                                  \"encryption\": {\n                                    \"proto\": \"wpa\",\n                                    \"ieee80211w\": \"optional\"\n                                  },\n                                  \"radius\": {\n                                    \"authentication\": {\n                                      \"host\": \"10.10.1.221\",\n                                      \"port\": 1812,\n                                      \"secret\": \"testing123\"\n                                    },\n                                    \"accounting\": {\n                                      \"host\": \"10.10.1.221\",\n                                      \"port\": 1813,\n                                      \"secret\": \"testing123\"\n                                    }\n                                  }\n                                },\n                                {\n                                  \"name\": \"ssid_wpa_eap_5g\",\n                                  \"bss-mode\": \"ap\",\n                                  \"wifi-bands\": [\n                                    \"5G\"\n                                  ],\n                                  \"services\": [\n                                    \"wifi-frames\"\n                                  ],\n                                  \"encryption\": {\n                                    \"proto\": \"wpa\",\n                                    \"ieee80211w\": \"optional\"\n                                  },\n                                  \"radius\": {\n                                    \"authentication\": {\n                                      \"host\": \"10.10.1.221\",\n                                      \"port\": 1812,\n                                      \"secret\": \"testing123\"\n                                    },\n                                    \"accounting\": {\n                                      \"host\": \"10.10.1.221\",\n                                      \"port\": 1813,\n                                      \"secret\": \"testing123\"\n                                    }\n                                  }\n                                }\n                              ]\n                            },\n                            {\n                              \"name\": \"LAN\",\n                              \"role\": \"downstream\",\n                              \"services\": [\n                                \"ssh\",\n                                \"lldp\",\n                                \"dhcp-snooping\"\n                              ],\n                              \"ethernet\": [\n                                {\n                                  \"select-ports\": [\n                                    \"LAN*\"\n                                  ]\n                                }\n                              ],\n                              \"ipv4\": {\n                                \"addressing\": \"static\",\n                                \"subnet\": \"192.168.1.1/16\",\n                                \"dhcp\": {\n                                  \"lease-first\": 10,\n                                  \"lease-count\": 10000,\n                                  \"lease-time\": \"6h\"\n                                }\n                              }\n                            }\n                          ]\n                        }\n                      },\n                      {\n                        \"name\": \"Metrics\",\n                        \"description\": \"\",\n                        \"weight\": 1,\n                        \"configuration\": {\n                          \"metrics\": {\n                            \"statistics\": {\n                              \"interval\": 60,\n                              \"types\": [\n                                \"ssids\",\n                                \"lldp\",\n                                \"clients\"\n                              ]\n                            },\n                            \"health\": {\n                              \"interval\": 120\n                            },\n                            \"wifi-frames\": {\n                              \"filters\": [\n                                \"probe\",\n                                \"auth\",\n                                \"assoc\",\n                                \"disassoc\",\n                                \"deauth\",\n                                \"local-deauth\",\n                                \"inactive-deauth\",\n                                \"key-mismatch\",\n                                \"beacon-report\",\n                                \"radar-detected\"\n                              ]\n                            },\n                            \"dhcp-snooping\": {\n                              \"filters\": [\n                                \"ack\",\n                                \"discover\",\n                                \"offer\",\n                                \"request\",\n                                \"solicit\",\n                                \"reply\",\n                                \"renew\"\n                              ]\n                            }\n                          }\n                        }\n                      },\n                      {\n                        \"name\": \"Services\",\n                        \"description\": \"\",\n                        \"weight\": 1,\n                        \"configuration\": {\n                          \"services\": {\n                            \"lldp\": {\n                              \"describe\": \"TIP OpenWiFi\",\n                              \"location\": \"QA\"\n                            },\n                            \"ssh\": {\n                              \"port\": 22\n                            }\n                          }\n                        }\n                      }\n                    ],\n                    \"name\": \"device:deadbeef1038\",\n                    \"description\": \"Created from the Edit Tag menu\",\n                    \"deviceTypes\": [\n                      \"cig_wf194c\"\n                    ]\n                  }\n                }"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/inventory/deadbeef1038?createObjects={\"objects\":[{\"configuration\":{\"rrm\":\"inherit\",\"firmwareUpgrade\":\"no\",\"firmwareRCOnly\":false,\"configuration\":[{\"name\":\"Radios\",\"description\":\"\",\"weight\":1,\"configuration\":{\"radios\":[{\"band\":\"2G\",\"country\":\"US\",\"channel-width\":20,\"channel\":1},{\"band\":\"5G\",\"country\":\"US\",\"channel-width\":80,\"channel\":36}]}},{\"name\":\"Interfaces\",\"description\":\"\",\"weight\":1,\"configuration\":{\"interfaces\":[{\"name\":\"WAN\",\"role\":\"upstream\",\"services\":[\"ssh\",\"lldp\",\"dhcp-snooping\"],\"ethernet\":[{\"select-ports\":[\"WAN*\"]}],\"ipv4\":{\"addressing\":\"dynamic\"},\"ssids\":[{\"name\":\"ssid_wpa_eap_2g\",\"bss-mode\":\"ap\",\"wifi-bands\":[\"2G\"],\"services\":[\"wifi-frames\"],\"encryption\":{\"proto\":\"wpa\",\"ieee80211w\":\"optional\"},\"radius\":{\"authentication\":{\"host\":\"10.10.1.221\",\"port\":1812,\"secret\":\"testing123\"},\"accounting\":{\"host\":\"10.10.1.221\",\"port\":1813,\"secret\":\"testing123\"}}},{\"name\":\"ssid_wpa_eap_5g\",\"bss-mode\":\"ap\",\"wifi-bands\":[\"5G\"],\"services\":[\"wifi-frames\"],\"encryption\":{\"proto\":\"wpa\",\"ieee80211w\":\"optional\"},\"radius\":{\"authentication\":{\"host\":\"10.10.1.221\",\"port\":1812,\"secret\":\"testing123\"},\"accounting\":{\"host\":\"10.10.1.221\",\"port\":1813,\"secret\":\"testing123\"}}}]},{\"name\":\"LAN\",\"role\":\"downstream\",\"services\":[\"ssh\",\"lldp\",\"dhcp-snooping\"],\"ethernet\":[{\"select-ports\":[\"LAN*\"]}],\"ipv4\":{\"addressing\":\"static\",\"subnet\":\"192.168.1.1/16\",\"dhcp\":{\"lease-first\":10,\"lease-count\":10000,\"lease-time\":\"6h\"}}}]}},{\"name\":\"Metrics\",\"description\":\"\",\"weight\":1,\"configuration\":{\"metrics\":{\"statistics\":{\"interval\":60,\"types\":[\"ssids\",\"lldp\",\"clients\"]},\"health\":{\"interval\":120},\"wifi-frames\":{\"filters\":[\"probe\",\"auth\",\"assoc\",\"disassoc\",\"deauth\",\"local-deauth\",\"inactive-deauth\",\"key-mismatch\",\"beacon-report\",\"radar-detected\"]},\"dhcp-snooping\":{\"filters\":[\"ack\",\"discover\",\"offer\",\"request\",\"solicit\",\"reply\",\"renew\"]}}}},{\"name\":\"Services\",\"description\":\"\",\"weight\":1,\"configuration\":{\"services\":{\"lldp\":{\"describe\":\"TIP OpenWiFi\",\"location\":\"QA\"},\"ssh\":{\"port\":22}}}}],\"name\":\"device:deadbeef1038\",\"description\":\"Created from the Edit Tag menu\",\"deviceTypes\":[\"cig_wf194c\"]}}]}",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								"deadbeef1038"
+							],
+							"query": [
+								{
+									"key": "createObjects",
+									"value": "{\"objects\":[{\"configuration\":{\"rrm\":\"inherit\",\"firmwareUpgrade\":\"no\",\"firmwareRCOnly\":false,\"configuration\":[{\"name\":\"Radios\",\"description\":\"\",\"weight\":1,\"configuration\":{\"radios\":[{\"band\":\"2G\",\"country\":\"US\",\"channel-width\":20,\"channel\":1},{\"band\":\"5G\",\"country\":\"US\",\"channel-width\":80,\"channel\":36}]}},{\"name\":\"Interfaces\",\"description\":\"\",\"weight\":1,\"configuration\":{\"interfaces\":[{\"name\":\"WAN\",\"role\":\"upstream\",\"services\":[\"ssh\",\"lldp\",\"dhcp-snooping\"],\"ethernet\":[{\"select-ports\":[\"WAN*\"]}],\"ipv4\":{\"addressing\":\"dynamic\"},\"ssids\":[{\"name\":\"ssid_wpa_eap_2g\",\"bss-mode\":\"ap\",\"wifi-bands\":[\"2G\"],\"services\":[\"wifi-frames\"],\"encryption\":{\"proto\":\"wpa\",\"ieee80211w\":\"optional\"},\"radius\":{\"authentication\":{\"host\":\"10.10.1.221\",\"port\":1812,\"secret\":\"testing123\"},\"accounting\":{\"host\":\"10.10.1.221\",\"port\":1813,\"secret\":\"testing123\"}}},{\"name\":\"ssid_wpa_eap_5g\",\"bss-mode\":\"ap\",\"wifi-bands\":[\"5G\"],\"services\":[\"wifi-frames\"],\"encryption\":{\"proto\":\"wpa\",\"ieee80211w\":\"optional\"},\"radius\":{\"authentication\":{\"host\":\"10.10.1.221\",\"port\":1812,\"secret\":\"testing123\"},\"accounting\":{\"host\":\"10.10.1.221\",\"port\":1813,\"secret\":\"testing123\"}}}]},{\"name\":\"LAN\",\"role\":\"downstream\",\"services\":[\"ssh\",\"lldp\",\"dhcp-snooping\"],\"ethernet\":[{\"select-ports\":[\"LAN*\"]}],\"ipv4\":{\"addressing\":\"static\",\"subnet\":\"192.168.1.1/16\",\"dhcp\":{\"lease-first\":10,\"lease-count\":10000,\"lease-time\":\"6h\"}}}]}},{\"name\":\"Metrics\",\"description\":\"\",\"weight\":1,\"configuration\":{\"metrics\":{\"statistics\":{\"interval\":60,\"types\":[\"ssids\",\"lldp\",\"clients\"]},\"health\":{\"interval\":120},\"wifi-frames\":{\"filters\":[\"probe\",\"auth\",\"assoc\",\"disassoc\",\"deauth\",\"local-deauth\",\"inactive-deauth\",\"key-mismatch\",\"beacon-report\",\"radar-detected\"]},\"dhcp-snooping\":{\"filters\":[\"ack\",\"discover\",\"offer\",\"request\",\"solicit\",\"reply\",\"renew\"]}}}},{\"name\":\"Services\",\"description\":\"\",\"weight\":1,\"configuration\":{\"services\":{\"lldp\":{\"describe\":\"TIP OpenWiFi\",\"location\":\"QA\"},\"ssh\":{\"port\":22}}}}],\"name\":\"device:deadbeef1038\",\"description\":\"Created from the Edit Tag menu\",\"deviceTypes\":[\"cig_wf194c\"]}}]}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass?operatorId=aa82244c-3de6-4b76-9eec-fa7e8b835fca",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass"
+							],
+							"query": [
+								{
+									"key": "operatorId",
+									"value": "aa82244c-3de6-4b76-9eec-fa7e8b835fca"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"For testing the API\",\n  \"billingCode\": \"00000\",\n  \"description\": \"For testing the API through postman\",\n  \"period\": \"monthly\",\n  \"cost\": 0,\n  \"currency\": \"USD\",\n  \"notes\": [\n    {\n      \"note\": \"For testing the API through postman\"\n    }\n  ],\n  \"operatorId\": \"aa82244c-3de6-4b76-9eec-fa7e8b835fca\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"For testing the API\",\n  \"billingCode\": \"00000\",\n  \"description\": \"For testing the API through postman1 after editing\",\n  \"period\": \"monthly\",\n  \"cost\": 0,\n  \"currency\": \"USD\",\n  \"notes\": []\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass/46f9a21a-490d-4a13-a7e8-bb1a2bc30bab",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass",
+								"46f9a21a-490d-4a13-a7e8-bb1a2bc30bab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific map",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/map/ab5ec59a-a9c9-4f2e-bd1c-a98b7ad33613",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"map",
+								"ab5ec59a-a9c9-4f2e-bd1c-a98b7ad33613"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Map",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"access\": {\n    \"list\": []\n  },\n  \"created\": 1654266780,\n  \"creator\": \"11111111-0000-0000-6666-999999999999\",\n  \"data\": \"{\\\"elements\\\":[{\\\"id\\\":\\\"entity/0000-0000-0000\\\",\\\"position\\\":{\\\"x\\\":788.0001984205973,\\\"y\\\":-228}},{\\\"id\\\":\\\"entity/0d3b713c-579f-4449-b005-980fc45266f7\\\",\\\"position\\\":{\\\"x\\\":125.00091086366538,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/25e3781c-ff89-4060-98de-72f2f469ece7\\\",\\\"position\\\":{\\\"x\\\":0.00013680958416162147,\\\"y\\\":220}},{\\\"id\\\":\\\"venue/d25b862d-7211-4f5d-8980-eb796cf90259\\\",\\\"position\\\":{\\\"x\\\":0.0009741442442360648,\\\"y\\\":330}},{\\\"id\\\":\\\"entity/3bf7563a-3d9d-11ec-bc4b-6ed02b842da1\\\",\\\"position\\\":{\\\"x\\\":375.0004521666363,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/6a657863-9940-4303-ac68-4cc10d3078ec\\\",\\\"position\\\":{\\\"x\\\":633.0000704105611,\\\"y\\\":310}},{\\\"id\\\":\\\"entity/7ef6dd8e-5ad3-47d6-951f-681adcf2171c\\\",\\\"position\\\":{\\\"x\\\":857.0000877260527,\\\"y\\\":184}},{\\\"id\\\":\\\"entity/da165a23-2562-4a1a-b0c5-8f6e955a2e01\\\",\\\"position\\\":{\\\"x\\\":1125.000287727392,\\\"y\\\":110}},{\\\"id\\\":\\\"venue/b7c1825b-2f25-41b7-8a39-b51b07a5bc64\\\",\\\"position\\\":{\\\"x\\\":1339.0000824838032,\\\"y\\\":220}},{\\\"id\\\":\\\"entity/e6223c6a-c150-43ea-8286-f2d6395e6d65\\\",\\\"position\\\":{\\\"x\\\":1625.000942559204,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/4002042d-b2a7-4a74-bde3-10229ab889a3\\\",\\\"position\\\":{\\\"x\\\":1093.0008368135925,\\\"y\\\":592}},{\\\"id\\\":\\\"entity/c3993947-f5af-4530-9f6e-72edb767abfe\\\",\\\"position\\\":{\\\"x\\\":1501.0009763642392,\\\"y\\\":462}},{\\\"id\\\":\\\"entity/ee468f28-465d-47bc-8ffe-b02678450fd8\\\",\\\"position\\\":{\\\"x\\\":1875.0002469570716,\\\"y\\\":220}},{\\\"id\\\":\\\"device/903cb3bb24df\\\",\\\"position\\\":{\\\"x\\\":354.0006993336034,\\\"y\\\":264}},{\\\"id\\\":\\\"device/68215f9d076a\\\",\\\"position\\\":{\\\"x\\\":887.0006396562085,\\\"y\\\":352}}],\\\"zoom\\\":0.5,\\\"position\\\":[-100.25009594166397,168],\\\"rootNode\\\":\\\"entity/0000-0000-0000\\\"}\",\n  \"description\": \"\",\n  \"entity\": \"\",\n  \"id\": \"d24b07e9-9925-47d7-b7e6-4cc28fb11603\",\n  \"managementPolicy\": \"\",\n  \"modified\": 1654266955,\n  \"name\": \"Maps from API\",\n  \"notes\": [],\n  \"tags\": [],\n  \"venue\": \"\",\n  \"visibility\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/map/0",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"map",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Map",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"access\": {\n    \"list\": []\n  },\n  \"created\": 1654267598,\n  \"creator\": \"11111111-0000-0000-6666-999999999999\",\n  \"data\": \"{\\\"elements\\\":[{\\\"id\\\":\\\"entity/0000-0000-0000\\\",\\\"position\\\":{\\\"x\\\":742.0002986856452,\\\"y\\\":-258}},{\\\"id\\\":\\\"entity/0d3b713c-579f-4449-b005-980fc45266f7\\\",\\\"position\\\":{\\\"x\\\":125.0000746112698,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/25e3781c-ff89-4060-98de-72f2f469ece7\\\",\\\"position\\\":{\\\"x\\\":0.000987247185699772,\\\"y\\\":220}},{\\\"id\\\":\\\"venue/d25b862d-7211-4f5d-8980-eb796cf90259\\\",\\\"position\\\":{\\\"x\\\":0.00015366265594566887,\\\"y\\\":330}},{\\\"id\\\":\\\"entity/3bf7563a-3d9d-11ec-bc4b-6ed02b842da1\\\",\\\"position\\\":{\\\"x\\\":375.00078943444134,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/6a657863-9940-4303-ac68-4cc10d3078ec\\\",\\\"position\\\":{\\\"x\\\":625.0001373023756,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/7ef6dd8e-5ad3-47d6-951f-681adcf2171c\\\",\\\"position\\\":{\\\"x\\\":995.0002519718007,\\\"y\\\":390}},{\\\"id\\\":\\\"entity/da165a23-2562-4a1a-b0c5-8f6e955a2e01\\\",\\\"position\\\":{\\\"x\\\":1125.0005714344913,\\\"y\\\":110}},{\\\"id\\\":\\\"venue/b7c1825b-2f25-41b7-8a39-b51b07a5bc64\\\",\\\"position\\\":{\\\"x\\\":1125.0000846706366,\\\"y\\\":220}},{\\\"id\\\":\\\"entity/e6223c6a-c150-43ea-8286-f2d6395e6d65\\\",\\\"position\\\":{\\\"x\\\":1625.0007765709465,\\\"y\\\":110}},{\\\"id\\\":\\\"entity/4002042d-b2a7-4a74-bde3-10229ab889a3\\\",\\\"position\\\":{\\\"x\\\":1455.000216347443,\\\"y\\\":426}},{\\\"id\\\":\\\"entity/c3993947-f5af-4530-9f6e-72edb767abfe\\\",\\\"position\\\":{\\\"x\\\":1625.0006288181921,\\\"y\\\":220}},{\\\"id\\\":\\\"entity/ee468f28-465d-47bc-8ffe-b02678450fd8\\\",\\\"position\\\":{\\\"x\\\":1875.0006116378358,\\\"y\\\":220}},{\\\"id\\\":\\\"device/903cb3bb24df\\\",\\\"position\\\":{\\\"x\\\":790.000930605748,\\\"y\\\":328}},{\\\"id\\\":\\\"device/68215f9d076a\\\",\\\"position\\\":{\\\"x\\\":1125.0006631675788,\\\"y\\\":330}}],\\\"zoom\\\":0.5,\\\"position\\\":[-236.25019132512296,168],\\\"rootNode\\\":\\\"entity/0000-0000-0000\\\"}\",\n  \"description\": \"\",\n  \"entity\": \"\",\n  \"id\": \"34cfd185-da33-4885-85c7-1fef21900570\",\n  \"managementPolicy\": \"\",\n  \"modified\": 1654267727,\n  \"name\": \"Maps from API after Edit\",\n  \"notes\": [],\n  \"tags\": [],\n  \"venue\": \"\",\n  \"visibility\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/map/34cfd185-da33-4885-85c7-1fef21900570",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"map",
+								"34cfd185-da33-4885-85c7-1fef21900570"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Map",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/map/34cfd185-da33-4885-85c7-1fef21900570",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"map",
+								"34cfd185-da33-4885-85c7-1fef21900570"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Management role",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/managementRole",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"managementRole"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Management role",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Add Operator",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"candela technologies\",\n  \"deviceRules\": {\n    \"rrm\": \"inherit\",\n    \"rcOnly\": \"inherit\",\n    \"firmwareUpgrade\": \"inherit\"\n  },\n  \"sourceIP\": [\n    \"123.45.76.98\",\n    \"123.45.76.99\",\n    \"192.168.200.1\",\n    \"192.168.200.3\"\n  ],\n  \"registrationId\": \"11220099\",\n  \"description\": \"\",\n  \"firmwareRCOnly\": false\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/operator/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"operator",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Operator",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"candela technologies\",\n  \"description\": \"Branch\",\n  \"deviceRules\": {\n    \"firmwareUpgrade\": \"inherit\",\n    \"rcOnly\": \"inherit\",\n    \"rrm\": \"inherit\"\n  },\n  \"sourceIP\": [\n    \"123.45.76.98\",\n    \"123.45.76.99\",\n    \"192.168.200.1\",\n    \"192.168.200.3\"\n  ],\n  \"registrationId\": \"11220099\",\n  \"notes\": []\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/operator/a7fffc6c-936c-4430-8f5f-1076c4d41162",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"operator",
+								"a7fffc6c-936c-4430-8f5f-1076c4d41162"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Operator",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/operator/a7fffc6c-936c-4430-8f5f-1076c4d41162",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"operator",
+								"a7fffc6c-936c-4430-8f5f-1076c4d41162"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass?operatorId=7a10bc9d-ae9b-44fa-a699-287da5581c36",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass"
+							],
+							"query": [
+								{
+									"key": "operatorId",
+									"value": "7a10bc9d-ae9b-44fa-a699-287da5581c36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Testing Purposes\",\n  \"billingCode\": \"12345\",\n  \"description\": \"Testing Purposes\",\n  \"period\": \"monthly\",\n  \"cost\": 0,\n  \"currency\": \"USD\",\n  \"notes\": [\n    {\n      \"note\": \"Testing Purposes\"\n    }\n  ],\n  \"operatorId\": \"023227b0-ecc8-415c-9e1a-fab39541c88b\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass/1",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Testing Purposes\",\n  \"billingCode\": \"12345\",\n  \"description\": \"Testing Purposes after editing\",\n  \"period\": \"monthly\",\n  \"cost\": 0,\n  \"currency\": \"USD\",\n  \"notes\": []\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass/50191b05-78c3-46e0-a43e-4ee9e4c26e93",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass",
+								"50191b05-78c3-46e0-a43e-4ee9e4c26e93"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass/50191b05-78c3-46e0-a43e-4ee9e4c26e93",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass",
+								"50191b05-78c3-46e0-a43e-4ee9e4c26e93"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Subscriber Device",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/subscriberDevice?operatorId=7a10bc9d-ae9b-44fa-a699-287da5581c36",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"subscriberDevice"
+							],
+							"query": [
+								{
+									"key": "operatorId",
+									"value": "7a10bc9d-ae9b-44fa-a699-287da5581c36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Subscriber device",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"operatorId\": \"7a10bc9d-ae9b-44fa-a699-287da5581c36\",\n  \"billingCode\": \"11223344\",\n  \"serviceClass\": \"de935aa7-211c-4300-8dcf-181bae6feb60\",\n  \"note\": \"\",\n  \"description\": \"\",\n  \"subscriberId\": \"31bccc53-fb7d-44e9-927d-e95098083ebc\",\n  \"name\": \"Candela VIzag\",\n  \"deviceType\": \"cig_wf194c4\",\n  \"deviceRules\": {\n    \"rrm\": \"inherit\",\n    \"rcOnly\": \"inherit\",\n    \"firmwareUpgrade\": \"inherit\"\n  },\n  \"serialNumber\": \"123456712ACD\",\n  \"location\": {\n    \"type\": \"SERVICE\",\n    \"addressLineOne\": \"Candela Technologies\",\n    \"addressLineTwo\": \"\",\n    \"city\": \"Visakhapatnam\",\n    \"state\": \"Andhrapradesh\",\n    \"postal\": \"530045\",\n    \"country\": \"IN\",\n    \"buildingName\": \"\",\n    \"mobiles\": [],\n    \"phones\": [],\n    \"geoCode\": \"\",\n    \"addressLines\": [\n      \"Candela Technologies\"\n    ]\n  },\n  \"contact\": {\n    \"visual\": \"\",\n    \"type\": \"SUBSCRIBER\",\n    \"salutation\": \"\",\n    \"title\": \"\",\n    \"firstname\": \"Admin\",\n    \"lastname\": \"\",\n    \"initials\": \"\",\n    \"primaryEmail\": \"candela@candelatech.com\",\n    \"secondaryEmail\": \"\",\n    \"mobiles\": [],\n    \"phones\": [],\n    \"description\": \"\",\n    \"accessPIN\": \"\",\n    \"note\": \"\"\n  },\n  \"configuration\": [\n    {\n      \"name\": \"Radios\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"radios\": [\n          {\n            \"band\": \"5G\",\n            \"channel\": 52,\n            \"channel-mode\": \"HE\",\n            \"channel-width\": 40,\n            \"country\": \"CA\"\n          }\n        ]\n      }\n    },\n    {\n      \"name\": \"Interfaces\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"interfaces\": [\n          {\n            \"name\": \"WAN\",\n            \"role\": \"upstream\",\n            \"services\": [\n              \"lldp\"\n            ],\n            \"ethernet\": [\n              {\n                \"select-ports\": [\n                  \"WAN*\"\n                ]\n              }\n            ],\n            \"ipv4\": {\n              \"addressing\": \"dynamic\"\n            },\n            \"ssids\": [\n              {\n                \"name\": \"OpenWifi\",\n                \"wifi-bands\": [\n                  \"5G\"\n                ],\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"proto\": \"psk2\",\n                  \"key\": \"OpenWifi\",\n                  \"ieee80211w\": \"optional\"\n                },\n                \"rate-limit\": {\n                  \"ingress-rate\": 20,\n                  \"egress-rate\": 60\n                }\n              }\n            ]\n          },\n          {\n            \"name\": \"LAN\",\n            \"role\": \"downstream\",\n            \"services\": [\n              \"ssh\",\n              \"lldp\"\n            ],\n            \"ethernet\": [\n              {\n                \"select-ports\": [\n                  \"LAN*\"\n                ]\n              }\n            ],\n            \"ipv4\": {\n              \"addressing\": \"static\",\n              \"subnet\": \"192.168.1.1/24\",\n              \"dhcp\": {\n                \"lease-first\": 10,\n                \"lease-count\": 100,\n                \"lease-time\": \"6h\"\n              }\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"name\": \"Metrics\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"metrics\": {\n          \"statistics\": {\n            \"interval\": 120,\n            \"types\": [\n              \"ssids\",\n              \"lldp\",\n              \"clients\"\n            ]\n          },\n          \"health\": {\n            \"interval\": 120\n          },\n          \"wifi-frames\": {\n            \"filters\": [\n              \"probe\",\n              \"auth\"\n            ]\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"Services\",\n      \"description\": \"\",\n      \"weight\": 1,\n      \"configuration\": {\n        \"services\": {\n          \"lldp\": {\n            \"describe\": \"uCentral\",\n            \"location\": \"universe\"\n          },\n          \"ssh\": {\n            \"port\": 22\n          }\n        }\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/subscriberDevice/0",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"subscriberDevice",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Configuration",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"configuration\": [\n    {\n      \"configuration\": {\n        \"radios\": [\n          {\n            \"band\": \"5G\",\n            \"channel\": 52,\n            \"channel-mode\": \"HE\",\n            \"channel-width\": 80,\n            \"country\": \"CA\"\n          },\n          {\n            \"band\": \"2G\",\n            \"channel\": 11,\n            \"channel-mode\": \"HE\",\n            \"channel-width\": 20,\n            \"country\": \"CA\"\n          }\n        ]\n      },\n      \"description\": \"\",\n      \"name\": \"Radios\",\n      \"weight\": 1\n    },\n    {\n      \"configuration\": {\n        \"interfaces\": [\n          {\n            \"ethernet\": [\n              {\n                \"select-ports\": [\n                  \"WAN*\"\n                ]\n              }\n            ],\n            \"ipv4\": {\n              \"addressing\": \"dynamic\"\n            },\n            \"name\": \"WAN\",\n            \"role\": \"upstream\",\n            \"services\": [\n              \"lldp\"\n            ],\n            \"ssids\": [\n              {\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"ieee80211w\": \"optional\",\n                  \"proto\": \"none\"\n                },\n                \"name\": \"OpenWifi\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ]\n              },\n              {\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"ieee80211w\": \"optional\",\n                  \"key\": \"OpenWifi\",\n                  \"proto\": \"psk\"\n                },\n                \"name\": \"OpenWifi_wpa\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ]\n              },\n              {\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"ieee80211w\": \"optional\",\n                  \"key\": \"OpenWifi\",\n                  \"proto\": \"psk2\"\n                },\n                \"name\": \"OpenWifi_wpa2\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ]\n              },\n              {\n                \"bss-mode\": \"ap\",\n                \"encryption\": {\n                  \"ieee80211w\": \"optional\",\n                  \"key\": \"OpenWifi\",\n                  \"proto\": \"sae\"\n                },\n                \"name\": \"OpenWifi_wpa3\",\n                \"role\": \"downstream\",\n                \"wifi-bands\": [\n                  \"2G\",\n                  \"5G\"\n                ]\n              }\n            ]\n          },\n          {\n            \"ethernet\": [\n              {\n                \"select-ports\": [\n                  \"LAN*\"\n                ]\n              }\n            ],\n            \"ipv4\": {\n              \"addressing\": \"static\",\n              \"dhcp\": {\n                \"lease-count\": 100,\n                \"lease-first\": 10,\n                \"lease-time\": \"6h\"\n              },\n              \"subnet\": \"192.168.1.1/24\"\n            },\n            \"name\": \"LAN\",\n            \"role\": \"downstream\",\n            \"services\": [\n              \"ssh\",\n              \"lldp\"\n            ]\n          }\n        ]\n      },\n      \"description\": \"\",\n      \"name\": \"Interfaces\",\n      \"weight\": 1\n    },\n    {\n      \"configuration\": {\n        \"metrics\": {\n          \"health\": {\n            \"interval\": 120\n          },\n          \"statistics\": {\n            \"interval\": 120,\n            \"types\": [\n              \"ssids\",\n              \"lldp\",\n              \"clients\"\n            ]\n          },\n          \"wifi-frames\": {\n            \"filters\": [\n              \"probe\",\n              \"auth\"\n            ]\n          }\n        }\n      },\n      \"description\": \"metrics\",\n      \"name\": \"Metrics\",\n      \"weight\": 1\n    },\n    {\n      \"configuration\": {\n        \"services\": {\n          \"lldp\": {\n            \"describe\": \"uCentral\",\n            \"location\": \"universe\"\n          },\n          \"ssh\": {\n            \"port\": 22\n          }\n        }\n      },\n      \"description\": \"\",\n      \"name\": \"Services\",\n      \"weight\": 1\n    }\n  ],\n  \"created\": 1654354248,\n  \"description\": \"\",\n  \"deviceRules\": {\n    \"firmwareUpgrade\": \"inherit\",\n    \"rcOnly\": \"inherit\",\n    \"rrm\": \"inherit\"\n  },\n  \"deviceTypes\": [\n    \"cig_wf188n\",\n    \"edgecore_ssw2ac2600\",\n    \"indio_um-305ax\",\n    \"hfcl_ion4xe\",\n    \"udaya_a5-id2\"\n  ],\n  \"entity\": \"e6223c6a-c150-43ea-8286-f2d6395e6d65\",\n  \"extendedInfo\": {\n    \"entity\": {\n      \"description\": \"\",\n      \"id\": \"e6223c6a-c150-43ea-8286-f2d6395e6d65\",\n      \"name\": \"TIP LABS\"\n    }\n  },\n  \"id\": \"60c0ae75-75df-4a10-819a-5695bf000ecf\",\n  \"inUse\": [],\n  \"managementPolicy\": \"\",\n  \"modified\": 1654354248,\n  \"name\": \"VLAN\",\n  \"notes\": [],\n  \"subscriber\": \"\",\n  \"subscriberOnly\": false,\n  \"tags\": [],\n  \"variables\": [],\n  \"venue\": \"\"\n}"
+						},
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/configuration/60c0ae75-75df-4a10-819a-5695bf000ecf",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"configuration",
+								"60c0ae75-75df-4a10-819a-5695bf000ecf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Configuration",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/configuration/403435b5-3501-41cf-9a68-5220c05765a3",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"configuration",
+								"403435b5-3501-41cf-9a68-5220c05765a3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post System commands",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "variable",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/dashboard",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Live view",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/venue/c17b100d-b60b-4360-b0c4-6dee0b8e2b3a?withExtendedInfo=true",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"venue",
+								"c17b100d-b60b-4360-b0c4-6dee0b8e2b3a"
+							],
+							"query": [
+								{
+									"key": "withExtendedInfo",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Operator Location",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/operatorLocation?operatorId=7a10bc9d-ae9b-44fa-a699-287da5581c36",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"operatorLocation"
+							],
+							"query": [
+								{
+									"key": "operatorId",
+									"value": "7a10bc9d-ae9b-44fa-a699-287da5581c36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peak Bandwidth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/peakbandwidth",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"peakbandwidth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Specific Map",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/map/33838256-2a51-41cc-a1af-d5fa5974a025",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"map",
+								"33838256-2a51-41cc-a1af-d5fa5974a025"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Specific Operator",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/operator/aa82244c-3de6-4b76-9eec-fa7e8b835fca",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"operator",
+								"aa82244c-3de6-4b76-9eec-fa7e8b835fca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specific service class",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROVISIONING_HOSTNAME}}:{{PROVISIONING_PORTNUMBER}}/api/v1/serviceClass/3c7d4b1e-d0af-4e73-acb4-76283bd26ede",
+							"protocol": "https",
+							"host": [
+								"{{PROVISIONING_HOSTNAME}}"
+							],
+							"port": "{{PROVISIONING_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"serviceClass",
+								"3c7d4b1e-d0af-4e73-acb4-76283bd26ede"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(pm.collectionVariables.get(\"ACCESS_TOKEN\"));"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "Create Board",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "3946f9661872ce03cb744f1993575451300e65262d10abc8bf18147f13d7ddfa",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "3946f9661872ce03cb744f1993575451300e65262d10abc8bf18147f13d7ddfa",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"allOf\": {\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"name\": \"board-anil\",\n    \"description\": \"board-api-test\",\n    \"notes\": [\n      {\n        \"created\": 0,\n        \"createdBy\": \"anil\",\n        \"note\": \"this is to test api\"\n      }\n    ],\n    \"created\": 0,\n    \"modified\": 0,\n    \"tags\": [\n      0\n    ]\n  },\n  \"venueList\": [\n    {\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"name\": \"test-anil-venue\",\n      \"description\": \"test-lab-anil\",\n      \"retention\": 0,\n      \"interval\": 0,\n      \"monitorSubVenues\": true\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/0",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Board",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "4a42f9d4f86df135a8700d4ea1ca2c4e7105df48ca02d6eb8912141c8b2a3d82",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "3946f9661872ce03cb744f1993575451300e65262d10abc8bf18147f13d7ddfa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/c5d273cd-a025-4107-ae11-0dd8160a3bb0",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"c5d273cd-a025-4107-ae11-0dd8160a3bb0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Board",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/a2ed3f13-ede3-4c9f-b1b0-ae92c87c896c",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"a2ed3f13-ede3-4c9f-b1b0-ae92c87c896c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Board",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"allOf\": {\n    \"id\": \"005ddb54-246b-41a7-b004-d0318f7b8633\",\n    \"name\": \"test-board\",\n    \"description\": \"board updated\",\n    \"notes\": [\n      {\n        \"created\": 0,\n        \"createdBy\": \"string\",\n        \"note\": \"string\"\n      }\n    ],\n    \"created\": 0,\n    \"modified\": 0,\n    \"tags\": [\n      0\n    ]\n  },\n  \"venueList\": [\n    {\n      \"id\": \"005ddb54-246b-41a7-b004-d0318f7b8633\",\n      \"name\": \"test-anil\",\n      \"description\": \"test through postman\",\n      \"retention\": 0,\n      \"interval\": 0,\n      \"monitorSubVenues\": true\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/005ddb54-246b-41a7-b004-d0318f7b8633",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"005ddb54-246b-41a7-b004-d0318f7b8633"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Boards",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "3946f9661872ce03cb744f1993575451300e65262d10abc8bf18147f13d7ddfa",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/boards",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"boards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Board Devices",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "50adc319-1277-40b1-a47c-e7e19acd3885",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/a38faf03-3dce-4658-9cf4-8cc97c56c808/devices",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"a38faf03-3dce-4658-9cf4-8cc97c56c808",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Board Data with time points",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "4ed313e444a6c13fe9ad7462aeb619422cb3ffee7d0b16872a765662984576b8",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/9e522d40-4c4e-45a0-9818-accfa53949cb/timepoints?fromDate=1656433571&endDate=1656437171",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"9e522d40-4c4e-45a0-9818-accfa53949cb",
+								"timepoints"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "1656433571"
+								},
+								{
+									"key": "endDate",
+									"value": "1656437171"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Board Data with time points",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "4ed313e444a6c13fe9ad7462aeb619422cb3ffee7d0b16872a765662984576b8",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/board/9e522d40-4c4e-45a0-9818-accfa53949cb/timepoints?fromDate=1656433571&endDate=1656437171",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"board",
+								"9e522d40-4c4e-45a0-9818-accfa53949cb",
+								"timepoints"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "1656433571"
+								},
+								{
+									"key": "endDate",
+									"value": "1656437171"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All wifiClientHistory",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "c2001fefe7b79544306697585b63c30af1b834e40f6bc2b066bd737294cc17b1",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/wifiClientHistory?macsOnly=true&venue=cc21fda9-0dc5-4def-85f3-045aa796d6d0",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"wifiClientHistory"
+							],
+							"query": [
+								{
+									"key": "macsOnly",
+									"value": "true"
+								},
+								{
+									"key": "venue",
+									"value": "cc21fda9-0dc5-4def-85f3-045aa796d6d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a wifiClientHistory",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "c2001fefe7b79544306697585b63c30af1b834e40f6bc2b066bd737294cc17b1",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "id",
+								"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/wifiClientHistory/0?orderSpec=true",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"wifiClientHistory",
+								"0"
+							],
+							"query": [
+								{
+									"key": "orderSpec",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a wifiClientHistory",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "38b2492e-23e0-4ac7-873f-7a09ca9d9de6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/wifiClientHistory/0?orderSpec=true",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"wifiClientHistory",
+								"0"
+							],
+							"query": [
+								{
+									"key": "orderSpec",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET System Info",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/system?command=info",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"system"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "info"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peform System Command",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"command\":\"getsubsystemnames\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/system",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"system"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Country Code for IP",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ANALYTICS_HOSTNAME}}:{{ANALYTICS_PORTNUMBER}}/api/v1/iptocountry?iplist=10.2.2.2",
+							"protocol": "https",
+							"host": [
+								"{{ANALYTICS_HOSTNAME}}"
+							],
+							"port": "{{ANALYTICS_PORTNUMBER}}",
+							"path": [
+								"api",
+								"v1",
+								"iptocountry"
+							],
+							"query": [
+								{
+									"key": "iplist",
+									"value": "10.2.2.2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "clientSecret",
+				"value": "SDK_SECRET",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "SDK_USER",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://{{SECURITY_HOSTNAME}}:{{SECURITY_PORTNUMBER}}/api/v1/oauth2",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "SDK_TOKEN",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": ""
+		},
+		{
+			"key": "SECURITY_HOSTNAME",
+			"value": "sec-qa01.cicd.lab.wlan.tip.build"
+		},
+		{
+			"key": "SECURITY_PORTNUMBER",
+			"value": "16001"
+		},
+		{
+			"key": "GATEWAY_HOSTNAME",
+			"value": "gw-qa01.cicd.lab.wlan.tip.build"
+		},
+		{
+			"key": "GATEWAY_PORTNUMBER",
+			"value": "16002"
+		},
+		{
+			"key": "FIRMWARE_HOSTNAME",
+			"value": "fms-qa01.cicd.lab.wlan.tip.build"
+		},
+		{
+			"key": "FIRMWARE_PORTNUMBER",
+			"value": "16004"
+		},
+		{
+			"key": "PROVISIONING_HOSTNAME",
+			"value": "prov-qa01.cicd.lab.wlan.tip.build"
+		},
+		{
+			"key": "PROVISIONING_PORTNUMBER",
+			"value": "16005"
+		},
+		{
+			"key": "BEARERTOKEN",
+			"value": "BEARERTOKEN",
+			"type": "string"
+		},
+		{
+			"key": "SDK_USER",
+			"value": "tip@ucentral.com",
+			"type": "string"
+		},
+		{
+			"key": "SDK_SECRET",
+			"value": "OpenWiFi%123",
+			"type": "string"
+		},
+		{
+			"key": "SERIAL",
+			"value": "00037f941710",
+			"type": "string"
+		},
+		{
+			"key": "ACCESS_TOKEN\n",
+			"value": "ACCESS_TOKEN",
+			"type": "string"
+		},
+		{
+			"key": "ACCESS_TOKEN",
+			"value": ""
+		},
+		{
+			"key": "object",
+			"value": "createObjects"
+		},
+		{
+			"key": "ANALYTICS_HOSTNAME",
+			"value": "analytics-qa01.cicd.lab.wlan.tip.build",
+			"type": "string"
+		},
+		{
+			"key": "ANALYTICS_PORTNUMBER",
+			"value": "16009",
+			"type": "string"
+		}
+	]
+}
