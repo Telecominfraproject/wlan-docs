@@ -1,0 +1,897 @@
+openapi: 3.0.1
+info:
+  title: uCentral Firmware Service API
+  description: A process to manage new uCentral firmware distribution.
+  version: 2.5.0
+  license:
+    name: BSD3
+    url: https://github.com/Telecominfraproject/wlan-cloud-ucentralgw/blob/master/LICENSE
+  contact:
+    name: Arilia Support
+    url: https://www.ucentral.info/support
+
+servers:
+  - url: 'https://localhost:16003/api/v1'
+
+security:
+  - ApiKeyAuth: []
+  - bearerAuth: []
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    NotFound:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/NotFound'
+    Unauthorized:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/Unauthorized'
+    Success:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/Success'
+    BadRequest:
+      $ref: 'https://raw.githubusercontent.com/Telecominfraproject/wlan-cloud-ucentralsec/release/v2.7.0/openpapi/owsec.yaml#/components/responses/BadRequest'
+
+  schemas:
+    FirmwareDetails:
+      type: object
+      description: Definition of a firmware release
+      properties:
+        id:
+          type: string
+          format: uuid
+        deviceType:
+          type: string
+        description:
+          type: string
+        revision:
+          type: string
+        uri:
+          type: string
+          format: uri
+        image:
+          type: string
+        imageDate:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int64
+        downloadCount:
+          type: integer
+          format: int64
+        firmwareHash:
+          type: string
+        owner:
+          type: string
+        location:
+          type: string
+          format: uri
+        uploader:
+          type: string
+        digest:
+          type: string
+        latest:
+          type: boolean
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteInfo'
+        created:
+          type: integer
+          format: int64
+
+    FirmwareDetailsList:
+      type: object
+      properties:
+        firmwares:
+          type: array
+          items:
+            $ref: '#/components/schemas/FirmwareDetails'
+
+    DeviceCurrentInfo:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        revision:
+          type: string
+        upgraded:
+          type: integer
+          format: int64
+
+    DeviceCurrentInfoList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceCurrentInfo'
+
+    RevisionHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        serialNumber:
+          type: string
+        revisionId:
+          type: string
+          format: uuid
+        upgraded:
+          type: integer
+          format: int64
+        fromRelease:
+          type: string
+        toRelease:
+          type: string
+        commandUUID:
+          type: string
+          format: uuid
+
+    RevisionHistoryEntryList:
+      type: object
+      properties:
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevisionHistoryEntry'
+
+
+    FirmwareAgeDetails:
+      type: object
+      properties:
+        latestId:
+          type: string
+        image:
+          type: string
+        imageDate:
+          type: integer
+          format: uint64
+        revision:
+          type: string
+        uri:
+          type: string
+          format: uri
+        age:
+          type: integer
+          format: int64
+          example: this is in seconds. a 0 means we cannot determine the age. something like 'unknown' should be shown to the user.
+        latest:
+          type: boolean
+
+    FirmwareAgeDetailsList:
+      type: object
+      properties:
+        ages:
+          type: array
+          items:
+            $ref: '#/components/schemas/FirmwareAgeDetails'
+
+    DeviceConnectionInformation:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        revision:
+          type: string
+        deviceType:
+          type: string
+        endPoint:
+          type: string
+          format: uri
+        lastUpdate:
+          type: integer
+          format: uint64
+        status:
+          type: string
+          enum:
+            - connected
+            - disconnected
+            - unknown
+
+    DeviceConnectionInformationList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceConnectionInformation'
+
+    DeviceReport:
+      type: object
+      properties:
+        snapshot:
+          type: integer
+          format: int64
+        numberOfDevices:
+          type: integer
+          format: int64
+        ouis:
+          $ref: '#/components/schemas/TagIntPairList'
+        revisions:
+          $ref: '#/components/schemas/TagIntPairList'
+        deviceTypes:
+          $ref: '#/components/schemas/TagIntPairList'
+        status:
+          $ref: '#/components/schemas/TagIntPairList'
+        endPoints:
+          $ref: '#/components/schemas/TagIntPairList'
+        unknownFirmwares:
+          $ref: '#/components/schemas/TagIntPairList'
+        usingLatest:
+          $ref: '#/components/schemas/TagIntPairList'
+        totalSecondsOld:
+          $ref: '#/components/schemas/TagIntPairList'
+
+    DeviceInformation:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        history:
+          $ref: '#/components/schemas/RevisionHistoryEntryList'
+        currentFirmware:
+          type: string
+        currentFirmwareDate:
+          type: integer
+          format: int64
+        latestFirmware:
+          type: string
+        latestFirmwareDate:
+          type: integer
+          format: int64
+        latestFirmwareAvailable:
+          type: boolean
+
+    #########################################################################################
+    ##
+    ## These are endpoints that all services in the uCentral stack must provide
+    ##
+    #########################################################################################
+    AnyPayload:
+      type: object
+      properties:
+        Document:
+          type: string
+
+    StringList:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    TagValuePair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: string
+
+    TagValuePairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    TagIntPair:
+      type: object
+      properties:
+        tag:
+          type: string
+        value:
+          type: integer
+          format: int64
+
+    TagIntPairList:
+      type: object
+      properties:
+        tagList:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagIntPair'
+
+    NoteInfo:
+      type: object
+      properties:
+        created:
+          type: integer
+          format: int64
+        createdBy:
+          type: string
+        note:
+          type: string
+
+    SystemInfoResults:
+      type: object
+      properties:
+        version:
+          type: string
+        uptime:
+          type: integer
+          format: integer64
+        start:
+          type: integer
+          format: integer64
+        os:
+          type: string
+        processors:
+          type: integer
+        hostname:
+          type: string
+        certificates:
+          type: array
+          items:
+            type: object
+            properties:
+              filename:
+                type: string
+              expires:
+                type: integer
+                format: int64
+
+    SystemCommandSetLogLevel:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - setloglevel
+        subsystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandReload:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - reload
+        subsystems:
+          type: array
+          items:
+            type: string
+            example: these are the SubSystems names retrieve with the GetSubSystemsNamesResult.
+
+    SystemCommandGetLogLevels:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevels
+
+    SystemGetLogLevelsResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+    SystemCommandGetLogLevelNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getloglevelnames
+
+    SystemCommandGetSubsystemNames:
+      type: object
+      properties:
+        command:
+          type: string
+          enum:
+            - getsubsystemnames
+
+    SystemCommandGetLogLevelNamesResult:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            type: string
+
+    SystemGetSubSystemNemesResult:
+      type: object
+      properties:
+        taglist:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagValuePair'
+
+#########################################################################################
+##
+## End of uCentral system-wide values
+##
+#########################################################################################
+paths:
+  /firmwares:
+    get:
+      tags:
+        - Firmware
+      summary: Returns a list of firmwares.
+      description: Get a list of firmwares.
+      operationId: getFirmwareList
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: latestOnly
+          description: Return only the latest firmware
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: deviceType
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: revisionSet
+          schema:
+            type: boolean
+            default: false
+          required: false
+        - in: query
+          name: deviceSet
+          schema:
+            type: boolean
+          required: false
+        - in: query
+          name: rcOnly
+          schema:
+            type: boolean
+            default: false
+          required: false
+      responses:
+        200:
+          description: List firmwares
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FirmwareDetailsList'
+                  - $ref: '#/components/schemas/FirmwareDetails'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /firmware/{id}:
+    get:
+      tags:
+        - Firmware
+      summary: Returns a Firmware
+      description: Get a Firmware.
+      operationId: getFirmware
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        200:
+          description: A Firmware definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirmwareDetails'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      tags:
+        - Firmware
+      summary: Create A New firmware
+      operationId: createFirmware
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FirmwareDetails'
+      responses:
+        200:
+          description: Created a firmware entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirmwareDetails'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - Firmware
+      summary: Update A New firmware
+      operationId: upodateFirmware
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      requestBody:
+        description: Firmware details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FirmwareDetails'
+      responses:
+        200:
+          description: Successfully updated firmware
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirmwareDetails'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Firmware
+      summary: Delete some Firmware
+      operationId: deleteFirmware
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          description: Successfully deleted Firmware for the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /revisionHistory/{serialNumber}:
+    get:
+      tags:
+        - RevisionHistory
+      summary: List all the defined device revision history
+      operationId: getRevisionHistory
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+        - in: query
+          description: Return current device list and current firmware
+          name: currentList
+          schema:
+            type: boolean
+            default: false
+          required: false
+          example: You must set {serialNumber} to 000000000000
+        - in: query
+          description: Return current device list and current firmware
+          name: unknownList
+          schema:
+            type: boolean
+            default: false
+          required: false
+          example: You must set {serialNumber} to 000000000000
+      responses:
+        200:
+          description: List of device history upgrade.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/RevisionHistoryEntryList'
+                  - $ref: '#/components/schemas/DeviceCurrentInfoList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - RevisionHistory
+      summary: Delete specific hostory elements for a device
+      operationId: deleteRevisionHistory
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        204:
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Success'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /firmwareAge:
+    get:
+      tags:
+        - Firmware
+      summary: Calculate how old a version of firmware is.
+      operationId: getFirmwareAge
+      parameters:
+        - in: query
+          description: The exact current verion of the firmware on that device.
+          name: revision
+          schema:
+            type: string
+          required: true
+        - in: query
+          description: The exact current verion of the firmware on that device.
+          name: deviceType
+          schema:
+            type: string
+          required: true
+        - in: query
+          description: Specify lits of serial  numbers to retrive age for
+          name: select
+          schema:
+            type: string
+            example: select=serial1,serial2,serial4,serial5.
+          required: false
+      responses:
+        200:
+          description: The recommended latest version to update to.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FirmwareAgeDetails'
+                  - $ref: '#/components/schemas/FirmwareAgeDetailsList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /connectedDevices:
+    get:
+      tags:
+        - ConnectedDevices
+      summary: Get a list of connected devices and some values.
+      operationId: getConnectedDevices
+      parameters:
+        - in: query
+          description: Pagination start (starts at 1. If not specified, 1 is assumed)
+          name: offset
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Maximum number of entries to return (if absent, no limit is assumed)
+          name: limit
+          schema:
+            type: integer
+          required: false
+        - in: query
+          description: Filter the results
+          name: filter
+          schema:
+            type: string
+          required: false
+      responses:
+        200:
+          description: List firmwares
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConnectionInformationList'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /connectedDevice/{serialNumber}:
+    get:
+      tags:
+        - ConnectedDevices
+      summary: Get status of a connected device.
+      operationId: getConnectedDevice
+      parameters:
+        - in: path
+          description: SerialNumber of the device
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Get information about a connected device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConnectionInformation'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /deviceReport:
+    get:
+      tags:
+        - DeviceInfo
+      summary: get an analysis of the existing devices we know about.
+      responses:
+        200:
+          description: A full analysis report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceReport'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+  /deviceInformation/{serialNumber}:
+    get:
+      tags:
+        - Device Information
+      summary: receive a repor on a single decide
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+            example:
+              aabbccdd1234
+          required: true
+      responses:
+        200:
+          $ref: '#/components/schemas/DeviceInformation'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+
+
+  #########################################################################################
+  ##
+  ## These are endpoints that all services in the uCentral stack must provide
+  ##
+  #########################################################################################
+  /system:
+    post:
+      tags:
+        - System Commands
+      summary: Perform some system wide commands
+      operationId: systemCommand
+      requestBody:
+        description: Command details
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/SystemCommandSetLogLevel'
+                - $ref: '#/components/schemas/SystemCommandReload'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevels'
+                - $ref: '#/components/schemas/SystemCommandGetLogLevelNames'
+                - $ref: '#/components/schemas/SystemCommandGetSubsystemNames'
+      responses:
+        200:
+          description: Successfull command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemGetLogLevelsResult'
+                  - $ref: '#/components/schemas/SystemCommandGetLogLevelNamesResult'
+                  - $ref: '#/components/schemas/SystemGetSubSystemNemesResult'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+    get:
+      tags:
+        - System Commands
+      summary: Retrieve different values from the running service.
+      operationId: getSystemCommand
+      parameters:
+        - in: query
+          description: Get a value
+          name: command
+          schema:
+            type: string
+            enum:
+              - info
+          required: true
+
+      responses:
+        200:
+          description: Successfull command execution
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/SystemInfoResults'
+        403:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
